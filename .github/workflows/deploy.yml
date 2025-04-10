@@ -32,4 +32,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }} # Имя пользователя FTP
           password: ${{ secrets.FTP_PASSWORD }} # Пароль FTP
           local-dir: ./out/ # Папка с собранными файлами
-          server-dir: /public_html/ # Директория на сервере GoDaddy
+          server-dir: / # Директория на сервере GoDaddy
