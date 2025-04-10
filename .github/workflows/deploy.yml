@@ -24,7 +24,6 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
-
       - name: Deploy to GoDaddy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.0
         with:
