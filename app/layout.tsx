@@ -1,18 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Headers from '@/app/(components)/header/page';
 import Footer from '@/app/(components)/footers/page';
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import ThemeProviderWrapper from '@/app/ThemeProviderWrapper';
 
 // export const metadata: Metadata = {
 //   title: "IT CODER",
@@ -37,12 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-      <Headers/>
-      {children}
-      <Footer/>
+      <body>
+      <ThemeProviderWrapper>
+            <Headers/>
+                {children}
+            <Footer/>
+      </ThemeProviderWrapper>
       </body>
     </html>
   );

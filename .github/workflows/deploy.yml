@@ -1,0 +1,35 @@
+name: Build and Deploy web page
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Next.js app
+        run: npm run build
+
+
+      - name: Deploy to GoDaddy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.0
+        with:
+          server: ${{ secrets.FTP_SERVER }} # IP или хост FTP от GoDaddy
+          username: ${{ secrets.FTP_USERNAME }} # Имя пользователя FTP
+          password: ${{ secrets.FTP_PASSWORD }} # Пароль FTP
+          local-dir: ./out/ # Папка с собранными файлами
+          server-dir: /public_html/ # Директория на сервере GoDaddy

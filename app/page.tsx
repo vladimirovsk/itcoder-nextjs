@@ -1,5 +1,10 @@
+import {Button} from '@mui/material';
+
 export default function Home() {
   return (
-      <div>MAIN</div>
+      <div>
+        <Button variant="contained" >TEST</Button>
+        <Button variant="outlined" color='secondary' >TEST 2</Button>
+    </div>
   )
 }
