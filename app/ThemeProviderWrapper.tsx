@@ -1,15 +1,32 @@
 "use client";
 
 import { ThemeProvider } from '@mui/material/styles';
-import { theme } from './theme';
+import { lightTheme, darkTheme } from './theme';
 import CssBaseline from '@mui/material/CssBaseline';
-export default function ThemeProviderWrapper({children}: {
-	children: React.ReactNode;
+import { ThemeContextProvider, useTheme } from './ThemeContext';
+
+// Inner component that uses the theme context
+function ThemedContent({ children }: { children: React.ReactNode }) {
+  const { mode } = useTheme();
+  const currentTheme = mode === 'light' ? lightTheme : darkTheme;
+
+  return (
+    <ThemeProvider theme={currentTheme}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
+  );
+}
+
+// Main wrapper that provides the theme context
+export default function ThemeProviderWrapper({ children }: {
+  children: React.ReactNode;
 }) {
-	return (
-		<ThemeProvider theme={theme}>
-			<CssBaseline /> {/* Опционально */}
-			{children}
-		</ThemeProvider>
-	);
+  return (
+    <ThemeContextProvider>
+      <ThemedContent>
+        {children}
+      </ThemedContent>
+    </ThemeContextProvider>
+  );
 }
