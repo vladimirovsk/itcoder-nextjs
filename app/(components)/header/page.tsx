@@ -7,7 +7,7 @@ import React from 'react';
 import { useTheme } from '@/app/ThemeContext';
 
 export default function Headers() {
-	const [mobileOpen, setMobileOpen] = React.useState(false);
+	const [, setMobileOpen] = React.useState(false);
 	const [activeItem, setActiveItem] = React.useState('Home'); // Default active item
 	const { mode, toggleTheme } = useTheme();
 
@@ -26,15 +26,15 @@ export default function Headers() {
 		<AppBar component="nav">
 			<Toolbar>
 				<Box sx={{ display: 'flex', alignItems: 'center' }}>
-					{/*<IconButton*/}
-					{/*	color="inherit"*/}
-					{/*	aria-label="open drawer"*/}
-					{/*	edge="start"*/}
-					{/*	onClick={handleDrawerToggle}*/}
-					{/*	className="header-menu-button"*/}
-					{/*>*/}
-					{/*<MenuIcon />*/}
-					{/*</IconButton>*/}
+					<IconButton
+						color="inherit"
+						aria-label="open drawer"
+						edge="start"
+						onClick={handleDrawerToggle}
+						className="header-menu-button"
+					>
+					<MenuIcon />
+					</IconButton>
 					<Typography
 						variant="h6"
 						component="div"

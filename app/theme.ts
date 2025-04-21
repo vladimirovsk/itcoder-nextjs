@@ -1,7 +1,6 @@
 import { createTheme } from '@mui/material/styles';
-import { PaletteMode } from '@mui/material';
 
-const getDesignTokens = (mode: PaletteMode) => ({
+const getDesignTokens = () => ({
   typography: {
     fontFamily: 'Geist, Roboto, sans-serif',
   },
@@ -15,7 +14,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
             justifyContent: 'center',
             flexGrow: 1,
             flexWrap: 'nowrap',
-            overflow: 'auto'
+            overflow: 'auto',
           },
         },
       ],
@@ -45,14 +44,14 @@ export const lightTheme = createTheme({
       main: '#F97316',
     },
   },
-  ...getDesignTokens('light'),
+  ...getDesignTokens(),
   components: {
-    ...getDesignTokens('light').components,
+    ...getDesignTokens().components,
     MuiAppBar: {
       styleOverrides: {
         root: {
           backgroundColor: '#F3F4F6',
-          color: '#000000'
+          color: '#000000',
         },
       },
     },
@@ -63,7 +62,7 @@ export const lightTheme = createTheme({
           style: {
             color: '#000000',
             marginRight: 2,
-          }
+          },
         },
       ],
     },
@@ -71,10 +70,16 @@ export const lightTheme = createTheme({
       variants: [
         {
           props: { className: 'header-title' },
-          style: {
+          style: ({ theme }) => ({
             color: '#000000',
-            marginLeft: '1rem'
-          },
+            marginLeft: '1rem',
+            [theme.breakpoints.down('xs')]: {
+              display: 'none',
+            },
+            [theme.breakpoints.up('sm')]: {
+              display: 'block',
+            },
+          }),
         },
       ],
     },
@@ -82,12 +87,18 @@ export const lightTheme = createTheme({
       variants: [
         {
           props: { className: 'header-nav-button' },
-          style: {
+          style: ({ theme }) => ({
             alignItems: 'center',
             color: '#000000',
-            padding: { xs: '6px 8px', sm: '8px 11px' },
-            fontSize: { xs: '0.8rem', sm: '0.875rem' },
-          },
+            [theme.breakpoints.down('xs')]: {
+              padding: '6px 8px',
+              fontSize: '0.8rem',
+            },
+            [theme.breakpoints.up('sm')]: {
+              padding: '8px 11px',
+              fontSize: '0.875rem',
+            },
+          }),
         },
         {
           props: { className: 'header-nav-button active' },
@@ -120,14 +131,14 @@ export const darkTheme = createTheme({
       main: '#F97316',
     },
   },
-  ...getDesignTokens('dark'),
+  ...getDesignTokens(),
   components: {
-    ...getDesignTokens('dark').components,
+    ...getDesignTokens().components,
     MuiAppBar: {
       styleOverrides: {
         root: {
           backgroundColor: '#121212',
-          color: '#FFFFFF'
+          color: '#FFFFFF',
         },
       },
     },
@@ -137,7 +148,7 @@ export const darkTheme = createTheme({
           props: { className: 'header-menu-button' },
           style: {
             color: '#FFFFFF',
-            marginRight: 2
+            marginRight: 2,
           },
         },
       ],
@@ -146,11 +157,16 @@ export const darkTheme = createTheme({
       variants: [
         {
           props: { className: 'header-title' },
-          style: {
+          style: ({ theme }) => ({
             color: '#FFFFFF',
             marginLeft: '1rem',
-            display: { xs:'none', sm: 'block' },
-          },
+            [theme.breakpoints.down('xs')]: {
+              display: 'none',
+            },
+            [theme.breakpoints.up('sm')]: {
+              display: 'block',
+            },
+          }),
         },
       ],
     },
@@ -158,15 +174,23 @@ export const darkTheme = createTheme({
       variants: [
         {
           props: { className: 'header-nav-button' },
-          style: {
+          style: ({ theme }) => ({
+            alignItems: 'center',
             color: '#FFFFFF',
-            padding: { xs: '6px 8px', sm: '8px 11px' },
-            fontSize: { xs: '0.8rem', sm: '0.875rem' },
-          },
+            [theme.breakpoints.down('xs')]: {
+              padding: '6px 8px',
+              fontSize: '0.8rem',
+            },
+            [theme.breakpoints.up('sm')]: {
+              padding: '8px 11px',
+              fontSize: '0.875rem',
+            },
+          }),
         },
         {
           props: { className: 'header-nav-button active' },
           style: {
+            alignItems: 'center',
             color: '#FFFFFF',
             borderBottom: '2px solid #F97316',
             borderLeft: 'none',
