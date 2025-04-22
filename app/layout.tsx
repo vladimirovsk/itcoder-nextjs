@@ -30,7 +30,16 @@ export default function RootLayout({
       <body>
       <ThemeProviderWrapper>
             <Headers/>
+            <div style={{ 
+              paddingTop: 'calc(64px + 2rem)',
+              paddingBottom: 'calc(64px + 2rem)',
+              paddingLeft: '1rem',
+              minHeight: '100vh',
+              display: 'flex',
+              flexDirection: 'column'
+            }}>
                 {children}
+            </div>
             <Footer/>
       </ThemeProviderWrapper>
       </body>

@@ -5,11 +5,13 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import React from 'react';
 import { useTheme } from '@/app/ThemeContext';
+import { useRouter } from 'next/navigation';
 
 export default function Headers() {
 	const [, setMobileOpen] = React.useState(false);
 	const [activeItem, setActiveItem] = React.useState('Home'); // Default active item
-	const { mode, toggleTheme } = useTheme();
+	const { mode, toggleTheme, isHydrated } = useTheme();
+	const router = useRouter();
 
 	const handleDrawerToggle = () => {
 		setMobileOpen((prevState) => !prevState);
@@ -17,9 +19,22 @@ export default function Headers() {
 
 	const handleNavItemClick = (item: string) => {
 		setActiveItem(item);
+
+		// Navigate to the appropriate route based on the clicked item
+		if (item === 'Home') {
+			router.push('/');
+		}
+		if (item === 'Project') {
+			router.push('/projects');
+		}
 	};
 
 	const navItems = ['Home', 'Project', 'Contact'];
+
+	// Use a consistent icon for server rendering and initial client render
+	// Only switch based on theme after client-side hydration is complete and safe
+	const themeIcon = !isHydrated || mode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />;
+	const tooltipTitle = !isHydrated || mode === 'light' ? 'Switch to dark mode' : 'Switch to light mode';
 
 	return (
 		<React.Fragment>
@@ -40,7 +55,7 @@ export default function Headers() {
 						component="div"
 						className="header-title"
 					>
-						ITCODER
+						{process.env.NEXT_PUBLIC_NEXT_TITLE}
 					</Typography>
 				</Box>
 
@@ -57,9 +72,9 @@ export default function Headers() {
 				</Box>
 
 				<Box>
-					<Tooltip title={mode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}>
+					<Tooltip title={tooltipTitle}>
 						<IconButton onClick={toggleTheme} color="inherit">
-							{mode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
+							{themeIcon}
 						</IconButton>
 					</Tooltip>
 				</Box>

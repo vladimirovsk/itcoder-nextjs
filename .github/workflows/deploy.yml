@@ -23,6 +23,7 @@ jobs:
       - name: Build Next.js app
         env:
           NEXT_OUTPUT: export
+          NEXT_PUBLIC_API: "https://api-rest.it-coder.com/api/v1"
         run: npm run build
 
       - name: Deploy to GoDaddy
