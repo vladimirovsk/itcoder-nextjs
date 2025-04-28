@@ -2,12 +2,14 @@
 
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { PaletteMode } from '@mui/material';
+import { ThemeLogoConfig, lightTheme, darkTheme } from './theme';
 
 type ThemeContextType = {
   mode: PaletteMode;
   toggleTheme: () => void;
   isClient: boolean;
   isHydrated: boolean;
+  logo: ThemeLogoConfig;
 };
 
 const ThemeContext = createContext<ThemeContextType>({
@@ -15,6 +17,7 @@ const ThemeContext = createContext<ThemeContextType>({
   toggleTheme: () => {},
   isClient: false,
   isHydrated: false,
+  logo: lightTheme.logo as ThemeLogoConfig,
 });
 
 export const useTheme = () => useContext(ThemeContext);
@@ -63,7 +66,8 @@ export const ThemeContextProvider = ({ children }: { children: React.ReactNode }
     mode,
     toggleTheme,
     isClient,
-    isHydrated
+    isHydrated,
+    logo: mode === 'light' ? lightTheme.logo as ThemeLogoConfig : darkTheme.logo as ThemeLogoConfig
   };
 
   return (

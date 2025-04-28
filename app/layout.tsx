@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Headers from '@/app/(components)/header/page';
 import Footer from '@/app/(components)/footers/page';
 import ThemeProviderWrapper from '@/app/ThemeProviderWrapper';
+import { Container } from '@mui/material';
 
 // export const metadata: Metadata = {
 //   title: "IT CODER",
@@ -20,6 +21,12 @@ export async function generateMetadata(): Promise<Metadata> {
     };
 }
 
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,16 +37,9 @@ export default function RootLayout({
       <body>
       <ThemeProviderWrapper>
             <Headers/>
-            <div style={{ 
-              paddingTop: 'calc(64px + 2rem)',
-              paddingBottom: 'calc(64px + 2rem)',
-              paddingLeft: '1rem',
-              minHeight: '100vh',
-              display: 'flex',
-              flexDirection: 'column'
-            }}>
+            <Container component="main" disableGutters>
                 {children}
-            </div>
+            </Container>
             <Footer/>
       </ThemeProviderWrapper>
       </body>
