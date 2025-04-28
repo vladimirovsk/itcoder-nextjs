@@ -392,8 +392,8 @@ export const darkTheme = createTheme({
   },
   // Logo configuration for dark theme
   logo: {
-    logoPath: '/ITCODER.png', // Using the same logo for now, can be replaced with a dark theme specific logo
-    logoAlt: 'ITCODER Logo',
+    logoPath: imageLogo.src,
+    logoAlt: 'ITCODER',
     logoWidth: 100,
     logoHeight: 80,
   },
