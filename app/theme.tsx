@@ -2,6 +2,7 @@
 
 import { createTheme } from '@mui/material/styles';
 import { PaletteMode } from '@mui/material';
+import imageLogo from './(components)/header/images/imageLogo.png';
 
 // Logo configuration for themes
 export interface ThemeLogoConfig {
@@ -367,8 +368,8 @@ export const lightTheme = createTheme({
   },
   // Logo configuration for light theme
   logo: {
-    logoPath: '/ITCODER.png',
-    logoAlt: 'ITCODER Logo',
+    logoPath: imageLogo.src,
+    logoAlt: 'ITCODER',
     logoWidth: 100,
     logoHeight: 80,
   },
