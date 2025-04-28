@@ -6,7 +6,7 @@ import imageLogo from './(components)/header/images/imageLogo.png';
 
 // Logo configuration for themes
 export interface ThemeLogoConfig {
-  logoPath: any; // Using 'any' to accommodate StaticImageData from Next.js
+  logoPath: string;
   logoAlt: string;
   logoWidth: number;
   logoHeight: number;
@@ -368,7 +368,7 @@ export const lightTheme = createTheme({
   },
   // Logo configuration for light theme
   logo: {
-    logoPath: imageLogo,
+    logoPath: imageLogo.src.toString(),
     logoAlt: 'ITCODER',
     logoWidth: 100,
     logoHeight: 80,
@@ -392,7 +392,7 @@ export const darkTheme = createTheme({
   },
   // Logo configuration for dark theme
   logo: {
-    logoPath: imageLogo,
+    logoPath: imageLogo.src.toString(),
     logoAlt: 'ITCODER',
     logoWidth: 100,
     logoHeight: 80,
