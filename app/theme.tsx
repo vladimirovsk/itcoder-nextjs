@@ -2,6 +2,7 @@
 
 import { createTheme } from '@mui/material/styles';
 import { PaletteMode } from '@mui/material';
+import { StaticImageData } from 'next/image';
 import imageLogo from './(components)/header/images/imageLogo.png';
 
 // Logo configuration for themes
@@ -368,7 +369,7 @@ export const lightTheme = createTheme({
   },
   // Logo configuration for light theme
   logo: {
-    logoPath: imageLogo.src.toString(),
+    logoPath: imageLogo.src,
     logoAlt: 'ITCODER',
     logoWidth: 100,
     logoHeight: 80,
@@ -392,7 +393,7 @@ export const darkTheme = createTheme({
   },
   // Logo configuration for dark theme
   logo: {
-    logoPath: imageLogo.src.toString(),
+    logoPath: imageLogo.src,
     logoAlt: 'ITCODER',
     logoWidth: 100,
     logoHeight: 80,
