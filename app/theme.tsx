@@ -2,7 +2,6 @@
 
 import { createTheme } from '@mui/material/styles';
 import { PaletteMode } from '@mui/material';
-import { StaticImageData } from 'next/image';
 import imageLogo from './(components)/header/images/imageLogo.png';
 
 // Logo configuration for themes
