@@ -7,6 +7,7 @@ import { useTheme } from '@/app/ThemeContext';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import imageTitle from './images/Image.png';
+import imageLogo from './images/imageLogo.png';
 
 export default function Headers() {
 	const [activeItem, setActiveItem] = React.useState('Home'); // Default active item
@@ -39,8 +40,9 @@ export default function Headers() {
 		<AppBar component="nav">
 			<Toolbar>
 				<Box sx={{ display: 'flex', alignItems: 'center' }}>
-						<Image 
-							src={logo.logoPath} 
+						<Image
+							src={imageLogo.src}
+							// src={logo.logoPath}
 							alt={logo.logoAlt} 
 							className="header-logo" 
 							width={logo.logoWidth} 

@@ -6,6 +6,15 @@ const nextConfig: NextConfig = {
 		NEXT_TITLE: 'IT Coder',
 		NEXT_PUBLIC_API: 'https://api-rest.it-coder.com/api/v1',
 	},
+	images: {
+		domains: [], // Add domains for external images if needed
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: '**',
+			},
+		],
+	},
 };
 
 export default nextConfig;
