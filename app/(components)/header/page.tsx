@@ -39,7 +39,6 @@ export default function Headers() {
 		<AppBar component="nav">
 			<Toolbar>
 				<Box sx={{ display: 'flex', alignItems: 'center' }}>
-					<IconButton>
 						<Image 
 							src={logo.logoPath} 
 							alt={logo.logoAlt} 
@@ -47,7 +46,6 @@ export default function Headers() {
 							width={logo.logoWidth} 
 							height={logo.logoHeight} 
 						/>
-					</IconButton>
 				</Box>
 
 				<Box className="header-nav-box">
