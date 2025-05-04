@@ -54,26 +54,27 @@ const getDesignTokens = (mode: PaletteMode) => ({
     MuiContainer: {
       styleOverrides: {
         root: {
-          variants: {
-            paddingTop: 'calc(64px + 2rem)',
-            paddingBottom: 'calc(64px + 2rem)',
-            paddingLeft: '1rem',
-            paddingRight: '1rem',
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            width: '100%',
-            boxSizing: 'border-box',
-            overflowX: 'hidden',
-            '@media (max-width:600px)': {
-              paddingTop: 'calc(56px + 1rem)', // Smaller padding on mobile
-              paddingBottom: 'calc(56px + 1rem)',
-              paddingLeft: '0.5rem',
-              paddingRight: '0.5rem',
-            },
-          },
+          // Common container styles
+          // paddingTop: '1rem',
+          // paddingBottom: 'calc(64px + 2rem)',
+          // paddingLeft: '1rem',
+          // paddingRight: '1rem',
+          // minHeight: '100vh',
+          // display: 'flex',
+          // flexDirection: 'column',
+          // width: '100%',
+          // boxSizing: 'border-box',
+          // overflowX: 'hidden',
         },
       },
+      variants: [
+        {
+          props: { className: 'containerPage' },
+          style: {
+            marginTop: '64px', // Add space below the fixed AppBar only for containerPage
+          },
+        },
+      ],
     },
     // Header styles
     MuiBox: {

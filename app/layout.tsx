@@ -37,7 +37,7 @@ export default function RootLayout({
       <body>
       <ThemeProviderWrapper>
             <Headers/>
-            <Container component="main" disableGutters>
+            <Container component="main" disableGutters className="containerPage">
                 {children}
             </Container>
             <Footer/>

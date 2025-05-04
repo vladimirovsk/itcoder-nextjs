@@ -1,31 +1,18 @@
-"use client";
+import projects from '@/app/data/projects.json';
+import { IProject } from './interfaces';
 
-import { useState, useEffect } from 'react'
-import {Project} from '@/app/(site)/projects/interfaces';
 
 export default function Projects() {
-	const [projects, setProject] = useState<Project[]>([])
+	const projectList: IProject[] = projects;
 
-		useEffect(() => {
-			async function fetchProjects() {
-				const res = await fetch(`${process.env.NEXT_PUBLIC_API}/project`, {
-					cache: 'force-cache',
-				})
-				const data: Project[] = await res.json();
-				setProject(data);
-			}
-
-			fetchProjects()
-		},
-			[]);
-
-	if (!projects) return <div>Loading...</div>;
+	if (!projectList) return <div>Loading...</div>;
 	return (
-		<div>PROJECTS
+		<div>
 			{
-				projects.map((project: Project) => (
-				<div key={project._id}>
-					<h2>{project.title}</h2>
+				projectList.map((project: IProject) => (
+				<div key={project.name}>
+					<h1>{project.name}</h1>
+					<h2>{project.description}</h2>
 				</div>
 			))}
 		</div>

@@ -1,0 +1,41 @@
+[
+  {
+    "title": "Skill A",
+    "subheader": "Skill A subheader",
+    "hidden": false,
+    "disabled": false,
+    "frameworks": {
+      "name": [
+        "Framework A",
+        "Framework B",
+        "Framework C"
+      ]
+    }
+  },
+  {
+    "title": "Skill B",
+    "subheader": "Skill B subheader",
+    "hidden": false,
+    "disabled": false,
+    "frameworks": {
+      "name": [
+        "Framework A",
+        "Framework B",
+        "Framework C"
+      ]
+    }
+  },
+  {
+    "title": "Skill C",
+    "subheader": "Skill C subheader",
+    "hidden": false,
+    "disabled": false,
+    "frameworks": {
+      "name": [
+        "Framework A",
+        "Framework B",
+        "Framework C"
+      ]
+    }
+  }
+]
