@@ -7,7 +7,7 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 // import imageTitle from './images/Image.png';
-import imageLogo from './images/imageLogo.png';
+import imageLogo from '../../../public/imageLogo.png';
 
 export default function Headers() {
 	const [activeItem, setActiveItem] = React.useState('Home'); // Default active item
