@@ -12,10 +12,10 @@ export interface ThemeLogoConfig {
 
 declare module '@mui/material/styles' {
   interface Theme {
-    logo?: ThemeLogoConfig;
+    logo: ThemeLogoConfig;
   }
   interface ThemeOptions {
-    logo?: ThemeLogoConfig;
+    logo: ThemeLogoConfig;
   }
 }
 
