@@ -43,7 +43,7 @@ export default function Headers() {
 			<Toolbar>
 				<Box sx={{ display: 'flex', alignItems: 'center' }}>
 						<Image
-							src={imageLogo.src}
+							src={imageLogo}
 							// src={logo.logoPath}
 							alt={logo.logoAlt ?? 'IT CODER'}
 							className="header-logo"
