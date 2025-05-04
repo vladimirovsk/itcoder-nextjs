@@ -1,6 +1,6 @@
 'use client';
 import {AppBar, Box, Button, Toolbar, useTheme} from '@mui/material';
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import imageLogo from '../../../public/imageLogo.png';
 
@@ -11,7 +11,7 @@ export default function Headers() {
 	const scrollTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the scroll timer
 	const resetTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the reset timer
 	const { logo } = useTheme();
-	const navItems = ['Services', 'Advantages', 'Skills', 'Cases', 'Projects', 'Contact'];
+	const navItems = useMemo(() => ['Services', 'Advantages', 'Skills', 'Cases', 'Projects', 'Contact'], []);
 
 	// Function to check which section is currently in view
 	const checkActiveSection = useCallback(() => {
@@ -183,7 +183,7 @@ export default function Headers() {
 					titleElement.classList.remove('animate__animated', 'animate__rubberBand');
 
 					// Force a reflow to ensure the animation restarts
-					void titleElement.offsetWidth;
+					void (titleElement as HTMLElement).offsetWidth;
 
 					// Add the animation classes from animate.css
 					titleElement.classList.add('animate__animated', 'animate__rubberBand');
@@ -227,13 +227,13 @@ export default function Headers() {
 					))}
 				</Box>
 
-				<Box>
-					{/*<Tooltip title={tooltipTitle}>*/}
-					{/*	<IconButton onClick={toggleTheme} color="inherit">*/}
-					{/*		{themeIcon}*/}
-					{/*	</IconButton>*/}
-					{/*</Tooltip>*/}
-				</Box>
+				{/*<Box>*/}
+				{/*	<Tooltip title={tooltipTitle}>*/}
+				{/*		<IconButton onClick={toggleTheme} color="inherit">*/}
+				{/*			{themeIcon}*/}
+				{/*		</IconButton>*/}
+				{/*	</Tooltip>*/}
+				{/*</Box>*/}
 			</Toolbar>
 			</AppBar>
 			</Box>
