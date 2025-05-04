@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
 		NEXT_PUBLIC_API: 'https://api-rest.it-coder.com/api/v1',
 	},
 	images: {
+		unoptimized: false,
 		domains: [], // Add domains for external images if needed
 		remotePatterns: [
 			{
