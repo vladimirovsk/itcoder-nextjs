@@ -227,13 +227,13 @@ export default function Headers() {
 					))}
 				</Box>
 
-				{/*<Box>*/}
+				<Box>
 				{/*	<Tooltip title={tooltipTitle}>*/}
 				{/*		<IconButton onClick={toggleTheme} color="inherit">*/}
 				{/*			{themeIcon}*/}
 				{/*		</IconButton>*/}
 				{/*	</Tooltip>*/}
-				{/*</Box>*/}
+				</Box>
 			</Toolbar>
 			</AppBar>
 			</Box>
