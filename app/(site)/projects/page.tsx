@@ -1,4 +1,4 @@
-import projects from '@/app/data/projects.json';
+import projects from '@/app/(site)/projects/projects.json';
 import { IProject } from './interfaces';
 
 
@@ -7,7 +7,8 @@ export default function Projects() {
 
 	if (!projectList) return <div>Loading...</div>;
 	return (
-		<div>
+		<div id="projects">
+			<h1 className={'titlePage'}>Projects</h1>
 			{
 				projectList.map((project: IProject) => (
 				<div key={project.name}>

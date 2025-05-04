@@ -1,51 +1,212 @@
 'use client';
 import {AppBar, Box, Button, Toolbar, useTheme} from '@mui/material';
-// import MenuIcon from '@mui/icons-material/Menu';
-// import Brightness4Icon from '@mui/icons-material/Brightness4';
-// import Brightness7Icon from '@mui/icons-material/Brightness7';
-import React from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useEffect, useCallback } from 'react';
 import Image from 'next/image';
-// import imageTitle from './images/Image.png';
 import imageLogo from '../../../public/imageLogo.png';
 
 export default function Headers() {
 	const [activeItem, setActiveItem] = React.useState('Home'); // Default active item
-	const [,setMobileMenuOpen] = React.useState(false); // State for mobile menu
-	// const { mode, toggleTheme, isHydrated, logo } = useTheme();
+	const [,setMobileMenuOpen] = React.useState(false);
+	const [isManuallySet, setIsManuallySet] = React.useState(false); // Track if activeItem was manually set by clicking
+	const scrollTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the scroll timer
+	const resetTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the reset timer
 	const { logo } = useTheme();
-	const router = useRouter();
+	const navItems = ['Services', 'Advantages', 'Skills', 'Cases', 'Projects', 'Contact'];
 
-	const handleNavItemClick = (item: string) => {
-		setActiveItem(item);
-		setMobileMenuOpen(false); // Close mobile menu when an item is clicked
+	// Function to check which section is currently in view
+	const checkActiveSection = useCallback(() => {
+		// If activeItem was manually set, don't override it
+		if (isManuallySet) return;
 
-		// Navigate to the appropriate route based on the clicked item
-		if (item === 'Skills') {
-			router.push('/');
+		// Get all sections
+		const sections = navItems.map(item => document.getElementById(item.toLowerCase())).filter(Boolean);
+
+		// If no sections found, return
+		if (sections.length === 0) return;
+
+		// Get the current scroll position
+		const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+		// Find the section that is currently in view
+		for (let i = sections.length - 1; i >= 0; i--) {
+			const section = sections[i];
+			if (!section) continue;
+
+			const sectionTop = section.offsetTop;
+			const sectionHeight = section.offsetHeight;
+
+			if (scrollPosition >= sectionTop && scrollPosition <= sectionTop + sectionHeight) {
+				// Found the active section
+				setActiveItem(section.id.charAt(0).toUpperCase() + section.id.slice(1));
+				return;
+			}
 		}
-		if (item === 'Project') {
-			router.push('/projects');
+
+		// If we're at the top of the page, set Home as active
+		if (scrollPosition < (sections[0]?.offsetTop || 0)) {
+			setActiveItem('Home');
+		}
+	}, [navItems, isManuallySet]);
+
+	// Function to handle scroll events
+	const handleScroll = useCallback(() => {
+		// If the user is manually scrolling and isManuallySet is true, reset it
+		if (isManuallySet) {
+			// Clear any existing timer
+			if (scrollTimerRef.current) {
+				clearTimeout(scrollTimerRef.current);
+			}
+
+			// We use a small delay to ensure the scroll is intentional
+			scrollTimerRef.current = setTimeout(() => {
+				setIsManuallySet(false);
+				scrollTimerRef.current = null;
+			}, 1000); // Reset after 1 second of scrolling
+		} else {
+			// Call the checkActiveSection function
+			checkActiveSection();
+		}
+	}, [checkActiveSection, isManuallySet]);
+
+	// Handle direct URL navigation with hash fragments
+	useEffect(() => {
+		// Check if there's a hash fragment in the URL
+		if (typeof window !== 'undefined' && window.location.hash) {
+			// Get the section ID from the hash fragment
+			const sectionId = window.location.hash.substring(1); // Remove the # character
+			const section = document.getElementById(sectionId);
+
+			if (section) {
+				// Set the active item
+				setActiveItem(sectionId.charAt(0).toUpperCase() + sectionId.slice(1));
+				setIsManuallySet(true);
+
+				// Get the toolbar height to offset the scroll position
+				const toolbar = document.querySelector('nav');
+				const toolbarHeight = toolbar ? toolbar.offsetHeight : 0;
+
+				// Wait a bit for the page to fully load
+				setTimeout(() => {
+					// Calculate the position to scroll to (section's top position minus toolbar height)
+					const offsetPosition = section.getBoundingClientRect().top + window.pageYOffset - toolbarHeight;
+
+					// Scroll to the calculated position
+					window.scrollTo({
+						top: offsetPosition,
+						behavior: 'smooth'
+					});
+				}, 100);
+			}
+		}
+	}, []); // Empty dependency array means this effect runs once on mount
+
+	// Add scroll event listener
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll);
+
+		// Initial check
+		checkActiveSection();
+
+		// Animate the title of the active section on initial load
+		setTimeout(() => {
+			const activeSection = document.getElementById(activeItem.toLowerCase());
+			if (activeSection) {
+				const titleElement = activeSection.querySelector('.titlePage');
+				if (titleElement) {
+					titleElement.classList.add('animate__animated', 'animate__rubberBand');
+				}
+			}
+		}, 300);
+
+		// Cleanup
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, [handleScroll, checkActiveSection, activeItem]);
+
+	// Reset isManuallySet after a delay
+	useEffect(() => {
+		if (isManuallySet) {
+			// Clear any existing timer
+			if (resetTimerRef.current) {
+				clearTimeout(resetTimerRef.current);
+			}
+
+			// Set a new timer
+			resetTimerRef.current = setTimeout(() => {
+				setIsManuallySet(false);
+				resetTimerRef.current = null;
+			}, 5000); // Reset after 5 seconds
+
+			// Cleanup function
+			return () => {
+				if (resetTimerRef.current) {
+					clearTimeout(resetTimerRef.current);
+					resetTimerRef.current = null;
+				}
+			};
+		}
+	}, [isManuallySet]);
+
+	const handleNavItemClick = (item: string, event?: React.MouseEvent) => {
+		// Prevent default anchor link behavior if event is provided
+		if (event) {
+			event.preventDefault();
+		}
+
+		setActiveItem(item);
+		setIsManuallySet(true); // Set the flag to indicate manual selection
+		setMobileMenuOpen(false);
+
+		// Scroll to the section with the corresponding ID
+		const sectionId = item.toLowerCase();
+		const section = document.getElementById(sectionId);
+		if (section) {
+			// Get the toolbar height to offset the scroll position
+			const toolbar = document.querySelector('nav');
+			const toolbarHeight = toolbar ? toolbar.offsetHeight : 0;
+
+			// Calculate the position to scroll to (section's top position minus toolbar height)
+			const offsetPosition = section.getBoundingClientRect().top + (window.pageYOffset - 10) - toolbarHeight;
+
+			// Scroll to the calculated position
+			window.scrollTo({
+				top: offsetPosition,
+				behavior: 'smooth'
+			});
+
+			// Find the titlePage element in the section and animate it
+			setTimeout(() => {
+				const titleElement = section.querySelector('.titlePage');
+				if (titleElement) {
+					// Remove the animation classes first to reset the animation
+					titleElement.classList.remove('animate__animated', 'animate__rubberBand');
+
+					// Force a reflow to ensure the animation restarts
+					void titleElement.offsetWidth;
+
+					// Add the animation classes from animate.css
+					titleElement.classList.add('animate__animated', 'animate__rubberBand');
+				}
+			}, 500); // Wait for the scroll to complete
 		}
 	};
-
-	const navItems = ['Services', 'Advantages', 'Skills', 'Cases', 'Project', 'Contact'];
 
 	// Use a consistent icon for server rendering and initial client render
 	// Only switch based on theme after client-side hydration is complete and safe
 	// const themeIcon = !isHydrated || mode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />;
-	// const tooltipTitle = !isHydrated || mode === 'light' ? 'Switch to dark mode' : 'Switch to light mode';
+	// const tooltipTitle = !isHydrated || mode === 'light' ? 'Switch to dark mode': 'Switch to light mode';
 
 	return (
 		<React.Fragment>
 			<Box sx={{ display: 'flex' }}>
-			<AppBar component='nav'>
+			<AppBar component='nav' position="fixed" sx={{ top: 'auto' }}>
 			<Toolbar>
 				<Box sx={{ display: 'flex', alignItems: 'center' }}>
 						<Image
 							src={imageLogo}
 							// src={logo.logoPath}
-							alt={logo.logoAlt ?? 'IT CODER'}
+							alt={logo.logoAlt}
 							className="header-logo"
 							width={logo.logoWidth}
 							height={logo.logoHeight}
@@ -57,7 +218,9 @@ export default function Headers() {
 						<Button
 							key={item}
 							className={`header-nav-button ${activeItem === item ? 'active' : ''}`}
-							onClick={() => handleNavItemClick(item)}
+							onClick={(e) => handleNavItemClick(item, e)}
+							href={`#${item.toLowerCase()}`}
+							component="a"
 						>
 							{item}
 						</Button>

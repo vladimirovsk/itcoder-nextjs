@@ -4,6 +4,7 @@ import Headers from '@/app/(components)/header/page';
 import Footer from '@/app/(components)/footers/page';
 import ThemeProviderWrapper from '@/app/ThemeProviderWrapper';
 import { Container } from '@mui/material';
+import 'animate.css';
 
 // export const metadata: Metadata = {
 //   title: "IT CODER",

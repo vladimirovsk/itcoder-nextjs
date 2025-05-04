@@ -1,4 +1,4 @@
-export interface IService {
+export interface IAdvantages {
 	"name": string,
 	"description": string,
 	"url": string,

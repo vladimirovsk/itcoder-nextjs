@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Advantage A",
+    "description": "This is a description of Advantage A.",
+    "url": "https://example.com/Advantage-a",
+    "icon": "https://example.com/icons/Advantage-a.png"
+  },
+  {
+    "name": "Advantage B",
+    "description": "This is a description of Advantage B.",
+    "url": "https://example.com/Advantage-b",
+    "icon": "https://example.com/icons/Advantage-b.png"
+  },
+  {
+    "name": "Advantage C",
+    "description": "This is a description of Advantage C.",
+    "url": "https://example.com/Advantage-c",
+    "icon": "https://example.com/icons/Advantage-c.png"
+  }
+]

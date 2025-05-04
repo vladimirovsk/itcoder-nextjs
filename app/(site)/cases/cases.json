@@ -1,0 +1,41 @@
+[
+  {
+    "title": "Cases A",
+    "subheader": "Cases A subheader",
+    "hidden": false,
+    "disabled": false,
+    "frameworks": {
+      "name": [
+        "Framework A",
+        "Framework B",
+        "Framework C"
+      ]
+    }
+  },
+  {
+    "title": "Cases B",
+    "subheader": "Cases B subheader",
+    "hidden": false,
+    "disabled": false,
+    "frameworks": {
+      "name": [
+        "Framework A",
+        "Framework B",
+        "Framework C"
+      ]
+    }
+  },
+  {
+    "title": "Cases C",
+    "subheader": "Cases C subheader",
+    "hidden": false,
+    "disabled": false,
+    "frameworks": {
+      "name": [
+        "Framework A",
+        "Framework B",
+        "Framework C"
+      ]
+    }
+  }
+]

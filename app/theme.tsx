@@ -24,39 +24,286 @@ const getDesignTokens = (mode: PaletteMode) => ({
   typography: {
     fontFamily: 'Geist, Roboto, sans-serif',
     // Responsive font sizes
-    h1: {
-      fontSize: '2.5rem',
-      '@media (max-width:600px)': {
-        fontSize: '2rem',
-      },
-    },
-    h2: {
-      fontSize: '2rem',
-      '@media (max-width:600px)': {
-        fontSize: '1.75rem',
-      },
-    },
-    h3: {
-      fontSize: '1.75rem',
-      '@media (max-width:600px)': {
-        fontSize: '1.5rem',
-      },
-    },
-    body1: {
-      fontSize: '1rem',
-      '@media (max-width:600px)': {
-        fontSize: '0.875rem',
-      },
-    },
   },
   components: {
+    // Grid system configuration
+    // Note: These grid classes work with Material UI Box components and other components that
+    // accept className props. The grid system uses CSS Grid Layout under the hood.
+    //
+    // You can also use these classes with regular HTML elements:
+    // <div className="grid-container">
+    //   <div className="grid-item-half">Half width</div>
+    //   <div className="grid-item-half">Half width</div>
+    // </div>
+    //
+    // Usage examples:
+    // 1. Basic 12-column grid:
+    //    <Box className="grid-container">
+    //      <Box className="grid-item-half">Half width</Box>
+    //      <Box className="grid-item-half">Half width</Box>
+    //    </Box>
+    //
+    // 2. Simple 3-column grid:
+    //    <Box className="grid-container-3-cols">
+    //      <Box>Column 1</Box>
+    //      <Box>Column 2</Box>
+    //      <Box>Column 3</Box>
+    //    </Box>
+    //
+    // 3. Auto-filling grid for cards:
+    //    <Box className="grid-container-cards">
+    //      <Card>Card 1</Card>
+    //      <Card>Card 2</Card>
+    //      <Card>Card 3</Card>
+    //    </Box>
+    //
+    // 4. Combining classes for custom layouts:
+    //    <Box className="grid-container grid-gap-large grid-align-center">
+    //      <Box className="grid-item-third">Item 1</Box>
+    //      <Box className="grid-item-third">Item 2</Box>
+    //      <Box className="grid-item-third">Item 3</Box>
+    //    </Box>
+    MuiGrid: {
+      styleOverrides: {
+        root: {
+          // Common grid styles
+        },
+      },
+      variants: [
+        {
+          props: { className: 'grid-container' },
+          style: {
+            display: 'grid',
+            gridTemplateColumns: 'repeat(12, 1fr)',
+            gap: '24px',
+            width: '100%',
+            '@media (max-width:1200px)': {
+              gridTemplateColumns: 'repeat(8, 1fr)',
+              gap: '16px',
+            },
+            '@media (max-width:900px)': {
+              gridTemplateColumns: 'repeat(6, 1fr)',
+              gap: '16px',
+            },
+            '@media (max-width:600px)': {
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '8px',
+            },
+          },
+        },
+        {
+          props: { className: 'grid-item-full' },
+          style: {
+            gridColumn: 'span 12',
+            '@media (max-width:1200px)': {
+              gridColumn: 'span 8',
+            },
+            '@media (max-width:900px)': {
+              gridColumn: 'span 6',
+            },
+            '@media (max-width:600px)': {
+              gridColumn: 'span 4',
+            },
+          },
+        },
+        {
+          props: { className: 'grid-item-half' },
+          style: {
+            gridColumn: 'span 6',
+            '@media (max-width:900px)': {
+              gridColumn: 'span 6',
+            },
+            '@media (max-width:600px)': {
+              gridColumn: 'span 4',
+            },
+          },
+        },
+        {
+          props: { className: 'grid-item-third' },
+          style: {
+            gridColumn: 'span 4',
+            '@media (max-width:900px)': {
+              gridColumn: 'span 3',
+            },
+            '@media (max-width:600px)': {
+              gridColumn: 'span 4',
+            },
+          },
+        },
+        {
+          props: { className: 'grid-item-quarter' },
+          style: {
+            gridColumn: 'span 3',
+            '@media (max-width:900px)': {
+              gridColumn: 'span 3',
+            },
+            '@media (max-width:600px)': {
+              gridColumn: 'span 2',
+            },
+          },
+        },
+        {
+          props: { className: 'grid-container-2-cols' },
+          style: {
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: '24px',
+            width: '100%',
+            '@media (max-width:600px)': {
+              gridTemplateColumns: '1fr',
+              gap: '16px',
+            },
+          },
+        },
+        {
+          props: { className: 'grid-container-3-cols' },
+          style: {
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '24px',
+            width: '100%',
+            '@media (max-width:900px)': {
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '16px',
+            },
+            '@media (max-width:600px)': {
+              gridTemplateColumns: '1fr',
+              gap: '16px',
+            },
+          },
+        },
+        {
+          props: { className: 'grid-container-4-cols' },
+          style: {
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '24px',
+            width: '100%',
+            '@media (max-width:1200px)': {
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: '16px',
+            },
+            '@media (max-width:900px)': {
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '16px',
+            },
+            '@media (max-width:600px)': {
+              gridTemplateColumns: '1fr',
+              gap: '8px',
+            },
+          },
+        },
+        {
+          props: { className: 'grid-container-auto-fill' },
+          style: {
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+            gap: '24px',
+            width: '100%',
+            '@media (max-width:600px)': {
+              gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
+              gap: '16px',
+            },
+          },
+        },
+        {
+          props: { className: 'grid-container-cards' },
+          style: {
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            gap: '32px',
+            width: '100%',
+            '@media (max-width:600px)': {
+              gridTemplateColumns: '1fr',
+              gap: '24px',
+            },
+          },
+        },
+        // Grid alignment variants
+        {
+          props: { className: 'grid-align-center' },
+          style: {
+            alignItems: 'center',
+            justifyItems: 'center',
+          },
+        },
+        {
+          props: { className: 'grid-align-start' },
+          style: {
+            alignItems: 'start',
+            justifyItems: 'start',
+          },
+        },
+        {
+          props: { className: 'grid-align-end' },
+          style: {
+            alignItems: 'end',
+            justifyItems: 'end',
+          },
+        },
+        {
+          props: { className: 'grid-align-stretch' },
+          style: {
+            alignItems: 'stretch',
+            justifyItems: 'stretch',
+          },
+        },
+        // Grid spacing variants
+        {
+          props: { className: 'grid-gap-small' },
+          style: {
+            gap: '8px',
+          },
+        },
+        {
+          props: { className: 'grid-gap-medium' },
+          style: {
+            gap: '16px',
+          },
+        },
+        {
+          props: { className: 'grid-gap-large' },
+          style: {
+            gap: '32px',
+          },
+        },
+        // Grid area templates for common layouts
+        {
+          props: { className: 'grid-layout-sidebar' },
+          style: {
+            display: 'grid',
+            gridTemplateColumns: '250px 1fr',
+            gridTemplateAreas: '"sidebar main"',
+            gap: '24px',
+            width: '100%',
+            '@media (max-width:900px)': {
+              gridTemplateColumns: '1fr',
+              gridTemplateAreas: '"sidebar" "main"',
+              gap: '16px',
+            },
+          },
+        },
+        {
+          props: { className: 'grid-layout-header-content-footer' },
+          style: {
+            display: 'grid',
+            gridTemplateRows: 'auto 1fr auto',
+            gridTemplateAreas: '"header" "content" "footer"',
+            minHeight: '100vh',
+            gap: '24px',
+            width: '100%',
+          },
+        },
+      ],
+    },
     // Layout container styles (moved from layout.tsx)
     MuiContainer: {
       styleOverrides: {
         root: {
-          // Common container styles
+          marginTop: '64px', // Add space below the fixed AppBar
+          paddingBottom: '60px', // Add padding to prevent content from being hidden behind the fixed footer
+          // Other container styles
           // paddingTop: '1rem',
-          // paddingBottom: 'calc(64px + 2rem)',
           // paddingLeft: '1rem',
           // paddingRight: '1rem',
           // minHeight: '100vh',
@@ -71,7 +318,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
         {
           props: { className: 'containerPage' },
           style: {
-            marginTop: '64px', // Add space below the fixed AppBar only for containerPage
+            paddingBottom: '60px', // Add padding to prevent content from being hidden behind the fixed footer
           },
         },
       ],
@@ -85,6 +332,23 @@ const getDesignTokens = (mode: PaletteMode) => ({
       },
       variants: [
         {
+          props: { className: 'footer' },
+          style: {
+            position: 'fixed',
+            bottom: 0,
+            left: 0,
+            width: '100%',
+            textAlign: 'center',
+            padding: '10px 0',
+            backgroundColor: mode === 'light' ? '#f5f5f5' : '#333',
+            borderTop: `1px solid ${mode === 'light' ? '#e0e0e0' : '#444'}`,
+            zIndex: 1000,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          },
+        },
+        {
           props: { className: 'header-nav-box' },
           style: {
             variants: {
@@ -94,7 +358,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
               flexWrap: 'nowrap',
               overflow: 'auto',
               '@media (max-width:900px)': {
-                display: 'none', // Hide on mobile, will be replaced by mobile menu
+                display: 'none',
               },
             },
           },
@@ -270,14 +534,14 @@ const getDesignTokens = (mode: PaletteMode) => ({
           style: {
             variants: {
               color: mode === 'light' ? '#000000' : '#FFFFFF',
-              marginLeft: '1rem',
-              '@media (max-width:600px)': {
-                display: 'none',
-              },
-              '@media (min-width:601px)': {
-                display: 'block',
-              },
+              marginLeft: '1rem'
             },
+          },
+        },
+        {
+          props: { className: 'titlePage' },
+          style: {
+            fontWeight: 'bold',
           },
         },
       ],
@@ -292,37 +556,23 @@ const getDesignTokens = (mode: PaletteMode) => ({
         {
           props: { className: 'header-nav-button' },
           style: {
-            variants: {
-              alignItems: 'center',
-              color: mode === 'light' ? '#000000' : '#FFFFFF',
-              '@media (max-width:600px)': {
-                padding: '6px 8px',
-                fontSize: '0.8rem',
-                width: '100%', // Full width in mobile menu
-                justifyContent: 'center',
-              },
-              '@media (min-width:601px)': {
-                padding: '8px 11px',
-                fontSize: '0.875rem',
-              },
-            },
+            alignItems: 'center',
+            color: mode === 'light' ? '#000000' : '#FFFFFF',
           },
         },
         {
           props: { className: 'header-nav-button active' },
           style: {
-            variants: {
-              alignItems: 'center',
-              color: mode === 'light' ? '#000000' : '#FFFFFF',
-              borderBottom: '2px solid #F97316',
-              borderLeft: 'none',
-              borderRight: 'none',
-              borderTop: 'none',
-              width: 'auto',
-              '@media (max-width:600px)': {
-                width: '100%', // Full width in mobile menu
-                justifyContent: 'center',
-              },
+            alignItems: 'center',
+            color: mode === 'light' ? '#000000' : '#FFFFFF',
+            borderBottom: '2px solid #F97316',
+            borderLeft: 'none',
+            borderRight: 'none',
+            borderTop: 'none',
+            width: 'auto',
+            '@media (max-width:600px)': {
+              width: '100%',
+              justifyContent: 'center',
             },
           },
         },
