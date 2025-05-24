@@ -8,7 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 export default function Headers() {
 	const [activeItem, setActiveItem] = React.useState('Home'); // Default active item
-	const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+	const [,setMobileMenuOpen] = React.useState(false);
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const [isManuallySet, setIsManuallySet] = React.useState(false); // Track if activeItem was manually set by clicking
 	const scrollTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the scroll timer
