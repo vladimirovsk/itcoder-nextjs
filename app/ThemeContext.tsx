@@ -37,6 +37,9 @@ export const ThemeContextProvider = ({ children }: { children: React.ReactNode }
   // Second useEffect: Handle theme loading from localStorage
   // This runs after hydration is complete
   useEffect(() => {
+    // Mark that hydration is complete immediately on client
+    setIsHydrated(true);
+
     // Skip on first render to avoid hydration mismatch
     if (!initialRenderComplete.current) {
       initialRenderComplete.current = true;
@@ -48,9 +51,6 @@ export const ThemeContextProvider = ({ children }: { children: React.ReactNode }
     if (storedTheme && (storedTheme === 'light' || storedTheme === 'dark')) {
       setMode(storedTheme);
     }
-
-    // Mark that hydration is complete and it's safe to use client-side values
-    setIsHydrated(true);
   }, [isClient]);
 
   const toggleTheme = () => {

@@ -1,7 +1,8 @@
 'use client';
-import {AppBar, Box, Button, Toolbar, useTheme} from '@mui/material';
+import {AppBar, Box, Button, Container, Paper, Toolbar, Typography, useTheme} from '@mui/material';
 import React, { useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
+import titleImage from '../../../public/it-coder-title.png';
 import imageLogo from '../../../public/imageLogo.png';
 
 export default function Headers() {
@@ -206,10 +207,10 @@ export default function Headers() {
 						<Image
 							src={imageLogo}
 							// src={logo.logoPath}
-							alt={logo.logoAlt}
+							alt={logo?.logoAlt || 'IT Coder'}
 							className="header-logo"
-							width={logo.logoWidth}
-							height={logo.logoHeight}
+							width={logo?.logoWidth || 60}
+							height={logo?.logoHeight || 60}
 						/>
 				</Box>
 
@@ -237,6 +238,22 @@ export default function Headers() {
 			</Toolbar>
 			</AppBar>
 			</Box>
+			<Paper className={'mainFuturePost'}
+			       style={{backgroundImage: `url(${titleImage.src})`}}>
+				<Container fixed>
+					<div className='overlay'/>
+						<Box display='flex' justifyContent='center' alignItems='center' flexDirection='column' sx={{ position: 'relative', zIndex: 2 }}>
+							<div className={'mainFuturePostContent'}>
+								<Typography variant="h3" component="h1" color="inherit">
+									Software development
+								</Typography>
+								<Typography variant="h6" component="h2" color="inherit" paragraph>
+									Application and database architecture development
+								</Typography>
+							</div>
+						</Box>
+				</Container>
+			</Paper>
 		</React.Fragment>
 	)
 }

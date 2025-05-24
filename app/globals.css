@@ -45,7 +45,52 @@ main {
 }
 
 .titlePage {
-  margin-top: 25px;
+  margin-top: 0;
+  margin-bottom: 1.4rem;
   font-weight: bold;
   text-align: center;
+  font-size: 28px;
+}
+
+.mainFuturePost {
+  position: relative;
+  /*margin-bottom: 0.5rem;*/
+  /*background-size: cover;*/
+  background-size: 40%;
+  background-repeat: no-repeat;
+  /*background-position: center;*/
+  background-position: left center;
+}
+
+.mainFuturePostContent {
+  color: #eaeaef;
+  /*color: #F97316;*/
+  position: relative;
+  padding: 2rem;
+  text-shadow: 1px 1px 1px black, 0 0 1em #939191;
+  margin-top: 1rem;
+  text-align: right;
+  z-index: 2; /* Ensure content is above the overlay */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
+  z-index: 1;
+}
+
+.cardImageContainer {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.cardImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }

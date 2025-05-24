@@ -12,10 +12,10 @@ export interface ThemeLogoConfig {
 
 declare module '@mui/material/styles' {
   interface Theme {
-    logo: ThemeLogoConfig;
+    logo?: ThemeLogoConfig;
   }
   interface ThemeOptions {
-    logo: ThemeLogoConfig;
+    logo?: ThemeLogoConfig;
   }
 }
 
@@ -26,43 +26,22 @@ const getDesignTokens = (mode: PaletteMode) => ({
     // Responsive font sizes
   },
   components: {
-    // Grid system configuration
-    // Note: These grid classes work with Material UI Box components and other components that
-    // accept className props. The grid system uses CSS Grid Layout under the hood.
-    //
-    // You can also use these classes with regular HTML elements:
-    // <div className="grid-container">
-    //   <div className="grid-item-half">Half width</div>
-    //   <div className="grid-item-half">Half width</div>
-    // </div>
-    //
-    // Usage examples:
-    // 1. Basic 12-column grid:
-    //    <Box className="grid-container">
-    //      <Box className="grid-item-half">Half width</Box>
-    //      <Box className="grid-item-half">Half width</Box>
-    //    </Box>
-    //
-    // 2. Simple 3-column grid:
-    //    <Box className="grid-container-3-cols">
-    //      <Box>Column 1</Box>
-    //      <Box>Column 2</Box>
-    //      <Box>Column 3</Box>
-    //    </Box>
-    //
-    // 3. Auto-filling grid for cards:
-    //    <Box className="grid-container-cards">
-    //      <Card>Card 1</Card>
-    //      <Card>Card 2</Card>
-    //      <Card>Card 3</Card>
-    //    </Box>
-    //
-    // 4. Combining classes for custom layouts:
-    //    <Box className="grid-container grid-gap-large grid-align-center">
-    //      <Box className="grid-item-third">Item 1</Box>
-    //      <Box className="grid-item-third">Item 2</Box>
-    //      <Box className="grid-item-third">Item 3</Box>
-    //    </Box>
+    // CardContent styling
+    MuiCardContent: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#F2F4FF',
+        },
+      },
+    },
+    // CardActions styling
+    MuiCardActions: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#F2F4FF',
+        },
+      },
+    },
     MuiGrid: {
       styleOverrides: {
         root: {
@@ -300,7 +279,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
     MuiContainer: {
       styleOverrides: {
         root: {
-          marginTop: '64px', // Add space below the fixed AppBar
+          marginTop: '20px', // Reduced space below the fixed AppBar
           paddingBottom: '60px', // Add padding to prevent content from being hidden behind the fixed footer
           // Other container styles
           // paddingTop: '1rem',
@@ -351,135 +330,123 @@ const getDesignTokens = (mode: PaletteMode) => ({
         {
           props: { className: 'header-nav-box' },
           style: {
-            variants: {
-              display: 'flex',
-              justifyContent: 'center',
-              flexGrow: 1,
-              flexWrap: 'nowrap',
-              overflow: 'auto',
-              '@media (max-width:900px)': {
-                display: 'none',
-              },
+            display: 'flex',
+            justifyContent: 'center',
+            flexGrow: 1,
+            flexWrap: 'nowrap',
+            overflow: 'auto',
+            '@media (max-width:900px)': {
+              display: 'none',
             },
           },
         },
         {
           props: { className: 'mobile-menu' },
           style: {
-            variants: {
-              display: 'none', // Hidden by default
-              '@media (max-width:900px)': {
-                display: 'flex', // Show on mobile
-                flexDirection: 'column',
-                width: '100%',
-              },
+            display: 'none', // Hidden by default
+            '@media (max-width:900px)': {
+              display: 'flex', // Show on mobile
+              flexDirection: 'column',
+              width: '100%',
             },
           },
         },
         {
           props: { className: 'mobile-menu-button' },
           style: {
-            variants: {
-              display: 'none', // Hidden by default
-              '@media (max-width:900px)': {
-                display: 'flex', // Show on mobile
-              },
+            display: 'none', // Hidden by default
+            '@media (max-width:900px)': {
+              display: 'flex', // Show on mobile
             },
           },
         },
         {
           props: { className: 'HomeHeader' },
           style: {
-            variants: {
-              backgroundPosition: 'center',
-              backgroundSize: 'cover', // Changed from 100% auto to cover for better mobile display
-              backgroundRepeat: 'no-repeat',
-              backgroundOrigin: 'initial',
-              backgroundClip: 'initial',
-              backgroundColor: mode === 'light' ? 'white' : '#121212',
-              height: '546px',
-              width: '100vw',
-              padding: 0,
-              maxWidth: 'none',
-              left: 0,
-              right: 0,
-              position: 'relative',
-              boxSizing: 'border-box',
-              overflow: 'hidden',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              '@media (max-width:900px)': {
-                height: '400px', // Smaller height on mobile
-              },
-              '@media (max-width:600px)': {
-                height: '300px', // Even smaller on very small screens
-              },
+            backgroundPosition: 'center',
+            backgroundSize: 'cover', // Changed from 100% auto to cover for better mobile display
+            backgroundRepeat: 'no-repeat',
+            backgroundOrigin: 'initial',
+            backgroundClip: 'initial',
+            backgroundColor: mode === 'light' ? 'white' : '#121212',
+            height: '546px',
+            width: '100vw',
+            padding: 0,
+            maxWidth: 'none',
+            left: 0,
+            right: 0,
+            position: 'relative',
+            boxSizing: 'border-box',
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            '@media (max-width:900px)': {
+              height: '400px', // Smaller height on mobile
+            },
+            '@media (max-width:600px)': {
+              height: '300px', // Even smaller on very small screens
             },
           },
         },
         {
           props: { className: 'header-title-box' },
           style: {
-            variants: {
-              width: '100%',
-              maxWidth: '1288px',
-              height: 'auto', // Changed from fixed height to auto
-              fontFamily: 'Inter',
-              fontStyle: 'normal',
-              fontWeight: 800,
-              fontSize: '60px',
-              lineHeight: '60px',
-              textAlign: 'center',
-              letterSpacing: '-0.025em',
-              color: '#FFFFFF',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              margin: '0 auto',
-              padding: '0 1rem',
-              '@media (max-width:900px)': {
-                fontSize: '40px',
-                lineHeight: '40px',
-              },
-              '@media (max-width:600px)': {
-                fontSize: '30px',
-                lineHeight: '30px',
-              },
+            width: '100%',
+            maxWidth: '1288px',
+            height: 'auto', // Changed from fixed height to auto
+            fontFamily: 'Inter',
+            fontStyle: 'normal',
+            fontWeight: 800,
+            fontSize: '60px',
+            lineHeight: '60px',
+            textAlign: 'center',
+            letterSpacing: '-0.025em',
+            color: '#FFFFFF',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            margin: '0 auto',
+            padding: '0 1rem',
+            '@media (max-width:900px)': {
+              fontSize: '40px',
+              lineHeight: '40px',
+            },
+            '@media (max-width:600px)': {
+              fontSize: '30px',
+              lineHeight: '30px',
             },
           },
         },
         {
           props: { className: 'header-subtitle-box' },
           style: {
-            variants: {
-              width: '100%',
-              maxWidth: '768px',
-              height: 'auto', // Changed from fixed height to auto
-              fontFamily: 'Inter',
-              fontStyle: 'normal',
-              fontWeight: 400,
-              fontSize: '24px',
-              lineHeight: '28px',
-              textAlign: 'center',
-              color: '#FFFFFF',
-              flex: 'none',
-              order: 0,
-              flexGrow: 0,
-              marginTop: '30px',
-              padding: '0 1rem',
-              '@media (max-width:900px)': {
-                fontSize: '20px',
-                lineHeight: '24px',
-                marginTop: '20px',
-              },
-              '@media (max-width:600px)': {
-                fontSize: '16px',
-                lineHeight: '20px',
-                marginTop: '15px',
-              },
+            width: '100%',
+            maxWidth: '768px',
+            height: 'auto', // Changed from fixed height to auto
+            fontFamily: 'Inter',
+            fontStyle: 'normal',
+            fontWeight: 400,
+            fontSize: '24px',
+            lineHeight: '28px',
+            textAlign: 'center',
+            color: '#FFFFFF',
+            flex: 'none',
+            order: 0,
+            flexGrow: 0,
+            marginTop: '20px',
+            padding: '0 1rem',
+            '@media (max-width:900px)': {
+              fontSize: '20px',
+              lineHeight: '24px',
+              marginTop: '20px',
+            },
+            '@media (max-width:600px)': {
+              fontSize: '16px',
+              lineHeight: '20px',
+              marginTop: '15px',
             },
           },
         },

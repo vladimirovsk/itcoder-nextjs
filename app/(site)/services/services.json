@@ -1,116 +1,26 @@
 [
   {
-    "name": "Service A",
-    "description": "This is a description of Service A.",
+    "name": "Database development",
+    "description": "I create stable and secure databases for quick search, accurate accounting, and automation. Your system will run smoothly, and your data will always be under control.",
     "url": "https://example.com/service-a",
-    "icon": "https://example.com/icons/service-a.png"
+    "icon": "api"
   },
   {
-    "name": "Service B",
-    "description": "This is a description of Service B.",
+    "name": "Server \nconfiguration",
+    "description": "I set up turnkey servers on Linux and Windows, including virtualization via Proxmox or VMWare. Everything works stably, securely, and is ready for heavy loads.",
     "url": "https://example.com/service-b",
-    "icon": "https://example.com/icons/service-b.png"
+    "icon": "db"
   },
   {
-    "name": "Service C",
-    "description": "This is a description of Service C.",
+    "name": "Development \nof API protocols",
+    "description": "I design flexible and powerful REST APIs — based on microservices or in a single core. Your services are easy to integrate, scale, and work reliably.",
     "url": "https://example.com/service-c",
-    "icon": "https://example.com/icons/service-c.png"
+    "icon": "srv"
   },
   {
-    "name": "Service D",
-    "description": "This is a description of Service D.",
+    "name": "Web Development",
+    "description": "FullStack web application development that promotes your product, attracts customers,  and works without glitches.\nFrom idea to full launch with high-quality implementation",
     "url": "https://example.com/service-d",
-    "icon": "https://example.com/icons/service-d.png"
-  },
-  {
-    "name": "Service F",
-    "description": "This is a description of Service F.",
-    "url": "https://example.com/service-f",
-    "icon": "https://example.com/icons/service-f.png"
-  },
-  {
-    "name": "Service F1",
-    "description": "This is a description of Service F.",
-    "url": "https://example.com/service-f",
-    "icon": "https://example.com/icons/service-f.png"
-  },
-  {
-    "name": "Service F2",
-    "description": "This is a description of Service F.",
-    "url": "https://example.com/service-f",
-    "icon": "https://example.com/icons/service-f.png"
-  },
-  {
-    "name": "Service F3",
-    "description": "This is a description of Service F.",
-    "url": "https://example.com/service-f",
-    "icon": "https://example.com/icons/service-f.png"
-  },
-  {
-    "name": "Service F4",
-    "description": "This is a description of Service F.",
-    "url": "https://example.com/service-f",
-    "icon": "https://example.com/icons/service-f.png"
-  },
-  {
-    "name": "Service F5",
-    "description": "This is a description of Service F.",
-    "url": "https://example.com/service-f",
-    "icon": "https://example.com/icons/service-f.png"
-  },
-  {
-    "name": "Service F6",
-    "description": "This is a description of Service F.",
-    "url": "https://example.com/service-f",
-    "icon": "https://example.com/icons/service-f.png"
-  },
-  {
-    "name": "Service F7",
-    "description": "This is a description of Service F.",
-    "url": "https://example.com/service-f",
-    "icon": "https://example.com/icons/service-f.png"
-  },
-  {
-    "name": "Service F8",
-    "description": "This is a description of Service F.",
-    "url": "https://example.com/service-f",
-    "icon": "https://example.com/icons/service-f.png"
-  },
-  {
-    "name": "Service F9",
-    "description": "This is a description of Service F.",
-    "url": "https://example.com/service-f",
-    "icon": "https://example.com/icons/service-f.png"
-  },
-  {
-    "name": "Service F10",
-    "description": "This is a description of Service F.",
-    "url": "https://example.com/service-f",
-    "icon": "https://example.com/icons/service-f.png"
-  },
-  {
-    "name": "Service F11",
-    "description": "This is a description of Service F.",
-    "url": "https://example.com/service-f",
-    "icon": "https://example.com/icons/service-f.png"
-  },
-  {
-    "name": "Service F12",
-    "description": "This is a description of Service F.",
-    "url": "https://example.com/service-f",
-    "icon": "https://example.com/icons/service-f.png"
-  },
-  {
-    "name": "Service F13",
-    "description": "This is a description of Service F.",
-    "url": "https://example.com/service-f",
-    "icon": "https://example.com/icons/service-f.png"
-  },
-  {
-    "name": "Service F14",
-    "description": "This is a description of Service F.",
-    "url": "https://example.com/service-f",
-    "icon": "https://example.com/icons/service-f.png"
+    "icon": "web"
   }
 ]
