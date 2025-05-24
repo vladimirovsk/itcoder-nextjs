@@ -54,22 +54,23 @@ main {
 
 .mainFuturePost {
   position: relative;
-  /*margin-bottom: 0.5rem;*/
   /*background-size: cover;*/
   background-size: 40%;
   background-repeat: no-repeat;
   /*background-position: center;*/
-  background-position: left center;
+  background-position: left;
 }
 
 .mainFuturePostContent {
   color: #eaeaef;
+  /*display: flex;*/
   /*color: #F97316;*/
   position: relative;
   padding: 2rem;
-  text-shadow: 1px 1px 1px black, 0 0 1em #939191;
-  margin-top: 1rem;
+  text-shadow: 1px 1px 1px black, 0 0 1em #101010;
+  margin-top: 6rem;
   text-align: right;
+  /*justify-content: flex-end;*/
   z-index: 2; /* Ensure content is above the overlay */
 }
 

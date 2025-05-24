@@ -35,7 +35,17 @@ export default function Services () {
 				}}
 			>
 				{servicesList.map((service: IService) => (
-					<Card key={`Card${service.name}`} sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+					<Card key={`Card${service.name}`} sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						height: '100%',
+						boxShadow: '0px 4px 8px rgba(34, 35, 58, 0.2)',
+						transition: 'box-shadow 0.3s ease-in-out',
+						"&:hover":{
+							//color: "red"
+							boxShadow: '0px 14px 28px rgba(34, 35, 58, 0.5)',
+						}
+					}}>
 						<div className="cardImageContainer">
 							<Image 
 								src={iconMap[service.icon].src} 

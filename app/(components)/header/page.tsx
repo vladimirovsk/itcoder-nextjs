@@ -1,13 +1,15 @@
 'use client';
-import {AppBar, Box, Button, Container, Paper, Toolbar, Typography, useTheme} from '@mui/material';
+import {AppBar, Box, Button, Container, IconButton, Menu, MenuItem, Paper, Toolbar, Tooltip, Typography, useTheme} from '@mui/material';
 import React, { useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import titleImage from '../../../public/it-coder-title.png';
 import imageLogo from '../../../public/imageLogo.png';
+import MenuIcon from '@mui/icons-material/Menu';
 
 export default function Headers() {
 	const [activeItem, setActiveItem] = React.useState('Home'); // Default active item
-	const [,setMobileMenuOpen] = React.useState(false);
+	const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const [isManuallySet, setIsManuallySet] = React.useState(false); // Track if activeItem was manually set by clicking
 	const scrollTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the scroll timer
 	const resetTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the reset timer
@@ -149,6 +151,16 @@ export default function Headers() {
 		}
 	}, [isManuallySet]);
 
+	const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+		setAnchorEl(event.currentTarget);
+		setMobileMenuOpen(true);
+	};
+
+	const handleMenuClose = () => {
+		setAnchorEl(null);
+		setMobileMenuOpen(false);
+	};
+
 	const handleNavItemClick = (item: string, event?: React.MouseEvent) => {
 		// Prevent default anchor link behavior if event is provided
 		if (event) {
@@ -158,6 +170,7 @@ export default function Headers() {
 		setActiveItem(item);
 		setIsManuallySet(true); // Set the flag to indicate manual selection
 		setMobileMenuOpen(false);
+		setAnchorEl(null); // Close the mobile menu
 
 		// Scroll to the section with the corresponding ID
 		const sectionId = item.toLowerCase();
@@ -203,6 +216,19 @@ export default function Headers() {
 			<Box sx={{ display: 'flex' }}>
 			<AppBar component='nav' position="fixed" sx={{ top: 'auto' }}>
 			<Toolbar>
+				{/* Mobile Navigation */}
+				<Box className="mobile-menu-button" sx={{ display: { xs: 'flex', sm: 'flex', md: 'none' } }}>
+					<Tooltip title="Menu">
+						<IconButton 
+							color="inherit" 
+							aria-label="menu"
+							onClick={handleMenuOpen}
+						>
+							<MenuIcon />
+						</IconButton>
+					</Tooltip>
+				</Box>
+
 				<Box sx={{ display: 'flex', alignItems: 'center' }}>
 						<Image
 							src={imageLogo}
@@ -214,7 +240,8 @@ export default function Headers() {
 						/>
 				</Box>
 
-				<Box className="header-nav-box">
+				{/* Desktop Navigation */}
+				<Box className="header-nav-box" sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>
 					{navItems.map((item) => (
 						<Button
 							key={item}
@@ -227,6 +254,31 @@ export default function Headers() {
 						</Button>
 					))}
 				</Box>
+
+				{/* Mobile Menu */}
+				<Menu
+					anchorEl={anchorEl}
+					open={Boolean(anchorEl)}
+					onClose={handleMenuClose}
+					className="mobile-menu"
+					sx={{ display: { xs: 'block', sm: 'block', md: 'none' } }}
+					PaperProps={{
+						style: {
+							width: '100%',
+							maxWidth: '300px',
+						},
+					}}
+				>
+					{navItems.map((item) => (
+						<MenuItem 
+							key={item} 
+							onClick={(e) => handleNavItemClick(item, e)}
+							selected={activeItem === item}
+						>
+							{item}
+						</MenuItem>
+					))}
+				</Menu>
 
 				<Box>
 				{/*	<Tooltip title={tooltipTitle}>*/}
@@ -242,7 +294,7 @@ export default function Headers() {
 			       style={{backgroundImage: `url(${titleImage.src})`}}>
 				<Container fixed>
 					<div className='overlay'/>
-						<Box display='flex' justifyContent='center' alignItems='center' flexDirection='column' sx={{ position: 'relative', zIndex: 2 }}>
+						<Box display='flex' flexDirection='column' sx={{ position: 'relative', zIndex: 2 }}>
 							<div className={'mainFuturePostContent'}>
 								<Typography variant="h3" component="h1" color="inherit">
 									Software development
