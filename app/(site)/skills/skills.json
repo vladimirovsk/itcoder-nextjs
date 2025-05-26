@@ -1,41 +1,112 @@
 [
   {
-    "title": "Skill A",
-    "subheader": "Skill A subheader",
+    "title": "Mobile Development",
+    "subheader": "Development of software for mobile platforms iOS and Android",
     "hidden": false,
     "disabled": false,
-    "frameworks": {
-      "name": [
-        "Framework A",
-        "Framework B",
-        "Framework C"
+    "icon": "Flutter",
+    "frameworks":[
+        "Flutter",
+        "Dart"
       ]
-    }
   },
   {
-    "title": "Skill B",
-    "subheader": "Skill B subheader",
+    "title": "Backend Development",
+    "subheader": "Development of high-load REST API systems, integration of third-party services",
     "hidden": false,
+    "icon": "NestJS",
     "disabled": false,
-    "frameworks": {
-      "name": [
-        "Framework A",
-        "Framework B",
-        "Framework C"
+    "frameworks":[
+        "ExpressJS",
+        "NodeJS",
+        "NestJS",
+        "ORM Databases",
+        "JavaScript",
+        "TypeScript"
       ]
-    }
   },
   {
-    "title": "Skill C",
-    "subheader": "Skill C subheader",
+    "title": "Frontend Development",
+    "subheader": "Development of web interfaces for everything from single-page websites to complex CRM systems",
     "hidden": false,
     "disabled": false,
-    "frameworks": {
-      "name": [
-        "Framework A",
-        "Framework B",
-        "Framework C"
+    "icon": "NextJS",
+    "frameworks": [
+        "ReactJS",
+        "NextJS",
+        "JavaScript",
+        "TypeScript",
+        "Html"
       ]
-    }
+  },
+  {
+    "title": "Databases",
+    "subheader": "Database architecture design and selection of the optimal solution for your project",
+    "hidden": false,
+    "icon": "Database",
+    "disabled": false,
+    "frameworks": [
+        "Postgresql",
+        "MySQL",
+        "MongoDB",
+        "MicrosoftSQL",
+        "Firebase",
+        "Redis",
+        "Firebird"
+      ]
+  },
+  {
+    "title": "Delphi",
+    "subheader": "Development of software for Windows systems",
+    "hidden": false,
+    "icon": "Delphi",
+    "disabled": false,
+    "frameworks": [
+        "Delphi",
+        "Pascal",
+        "Firebird",
+        "MicrosoftSQL",
+        "1C"
+      ]
+  },
+  {
+    "title": "Setup servers",
+    "subheader": "Configuring selected servers and servers in cloud platforms",
+    "hidden": false,
+    "icon": "ServerSetup",
+    "disabled": false,
+    "frameworks": [
+        "WMVare",
+        "Proxmox",
+        "Google Cloud",
+        "Linux",
+        "Windows Server"
+      ]
+  },
+  {
+    "title": "Microcontrollers",
+    "subheader": "Development of automated systems based on microcontrollers",
+    "hidden": false,
+    "icon": "Microcontroller",
+    "disabled": false,
+    "frameworks": [
+        "Atmel",
+        "ESP32",
+        "Arduino",
+        "Raspberry Pi",
+        "STM32"
+    ]
+  },
+  {
+    "title": "Electronic boards",
+    "subheader": "Design, layout, fabrication. Development of turnkey devices according to specifications",
+    "hidden": false,
+    "icon": "Board",
+    "disabled": false,
+    "frameworks":[
+        "Sprint-Layout",
+        "DipTrace",
+        "Eagle"
+      ]
   }
 ]

@@ -60,8 +60,9 @@ main {
   color: #F97316;
   position: relative;
   padding: 2rem;
+  font-weight: 800;
   /*text-shadow: 1px 1px 1px black, 0 0 1em #101010;*/
-  margin-top: 6rem;
+  margin-top: 5rem;
   text-align: right;
   /*justify-content: flex-end;*/
   z-index: 2; /* Ensure content is above the overlay */

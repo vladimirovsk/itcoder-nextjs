@@ -5,7 +5,11 @@ import {ICases} from './interfaces';
 export default function Cases() {
 	const casesList: ICases[] = cases;
 	return (
-		<div id="cases">
+		<div id="cases" style={{
+			position: 'relative',
+			zIndex: 1, // Ensure Cases is above any potential overlapping elements
+			marginTop: '2rem', // Add some top margin for spacing
+		}}>
 			<h1 className={'titlePage'}>Cases</h1>
 			{
 				casesList.map((caseItem: ICases) => (

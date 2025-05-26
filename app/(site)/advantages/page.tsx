@@ -12,7 +12,7 @@ import imageWorld from './images/World.png';
 export default function Advantages () {
 	const advantagesList: IAdvantages[] = advantages
 
-	const iconMap: {[key: string]: { src: string, width: number, height: number }} = {
+	const iconMap: {[key: string]: { src: string }} = {
 		'Brand': imageBrand,
 		'Command': imageCommand,
 		'Project': imageProject,
@@ -69,12 +69,14 @@ export default function Advantages () {
 					width: '100%',
 					display: 'grid',
 					marginTop: '2rem',
+					spacing: 20,
 					gridTemplateColumns: {
 						xs: 'repeat(1, 1fr)', // 1 column on mobile
 						sm: 'repeat(2, 1fr)', // 2 columns on tablets
 						md: 'repeat(3, 1fr)', // 3 columns on desktop
 					},
 					gap: 3,
+					columnGap: 8, // Increased column spacing
 					rowGap: 6, // Increased row spacing
 				}}
 			>
@@ -88,7 +90,7 @@ export default function Advantages () {
 							borderRadius: '16px',
 							boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
 						 }}>
-							<IconImage icon={iconMap[advantage.icon].src} alt={advantage.name} />
+							<IconImage key={`Image=${advantage.name}`} icon={iconMap[advantage.icon].src} alt={advantage.name} />
 							<CardHeader title={advantage.name}
 							            key={`${advantage.name}-header-${index}`}
 							            slotProps={{

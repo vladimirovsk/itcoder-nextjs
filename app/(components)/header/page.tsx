@@ -109,17 +109,6 @@ export default function Headers() {
 		// Initial check
 		checkActiveSection();
 
-		// Animate the title of the active section on initial load
-		setTimeout(() => {
-			const activeSection = document.getElementById(activeItem.toLowerCase());
-			if (activeSection) {
-				const titleElement = activeSection.querySelector('.titlePage');
-				if (titleElement) {
-					titleElement.classList.add('animate__animated', 'animate__rubberBand');
-				}
-			}
-		}, 300);
-
 		// Cleanup
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
@@ -188,20 +177,6 @@ export default function Headers() {
 				behavior: 'smooth'
 			});
 
-			// Find the titlePage element in the section and animate it
-			setTimeout(() => {
-				const titleElement = section.querySelector('.titlePage');
-				if (titleElement) {
-					// Remove the animation classes first to reset the animation
-					titleElement.classList.remove('animate__animated', 'animate__rubberBand');
-
-					// Force a reflow to ensure the animation restarts
-					void (titleElement as HTMLElement).offsetWidth;
-
-					// Add the animation classes from animate.css
-					titleElement.classList.add('animate__animated', 'animate__rubberBand');
-				}
-			}, 500); // Wait for the scroll to complete
 		}
 	};
 
@@ -286,7 +261,6 @@ export default function Headers() {
 						</MenuItem>
 					))}
 				</Menu>
-
 				<Box>
 				</Box>
 			</Toolbar>
@@ -303,8 +277,11 @@ export default function Headers() {
 					}}
 			>
 				<Container fixed>
-					<div className='overlay'/>
-						<Box display='flex' flexDirection='column' sx={{ position: 'relative', zIndex: 2 }}>
+					<div className='overlay' style={{
+						fontWeight: 800
+					}}/>
+						<Box display='flex' flexDirection='column' sx={{
+							position: 'relative', zIndex: 2 }}>
 							<div className={'mainFuturePostContent'}>
 								<Typography variant="h3" component="h1">
 									Software development

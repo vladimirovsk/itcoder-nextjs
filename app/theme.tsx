@@ -30,12 +30,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
       styleOverrides: {
         root: {
           // Common grid styles
-        },
-      },
-      variants: [
-        {
-          props: { className: 'grid-container' },
-          style: {
+          '&.grid-container': {
             display: 'grid',
             gridTemplateColumns: 'repeat(12, 1fr)',
             gap: '24px',
@@ -53,10 +48,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
               gap: '8px',
             },
           },
-        },
-        {
-          props: { className: 'grid-item-full' },
-          style: {
+          '&.grid-item-full': {
             gridColumn: 'span 12',
             '@media (max-width:1200px)': {
               gridColumn: 'span 8',
@@ -68,10 +60,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
               gridColumn: 'span 4',
             },
           },
-        },
-        {
-          props: { className: 'grid-item-half' },
-          style: {
+          '&.grid-item-half': {
             gridColumn: 'span 6',
             '@media (max-width:900px)': {
               gridColumn: 'span 6',
@@ -80,10 +69,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
               gridColumn: 'span 4',
             },
           },
-        },
-        {
-          props: { className: 'grid-item-third' },
-          style: {
+          '&.grid-item-third': {
             gridColumn: 'span 4',
             '@media (max-width:900px)': {
               gridColumn: 'span 3',
@@ -92,10 +78,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
               gridColumn: 'span 4',
             },
           },
-        },
-        {
-          props: { className: 'grid-item-quarter' },
-          style: {
+          '&.grid-item-quarter': {
             gridColumn: 'span 3',
             '@media (max-width:900px)': {
               gridColumn: 'span 3',
@@ -104,10 +87,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
               gridColumn: 'span 2',
             },
           },
-        },
-        {
-          props: { className: 'grid-container-2-cols' },
-          style: {
+          '&.grid-container-2-cols': {
             display: 'grid',
             gridTemplateColumns: 'repeat(2, 1fr)',
             gap: '24px',
@@ -117,10 +97,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
               gap: '16px',
             },
           },
-        },
-        {
-          props: { className: 'grid-container-3-cols' },
-          style: {
+          '&.grid-container-3-cols': {
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
             gap: '24px',
@@ -134,10 +111,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
               gap: '16px',
             },
           },
-        },
-        {
-          props: { className: 'grid-container-4-cols' },
-          style: {
+          '&.grid-container-4-cols': {
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
             gap: '24px',
@@ -155,10 +129,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
               gap: '8px',
             },
           },
-        },
-        {
-          props: { className: 'grid-container-auto-fill' },
-          style: {
+          '&.grid-container-auto-fill': {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
             gap: '24px',
@@ -168,10 +139,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
               gap: '16px',
             },
           },
-        },
-        {
-          props: { className: 'grid-container-cards' },
-          style: {
+          '&.grid-container-cards': {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
             gap: '32px',
@@ -181,59 +149,35 @@ const getDesignTokens = (mode: PaletteMode) => ({
               gap: '24px',
             },
           },
-        },
-        // Grid alignment variants
-        {
-          props: { className: 'grid-align-center' },
-          style: {
+          // Grid alignment variants
+          '&.grid-align-center': {
             alignItems: 'center',
             justifyItems: 'center',
           },
-        },
-        {
-          props: { className: 'grid-align-start' },
-          style: {
+          '&.grid-align-start': {
             alignItems: 'start',
             justifyItems: 'start',
           },
-        },
-        {
-          props: { className: 'grid-align-end' },
-          style: {
+          '&.grid-align-end': {
             alignItems: 'end',
             justifyItems: 'end',
           },
-        },
-        {
-          props: { className: 'grid-align-stretch' },
-          style: {
+          '&.grid-align-stretch': {
             alignItems: 'stretch',
             justifyItems: 'stretch',
           },
-        },
-        // Grid spacing variants
-        {
-          props: { className: 'grid-gap-small' },
-          style: {
+          // Grid spacing variants
+          '&.grid-gap-small': {
             gap: '8px',
           },
-        },
-        {
-          props: { className: 'grid-gap-medium' },
-          style: {
+          '&.grid-gap-medium': {
             gap: '16px',
           },
-        },
-        {
-          props: { className: 'grid-gap-large' },
-          style: {
+          '&.grid-gap-large': {
             gap: '32px',
           },
-        },
-        // Grid area templates for common layouts
-        {
-          props: { className: 'grid-layout-sidebar' },
-          style: {
+          // Grid area templates for common layouts
+          '&.grid-layout-sidebar': {
             display: 'grid',
             gridTemplateColumns: '250px 1fr',
             gridTemplateAreas: '"sidebar main"',
@@ -245,10 +189,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
               gap: '16px',
             },
           },
-        },
-        {
-          props: { className: 'grid-layout-header-content-footer' },
-          style: {
+          '&.grid-layout-header-content-footer': {
             display: 'grid',
             gridTemplateRows: 'auto 1fr auto',
             gridTemplateAreas: '"header" "content" "footer"',
@@ -257,7 +198,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
             width: '100%',
           },
         },
-      ],
+      },
     },
     // Layout container styles (moved from layout.tsx)
     MuiContainer: {
@@ -275,45 +216,32 @@ const getDesignTokens = (mode: PaletteMode) => ({
           // width: '100%',
           // boxSizing: 'border-box',
           // overflowX: 'hidden',
-        },
-      },
-      variants: [
-        {
-          props: { className: 'containerPage' },
-          style: {
+          '&.containerPage': {
             paddingBottom: '60px', // Add padding to prevent content from being hidden behind the fixed footer
           },
         },
-      ],
+      },
     },
     // Header styles
     MuiBox: {
       styleOverrides: {
         root: {
           // Common box styles can go here
-        },
-      },
-      variants: [
-        {
-          props: { className: 'footer' },
-          style: {
+          '&.footer': {
             position: 'fixed',
             bottom: 0,
             left: 0,
             width: '100%',
             textAlign: 'center',
             padding: '10px 0',
-            backgroundColor: mode === 'light' ? '#f5f5f5' : '#333',
-            borderTop: `1px solid ${mode === 'light' ? '#e0e0e0' : '#444'}`,
+            // backgroundColor: mode === 'light' ? '#f5f5f5' : '#333',
+            // borderTop: `1px solid ${mode === 'light' ? '#e0e0e0' : '#444'}`,
             zIndex: 1000,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
           },
-        },
-        {
-          props: { className: 'header-nav-box' },
-          style: {
+          '&.header-nav-box': {
             display: 'flex',
             justifyContent: 'center',
             flexGrow: 1,
@@ -323,10 +251,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
               display: 'none',
             },
           },
-        },
-        {
-          props: { className: 'mobile-menu' },
-          style: {
+          '&.mobile-menu': {
             display: 'none', // Hidden by default
             '@media (max-width:900px)': {
               display: 'flex', // Show on mobile
@@ -334,19 +259,13 @@ const getDesignTokens = (mode: PaletteMode) => ({
               width: '100%',
             },
           },
-        },
-        {
-          props: { className: 'mobile-menu-button' },
-          style: {
+          '&.mobile-menu-button': {
             display: 'none', // Hidden by default
             '@media (max-width:900px)': {
               display: 'flex', // Show on mobile
             },
           },
-        },
-        {
-          props: { className: 'HomeHeader' },
-          style: {
+          '&.HomeHeader': {
             backgroundPosition: 'center',
             backgroundSize: 'cover', // Changed from 100% auto to cover for better mobile display
             backgroundRepeat: 'no-repeat',
@@ -373,10 +292,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
               height: '300px', // Even smaller on very small screens
             },
           },
-        },
-        {
-          props: { className: 'header-title-box' },
-          style: {
+          '&.header-title-box': {
             width: '100%',
             maxWidth: '1288px',
             height: 'auto', // Changed from fixed height to auto
@@ -403,10 +319,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
               lineHeight: '30px',
             },
           },
-        },
-        {
-          props: { className: 'header-subtitle-box' },
-          style: {
+          '&.header-subtitle-box': {
             width: '100%',
             maxWidth: '768px',
             height: 'auto', // Changed from fixed height to auto
@@ -434,7 +347,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
             },
           },
         },
-      ],
+      },
     },
     MuiToolbar: {
       styleOverrides: {
@@ -459,61 +372,36 @@ const getDesignTokens = (mode: PaletteMode) => ({
       styleOverrides: {
         root: {
           // Common icon button styles can go here
-        },
-      },
-      variants: [
-        {
-          props: { className: 'header-menu-button' },
-          style: {
-            variants: {
-              color: mode === 'light' ? '#000000' : '#FFFFFF',
-              marginRight: 2,
-            },
+          '&.header-menu-button': {
+            color: mode === 'light' ? '#000000' : '#FFFFFF',
+            marginRight: 2,
           },
         },
-      ],
+      },
     },
     MuiTypography: {
       styleOverrides: {
         root: {
           // Common typography styles can go here
-        },
-      },
-      variants: [
-        {
-          props: { className: 'header-title' },
-          style: {
-            variants: {
-              color: mode === 'light' ? '#000000' : '#FFFFFF',
-              marginLeft: '1rem'
-            },
+          '&.header-title': {
+            color: mode === 'light' ? '#000000' : '#FFFFFF',
+            marginLeft: '1rem'
           },
-        },
-        {
-          props: { className: 'titlePage' },
-          style: {
+          '&.titlePage': {
             fontWeight: 'bold',
           },
         },
-      ],
+      },
     },
     MuiButton: {
       styleOverrides: {
         root: {
           // Common button styles can go here
-        },
-      },
-      variants: [
-        {
-          props: { className: 'header-nav-button' },
-          style: {
+          '&.header-nav-button': {
             alignItems: 'center',
             color: mode === 'light' ? '#000000' : '#FFFFFF',
           },
-        },
-        {
-          props: { className: 'header-nav-button active' },
-          style: {
+          '&.header-nav-button.active': {
             alignItems: 'center',
             color: mode === 'light' ? '#000000' : '#FFFFFF',
             borderBottom: '2px solid #F97316',
@@ -526,28 +414,23 @@ const getDesignTokens = (mode: PaletteMode) => ({
               justifyContent: 'center',
             },
           },
-        },
-        {
-          props: { className: 'get-started-button' },
-          style: {
-            variants: {
-              marginTop: '30px',
-              fontSize: '18px',
-              fontWeight: 600,
-              textTransform: 'none',
-              boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
-              backgroundColor: '#FFFFFF',
-              color: mode === 'light' ? '#000000' : '#1E3A8A',
-              width: '200px',
-              '@media (max-width:600px)': {
-                marginTop: '20px',
-                fontSize: '16px',
-                width: '180px',
-              },
+          '&.get-started-button': {
+            marginTop: '30px',
+            fontSize: '18px',
+            fontWeight: 600,
+            textTransform: 'none',
+            boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
+            backgroundColor: '#FFFFFF',
+            color: mode === 'light' ? '#000000' : '#1E3A8A',
+            width: '200px',
+            '@media (max-width:600px)': {
+              marginTop: '20px',
+              fontSize: '16px',
+              width: '180px',
             },
           },
         },
-      ],
+      },
     },
   },
 });
