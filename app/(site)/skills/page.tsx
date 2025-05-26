@@ -50,6 +50,7 @@ export default function Skills() {
 	const IconImage = ({ icon, alt }: { icon: string, alt: string }) => {
 		return (
 			<div style={{
+				backgroundColor: 'white',
 				position: 'absolute',
 				width: '62px',
 				height: '62px',

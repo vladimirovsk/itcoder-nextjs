@@ -267,26 +267,38 @@ export default function Headers() {
 			</AppBar>
 			</Box>
 			<Paper className={'mainFuturePost'}
+			       elevation={0}
 			       style={{
+					   border: 'none',
 					   backgroundImage: `url(${titleImage.src})`,
 				       backgroundColor: 'white',
 				       position: 'relative',
 				       backgroundSize: '50rem 40rem',
 				       backgroundRepeat: 'no-repeat',
-				       backgroundPosition: 'left'
+				       backgroundPosition: 'left',
+				       boxShadow: 'none'
 					}}
 			>
-				<Container fixed>
+				<Container fixed style={{ border: 'none' }}>
 					<div className='overlay' style={{
-						fontWeight: 800
+						fontWeight: 800,
+						border: 'none',
 					}}/>
 						<Box display='flex' flexDirection='column' sx={{
-							position: 'relative', zIndex: 2 }}>
-							<div className={'mainFuturePostContent'}>
-								<Typography variant="h3" component="h1">
+							position: 'relative', zIndex: 2, border: 'none', boxShadow: 'none'}}>
+							<div className={'mainFuturePostContent'} style={{ border: 'none' }}>
+								<Typography variant="h3" component="h1" style={{
+									fontWeight: 'bold',
+									textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)',
+									border: 'none'
+								}}>
 									Software development
 								</Typography>
-								<Typography variant="h5" component="h5">
+								<Typography variant="h5" component="h5" style={{
+									fontWeight: 'bold',
+									textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)',
+									border: 'none'
+								}}>
 									Application and database architecture development
 								</Typography>
 							</div>

@@ -6,7 +6,7 @@ import { PaletteMode } from '@mui/material';
 // Common design tokens and responsive breakpoints
 const getDesignTokens = (mode: PaletteMode) => ({
   typography: {
-    fontFamily: 'Geist, Roboto, sans-serif',
+    fontFamily: 'Inter, Geist, Roboto, sans-serif',
     // Responsive font sizes
   },
   components: {
