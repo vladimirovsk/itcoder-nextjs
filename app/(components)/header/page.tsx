@@ -1,5 +1,5 @@
 'use client';
-import {AppBar, Box, Button, Container, IconButton, Menu, MenuItem, Paper, Toolbar, Tooltip, Typography, useTheme} from '@mui/material';
+import {AppBar, Box, Button, Container, IconButton, Menu, MenuItem, Paper, Toolbar, Tooltip, Typography} from '@mui/material';
 import React, { useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import titleImage from '../../../public/it-coder-title.png';
@@ -13,7 +13,6 @@ export default function Headers() {
 	const [isManuallySet, setIsManuallySet] = React.useState(false); // Track if activeItem was manually set by clicking
 	const scrollTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the scroll timer
 	const resetTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the reset timer
-	const { logo } = useTheme();
 	const navItems = useMemo(() => ['Services', 'Advantages', 'Skills', 'Cases', 'Projects', 'Contact'], []);
 
 	// Function to check which section is currently in view
@@ -214,7 +213,13 @@ export default function Headers() {
 	return (
 		<React.Fragment>
 			<Box sx={{ display: 'flex' }}>
-			<AppBar component='nav' position="fixed" sx={{ top: 'auto' }}>
+			<AppBar component='nav' position="fixed" sx={{
+				top: 'auto',
+				boxShadow: 'none',
+				border: 'none',
+				backgroundColor: 'white',
+				}}
+			>
 			<Toolbar>
 				{/* Mobile Navigation */}
 				<Box className="mobile-menu-button" sx={{ display: { xs: 'flex', sm: 'flex', md: 'none' } }}>
@@ -229,14 +234,13 @@ export default function Headers() {
 					</Tooltip>
 				</Box>
 
-				<Box sx={{ display: 'flex', alignItems: 'center' }}>
+				<Box sx={{ marginLeft: '1rem', display: 'flex', alignItems: 'center' }}>
 						<Image
 							src={imageLogo}
-							// src={logo.logoPath}
-							alt={logo?.logoAlt || 'IT Coder'}
+							alt={'IT Coder'}
 							className="header-logo"
-							width={logo?.logoWidth || 60}
-							height={logo?.logoHeight || 60}
+							width={100}
+							height={100}
 						/>
 				</Box>
 
@@ -248,6 +252,9 @@ export default function Headers() {
 							className={`header-nav-button ${activeItem === item ? 'active' : ''}`}
 							onClick={(e) => handleNavItemClick(item, e)}
 							href={`#${item.toLowerCase()}`}
+							style={{
+								marginLeft: '1rem'
+							}}
 							component="a"
 						>
 							{item}
@@ -281,25 +288,28 @@ export default function Headers() {
 				</Menu>
 
 				<Box>
-				{/*	<Tooltip title={tooltipTitle}>*/}
-				{/*		<IconButton onClick={toggleTheme} color="inherit">*/}
-				{/*			{themeIcon}*/}
-				{/*		</IconButton>*/}
-				{/*	</Tooltip>*/}
 				</Box>
 			</Toolbar>
 			</AppBar>
 			</Box>
 			<Paper className={'mainFuturePost'}
-			       style={{backgroundImage: `url(${titleImage.src})`}}>
+			       style={{
+					   backgroundImage: `url(${titleImage.src})`,
+				       backgroundColor: 'white',
+				       position: 'relative',
+				       backgroundSize: '50rem 40rem',
+				       backgroundRepeat: 'no-repeat',
+				       backgroundPosition: 'left'
+					}}
+			>
 				<Container fixed>
 					<div className='overlay'/>
 						<Box display='flex' flexDirection='column' sx={{ position: 'relative', zIndex: 2 }}>
 							<div className={'mainFuturePostContent'}>
-								<Typography variant="h3" component="h1" color="inherit">
+								<Typography variant="h3" component="h1">
 									Software development
 								</Typography>
-								<Typography variant="h6" component="h2" color="inherit" paragraph>
+								<Typography variant="h5" component="h5">
 									Application and database architecture development
 								</Typography>
 							</div>

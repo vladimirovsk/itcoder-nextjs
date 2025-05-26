@@ -3,22 +3,6 @@
 import { createTheme } from '@mui/material/styles';
 import { PaletteMode } from '@mui/material';
 
-// Logo configuration for themes
-export interface ThemeLogoConfig {
-  logoAlt: string;
-  logoWidth: number;
-  logoHeight: number;
-}
-
-declare module '@mui/material/styles' {
-  interface Theme {
-    logo?: ThemeLogoConfig;
-  }
-  interface ThemeOptions {
-    logo?: ThemeLogoConfig;
-  }
-}
-
 // Common design tokens and responsive breakpoints
 const getDesignTokens = (mode: PaletteMode) => ({
   typography: {
@@ -582,12 +566,6 @@ export const lightTheme = createTheme({
       main: '#F97316',
     },
   },
-  // Logo configuration for light theme
-  logo: {
-    logoAlt: 'ITCODER',
-    logoWidth: 100,
-    logoHeight: 80,
-  },
   ...getDesignTokens('light'),
 });
 
@@ -604,12 +582,6 @@ export const darkTheme = createTheme({
     secondary: {
       main: '#F97316',
     },
-  },
-  // Logo configuration for dark theme
-  logo: {
-    logoAlt: 'ITCODER',
-    logoWidth: 100,
-    logoHeight: 80,
   },
   ...getDesignTokens('dark'),
 });

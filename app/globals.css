@@ -35,7 +35,7 @@ main {
 /* Dark theme styles */
 .footer[data-theme="dark"] {
   background-color: #333;
-  border-top: 1px solid #444;
+  border-topё: 1px solid #444;
   color: #fff;
 }
 
@@ -50,24 +50,17 @@ main {
   font-weight: bold;
   text-align: center;
   font-size: 28px;
+    color: #031b91; /* Orange color */
 }
 
-.mainFuturePost {
-  position: relative;
-  /*background-size: cover;*/
-  background-size: 40%;
-  background-repeat: no-repeat;
-  /*background-position: center;*/
-  background-position: left;
-}
 
 .mainFuturePostContent {
-  color: #eaeaef;
+  /*color: #504f4f;*/
   /*display: flex;*/
-  /*color: #F97316;*/
+  color: #F97316;
   position: relative;
   padding: 2rem;
-  text-shadow: 1px 1px 1px black, 0 0 1em #101010;
+  /*text-shadow: 1px 1px 1px black, 0 0 1em #101010;*/
   margin-top: 6rem;
   text-align: right;
   /*justify-content: flex-end;*/
@@ -80,7 +73,7 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
+/*  background-color: rgba(0, 0, 0, 0.15); !* Semi-transparent black - lightened further *!*/
   z-index: 1;
 }
 

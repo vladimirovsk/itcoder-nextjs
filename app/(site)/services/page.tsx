@@ -1,6 +1,6 @@
 import {IService} from '@/app/(site)/services/interfaces';
 import services from '@/app/(site)/services/services.json';
-import {Box, Card, CardActions, CardContent, Typography} from '@mui/material';
+import {Box, Card, CardActions, CardContent, CardHeader} from '@mui/material';
 import OrangeButton from '@/app/(components)/buttons/button';
 import Image from 'next/image';
 import imageApi from './images/api.png';
@@ -55,16 +55,20 @@ export default function Services () {
 								height={iconMap[service.icon].height}
 							/>
 						</div>
-						<CardContent key={`CardContent${service.name}`} sx={{ flexGrow: 1 }}>
-							<Typography variant="h5" component="div">
-								{service.name}
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
+						<CardHeader title={service.name} style={{
+							marginTop: '2rem',
+							height: '5rem',
+							backgroundColor: '#f5f5f5',
+							textAlign: 'center',
+						}}>
+							{service.name}
+						</CardHeader>
+						<CardContent key={`CardContent${service.name}`} sx={{
+							flexGrow: 1,
+							backgroundColor: '#f5f5f5',
+							textAlign: 'justify',
+						}}>
 								{service.description}
-							</Typography>
-							<Typography variant="body2" >
-								Other text sample
-							</Typography>
 						</CardContent>
 						<CardActions key={`CardActions${service.name}`} sx={{ display: 'flex', justifyContent: 'center' }}>
 							<OrangeButton size="small">Learn More</OrangeButton>

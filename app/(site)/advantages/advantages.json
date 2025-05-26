@@ -1,20 +1,32 @@
 [
   {
-    "name": "Advantage A",
-    "description": "This is a description of Advantage A.",
-    "url": "https://example.com/Advantage-a",
-    "icon": "https://example.com/icons/Advantage-a.png"
+    "name": "7+ years of commercial development",
+    "description": "I have been working since 2019. I create websites, platforms, and services that deliver results — not just code for the sake of code.",
+    "icon": "Brand"
   },
   {
-    "name": "Advantage B",
-    "description": "This is a description of Advantage B.",
-    "url": "https://example.com/Advantage-b",
-    "icon": "https://example.com/icons/Advantage-b.png"
+    "name": "30+ completed projects",
+    "description": "From developing simple REST projects to developing high-load cryptocurrency exchanges. Web page development.",
+    "icon": "Project"
   },
   {
-    "name": "Advantage C",
-    "description": "This is a description of Advantage C.",
-    "url": "https://example.com/Advantage-c",
-    "icon": "https://example.com/icons/Advantage-c.png"
+    "name": "Clients from Canada, the US, and Europe",
+    "description": "I understand the Western approach to business, am able to work in different time zones, and never miss deadlines.",
+    "icon": "World"
+  },
+  {
+    "name": "From concept to launch",
+    "description": "I help with technical tasks, prototyping, coding, connecting analytics, and setting up CI/CD for production.",
+    "icon": "Rocket"
+  },
+  {
+    "name": "Experience in teamwork and freelancing",
+    "description": "I have worked both in development teams (Agile/Scrum) and independently — I am able to take responsibility and stay focused.",
+    "icon": "Command"
+  },
+  {
+    "name": "I am constantly improving my level",
+    "description": "I follow trends, study frameworks and technologies, and use modern tools. Learning new technologies Improving product quality",
+    "icon": "Star"
   }
 ]
