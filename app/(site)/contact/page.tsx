@@ -138,6 +138,9 @@ export default function Contact() {
 						Please contact me and I will answer all your questions as soon as possible.
 					</div>
 					<div style={{fontSize: '1rem', marginTop: '2rem', alignSelf: 'flex-start', width: '100%'}}>
+						Canada, Alberta, Calgary
+					</div>
+					<div style={{fontSize: '1rem', marginTop: '2rem', alignSelf: 'flex-start', width: '100%'}}>
 						<Link
 							href="https://wa.me/15879689089"
 							target="_blank"
