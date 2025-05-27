@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+import type { Viewport } from "next";
 import "./globals.css";
 import Headers from '@/app/(components)/header/page';
 import Footer from '@/app/(components)/footers/page';
