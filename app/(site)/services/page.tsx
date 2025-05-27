@@ -71,7 +71,7 @@ export default function Services () {
 								{service.description}
 						</CardContent>
 						<CardActions key={`CardActions${service.name}`} sx={{ display: 'flex', justifyContent: 'center' }}>
-							<OrangeButton size="small">Learn More</OrangeButton>
+							<OrangeButton disabled={true} size="small">coming soon</OrangeButton>
 						</CardActions>
 					</Card>
 				))}

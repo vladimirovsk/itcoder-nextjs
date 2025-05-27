@@ -3,8 +3,10 @@ import {AppBar, Box, Button, Container, IconButton, Menu, MenuItem, Paper, Toolb
 import React, { useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import titleImage from '../../../public/it-coder-title.png';
+import titleImageSmall from './images/titleImageSmall.png';
 import imageLogo from '../../../public/imageLogo.png';
 import MenuIcon from '@mui/icons-material/Menu';
+
 
 export default function Headers() {
 	const [activeItem, setActiveItem] = React.useState('Home'); // Default active item
@@ -271,14 +273,20 @@ export default function Headers() {
 			       elevation={0}
 			       style={{
 					   border: 'none',
-					   backgroundImage: `url(${titleImage.src})`,
 				       backgroundColor: 'white',
 				       position: 'relative',
-				       backgroundSize: '50rem 40rem',
-				       backgroundRepeat: 'no-repeat',
-				       backgroundPosition: 'left',
 				       boxShadow: 'none'
 					}}
+				   sx={{
+					   backgroundImage: {
+						   xs: `url(${titleImageSmall.src})`, // Hide on extra small screens (mobile)
+						   sm: `url(${titleImageSmall.src})`, // Hide on small screens (tablets)
+						   md: `url(${titleImage.src})` // Show on medium and larger screens
+					   },
+					   backgroundSize: '50rem 40rem',
+					   backgroundRepeat: 'no-repeat',
+					   backgroundPosition: 'left',
+				   }}
 			>
 				<Container fixed style={{ border: 'none' }}>
 					<div className='overlay' style={{
@@ -290,7 +298,7 @@ export default function Headers() {
 							<div className={'mainFuturePostContent'} style={{ border: 'none' }}>
 								<Typography variant="h3" component="h1" style={{
 									fontWeight: 'bold',
-									textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)',
+									textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
 									border: 'none'
 								}}>
 									Software development

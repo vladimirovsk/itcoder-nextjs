@@ -111,9 +111,12 @@ export default function Contact() {
 		<div id="contact">
 			<h1 className={'titlePage'}>Contact</h1>
 			<Grid container spacing={0} columns={12} style={{
+				margin: '0',
+				padding: '0',
 				borderRadius: '20px',
 				display: 'flex',
 				flexDirection: 'row',
+				fontSize: '1rem',
 				boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.4)',
 				backgroundColor: 'white',
 			}}>
@@ -123,17 +126,18 @@ export default function Contact() {
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'left',
-					backgroundColor: '#436AE5',
-					fontWeight: 600,
+					backgroundColor: '#1e41da',
+					fontSize: '1rem',
+					fontWeight: 400,
 					color: 'white',
 				}}>
-					<div style={{fontSize: '1.3rem', fontWeight:800, marginTop: '20px', textAlign: 'center'}}>
-						Contact
+					<div style={{fontSize: '1.4rem', fontWeight:800, marginTop: '20px', textAlign: 'center'}}>
+						Contact me
 					</div>
-					<div style={{fontSize: '0.8rem', marginTop: '20px'}}>
+					<div style={{fontSize: '1rem', marginTop: '20px'}}>
 						Please contact me and I will answer all your questions as soon as possible.
 					</div>
-					<div style={{fontSize: '0.8rem', marginTop: '2rem', alignSelf: 'flex-start', width: '100%'}}>
+					<div style={{fontSize: '1rem', marginTop: '2rem', alignSelf: 'flex-start', width: '100%'}}>
 						<Link
 							href="https://wa.me/15879689089"
 							target="_blank"
@@ -150,7 +154,7 @@ export default function Contact() {
 							5879689089
 						</Link>
 					</div>
-					<div style={{fontSize: '0.8rem', marginTop: '2rem', alignSelf: 'flex-start', width: '100%'}}>
+					<div style={{fontSize: '1rem', marginTop: '2rem', alignSelf: 'flex-start', width: '100%'}}>
 						<Link
 							href="mailto:support@itcoder.ca"
 							target="_blank"
@@ -166,7 +170,7 @@ export default function Contact() {
 							support@itcoder.ca
 						</Link>
 					</div>
-					<div style={{fontSize: '0.8rem', marginTop: '2rem', alignSelf: 'flex-start', width: '100%'}}>
+					<div style={{fontSize: '1rem', marginTop: '2rem', alignSelf: 'flex-start', width: '100%'}}>
 						<Link
 							href="https://www.facebook.com/61575213251739"
 							target="_blank"
@@ -204,7 +208,7 @@ export default function Contact() {
 
 						<Grid container spacing={2}>
 							{/* First row: First Name and Last Name */}
-							<Grid size={{xl:6, sm:12}}>
+							<Grid size={{xl:6, sm:12, xs:12}}>
 								<TextField
 									fullWidth
 									margin="normal"
@@ -217,7 +221,7 @@ export default function Contact() {
 									size="small"
 								/>
 							</Grid>
-							<Grid size={{xl:6, sm:12}}>
+							<Grid size={{xl:6, sm:12, xs:12}}>
 								<TextField
 									fullWidth
 									margin="normal"
@@ -232,7 +236,7 @@ export default function Contact() {
 							</Grid>
 
 							{/* Second row: Email and Phone */}
-							<Grid size={{xl:6, sm:12}}>
+							<Grid size={{xl:6, sm:12, xs:12}}>
 								<TextField
 									fullWidth
 									margin="normal"
@@ -246,7 +250,7 @@ export default function Contact() {
 									size="small"
 								/>
 							</Grid>
-							<Grid size={{xl:6, sm:12}}>
+							<Grid size={{xl:6, sm:12, xs:12}}>
 								<TextField
 									fullWidth
 									margin="normal"
@@ -261,7 +265,7 @@ export default function Contact() {
 							</Grid>
 
 							{/* Third row: Message (full width) */}
-							<Grid size={{xl:12, sm:12}}>
+							<Grid size={12}>
 								<TextField
 									fullWidth
 									margin="normal"

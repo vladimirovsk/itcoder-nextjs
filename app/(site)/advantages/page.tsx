@@ -110,7 +110,6 @@ export default function Advantages () {
 							<CardContent
 								key={`${advantage.name}-content-${index}`}
 								sx={{
-									height: '8rem',
 									backgroundColor: 'white',
 									fontSize: '1rem',
 									textAlign: 'justify',
