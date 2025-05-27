@@ -13,7 +13,8 @@ export default function Headers() {
 	const [isManuallySet, setIsManuallySet] = React.useState(false); // Track if activeItem was manually set by clicking
 	const scrollTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the scroll timer
 	const resetTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the reset timer
-	const navItems = useMemo(() => ['Services', 'Advantages', 'Skills', 'Cases', 'Contact'], []);
+	// const navItems = useMemo(() => ['Services', 'Advantages', 'Skills', 'Cases', 'Contact'], []);
+	const navItems = useMemo(() => ['Services', 'Advantages', 'Skills', 'Contact'], []);
 
 	// Function to check which section is currently in view
 	const checkActiveSection = useCallback(() => {
