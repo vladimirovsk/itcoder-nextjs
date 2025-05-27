@@ -19,16 +19,14 @@ const inter = Inter({
 //   description: "I suggest a solution to your problems",
 // };
 
-export async function generateMetadata(): Promise<Metadata> {
-    // const { title, description } = await import("./metadata.json");
-    const title = "IT CODER";
-    const description = "I suggest a solution to your problems"
-
-    return {
-        title,
-        description,
-    };
-}
+// Root metadata is now defined in metadata.tsx
+// This function is no longer needed as we're using static metadata export
+// export async function generateMetadata(): Promise<Metadata> {
+//     return {
+//         title: "IT CODER",
+//         description: "I suggest a solution to your problems",
+//     };
+// }
 
 export const viewport: Viewport = {
     width: 'device-width',
