@@ -1,7 +1,6 @@
 "use client";
 import { Container} from '@mui/material';
 import Services from '@/app/(site)/services/page';
-import Projects from '@/app/(site)/projects/page';
 import Skills from '@/app/(site)/skills/page';
 import Advantages from '@/app/(site)/advantages/page';
 import Cases from '@/app/(site)/cases/page';
@@ -14,7 +13,6 @@ export default function Home() {
             <Advantages />
             <Skills />
             <Cases />
-            <Projects />
             <Contact />
         </Container>
     )
