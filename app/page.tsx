@@ -5,6 +5,7 @@ import Skills from '@/app/(site)/skills/page';
 import Advantages from '@/app/(site)/advantages/page';
 // import Cases from '@/app/(site)/cases/page';
 import Contact from '@/app/(site)/contact/page';
+import FAQ from '@/app/(site)/faq/page';
 
 export default function Home() {
     return (
@@ -13,6 +14,7 @@ export default function Home() {
             <Advantages />
             <Skills />
             {/*<Cases />*/}
+            <FAQ />
             <Contact />
         </Container>
     )
