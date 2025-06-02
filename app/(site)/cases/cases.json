@@ -1,41 +1,44 @@
 [
   {
-    "title": "Cases A",
-    "subheader": "Cases A subheader",
+    "title": "Websites from scratch",
+    "subheader": "Website development from scratch using new technologies and JavaScript and TypeScript frameworks, which allow us to create vibrant and unique websites.",
     "hidden": false,
-    "disabled": false,
-    "frameworks": {
-      "name": [
-        "Framework A",
-        "Framework B",
-        "Framework C"
-      ]
-    }
+    "image": "webPages"
   },
   {
-    "title": "Cases B",
-    "subheader": "Cases B subheader",
+    "title": "Development of a cryptocurrency exchange",
+    "subheader": "Exchange development, migration to a new accounting system. Implementation of CI/CD for automatic code updates and production release. Execution of high-load algorithms.",
     "hidden": false,
-    "disabled": false,
-    "frameworks": {
-      "name": [
-        "Framework A",
-        "Framework B",
-        "Framework C"
-      ]
-    }
+    "image": "cryptoData"
   },
   {
-    "title": "Cases C",
-    "subheader": "Cases C subheader",
+    "title": "Accepting payments for utility services",
+    "subheader": "The payment service is designed to accept payments from the public on behalf of utility companies and operates on the basis of a proprietary data exchange protocol. It allows for real-time synchronization of payments and recalculation of charges.",
     "hidden": false,
-    "disabled": false,
-    "frameworks": {
-      "name": [
-        "Framework A",
-        "Framework B",
-        "Framework C"
-      ]
-    }
+    "image": "restApi"
+  },
+  {
+    "title": "Improving customer service quality",
+    "subheader": "Software for implementing prepaid payment functionality in bank branches and payment terminals. Allows operation on very weak communication channels. Transmits data in encrypted form upon receipt of payment.",
+    "hidden": false,
+    "image": "payTerminal"
+  },
+  {
+    "title": "Mobile application development",
+    "subheader": "Development of a mobile application in Flutter, which allows you to develop applications for multiple platforms simultaneously on a single code base.",
+    "hidden": false,
+    "image": "mobileApp"
+  },
+  {
+    "title": "Data collection from meters",
+    "subheader": "Development of an electronic device for collecting information from electronic meters. Design of printed circuit boards. Setting up large-scale production.",
+    "hidden": false,
+    "image": "counterData"
+  },
+  {
+    "title": "Cases A2",
+    "subheader": "Cases A2 subheader",
+    "hidden": true,
+    "image": "image7"
   }
 ]
