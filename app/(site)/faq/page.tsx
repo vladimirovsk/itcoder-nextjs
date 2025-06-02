@@ -1,4 +1,6 @@
-import {Accordion, AccordionDetails, AccordionSummary, Box, Grid, Typography} from "@mui/material";
+"use client";
+
+import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
 
