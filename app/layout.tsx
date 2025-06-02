@@ -1,4 +1,5 @@
 import type { Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
 import Headers from '@/app/(components)/header/page';
 import Footer from '@/app/(components)/footers/page';
