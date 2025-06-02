@@ -13,6 +13,7 @@ import payTerminal from './images/payTerminal.png';
 import cryptoData from './images/cryptoData.png';
 import mobileApp from './images/mobileApp.png';
 import counterData from './images/counterData.png';
+import blockchainBackend from './images/blockchainBackend.png';
 
 const imageMap: {[key: string]: { src: string, width: number, height: number }} = {
 	'webPages': webPages,
@@ -21,6 +22,7 @@ const imageMap: {[key: string]: { src: string, width: number, height: number }} 
 	'cryptoData': cryptoData,
 	'mobileApp': mobileApp,
 	'counterData': counterData,
+	'blockchainBackend': blockchainBackend
 };
 
 export default function Cases() {

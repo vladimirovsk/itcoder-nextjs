@@ -36,9 +36,9 @@
     "image": "counterData"
   },
   {
-    "title": "Cases A2",
-    "subheader": "Cases A2 subheader",
-    "hidden": true,
-    "image": "image7"
+    "title": "Backend for working with Blockchain",
+    "subheader": "Development of a modern Backend application for working with popular Blockchain Nodes. Or configuration for working with local Nodes.",
+    "hidden": false,
+    "image": "blockchainBackend"
   }
 ]
