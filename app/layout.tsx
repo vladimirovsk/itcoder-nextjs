@@ -44,10 +44,10 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body>
       <ThemeProviderWrapper>
-            <Analytics/>
             <Headers/>
             <Container component="main" disableGutters className="containerPage">
                 {children}
+                <Analytics/>
             </Container>
             <Footer/>
       </ThemeProviderWrapper>
