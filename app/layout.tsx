@@ -7,6 +7,7 @@ import ThemeProviderWrapper from '@/app/ThemeProviderWrapper';
 import { Container } from '@mui/material';
 import 'animate.css';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 
 // Initialize the Inter font
 const inter = Inter({
@@ -43,6 +44,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body>
+      {/* Google Analytics */}
+      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-35P9NCQFSP" strategy="afterInteractive" />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-35P9NCQFSP');
+        `}
+      </Script>
       <ThemeProviderWrapper>
             <Headers/>
             <Container component="main" disableGutters className="containerPage">
