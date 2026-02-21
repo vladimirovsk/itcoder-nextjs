@@ -1,7 +1,6 @@
 import {IService} from '@/app/(site)/services/interfaces';
 import services from '@/app/(site)/services/services.json';
 import {Box, Card, CardActions, CardContent, CardHeader} from '@mui/material';
-import OrangeButton from '@/app/(components)/buttons/button';
 import Image from 'next/image';
 import imageApi from './images/api.png';
 import imageDB from './images/databases.png';
