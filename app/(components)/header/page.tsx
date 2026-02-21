@@ -273,43 +273,53 @@ export default function Headers() {
 			       elevation={0}
 			       style={{
 					   border: 'none',
-				       backgroundColor: 'white',
-				       position: 'relative',
-				       boxShadow: 'none'
+			       	   backgroundColor: 'white',
+			       	   position: 'relative',
+			       	   boxShadow: 'none'
 					}}
 				   sx={{
 					   backgroundImage: {
-						   xs: `url(${titleImageSmall.src})`, // Hide on extra small screens (mobile)
-						   sm: `url(${titleImageSmall.src})`, // Hide on small screens (tablets)
-						   md: `url(${titleImage.src})` // Show on medium and larger screens
+						   xs: `linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 55%, rgba(0, 0, 0, 0) 100%), url(${titleImageSmall.src})`,
+						   sm: `linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 55%, rgba(0, 0, 0, 0) 100%), url(${titleImageSmall.src})`,
+						   md: `linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 55%, rgba(0, 0, 0, 0) 100%), url(${titleImage.src})`
 					   },
 					   backgroundSize: '50rem 40rem',
 					   backgroundRepeat: 'no-repeat',
-					   backgroundPosition: 'left',
+					   backgroundPosition: 'left 4rem',
+
 				   }}
 			>
 				<Container fixed style={{ border: 'none' }}>
 					<div className='overlay' style={{
-						fontWeight: 800,
+						fontWeight: 900,
 						border: 'none',
 					}}/>
 						<Box display='flex' flexDirection='column' sx={{
 							position: 'relative', zIndex: 2, border: 'none', boxShadow: 'none'}}>
 							<div className={'mainFuturePostContent'} style={{ border: 'none' }}>
-								<Typography variant="h3" component="h1" style={{
-									fontWeight: 'bold',
-									textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
-									border: 'none'
+								<Box sx={{
+									backgroundColor: 'transparent',
+									padding: 0,
+									borderRadius: 0,
+									maxWidth: '52rem'
 								}}>
-									Software development
-								</Typography>
-								<Typography variant="h5" component="h5" style={{
-									fontWeight: 'bold',
-									textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)',
-									border: 'none'
-								}}>
-									Application and database architecture development
-								</Typography>
+									<Typography variant="h3" component="h1" style={{
+										fontWeight: 'bold',
+										textShadow: '2px 2px 1px rgba(0, 0, 0, 0.8)',
+										border: 'none',
+										color: '#F2D5A7'
+									}}>
+										Building Scalable AI-Driven Solutions & Robust Backend Architectures
+									</Typography>
+									<Typography variant="h5" component="h5" style={{
+										fontWeight: 'bold',
+										textShadow: '2px 2px 3px rgba(0, 0, 0, 0.8)',
+										border: 'none',
+										color: '#FFE9C7'
+									}}>
+										Empowering businesses to optimize operations with cutting-edge AI integration and advanced backend systems.
+									</Typography>
+								</Box>
 							</div>
 						</Box>
 				</Container>
@@ -317,3 +327,12 @@ export default function Headers() {
 		</React.Fragment>
 	)
 }
+
+
+
+
+
+
+
+
+

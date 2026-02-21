@@ -90,8 +90,6 @@ export default function Contact() {
 			if (!response.ok) {
 				throw new Error(data.error || 'Failed to send email');
 			}
-
-			console.log('Email sent successfully');
 			setSubmitStatus({ success: true, error: false });
 			setFormData({
 				firstName: '',
