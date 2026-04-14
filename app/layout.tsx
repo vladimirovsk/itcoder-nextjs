@@ -5,7 +5,6 @@ import Headers from '@/app/(components)/header/page';
 import Footer from '@/app/(components)/footers/page';
 import ThemeProviderWrapper from '@/app/ThemeProviderWrapper';
 import { Container } from '@mui/material';
-import 'animate.css';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import SchemaOrg from '@/app/components/SchemaOrg';
