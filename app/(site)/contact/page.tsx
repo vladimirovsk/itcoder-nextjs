@@ -106,8 +106,8 @@ export default function Contact() {
 	};
 
 	return (
-		<div id="contact">
-			<h1 className={'titlePage'}>Contact</h1>
+		<section id="contact">
+			<h2 className={'titlePage'}>Contact</h2>
 			<Grid container spacing={0} columns={12} style={{
 				margin: '0',
 				padding: '0',
@@ -331,6 +331,6 @@ export default function Contact() {
 					</Box>
 				</Grid>
 			</Grid>
-		</div>
+		</section>
 	)
 }

@@ -52,9 +52,9 @@ export default function Advantages () {
 	};
 
 	return (
-		<div id="advantages">
-			<h1 className={'titlePage'}>Advantages of working with me</h1>
-			<h2 className='subTitlePage' style={{
+		<section id="advantages">
+			<h2 className={'titlePage'}>Advantages of working with me</h2>
+			<p className='subTitlePage' style={{
 				fontSize: '1.2rem',
 				textAlign: 'center',
 				marginTop: '1rem',
@@ -63,7 +63,7 @@ export default function Advantages () {
 				maxWidth: '800px',
 				marginLeft: 'auto',
 				marginRight: 'auto',
-			}}>Work for results.</h2>
+			}}>Work for results.</p>
 			<Box
 				sx={{
 					width: '100%',
@@ -117,12 +117,12 @@ export default function Advantages () {
 									borderBottomRightRadius: '16px',
 								}}
 								>
-								<h2>{advantage.description}</h2>
+								<p>{advantage.description}</p>
 							</CardContent>
 						</Card>
 					))
 				}
 			</Box>
-		</div>
+		</section>
 	)
 }

@@ -52,7 +52,8 @@ export default function FAQ() {
 	]
 
 	return (
-		<div className="containerPage">
+		<section className="containerPage">
+			<h2 className={'titlePage'}>FAQ</h2>
 			{
 				accordionData.map(item=>(
 					<Accordion key={item.id} className={'accordion'}
@@ -85,6 +86,6 @@ export default function FAQ() {
 
 				))
 			}
-		</div>
+		</section>
 	);
 }

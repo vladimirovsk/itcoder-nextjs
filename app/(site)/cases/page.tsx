@@ -40,11 +40,11 @@ export default function Cases() {
 	}
 
 	return (
-		<div id="cases" style={{
+		<section id="cases" style={{
 			position: 'relative',
 			width: '100%',
 		}}>
-			<h1 className={'titlePage'}>Cases</h1>
+			<h2 className={'titlePage'}>Cases</h2>
 			<Container component='div' maxWidth={false} disableGutters={true} style={{ paddingBottom: '40px', width: '100%', margin: 0, padding: 0 }}>
 				<Stack spacing={2} style={{ width: '100%', display: 'flex', alignItems: 'stretch' }}>
 					<Grid container spacing={4} columns={12} style={{ width: '100%' }}>
@@ -86,6 +86,6 @@ export default function Cases() {
 					</div>
 				</Stack>
 			</Container>
-		</div>
+		</section>
 	)
 }
