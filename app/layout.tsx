@@ -8,6 +8,7 @@ import { Container } from '@mui/material';
 import 'animate.css';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
+import SchemaOrg from '@/app/components/SchemaOrg';
 
 // Initialize the Inter font
 const inter = Inter({
@@ -54,6 +55,7 @@ export default function RootLayout({
           gtag('config', 'G-35P9NCQFSP');
         `}
       </Script>
+      <SchemaOrg />
       <ThemeProviderWrapper>
             <Headers/>
             <Container component="main" disableGutters className="containerPage">
