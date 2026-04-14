@@ -1,6 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;');
+}
+
 export async function POST(request: NextRequest) {
   try {
     // Parse the request body
@@ -40,11 +49,11 @@ export async function POST(request: NextRequest) {
       `,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Name:</strong> ${escapeHtml(firstName)} ${escapeHtml(lastName)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
         <h3>Message:</h3>
-        <p>${message}</p>
+        <p>${escapeHtml(message)}</p>
       `,
     };
 
