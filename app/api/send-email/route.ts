@@ -27,7 +27,6 @@ export async function POST(request: NextRequest) {
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST || 'mail.smtp2go.com', // smtp2go SMTP server
       port: parseInt(process.env.EMAIL_PORT || '465'),
-      secure: true, // true for 465, false for other ports
       auth: {
         user: process.env.EMAIL_USER || 'admin@itcoder.ca',
         pass: process.env.EMAIL_PASSWORD || '',

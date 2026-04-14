@@ -193,19 +193,20 @@ export default function Headers() {
 			<Box sx={{ display: 'flex' }}>
 			<AppBar component='nav' position="fixed" sx={{
 				top: 'auto',
-				boxShadow: 'none',
+				boxShadow: '0 1px 0 rgba(255,255,255,0.08)',
 				border: 'none',
-				backgroundColor: 'white',
+				backgroundColor: '#0f1724',
 				}}
 			>
 			<Toolbar>
 				{/* Mobile Navigation */}
 				<Box className="mobile-menu-button" sx={{ display: { xs: 'flex', sm: 'flex', md: 'none' } }}>
 					<Tooltip title="Menu">
-						<IconButton 
-							color="inherit" 
+						<IconButton
+							color="inherit"
 							aria-label="menu"
 							onClick={handleMenuOpen}
+							sx={{ color: '#fff' }}
 						>
 							<MenuIcon />
 						</IconButton>
@@ -230,8 +231,13 @@ export default function Headers() {
 							className={`header-nav-button ${activeItem === item ? 'active' : ''}`}
 							onClick={(e) => handleNavItemClick(item, e)}
 							href={`#${item.toLowerCase()}`}
-							style={{
-								marginLeft: '1rem'
+							sx={{
+								marginLeft: '1rem',
+								color: activeItem === item ? '#4f8ef7' : 'rgba(255,255,255,0.75)',
+								fontWeight: activeItem === item ? 700 : 400,
+								borderBottom: activeItem === item ? '2px solid #4f8ef7' : '2px solid transparent',
+								borderRadius: 0,
+								'&:hover': { color: '#fff', backgroundColor: 'transparent' },
 							}}
 							component="a"
 						>
@@ -251,14 +257,17 @@ export default function Headers() {
 						style: {
 							width: '100%',
 							maxWidth: '300px',
+							backgroundColor: '#0f1724',
+							color: '#fff',
 						},
 					}}
 				>
 					{navItems.map((item) => (
-						<MenuItem 
-							key={item} 
+						<MenuItem
+							key={item}
 							onClick={(e) => handleNavItemClick(item, e)}
 							selected={activeItem === item}
+							sx={{ color: activeItem === item ? '#4f8ef7' : '#fff' }}
 						>
 							{item}
 						</MenuItem>
@@ -273,55 +282,71 @@ export default function Headers() {
 			       elevation={0}
 			       style={{
 					   border: 'none',
-			       	   backgroundColor: 'white',
+			       	   backgroundColor: '#0f1724',
 			       	   position: 'relative',
-			       	   boxShadow: 'none'
+			       	   boxShadow: 'none',
+					   minHeight: '30vh',
+					   display: 'flex',
+					   alignItems: 'center',
+					   paddingTop: '64px',
 					}}
 				   sx={{
 					   backgroundImage: {
-						   xs: `linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 55%, rgba(0, 0, 0, 0) 100%), url(${titleImageSmall.src})`,
-						   sm: `linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 55%, rgba(0, 0, 0, 0) 100%), url(${titleImageSmall.src})`,
-						   md: `linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 55%, rgba(0, 0, 0, 0) 100%), url(${titleImage.src})`
+						   xs: `linear-gradient(to bottom, rgba(15,23,36,0.55) 0%, rgba(15,23,36,0.75) 100%), url(${titleImageSmall.src})`,
+						   sm: `linear-gradient(to bottom, rgba(15,23,36,0.55) 0%, rgba(15,23,36,0.75) 100%), url(${titleImageSmall.src})`,
+						   md: `linear-gradient(to bottom, rgba(15,23,36,0.45) 0%, rgba(15,23,36,0.8) 100%), url(${titleImage.src})`
 					   },
-					   backgroundSize: '50rem 40rem',
+					   backgroundSize: 'cover',
 					   backgroundRepeat: 'no-repeat',
-					   backgroundPosition: 'left 4rem',
-
+					   backgroundPosition: 'center',
 				   }}
 			>
 				<Container fixed style={{ border: 'none' }}>
-					<div className='overlay' style={{
-						fontWeight: 900,
-						border: 'none',
-					}}/>
-						<Box display='flex' flexDirection='column' sx={{
-							position: 'relative', zIndex: 2, border: 'none', boxShadow: 'none'}}>
-							<div className={'mainFuturePostContent'} style={{ border: 'none' }}>
-								<Box sx={{
-									backgroundColor: 'transparent',
-									padding: 0,
-									borderRadius: 0,
-									maxWidth: '52rem'
-								}}>
-									<Typography variant="h3" component="h1" style={{
-										fontWeight: 'bold',
-										textShadow: '2px 2px 1px rgba(0, 0, 0, 0.8)',
-										border: 'none',
-										color: '#F2D5A7'
-									}}>
-										Building Scalable AI-Driven Solutions & Robust Backend Architectures
-									</Typography>
-									<Typography variant="h5" component="h5" style={{
-										fontWeight: 'bold',
-										textShadow: '2px 2px 3px rgba(0, 0, 0, 0.8)',
-										border: 'none',
-										color: '#FFE9C7'
-									}}>
-										Empowering businesses to optimize operations with cutting-edge AI integration and advanced backend systems.
-									</Typography>
-								</Box>
-							</div>
+					<Box display='flex' flexDirection='column' sx={{
+						position: 'relative', zIndex: 2, border: 'none', boxShadow: 'none'}}>
+						<Box sx={{
+							paddingY: { xs: '6rem', md: '2rem' },
+							maxWidth: '48rem',
+						}}>
+							<Typography variant="h3" component="h1" sx={{
+								fontWeight: 800,
+								color: '#ffffff',
+								lineHeight: 1.2,
+								mb: 2,
+								textShadow: '0 2px 20px rgba(0,0,0,0.5)',
+							}}>
+								Building Scalable AI-Driven Solutions & Robust Backend Architectures
+							</Typography>
+							<Typography variant="h6" component="p" sx={{
+								fontWeight: 400,
+								color: 'rgba(255,255,255,0.75)',
+								mb: 4,
+								lineHeight: 1.6,
+							}}>
+								Empowering businesses to optimize operations with cutting-edge AI integration and advanced backend systems.
+							</Typography>
+							<Button
+								variant="contained"
+								size="large"
+								onClick={(e) => handleNavItemClick('Contact', e)}
+								href="#contact"
+								component="a"
+								sx={{
+									backgroundColor: '#4f8ef7',
+									color: '#fff',
+									fontWeight: 700,
+									px: 4,
+									py: 1.5,
+									borderRadius: '8px',
+									textTransform: 'none',
+									fontSize: '1rem',
+									'&:hover': { backgroundColor: '#2d6ed6' },
+								}}
+							>
+								Get in Touch
+							</Button>
 						</Box>
+					</Box>
 				</Container>
 			</Paper>
 		</React.Fragment>
