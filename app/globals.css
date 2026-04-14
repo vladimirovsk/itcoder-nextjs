@@ -92,6 +92,51 @@ main {
   object-fit: cover;
 }
 
+/* ── Services FAQ: native <details>/<summary> with no JS ─────────────────── */
+.services-faq-item {
+  background-color: #f7f9ff;
+  border-radius: 10px;
+  border: 1px solid #e0e4ef;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.services-faq-item[open] {
+  border-color: #1e41da;
+}
+.services-faq-summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0f1724;
+  padding: 1rem 1.25rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  user-select: none;
+  line-height: 1.4;
+}
+.services-faq-summary::-webkit-details-marker { display: none; }
+.services-faq-summary::marker              { display: none; }
+.services-faq-summary::after {
+  content: '+';
+  color: #1e41da;
+  font-weight: 800;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+details[open] > .services-faq-summary::after { content: '−'; }
+.services-faq-answer {
+  padding: 0 1.25rem 1rem;
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.7;
+  border-top: 1px solid #e0e4ef;
+  margin-top: 0;
+}
+
 /* Skeleton loading animation for Suspense fallbacks */
 .skeleton-pulse {
   background-color: #e8ecf0;

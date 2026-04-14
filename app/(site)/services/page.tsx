@@ -6,6 +6,7 @@ import imageApi from './images/api.png';
 import imageDB from './images/databases.png';
 import imageSrv from './images/servers.png';
 import imageWeb from './images/web.png';
+import ServicesFAQ from './ServicesFAQ';
 
 // Map icon identifiers to imported images
 const iconMap: {[key: string]: { src: string, width: number, height: number }} = {
@@ -75,6 +76,8 @@ export default function Services () {
 					</Card>
 				))}
 			</Box>
+
+			<ServicesFAQ />
 		</section>
 	)
 }
