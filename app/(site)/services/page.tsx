@@ -46,12 +46,13 @@ export default function Services () {
 						}
 					}}>
 						<div className="cardImageContainer">
-							<Image 
-								src={iconMap[service.icon].src} 
-								alt={service.name} 
+							<Image
+								src={iconMap[service.icon].src}
+								alt={service.name}
 								className="cardImage"
 								width={iconMap[service.icon].width}
 								height={iconMap[service.icon].height}
+								loading="lazy"
 							/>
 						</div>
 						<CardHeader title={service.name} style={{

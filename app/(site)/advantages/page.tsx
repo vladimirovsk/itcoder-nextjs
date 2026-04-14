@@ -42,6 +42,7 @@ export default function Advantages () {
 					alt={alt}
 					width={82}
 					height={82}
+					loading="lazy"
 					style={{
 						objectFit: 'cover',
 						borderRadius: '8px'

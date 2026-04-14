@@ -70,6 +70,7 @@ export default function Skills() {
 					alt={alt}
 					width={82}
 					height={82}
+					loading="lazy"
 					style={{
 						objectFit: 'cover',
 						borderRadius: '50%'
