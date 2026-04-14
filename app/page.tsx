@@ -1,7 +1,8 @@
 // Server Component — no 'use client'.
 // Services and Advantages are server components: their HTML is in the initial response → fast LCP.
-// Client-heavy sections (Skills, Cases, FAQ, Contact) are wrapped in Suspense so the browser
+// Client-heavy sections (Skills, Cases, Contact) are wrapped in Suspense so the browser
 // can paint above-the-fold content immediately while their JS bundles are downloaded.
+// FAQ is rendered inside the Services section (IT Services FAQ — Canada).
 import { Suspense } from 'react';
 import { Container } from '@mui/material';
 import Services from '@/app/(site)/services/page';
@@ -9,7 +10,6 @@ import Advantages from '@/app/(site)/advantages/page';
 import Skills from '@/app/(site)/skills/page';
 import Cases from '@/app/(site)/cases/page';
 import Contact from '@/app/(site)/contact/page';
-import FAQ from '@/app/(site)/faq/page';
 import SectionSkeleton from '@/app/components/SectionSkeleton';
 
 export default function Home() {
@@ -31,10 +31,6 @@ export default function Home() {
 
             <Suspense fallback={<SectionSkeleton cols={3} cardHeight={240} />}>
                 <Cases />
-            </Suspense>
-
-            <Suspense fallback={<SectionSkeleton cols={1} cardHeight={60} />}>
-                <FAQ />
             </Suspense>
 
             <Suspense fallback={<SectionSkeleton cols={2} cardHeight={300} withTitle={false} />}>
