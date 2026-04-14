@@ -220,6 +220,7 @@ export default function Headers() {
 							className="header-logo"
 							width={100}
 							height={100}
+							priority
 						/>
 				</Box>
 

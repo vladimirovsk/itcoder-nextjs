@@ -18,8 +18,8 @@ const iconMap: {[key: string]: { src: string, width: number, height: number }} =
 export default function Services () {
 	const servicesList: IService[] = services
 	return (
-		<div id="services" className={'containerPage'}>
-			<h1 className={'titlePage'}>Services</h1>
+		<section id="services" className={'containerPage'}>
+			<h2 className={'titlePage'}>Services</h2>
 			<Box
 				sx={{
 					width: '100%',
@@ -74,6 +74,6 @@ export default function Services () {
 					</Card>
 				))}
 			</Box>
-		</div>
+		</section>
 	)
 }

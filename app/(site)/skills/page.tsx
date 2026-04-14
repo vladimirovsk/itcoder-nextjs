@@ -108,13 +108,13 @@ export default function Skills() {
 				margin: '0 auto',
 				padding: '0 1rem',
 			}}>
-			<h1 className={'titlePage'} style={{
+			<h2 className={'titlePage'} style={{
 				marginTop: '4rem',
 				paddingTop: '4rem',
 				color: 'white',
 			}}
-			>Skills</h1>
-			<h3 className={'subTitlePage'} style={{
+			>Skills</h2>
+			<p className={'subTitlePage'} style={{
 				color: 'white',
 				fontSize: '1.2rem',
 				textAlign: 'left',
@@ -127,7 +127,7 @@ export default function Skills() {
 				marginBottom: '2rem',
 			}}>
 				Modern languages and tools enable the creation of fast, reliable, and scalable solutions. Effective development environments for clean code and rapid CI/CD iteration. Application of cloud solutions for system scaling.
-			</h3>
+			</p>
 			<Box
 				sx={{
 					width: '100%',

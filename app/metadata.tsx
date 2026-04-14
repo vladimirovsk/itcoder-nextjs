@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "IT CODER - Professional Web Development & Software Solutions",
+  title: {
+    default: "IT CODER - Professional Web Development & Software Solutions",
+    template: "%s | IT CODER",
+  },
   description: "IT CODER provides expert web development, custom software solutions, and IT consulting services. Specializing in NextJS, Flutter, database management, and server setup for businesses of all sizes.",
   keywords: "IT CODER, web development, software development, custom applications, IT consulting, NextJS, Flutter, database management, server setup, professional web services",
   openGraph: {
