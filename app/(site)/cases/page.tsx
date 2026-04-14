@@ -62,6 +62,7 @@ export default function Cases() {
 											className="cardImage"
 											width={imageMap[caseItem.image].width}
 											height={imageMap[caseItem.image].height}
+											loading="lazy"
 										/>
 									</div>
 									<CardHeader title={caseItem.title} style={{

@@ -91,3 +91,14 @@ main {
   height: 200px;
   object-fit: cover;
 }
+
+/* Skeleton loading animation for Suspense fallbacks */
+.skeleton-pulse {
+  background-color: #e8ecf0;
+  animation: skeleton-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}

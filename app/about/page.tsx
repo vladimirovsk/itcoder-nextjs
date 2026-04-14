@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Box, Container, Divider, Typography, Grid } from '@mui/material';
 import AuthorCard from '@/app/components/AuthorCard';
 import SchemaOrgAbout from '@/app/components/SchemaOrgAbout';
@@ -234,9 +235,9 @@ export default function AboutPage() {
           </Typography>
           <Typography variant="body1" sx={{ color: '#444', lineHeight: 1.8 }}>
             Available for project-based engagements, ongoing contracts, and technical consulting.{' '}
-            <a href="/#contact" style={{ color: '#1e41da', fontWeight: 600 }}>
+            <Link href="/#contact" style={{ color: '#1e41da', fontWeight: 600 }}>
               Get in touch
-            </a>{' '}
+            </Link>{' '}
             to discuss your project.
           </Typography>
         </Box>
