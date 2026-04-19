@@ -102,52 +102,6 @@ const servicesSchema = {
   ],
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How much does development cost?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The price depends on the complexity of the project. A simple website starts at $500. Applications start at $1,500.",
-      },
-    },
-    {
-      "@type": "Question",
-      "name": "How long does the project take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It all depends on the scope and complexity of the task. Small projects can be completed in a few days, larger ones in a few weeks. After discussing the requirements, an exact timeframe will be provided.",
-      },
-    },
-    {
-      "@type": "Question",
-      "name": "Are you working alone?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, working independently, but thanks to experience in team development, processes are built to ensure stable, high-quality, and timely results — just like a whole team does.",
-      },
-    },
-    {
-      "@type": "Question",
-      "name": "What distinguishes your service from other companies?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The service is distinguished by deep technical expertise, an individual approach to each project, and high quality implementation. Optimal architectural solutions that ensure scalability, security, and stable operation of products.",
-      },
-    },
-    {
-      "@type": "Question",
-      "name": "Is it possible to modify someone else's code?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, the code can be changed. It can be adapted to suit your needs, transferred to another version of the framework, or even rewritten in another programming language.",
-      },
-    },
-  ],
-};
 
 export default function SchemaOrg() {
   return (
@@ -163,10 +117,6 @@ export default function SchemaOrg() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </>
   );
