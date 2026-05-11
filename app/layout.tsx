@@ -1,3 +1,4 @@
+export { metadata } from './metadata';
 import type { Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";

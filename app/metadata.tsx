@@ -43,7 +43,5 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://itcoder.ca",
   },
-  verification: {
-    google: "google-site-verification-code", // Replace with actual verification code if available
-  },
+  // verification: { google: "..." }, // add when Google Search Console code is available
 };
