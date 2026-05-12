@@ -28,6 +28,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/_next/'],
       },
     ],
-    sitemap: 'https://itcoder.ca/sitemap.xml',
+    sitemap: 'https://www.itcoder.ca/sitemap.xml',
   };
 }

@@ -8,14 +8,13 @@ export const metadata: Metadata = {
   title: 'About — IT CODER | Full-Stack Developer in Calgary, Canada',
   description:
     'Learn about Serhii Vladimirov, a Full-Stack Developer and IT Consultant based in Calgary, AB. Specializing in Next.js, NestJS, REST APIs, and AI-driven backend solutions for Canadian businesses.',
-  alternates: { canonical: 'https://itcoder.ca/about' },
+  alternates: { canonical: 'https://www.itcoder.ca/about' },
   openGraph: {
     title: 'About — IT CODER | Full-Stack Developer in Calgary, Canada',
     description:
       'Full-Stack Developer based in Calgary, AB — building scalable web applications, REST APIs, and AI-driven solutions for businesses across Canada.',
-    url: 'https://itcoder.ca/about',
+    url: 'https://www.itcoder.ca/about',
     siteName: 'IT CODER',
-    images: [{ url: 'https://itcoder.ca/og-image.jpg', width: 1200, height: 630 }],
     locale: 'en_CA',
     type: 'profile',
   },
