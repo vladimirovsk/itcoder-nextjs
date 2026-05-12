@@ -199,9 +199,9 @@ export default function Headers() {
 			<Box sx={{ display: 'flex' }}>
 			<AppBar component='nav' position="fixed" sx={{
 				top: 'auto',
-				boxShadow: '0 1px 0 rgba(255,255,255,0.08)',
+				boxShadow: '0 1px 0 rgba(0,0,0,0.08)',
 				border: 'none',
-				backgroundColor: '#0f1724',
+				backgroundColor: '#F3F4F6',
 				}}
 			>
 			<Toolbar>
@@ -212,22 +212,14 @@ export default function Headers() {
 							color="inherit"
 							aria-label="menu"
 							onClick={handleMenuOpen}
-							sx={{ color: '#fff' }}
+							sx={{ color: '#1e293b' }}
 						>
 							<MenuIcon />
 						</IconButton>
 					</Tooltip>
 				</Box>
 
-				<Box sx={{
-						marginLeft: '1rem',
-						display: 'flex',
-						alignItems: 'center',
-						backgroundColor: 'rgba(255,255,255,0.92)',
-						borderRadius: '8px',
-						px: 1,
-						py: 0.5,
-					}}>
+				<Box sx={{ marginLeft: '1rem', display: 'flex', alignItems: 'center', backgroundColor: '#F3F4F6' }}>
 						<Image
 							src={imageLogo}
 							alt={'IT Coder'}
@@ -248,13 +240,13 @@ export default function Headers() {
 							href={`#${toSectionId(item)}`}
 							sx={{
 								marginLeft: '1rem',
-								color: activeItem === item ? '#7B9EF9' : 'rgba(255,255,255,0.65)',
+								color: activeItem === item ? '#3B5BDB' : '#475569',
 								fontWeight: activeItem === item ? 600 : 400,
-								borderBottom: activeItem === item ? '2px solid #7B9EF9' : '2px solid transparent',
+								borderBottom: activeItem === item ? '2px solid #3B5BDB' : '2px solid transparent',
 								borderRadius: 0,
 								fontSize: '0.9rem',
 								letterSpacing: '0.01em',
-								'&:hover': { color: '#fff', backgroundColor: 'transparent' },
+								'&:hover': { color: '#1e293b', backgroundColor: 'transparent' },
 							}}
 							component="a"
 						>
@@ -274,8 +266,8 @@ export default function Headers() {
 						style: {
 							width: '100%',
 							maxWidth: '300px',
-							backgroundColor: '#0f1724',
-							color: '#fff',
+							backgroundColor: '#F3F4F6',
+							color: '#1e293b',
 						},
 					}}
 				>
@@ -284,7 +276,7 @@ export default function Headers() {
 							key={item}
 							onClick={(e) => handleNavItemClick(item, e)}
 							selected={activeItem === item}
-							sx={{ color: activeItem === item ? '#7B9EF9' : 'rgba(255,255,255,0.75)' }}
+							sx={{ color: activeItem === item ? '#3B5BDB' : '#475569' }}
 						>
 							{item}
 						</MenuItem>
