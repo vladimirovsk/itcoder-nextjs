@@ -1,23 +1,29 @@
-import {IService} from '@/app/(site)/services/interfaces';
+import { IService } from '@/app/(site)/services/interfaces';
 import services from '@/app/(site)/services/services.json';
-import {Box, Card, CardActions, CardContent, CardHeader} from '@mui/material';
-import Image from 'next/image';
-import imageApi from './images/api.png';
-import imageDB from './images/databases.png';
-import imageSrv from './images/servers.png';
-import imageWeb from './images/web.png';
+import { Box, Card, CardContent, CardHeader, Typography } from '@mui/material';
+import StorageIcon from '@mui/icons-material/Storage';
+import DnsIcon from '@mui/icons-material/Dns';
+import ApiIcon from '@mui/icons-material/Api';
+import WebIcon from '@mui/icons-material/Web';
+import { SvgIconComponent } from '@mui/icons-material';
 import ServicesFAQ from './ServicesFAQ';
 
-// Map icon identifiers to imported images
-const iconMap: {[key: string]: { src: string, width: number, height: number }} = {
-	'api': imageApi,
-	'db': imageDB,
-	'srv': imageSrv,
-	'web': imageWeb
+const ICON_MAP: Record<string, SvgIconComponent> = {
+	Storage: StorageIcon,
+	Dns: DnsIcon,
+	Api: ApiIcon,
+	Web: WebIcon,
 };
 
-export default function Services () {
-	const servicesList: IService[] = services
+const ICON_COLORS: Record<string, { bg: string; color: string }> = {
+	Storage: { bg: '#EEF2FF', color: '#3B5BDB' },
+	Dns:     { bg: '#F0FDF4', color: '#16A34A' },
+	Api:     { bg: '#FFF7ED', color: '#EA580C' },
+	Web:     { bg: '#F0F9FF', color: '#0284C7' },
+};
+
+export default function Services() {
+	const servicesList: IService[] = services;
 	return (
 		<section id="services" className={'containerPage'}>
 			<h2 className={'titlePage'}>Services</h2>
@@ -26,57 +32,59 @@ export default function Services () {
 					width: '100%',
 					display: 'grid',
 					gridTemplateColumns: {
-						xs: 'repeat(1, 1fr)', // 1 column on extra small devices (mobile phones)
-						sm: 'repeat(2, 1fr)', // 2 columns on small devices (larger phones/small tablets)
-						md: 'repeat(4, 1fr)', // 4 columns on medium devices and up (tablets and desktops)
+						xs: 'repeat(1, 1fr)',
+						sm: 'repeat(2, 1fr)',
+						md: 'repeat(4, 1fr)',
 					},
-					gridAutoRows: 'auto',
 					gap: 3,
 				}}
 			>
-				{servicesList.map((service: IService) => (
-					<Card key={`Card${service.name}`} sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						height: '100%',
-						boxShadow: '0px 1px 4px rgba(0,0,0,0.07)',
-						borderRadius: '14px',
-						border: '1px solid #F1F5F9',
-						transition: 'box-shadow 0.25s, transform 0.25s',
-						"&:hover": {
-							boxShadow: '0px 8px 24px rgba(59,91,219,0.12)',
-							transform: 'translateY(-3px)',
-						}
-					}}>
-						<div className="cardImageContainer">
-							<Image
-								src={iconMap[service.icon].src}
-								alt={service.name}
-								className="cardImage"
-								width={iconMap[service.icon].width}
-								height={iconMap[service.icon].height}
-								loading="lazy"
+				{servicesList.map((service: IService) => {
+					const Icon = ICON_MAP[service.icon] ?? WebIcon;
+					const colors = ICON_COLORS[service.icon] ?? { bg: '#EEF2FF', color: '#3B5BDB' };
+					return (
+						<Card key={service.name} sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							height: '100%',
+							boxShadow: '0px 1px 4px rgba(0,0,0,0.07)',
+							borderRadius: '14px',
+							border: '1px solid #F1F5F9',
+							transition: 'box-shadow 0.25s, transform 0.25s',
+							'&:hover': {
+								boxShadow: '0px 8px 24px rgba(59,91,219,0.12)',
+								transform: 'translateY(-3px)',
+							},
+						}}>
+							{/* Icon block */}
+							<Box sx={{ display: 'flex', justifyContent: 'center', pt: 3.5, pb: 1 }}>
+								<Box sx={{
+									width: 64, height: 64,
+									borderRadius: '16px',
+									backgroundColor: colors.bg,
+									display: 'flex', alignItems: 'center', justifyContent: 'center',
+								}}>
+									<Icon sx={{ fontSize: 32, color: colors.color }} />
+								</Box>
+							</Box>
+
+							<CardHeader
+								title={service.name}
+								slotProps={{ title: { sx: { fontSize: '1rem', fontWeight: 700, textAlign: 'center', color: '#1e293b' } } }}
+								sx={{ pb: 0.5, pt: 1 }}
 							/>
-						</div>
-						<CardHeader title={service.name} style={{
-							marginTop: '2rem',
-							height: '5rem',
-							backgroundColor: '#FAFBFF',
-							textAlign: 'center',
-						}}>
-							{service.name}
-						</CardHeader>
-						<CardContent key={`CardContent${service.name}`} sx={{
-							flexGrow: 1,
-							backgroundColor: '#FAFBFF',
-							textAlign: 'justify',
-						}}>
-								{service.description}
-						</CardContent>
-						<CardActions key={`CardActions${service.name}`} sx={{ display: 'flex', justifyContent: 'center' }}>
-						</CardActions>
-					</Card>
-				))}
+							<CardContent sx={{
+								flexGrow: 1,
+								backgroundColor: 'white',
+								pt: 0.5,
+							}}>
+								<Typography variant="body2" sx={{ color: '#64748b', lineHeight: 1.6, textAlign: 'center' }}>
+									{service.description}
+								</Typography>
+							</CardContent>
+						</Card>
+					);
+				})}
 			</Box>
 
 			<ServicesFAQ />
@@ -121,5 +129,5 @@ export default function Services () {
 				</Box>
 			</Box>
 		</section>
-	)
+	);
 }

@@ -119,12 +119,11 @@ export default function Contact() {
 				backgroundColor: 'white',
 				overflow: 'hidden',
 			}}>
-				<Grid  id='column1' size={{xl:4, md:4, sm:12}} style={{
-					borderRadius: '20px',
+				<Grid  id='column1' size={{xs:12, md:4}} style={{
 					padding: '2.5rem',
 					display: 'flex',
 					flexDirection: 'column',
-					alignItems: 'left',
+					alignItems: 'flex-start',
 					background: 'linear-gradient(160deg, #0f1724 0%, #1a2d5a 100%)',
 					fontSize: '1rem',
 					fontWeight: 400,
@@ -189,8 +188,7 @@ export default function Contact() {
 						</Link>
 					</div>
 				</Grid>
-				<Grid id='column2' size={{xl:8, md:8, sm:12}} style={{
-					borderRadius: '20px',
+				<Grid id='column2' size={{xs:12, md:8}} style={{
 					padding: '2rem',
 					display: 'flex',
 					flexDirection: 'column',
@@ -210,7 +208,7 @@ export default function Contact() {
 
 						<Grid container spacing={2}>
 							{/* First row: First Name and Last Name */}
-							<Grid size={{xl:6, sm:12, xs:12}}>
+							<Grid size={{xs:12, sm:6}}>
 								<TextField
 									fullWidth
 									margin="normal"
@@ -223,7 +221,7 @@ export default function Contact() {
 									size="small"
 								/>
 							</Grid>
-							<Grid size={{xl:6, sm:12, xs:12}}>
+							<Grid size={{xs:12, sm:6}}>
 								<TextField
 									fullWidth
 									margin="normal"
@@ -238,7 +236,7 @@ export default function Contact() {
 							</Grid>
 
 							{/* Second row: Email and Phone */}
-							<Grid size={{xl:6, sm:12, xs:12}}>
+							<Grid size={{xs:12, sm:6}}>
 								<TextField
 									fullWidth
 									margin="normal"
@@ -252,7 +250,7 @@ export default function Contact() {
 									size="small"
 								/>
 							</Grid>
-							<Grid size={{xl:6, sm:12, xs:12}}>
+							<Grid size={{xs:12, sm:6}}>
 								<TextField
 									fullWidth
 									margin="normal"
@@ -284,8 +282,8 @@ export default function Contact() {
 							</Grid>
 
 							{/* Fourth row: Checkbox and Button */}
-							<Grid size={{xl:8}} container alignItems="center">
-								<Grid size={{xl:8}}>
+							<Grid size={12} container alignItems="center" spacing={2}>
+								<Grid size={{xs:12, sm:8}}>
 									<FormControlLabel
 										control={
 											<Checkbox
@@ -307,7 +305,7 @@ export default function Contact() {
 										</Typography>
 									)}
 								</Grid>
-								<Grid size={{xl:4}}>
+								<Grid size={{xs:12, sm:4}}>
 									<Button
 										type="submit"
 										variant="contained"
