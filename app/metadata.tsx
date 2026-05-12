@@ -2,32 +2,23 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "IT CODER - Professional Web Development & Software Solutions",
+    default: "IT CODER — Web & Software Development in Calgary",
     template: "%s | IT CODER",
   },
-  description: "IT CODER provides expert web development, custom software solutions, and IT consulting services. Specializing in NextJS, Flutter, database management, and server setup for businesses of all sizes.",
-  keywords: "IT CODER, web development, software development, custom applications, IT consulting, NextJS, Flutter, database management, server setup, professional web services",
+  description: "Custom web apps, REST APIs, mobile apps, and automation — designed and built from scratch for your business. Based in Calgary, AB. Get a detailed project plan within 24 hours.",
+  keywords: "web development Calgary, custom software development, REST API development, mobile app development, NestJS developer, Next.js developer, full-stack developer Calgary, IT consulting Alberta, project builder, software solutions Canada",
   openGraph: {
-    title: "IT CODER - Professional Web Development & Software Solutions",
-    description: "IT CODER provides expert web development, custom software solutions, and IT consulting services. Specializing in NextJS, Flutter, database management, and server setup for businesses of all sizes.",
-    url: "https://itcoder.ca",
+    title: "IT CODER — Web & Software Development in Calgary",
+    description: "Custom web apps, REST APIs, mobile apps and automation — from idea to launch. Based in Calgary, AB. Use the Project Builder to describe your idea in 3 steps.",
+    url: "https://www.itcoder.ca",
     siteName: "IT CODER",
-    locale: "en_US",
+    locale: "en_CA",
     type: "website",
-    images: [
-      {
-        url: "https://itcoder.ca/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "IT CODER - Professional Web Development & Software Solutions",
-      }
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "IT CODER - Professional Web Development & Software Solutions",
-    description: "IT CODER provides expert web development, custom software solutions, and IT consulting services.",
-    images: ["https://itcoder.ca/twitter-image.jpg"],
+    title: "IT CODER — Web & Software Development in Calgary",
+    description: "Custom web apps, REST APIs, mobile apps and automation — from idea to launch. Based in Calgary, AB.",
   },
   robots: {
     index: true,
@@ -41,7 +32,8 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://itcoder.ca",
+    canonical: "https://www.itcoder.ca",
   },
-  // verification: { google: "..." }, // add when Google Search Console code is available
+  // Add Google Search Console verification when available:
+  // verification: { google: "YOUR_VERIFICATION_CODE" },
 };

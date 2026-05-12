@@ -1,13 +1,13 @@
+const BASE = 'https://www.itcoder.ca';
+
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "@id": "https://itcoder.ca/#organization",
+  "@id": `${BASE}/#organization`,
   "name": "IT CODER",
-  "url": "https://itcoder.ca",
-  "logo": "https://itcoder.ca/og-image.jpg",
-  "image": "https://itcoder.ca/og-image.jpg",
+  "url": BASE,
   "description":
-    "IT CODER provides expert web development, custom software solutions, and IT consulting services. Specializing in NextJS, Flutter, database management, and server setup.",
+    "Custom web apps, REST APIs, mobile apps, and automation — designed and built for your business. Based in Calgary, AB.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Calgary",
@@ -32,13 +32,12 @@ const organizationSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://itcoder.ca/#website",
-  "url": "https://itcoder.ca",
+  "@id": `${BASE}/#website`,
+  "url": BASE,
   "name": "IT CODER",
-  "description":
-    "Professional Web Development & Software Solutions",
+  "description": "Custom Web & Software Development in Calgary, Canada",
   "publisher": {
-    "@id": "https://itcoder.ca/#organization",
+    "@id": `${BASE}/#organization`,
   },
 };
 
@@ -52,12 +51,13 @@ const servicesSchema = {
       "position": 1,
       "item": {
         "@type": "Service",
-        "name": "Database Development",
+        "name": "Custom Web Application Development",
         "description":
-          "Stable and secure databases for quick search, accurate accounting, and automation.",
-        "provider": { "@id": "https://itcoder.ca/#organization" },
+          "Full-stack web application development from idea to launch — Next.js, REST API, database, deployment.",
+        "provider": { "@id": `${BASE}/#organization` },
         "areaServed": { "@type": "Country", "name": "Canada" },
-        "serviceType": "Database Development",
+        "serviceType": "Web Development",
+        "url": `${BASE}/#services`,
       },
     },
     {
@@ -65,12 +65,13 @@ const servicesSchema = {
       "position": 2,
       "item": {
         "@type": "Service",
-        "name": "Server Configuration",
+        "name": "REST API & Backend Development",
         "description":
-          "Turnkey servers on Linux and Windows, including virtualization via Proxmox or VMWare.",
-        "provider": { "@id": "https://itcoder.ca/#organization" },
+          "Flexible and powerful REST APIs based on microservices or monolithic architecture using NestJS.",
+        "provider": { "@id": `${BASE}/#organization` },
         "areaServed": { "@type": "Country", "name": "Canada" },
-        "serviceType": "IT Infrastructure",
+        "serviceType": "Software Development",
+        "url": `${BASE}/#services`,
       },
     },
     {
@@ -78,12 +79,13 @@ const servicesSchema = {
       "position": 3,
       "item": {
         "@type": "Service",
-        "name": "API Development",
+        "name": "Mobile App Development",
         "description":
-          "Flexible and powerful REST APIs based on microservices or monolithic architecture.",
-        "provider": { "@id": "https://itcoder.ca/#organization" },
+          "Cross-platform mobile applications built with Flutter for iOS and Android.",
+        "provider": { "@id": `${BASE}/#organization` },
         "areaServed": { "@type": "Country", "name": "Canada" },
-        "serviceType": "Software Development",
+        "serviceType": "Mobile Development",
+        "url": `${BASE}/#services`,
       },
     },
     {
@@ -91,12 +93,27 @@ const servicesSchema = {
       "position": 4,
       "item": {
         "@type": "Service",
-        "name": "Web Development",
+        "name": "Database Development",
         "description":
-          "FullStack web application development from idea to full launch with high-quality implementation.",
-        "provider": { "@id": "https://itcoder.ca/#organization" },
+          "Stable and secure databases for quick search, accurate accounting, and automation.",
+        "provider": { "@id": `${BASE}/#organization` },
         "areaServed": { "@type": "Country", "name": "Canada" },
-        "serviceType": "Web Development",
+        "serviceType": "Database Development",
+        "url": `${BASE}/#services`,
+      },
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Service",
+        "name": "Project Builder — Online Project Configurator",
+        "description":
+          "Describe your project requirements in 3 steps and receive a detailed development plan within 24 hours.",
+        "provider": { "@id": `${BASE}/#organization` },
+        "areaServed": { "@type": "Country", "name": "Canada" },
+        "serviceType": "IT Consulting",
+        "url": `${BASE}/#project-builder`,
       },
     },
   ],
