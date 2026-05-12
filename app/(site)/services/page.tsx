@@ -78,6 +78,46 @@ export default function Services () {
 			</Box>
 
 			<ServicesFAQ />
+
+			<Box component="a" href="#project-builder" sx={{
+				display: 'flex',
+				alignItems: 'center',
+				justifyContent: 'space-between',
+				mt: 4,
+				px: { xs: 2.5, sm: 4 },
+				py: 2.5,
+				borderRadius: '14px',
+				background: 'linear-gradient(135deg, #0f1724 0%, #1e3a8a 100%)',
+				textDecoration: 'none',
+				cursor: 'pointer',
+				transition: 'transform 0.2s, box-shadow 0.2s',
+				boxShadow: '0 4px 20px rgba(30,65,218,0.2)',
+				'&:hover': {
+					transform: 'translateY(-2px)',
+					boxShadow: '0 8px 28px rgba(30,65,218,0.35)',
+				},
+			}}>
+				<Box>
+					<Box component="p" sx={{ m: 0, color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem', mb: 0.25 }}>
+						Not sure where to start?
+					</Box>
+					<Box component="p" sx={{ m: 0, color: '#fff', fontWeight: 700, fontSize: { xs: '0.95rem', sm: '1.05rem' } }}>
+						Configure your project in 3 steps — get a plan within 24 hours
+					</Box>
+				</Box>
+				<Box sx={{
+					flexShrink: 0, ml: 2,
+					backgroundColor: '#F97316',
+					color: '#fff',
+					fontWeight: 700,
+					fontSize: '0.85rem',
+					px: 2.5, py: 1,
+					borderRadius: '8px',
+					whiteSpace: 'nowrap',
+				}}>
+					Start →
+				</Box>
+			</Box>
 		</section>
 	)
 }

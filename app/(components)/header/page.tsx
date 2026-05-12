@@ -320,7 +320,7 @@ export default function Headers() {
 								mb: 2,
 								textShadow: '0 2px 20px rgba(0,0,0,0.5)',
 							}}>
-								Building Scalable AI-Driven Solutions & Robust Backend Architectures
+								Your business idea — turned into a working digital product
 							</Typography>
 							<Typography variant="h6" component="p" sx={{
 								fontWeight: 400,
@@ -328,28 +328,46 @@ export default function Headers() {
 								mb: 4,
 								lineHeight: 1.6,
 							}}>
-								Empowering businesses to optimize operations with cutting-edge AI integration and advanced backend systems.
+								Describe what you need in a few clicks. I&apos;ll handle the architecture, development, and launch.
 							</Typography>
-							<Button
-								variant="contained"
-								size="large"
-								onClick={(e) => handleNavItemClick('Contact', e)}
-								href="#contact"
-								component="a"
-								sx={{
-									backgroundColor: '#4f8ef7',
-									color: '#fff',
-									fontWeight: 700,
-									px: 4,
-									py: 1.5,
-									borderRadius: '8px',
-									textTransform: 'none',
-									fontSize: '1rem',
-									'&:hover': { backgroundColor: '#2d6ed6' },
-								}}
-							>
-								Get in Touch
-							</Button>
+							<Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
+								<Button
+									variant="contained"
+									size="large"
+									onClick={(e) => handleNavItemClick('Project Builder', e)}
+									href="#project-builder"
+									component="a"
+									sx={{
+										backgroundColor: '#F97316',
+										color: '#fff',
+										fontWeight: 700,
+										px: 4,
+										py: 1.5,
+										borderRadius: '8px',
+										textTransform: 'none',
+										fontSize: '1rem',
+										'&:hover': { backgroundColor: '#e86206' },
+									}}
+								>
+									Build Your Project →
+								</Button>
+								<Button
+									variant="text"
+									size="large"
+									onClick={(e) => handleNavItemClick('Contact', e)}
+									href="#contact"
+									component="a"
+									sx={{
+										color: 'rgba(255,255,255,0.7)',
+										fontWeight: 400,
+										textTransform: 'none',
+										fontSize: '0.95rem',
+										'&:hover': { color: '#fff', backgroundColor: 'transparent' },
+									}}
+								>
+									or contact directly
+								</Button>
+							</Box>
 						</Box>
 					</Box>
 				</Container>
