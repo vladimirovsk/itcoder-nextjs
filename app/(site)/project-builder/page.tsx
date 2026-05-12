@@ -224,6 +224,7 @@ export default function ProjectBuilder() {
     const [submitting, setSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [submitError, setSubmitError] = useState('');
+    const [existingLead, setExistingLead] = useState(false);
 
     useEffect(() => {
         fetch(`${process.env.NEXT_PUBLIC_API}/project-builder/steps`)
@@ -289,6 +290,22 @@ export default function ProjectBuilder() {
         return Object.keys(errors).length === 0;
     };
 
+    const buildBriefPayload = () => ({
+        name: form.name.trim(),
+        email: form.email.trim(),
+        phone: form.phone.trim() || undefined,
+        source: 'itcoder-project-builder',
+        note: form.note.trim() || undefined,
+        projectBrief: {
+            projectType: selectedType,
+            features: selectedFeatures,
+            scale: groupSelections['scale'] ?? '',
+            timeline: groupSelections['timeline'] ?? '',
+            readiness: groupSelections['readiness'] ?? '',
+            company: form.company.trim() || undefined,
+        },
+    });
+
     const handleSubmit = async () => {
         if (!validateForm()) return;
         setSubmitting(true);
@@ -298,25 +315,43 @@ export default function ProjectBuilder() {
             const res = await fetch('/api/leads', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(buildBriefPayload()),
+            });
+
+            if (res.status === 409) {
+                setExistingLead(true);
+                return;
+            }
+
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error ?? 'Submission failed');
+            setSubmitted(true);
+        } catch (err: unknown) {
+            setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+        } finally {
+            setSubmitting(false);
+        }
+    };
+
+    const handleUpdate = async () => {
+        setSubmitting(true);
+        setSubmitError('');
+
+        try {
+            const payload = buildBriefPayload();
+            const res = await fetch('/api/leads', {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    name: form.name.trim(),
-                    email: form.email.trim(),
-                    phone: form.phone.trim() || undefined,
-                    source: 'itcoder-project-builder',
-                    note: form.note.trim() || undefined,
-                    projectBrief: {
-                        projectType: selectedType,
-                        features: selectedFeatures,
-                        scale: groupSelections['scale'] ?? '',
-                        timeline: groupSelections['timeline'] ?? '',
-                        readiness: groupSelections['readiness'] ?? '',
-                        company: form.company.trim() || undefined,
-                    },
+                    email: payload.email,
+                    projectBrief: payload.projectBrief,
+                    note: payload.note,
                 }),
             });
 
             const data = await res.json();
-            if (!res.ok) throw new Error(data.error ?? 'Submission failed');
+            if (!res.ok) throw new Error(data.error ?? 'Update failed');
+            setExistingLead(false);
             setSubmitted(true);
         } catch (err: unknown) {
             setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
@@ -343,6 +378,67 @@ export default function ProjectBuilder() {
                 <Alert severity="error" sx={{ mt: 2 }}>
                     Failed to load the project builder. Please refresh the page.
                 </Alert>
+            </section>
+        );
+    }
+
+    if (existingLead) {
+        return (
+            <section id="project-builder">
+                <h2 className="titlePage">Build Your Project</h2>
+                <Box sx={{
+                    backgroundColor: 'white', borderRadius: '16px',
+                    boxShadow: '0px 4px 20px rgba(0,0,0,0.08)',
+                    p: { xs: 3, sm: 5 }, maxWidth: 560, mx: 'auto', textAlign: 'center',
+                }}>
+                    <Box sx={{
+                        width: 64, height: 64, borderRadius: '50%',
+                        backgroundColor: '#FFF7ED', mx: 'auto', mb: 2,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}>
+                        <Typography sx={{ fontSize: 32 }}>📋</Typography>
+                    </Box>
+                    <Typography variant="h6" fontWeight={800} sx={{ color: '#0f1724', mb: 1.5 }}>
+                        We already have your inquiry
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: '#666', lineHeight: 1.7, mb: 3 }}>
+                        An inquiry from <strong>{form.email}</strong> is already on file.
+                        Would you like to update it with the project description you just configured?
+                    </Typography>
+
+                    {submitError && <Alert severity="error" sx={{ mb: 2, textAlign: 'left' }}>{submitError}</Alert>}
+
+                    <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <Button
+                            onClick={() => setExistingLead(false)}
+                            variant="outlined"
+                            sx={{
+                                textTransform: 'none', borderColor: '#D0D5E8', color: '#555',
+                                borderRadius: '8px', px: 3,
+                                '&:hover': { borderColor: '#1e41da', color: '#1e41da' },
+                            }}
+                        >
+                            Go back
+                        </Button>
+                        <Button
+                            onClick={handleUpdate}
+                            variant="contained"
+                            disabled={submitting}
+                            endIcon={submitting
+                                ? <CircularProgress size={16} sx={{ color: 'white' }} />
+                                : <ArrowForwardIcon />}
+                            sx={{
+                                backgroundColor: '#1e41da', color: 'white',
+                                textTransform: 'none', fontWeight: 700,
+                                borderRadius: '8px', px: 3,
+                                '&:hover': { backgroundColor: '#1633b8' },
+                                '&.Mui-disabled': { backgroundColor: '#C5D0F5', color: 'white' },
+                            }}
+                        >
+                            {submitting ? 'Updating…' : 'Yes, update my project'}
+                        </Button>
+                    </Box>
+                </Box>
             </section>
         );
     }
