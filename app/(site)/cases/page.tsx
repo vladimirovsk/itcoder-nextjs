@@ -54,6 +54,15 @@ export default function Cases() {
 									display: 'flex',
 									flexDirection: 'column',
 									height: '100%',
+									borderRadius: '14px',
+									border: '1px solid #F1F5F9',
+									boxShadow: '0px 1px 4px rgba(0,0,0,0.07)',
+									overflow: 'hidden',
+									transition: 'box-shadow 0.25s, transform 0.25s',
+									'&:hover': {
+										boxShadow: '0px 8px 24px rgba(59,91,219,0.12)',
+										transform: 'translateY(-3px)',
+									},
 								}}>
 									<div className="cardImageContainer">
 										<Image
@@ -68,13 +77,14 @@ export default function Cases() {
 									<CardHeader title={caseItem.title} style={{
 										marginTop: '2rem',
 										height: '5rem',
-										backgroundColor: '#f5f5f5',
+										backgroundColor: '#FAFBFF',
 										textAlign: 'center',
 									}} />
 									<CardContent sx={{
 										flexGrow: 1,
-										backgroundColor: '#f5f5f5',
+										backgroundColor: '#FAFBFF',
 										textAlign: 'justify',
+										color: '#475569',
 									}}>
 										{caseItem.subheader}
 									</CardContent>

@@ -115,19 +115,20 @@ export default function Contact() {
 				display: 'flex',
 				flexDirection: 'row',
 				fontSize: '1rem',
-				boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.4)',
+				boxShadow: '0px 4px 24px rgba(0, 0, 0, 0.10)',
 				backgroundColor: 'white',
+				overflow: 'hidden',
 			}}>
 				<Grid  id='column1' size={{xl:4, md:4, sm:12}} style={{
 					borderRadius: '20px',
-					padding: '2rem',
+					padding: '2.5rem',
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'left',
-					backgroundColor: '#1e41da',
+					background: 'linear-gradient(160deg, #0f1724 0%, #1a2d5a 100%)',
 					fontSize: '1rem',
 					fontWeight: 400,
-					color: 'white',
+					color: 'rgba(255,255,255,0.85)',
 				}}>
 					<div style={{fontSize: '1.4rem', fontWeight:800, marginTop: '20px', textAlign: 'center'}}>
 						Contact me
@@ -313,13 +314,13 @@ export default function Contact() {
 										fullWidth
 										disabled={!isFormValid()}
 										sx={{
-											backgroundColor: '#F97316',
+											backgroundColor: '#3B5BDB',
 											'&:hover': {
-												backgroundColor: '#e86206',
+												backgroundColor: '#2d4ac7',
 											},
 											'&.Mui-disabled': {
-												backgroundColor: '#ccc',
-												color: '#666'
+												backgroundColor: '#c7d0f5',
+												color: '#7c8db8'
 											}
 										}}
 									>

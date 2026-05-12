@@ -39,11 +39,13 @@ export default function Services () {
 						display: 'flex',
 						flexDirection: 'column',
 						height: '100%',
-						boxShadow: '0px 4px 8px rgba(34, 35, 58, 0.2)',
-						transition: 'box-shadow 0.3s ease-in-out',
-						"&:hover":{
-							//color: "red"
-							boxShadow: '0px 14px 28px rgba(34, 35, 58, 0.5)',
+						boxShadow: '0px 1px 4px rgba(0,0,0,0.07)',
+						borderRadius: '14px',
+						border: '1px solid #F1F5F9',
+						transition: 'box-shadow 0.25s, transform 0.25s',
+						"&:hover": {
+							boxShadow: '0px 8px 24px rgba(59,91,219,0.12)',
+							transform: 'translateY(-3px)',
 						}
 					}}>
 						<div className="cardImageContainer">
@@ -59,14 +61,14 @@ export default function Services () {
 						<CardHeader title={service.name} style={{
 							marginTop: '2rem',
 							height: '5rem',
-							backgroundColor: '#f5f5f5',
+							backgroundColor: '#FAFBFF',
 							textAlign: 'center',
 						}}>
 							{service.name}
 						</CardHeader>
 						<CardContent key={`CardContent${service.name}`} sx={{
 							flexGrow: 1,
-							backgroundColor: '#f5f5f5',
+							backgroundColor: '#FAFBFF',
 							textAlign: 'justify',
 						}}>
 								{service.description}
@@ -87,14 +89,14 @@ export default function Services () {
 				px: { xs: 2.5, sm: 4 },
 				py: 2.5,
 				borderRadius: '14px',
-				background: 'linear-gradient(135deg, #0f1724 0%, #1e3a8a 100%)',
+				background: 'linear-gradient(135deg, #0f1724 0%, #1a2d5a 100%)',
 				textDecoration: 'none',
 				cursor: 'pointer',
 				transition: 'transform 0.2s, box-shadow 0.2s',
-				boxShadow: '0 4px 20px rgba(30,65,218,0.2)',
+				boxShadow: '0 4px 20px rgba(15,23,36,0.25)',
 				'&:hover': {
 					transform: 'translateY(-2px)',
-					boxShadow: '0 8px 28px rgba(30,65,218,0.35)',
+					boxShadow: '0 8px 28px rgba(15,23,36,0.35)',
 				},
 			}}>
 				<Box>

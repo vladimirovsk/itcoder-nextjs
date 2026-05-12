@@ -57,7 +57,7 @@ export default function AuthorCard({
           height: { xs: 100, md: 120 },
           fontSize: '2.5rem',
           fontWeight: 700,
-          backgroundColor: '#1e41da',
+          backgroundColor: '#3B5BDB',
           color: '#fff',
           flexShrink: 0,
         }}
@@ -79,7 +79,7 @@ export default function AuthorCard({
         <Typography
           variant="subtitle1"
           itemProp="jobTitle"
-          sx={{ color: '#1e41da', fontWeight: 600, mb: 1 }}
+          sx={{ color: '#3B5BDB', fontWeight: 600, mb: 1 }}
         >
           {role}
         </Typography>
@@ -128,7 +128,7 @@ export default function AuthorCard({
               size="small"
               sx={{
                 backgroundColor: '#eef2ff',
-                color: '#1e41da',
+                color: '#3B5BDB',
                 fontWeight: 600,
                 fontSize: '0.75rem',
               }}

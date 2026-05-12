@@ -219,13 +219,21 @@ export default function Headers() {
 					</Tooltip>
 				</Box>
 
-				<Box sx={{ marginLeft: '1rem', display: 'flex', alignItems: 'center' }}>
+				<Box sx={{
+						marginLeft: '1rem',
+						display: 'flex',
+						alignItems: 'center',
+						backgroundColor: 'rgba(255,255,255,0.92)',
+						borderRadius: '8px',
+						px: 1,
+						py: 0.5,
+					}}>
 						<Image
 							src={imageLogo}
 							alt={'IT Coder'}
 							className="header-logo"
-							width={100}
-							height={100}
+							width={120}
+							height={35}
 							priority
 						/>
 				</Box>
@@ -240,10 +248,12 @@ export default function Headers() {
 							href={`#${toSectionId(item)}`}
 							sx={{
 								marginLeft: '1rem',
-								color: activeItem === item ? '#4f8ef7' : 'rgba(255,255,255,0.75)',
-								fontWeight: activeItem === item ? 700 : 400,
-								borderBottom: activeItem === item ? '2px solid #4f8ef7' : '2px solid transparent',
+								color: activeItem === item ? '#7B9EF9' : 'rgba(255,255,255,0.65)',
+								fontWeight: activeItem === item ? 600 : 400,
+								borderBottom: activeItem === item ? '2px solid #7B9EF9' : '2px solid transparent',
 								borderRadius: 0,
+								fontSize: '0.9rem',
+								letterSpacing: '0.01em',
 								'&:hover': { color: '#fff', backgroundColor: 'transparent' },
 							}}
 							component="a"
@@ -274,7 +284,7 @@ export default function Headers() {
 							key={item}
 							onClick={(e) => handleNavItemClick(item, e)}
 							selected={activeItem === item}
-							sx={{ color: activeItem === item ? '#4f8ef7' : '#fff' }}
+							sx={{ color: activeItem === item ? '#7B9EF9' : 'rgba(255,255,255,0.75)' }}
 						>
 							{item}
 						</MenuItem>
@@ -348,7 +358,8 @@ export default function Headers() {
 										borderRadius: '8px',
 										textTransform: 'none',
 										fontSize: '1rem',
-										'&:hover': { backgroundColor: '#e86206' },
+										boxShadow: '0 4px 14px rgba(249,115,22,0.32)',
+										'&:hover': { backgroundColor: '#e0620a', boxShadow: '0 6px 18px rgba(249,115,22,0.42)' },
 									}}
 								>
 									Build Your Project →

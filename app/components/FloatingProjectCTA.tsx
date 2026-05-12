@@ -53,7 +53,7 @@ export default function FloatingProjectCTA() {
                 fontWeight: 700,
                 fontSize: '0.875rem',
                 cursor: 'pointer',
-                boxShadow: '0 4px 16px rgba(249,115,22,0.45)',
+                boxShadow: '0 4px 16px rgba(249,115,22,0.35)',
                 transition: 'opacity 0.3s, transform 0.3s',
                 opacity: visible ? 1 : 0,
                 transform: visible ? 'translateY(0)' : 'translateY(12px)',

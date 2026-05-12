@@ -89,7 +89,13 @@ export default function Advantages () {
 							mt: 6,
 							overflow: 'visible',
 							borderRadius: '16px',
-							boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
+							border: '1px solid #F1F5F9',
+							boxShadow: '0px 1px 4px rgba(0,0,0,0.07)',
+							transition: 'box-shadow 0.25s, transform 0.25s',
+							'&:hover': {
+								boxShadow: '0px 8px 24px rgba(59,91,219,0.12)',
+								transform: 'translateY(-3px)',
+							},
 						 }}>
 							<IconImage key={`Image=${advantage.name}`} icon={iconMap[advantage.icon].src} alt={advantage.name} />
 							<CardHeader title={advantage.name}
