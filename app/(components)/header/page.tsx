@@ -16,7 +16,11 @@ export default function Headers() {
 	const scrollTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the scroll timer
 	const resetTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the reset timer
 	// const navItems = useMemo(() => ['Services', 'Advantages', 'Skills', 'Cases', 'Contact'], []);
-	const navItems = useMemo(() => ['Services', 'Advantages', 'Skills', 'Contact'], []);
+	const navItems = useMemo(() => ['Services', 'Advantages', 'Skills', 'Project Builder', 'Contact'], []);
+
+	const toSectionId = (item: string) => item.toLowerCase().replace(/\s+/g, '-');
+	const fromSectionId = (id: string) =>
+		navItems.find(i => toSectionId(i) === id) ?? (id.charAt(0).toUpperCase() + id.slice(1));
 
 	// Function to check which section is currently in view
 	const checkActiveSection = useCallback(() => {
@@ -24,7 +28,7 @@ export default function Headers() {
 		if (isManuallySet) return;
 
 		// Get all sections
-		const sections = navItems.map(item => document.getElementById(item.toLowerCase())).filter(Boolean);
+		const sections = navItems.map(item => document.getElementById(toSectionId(item))).filter(Boolean);
 
 		// If no sections found, return
 		if (sections.length === 0) return;
@@ -42,7 +46,7 @@ export default function Headers() {
 
 			if (scrollPosition >= sectionTop && scrollPosition <= sectionTop + sectionHeight) {
 				// Found the active section
-				setActiveItem(section.id.charAt(0).toUpperCase() + section.id.slice(1));
+				setActiveItem(fromSectionId(section.id));
 				return;
 			}
 		}
@@ -83,7 +87,7 @@ export default function Headers() {
 
 			if (section) {
 				// Set the active item
-				setActiveItem(sectionId.charAt(0).toUpperCase() + sectionId.slice(1));
+				setActiveItem(fromSectionId(sectionId));
 				setIsManuallySet(true);
 
 				// Get the toolbar height to offset the scroll position
@@ -164,7 +168,7 @@ export default function Headers() {
 		setAnchorEl(null); // Close the mobile menu
 
 		// Scroll to the section with the corresponding ID
-		const sectionId = item.toLowerCase();
+		const sectionId = toSectionId(item);
 		const section = document.getElementById(sectionId);
 		if (section) {
 			// Get the toolbar height to offset the scroll position
@@ -231,7 +235,7 @@ export default function Headers() {
 							key={item}
 							className={`header-nav-button ${activeItem === item ? 'active' : ''}`}
 							onClick={(e) => handleNavItemClick(item, e)}
-							href={`#${item.toLowerCase()}`}
+							href={`#${toSectionId(item)}`}
 							sx={{
 								marginLeft: '1rem',
 								color: activeItem === item ? '#4f8ef7' : 'rgba(255,255,255,0.75)',

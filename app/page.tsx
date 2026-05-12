@@ -10,6 +10,7 @@ import Advantages from '@/app/(site)/advantages/page';
 import Skills from '@/app/(site)/skills/page';
 import Cases from '@/app/(site)/cases/page';
 import Contact from '@/app/(site)/contact/page';
+import ProjectBuilder from '@/app/(site)/project-builder/page';
 import SectionSkeleton from '@/app/components/SectionSkeleton';
 
 export default function Home() {
@@ -27,6 +28,10 @@ export default function Home() {
                 JS chunk for each section downloads and hydrates.                */}
             <Suspense fallback={<SectionSkeleton cols={4} cardHeight={260} />}>
                 <Skills />
+            </Suspense>
+
+            <Suspense fallback={<SectionSkeleton cols={3} cardHeight={320} />}>
+                <ProjectBuilder />
             </Suspense>
 
             <Suspense fallback={<SectionSkeleton cols={3} cardHeight={240} />}>
