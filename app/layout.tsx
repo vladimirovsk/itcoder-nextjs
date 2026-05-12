@@ -9,6 +9,7 @@ import { Container } from '@mui/material';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import SchemaOrg from '@/app/components/SchemaOrg';
+import EmotionCacheProvider from '@/app/EmotionCacheProvider';
 // Hero background images — imported here to get their final hashed paths for preloading.
 // These are CSS backgrounds in the header, so the browser can't discover them early on its own.
 import titleImage from '@/public/it-coder-title.png';
@@ -79,14 +80,16 @@ export default function RootLayout({
         `}
       </Script>
       <SchemaOrg />
-      <ThemeProviderWrapper>
-            <Headers/>
-            <Container component="main" disableGutters className="containerPage">
-                {children}
-                <Analytics/>
-            </Container>
-            <Footer/>
-      </ThemeProviderWrapper>
+      <EmotionCacheProvider>
+        <ThemeProviderWrapper>
+              <Headers/>
+              <Container component="main" disableGutters className="containerPage">
+                  {children}
+                  <Analytics/>
+              </Container>
+              <Footer/>
+        </ThemeProviderWrapper>
+      </EmotionCacheProvider>
       </body>
     </html>
   );
