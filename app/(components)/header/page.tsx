@@ -8,6 +8,8 @@ import imageLogo from '../../../public/imageLogo.png';
 import MenuIcon from '@mui/icons-material/Menu';
 
 
+const toSectionId = (item: string) => item.toLowerCase().replace(/\s+/g, '-');
+
 export default function Headers() {
 	const [activeItem, setActiveItem] = React.useState('Home'); // Default active item
 	const [,setMobileMenuOpen] = React.useState(false);
@@ -18,9 +20,9 @@ export default function Headers() {
 	// const navItems = useMemo(() => ['Services', 'Advantages', 'Skills', 'Cases', 'Contact'], []);
 	const navItems = useMemo(() => ['Services', 'Advantages', 'Skills', 'Project Builder', 'Contact'], []);
 
-	const toSectionId = (item: string) => item.toLowerCase().replace(/\s+/g, '-');
-	const fromSectionId = (id: string) =>
-		navItems.find(i => toSectionId(i) === id) ?? (id.charAt(0).toUpperCase() + id.slice(1));
+	const fromSectionId = useCallback((id: string) =>
+		navItems.find(i => toSectionId(i) === id) ?? (id.charAt(0).toUpperCase() + id.slice(1)),
+	[navItems]);
 
 	// Function to check which section is currently in view
 	const checkActiveSection = useCallback(() => {
@@ -55,7 +57,7 @@ export default function Headers() {
 		if (scrollPosition < (sections[0]?.offsetTop || 0)) {
 			setActiveItem('Home');
 		}
-	}, [navItems, isManuallySet]);
+	}, [navItems, isManuallySet, fromSectionId]);
 
 	// Function to handle scroll events
 	const handleScroll = useCallback(() => {
@@ -107,7 +109,7 @@ export default function Headers() {
 				}, 100);
 			}
 		}
-	}, []); // Empty dependency array means this effect runs once on mount
+	}, [fromSectionId]); // fromSectionId is stable (navItems has no deps)
 
 	// Add scroll event listener
 	useEffect(() => {
