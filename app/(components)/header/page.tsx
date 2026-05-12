@@ -14,7 +14,8 @@ export default function Headers() {
 	const [activeItem, setActiveItem] = React.useState('Home'); // Default active item
 	const [,setMobileMenuOpen] = React.useState(false);
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-	const [isManuallySet, setIsManuallySet] = React.useState(false); // Track if activeItem was manually set by clicking
+	const [isManuallySet, setIsManuallySet] = React.useState(false);
+	const [scrolled, setScrolled] = React.useState(false); // Track if activeItem was manually set by clicking
 	const scrollTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the scroll timer
 	const resetTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the reset timer
 	// const navItems = useMemo(() => ['Services', 'Advantages', 'Skills', 'Cases', 'Contact'], []);
@@ -124,6 +125,13 @@ export default function Headers() {
 		};
 	}, [handleScroll, checkActiveSection, activeItem]);
 
+	// Blur effect on scroll
+	useEffect(() => {
+		const onScroll = () => setScrolled(window.scrollY > 20);
+		window.addEventListener('scroll', onScroll, { passive: true });
+		return () => window.removeEventListener('scroll', onScroll);
+	}, []);
+
 	// Reset isManuallySet after a delay
 	useEffect(() => {
 		if (isManuallySet) {
@@ -199,9 +207,12 @@ export default function Headers() {
 			<Box sx={{ display: 'flex' }}>
 			<AppBar component='nav' position="fixed" sx={{
 				top: 'auto',
-				boxShadow: '0 1px 0 rgba(0,0,0,0.08)',
 				border: 'none',
-				backgroundColor: '#F3F4F6',
+				backgroundColor: scrolled ? 'rgba(243,244,246,0.82)' : '#F3F4F6',
+				backdropFilter: scrolled ? 'blur(14px)' : 'none',
+				WebkitBackdropFilter: scrolled ? 'blur(14px)' : 'none',
+				boxShadow: scrolled ? '0 1px 12px rgba(0,0,0,0.10)' : '0 1px 0 rgba(0,0,0,0.06)',
+				transition: 'background-color 0.3s, box-shadow 0.3s, backdrop-filter 0.3s',
 				}}
 			>
 			<Toolbar>
@@ -219,7 +230,7 @@ export default function Headers() {
 					</Tooltip>
 				</Box>
 
-				<Box sx={{ marginLeft: '1rem', display: 'flex', alignItems: 'center', backgroundColor: '#F3F4F6' }}>
+				<Box sx={{ marginLeft: '1rem', display: 'flex', alignItems: 'center', backgroundColor: 'transparent' }}>
 						<Image
 							src={imageLogo}
 							alt={'IT Coder'}

@@ -109,7 +109,7 @@ export default function Skills() {
 				margin: '0 auto',
 				padding: '0 1rem',
 			}}>
-			<h2 className={'titlePage'} style={{
+			<h2 className={'titlePage titlePage--light'} style={{
 				marginTop: '4rem',
 				paddingTop: '4rem',
 				color: 'white',

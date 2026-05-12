@@ -39,7 +39,7 @@ export default function FloatingProjectCTA() {
             aria-label="Build your project"
             style={{
                 position: 'fixed',
-                bottom: '7rem',
+                bottom: '1.75rem',
                 right: '1.25rem',
                 zIndex: 1200,
                 display: 'flex',
