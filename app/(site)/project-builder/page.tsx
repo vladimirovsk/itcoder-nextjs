@@ -458,7 +458,7 @@ export default function ProjectBuilder() {
                         Got it, {form.name.split(' ')[0]}!
                     </Typography>
                     <Typography variant="body1" sx={{ color: '#555', lineHeight: 1.7, mb: 3 }}>
-                        I've received your project description and will get back to you
+                        I&apos;ve received your project description and will get back to you
                         within 24 hours with a preliminary plan.
                     </Typography>
                     <Button
