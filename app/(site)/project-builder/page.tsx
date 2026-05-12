@@ -102,7 +102,7 @@ function StepIndicator({ active }: { active: number }) {
                         <Box sx={{
                             width: 36, height: 36, borderRadius: '50%',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            backgroundColor: idx < active ? '#1e41da' : idx === active ? '#1e41da' : '#E0E4EF',
+                            backgroundColor: idx < active ? '#3B5BDB' : idx === active ? '#3B5BDB' : '#E0E4EF',
                             color: idx <= active ? 'white' : '#999',
                             fontWeight: 700, fontSize: 14, transition: 'all 0.25s',
                         }}>
@@ -110,7 +110,7 @@ function StepIndicator({ active }: { active: number }) {
                         </Box>
                         <Typography variant="caption" sx={{
                             display: { xs: 'none', sm: 'block' },
-                            color: idx === active ? '#1e41da' : idx < active ? '#555' : '#aaa',
+                            color: idx === active ? '#3B5BDB' : idx < active ? '#555' : '#aaa',
                             fontWeight: idx === active ? 700 : 400,
                             whiteSpace: 'nowrap',
                         }}>
@@ -123,7 +123,7 @@ function StepIndicator({ active }: { active: number }) {
                             width: { xs: 24, sm: 48, md: 72 },
                             mx: { xs: 0.5, sm: 1 },
                             mb: { xs: 0, sm: 2.5 },
-                            backgroundColor: idx < active ? '#1e41da' : '#E0E4EF',
+                            backgroundColor: idx < active ? '#3B5BDB' : '#E0E4EF',
                             transition: 'background-color 0.25s',
                         }} />
                     )}
@@ -140,25 +140,25 @@ function TypeCard({ option, selected, onSelect }: {
     return (
         <Box onClick={() => onSelect(option.id)} sx={{
             cursor: 'pointer',
-            border: selected ? '2px solid #1e41da' : '2px solid transparent',
-            outline: selected ? '1px solid #1e41da' : '1px solid #E0E4EF',
+            border: selected ? '2px solid #3B5BDB' : '2px solid transparent',
+            outline: selected ? '1px solid #3B5BDB' : '1px solid #E0E4EF',
             backgroundColor: selected ? '#EEF2FF' : 'white',
             borderRadius: '14px', p: 2.5,
             display: 'flex', flexDirection: 'column', alignItems: 'center',
             textAlign: 'center', gap: 1,
             transition: 'all 0.2s',
-            boxShadow: selected ? '0 0 0 3px rgba(30,65,218,0.12)' : '0px 2px 8px rgba(0,0,0,0.06)',
-            '&:hover': { borderColor: '#1e41da', boxShadow: '0px 4px 16px rgba(30,65,218,0.15)' },
+            boxShadow: selected ? '0 0 0 3px rgba(59,91,219,0.12)' : '0px 2px 8px rgba(0,0,0,0.06)',
+            '&:hover': { borderColor: '#3B5BDB', boxShadow: '0px 4px 16px rgba(59,91,219,0.15)' },
         }}>
             <Box sx={{
                 width: 52, height: 52, borderRadius: '50%',
-                backgroundColor: selected ? '#1e41da' : '#F0F2FF',
+                backgroundColor: selected ? '#3B5BDB' : '#F0F2FF',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 transition: 'background-color 0.2s',
             }}>
-                <Icon sx={{ color: selected ? 'white' : '#1e41da', fontSize: 26 }} />
+                <Icon sx={{ color: selected ? 'white' : '#3B5BDB', fontSize: 26 }} />
             </Box>
-            <Typography variant="subtitle2" fontWeight={700} sx={{ color: selected ? '#1e41da' : '#0f1724', lineHeight: 1.3 }}>
+            <Typography variant="subtitle2" fontWeight={700} sx={{ color: selected ? '#3B5BDB' : '#0f1724', lineHeight: 1.3 }}>
                 {option.label}
             </Typography>
             {option.description && (
@@ -177,24 +177,24 @@ function FeatureCard({ option, selected, onToggle }: {
     return (
         <Box onClick={() => onToggle(option.id)} sx={{
             cursor: 'pointer',
-            border: selected ? '2px solid #1e41da' : '1px solid #E0E4EF',
+            border: selected ? '2px solid #3B5BDB' : '1px solid #E0E4EF',
             backgroundColor: selected ? '#EEF2FF' : 'white',
             borderRadius: '10px', p: 2,
             display: 'flex', alignItems: 'flex-start', gap: 1.5,
             transition: 'all 0.2s',
-            '&:hover': { borderColor: '#1e41da' },
+            '&:hover': { borderColor: '#3B5BDB' },
         }}>
             <Box sx={{
                 width: 38, height: 38, flexShrink: 0,
                 borderRadius: '8px',
-                backgroundColor: selected ? '#1e41da' : '#F0F2FF',
+                backgroundColor: selected ? '#3B5BDB' : '#F0F2FF',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 transition: 'background-color 0.2s',
             }}>
-                <Icon sx={{ color: selected ? 'white' : '#1e41da', fontSize: 20 }} />
+                <Icon sx={{ color: selected ? 'white' : '#3B5BDB', fontSize: 20 }} />
             </Box>
             <Box sx={{ flex: 1 }}>
-                <Typography variant="body2" fontWeight={600} sx={{ color: selected ? '#1e41da' : '#0f1724', lineHeight: 1.3 }}>
+                <Typography variant="body2" fontWeight={600} sx={{ color: selected ? '#3B5BDB' : '#0f1724', lineHeight: 1.3 }}>
                     {option.label}
                 </Typography>
                 {option.description && (
@@ -203,7 +203,7 @@ function FeatureCard({ option, selected, onToggle }: {
                     </Typography>
                 )}
             </Box>
-            {selected && <CheckCircleIcon sx={{ color: '#1e41da', fontSize: 20, flexShrink: 0, mt: 0.25 }} />}
+            {selected && <CheckCircleIcon sx={{ color: '#3B5BDB', fontSize: 20, flexShrink: 0, mt: 0.25 }} />}
         </Box>
     );
 }
@@ -312,9 +312,12 @@ export default function ProjectBuilder() {
         setSubmitError('');
 
         try {
-            const res = await fetch('/api/leads', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API}/leads`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': process.env.NEXT_PUBLIC_LEADS_API_KEY ?? '',
+                },
                 body: JSON.stringify(buildBriefPayload()),
             });
 
@@ -339,9 +342,12 @@ export default function ProjectBuilder() {
 
         try {
             const payload = buildBriefPayload();
-            const res = await fetch('/api/leads', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API}/leads/project-brief`, {
                 method: 'PATCH',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': process.env.NEXT_PUBLIC_LEADS_API_KEY ?? '',
+                },
                 body: JSON.stringify({
                     email: payload.email,
                     projectBrief: payload.projectBrief,
@@ -366,7 +372,7 @@ export default function ProjectBuilder() {
         return (
             <section id="project-builder">
                 <Box sx={{ display: 'flex', justifyContent: 'center', py: 8 }}>
-                    <CircularProgress sx={{ color: '#1e41da' }} />
+                    <CircularProgress sx={{ color: '#3B5BDB' }} />
                 </Box>
             </section>
         );
@@ -415,7 +421,7 @@ export default function ProjectBuilder() {
                             sx={{
                                 textTransform: 'none', borderColor: '#D0D5E8', color: '#555',
                                 borderRadius: '8px', px: 3,
-                                '&:hover': { borderColor: '#1e41da', color: '#1e41da' },
+                                '&:hover': { borderColor: '#3B5BDB', color: '#3B5BDB' },
                             }}
                         >
                             Go back
@@ -428,10 +434,10 @@ export default function ProjectBuilder() {
                                 ? <CircularProgress size={16} sx={{ color: 'white' }} />
                                 : <ArrowForwardIcon />}
                             sx={{
-                                backgroundColor: '#1e41da', color: 'white',
+                                backgroundColor: '#3B5BDB', color: 'white',
                                 textTransform: 'none', fontWeight: 700,
                                 borderRadius: '8px', px: 3,
-                                '&:hover': { backgroundColor: '#1633b8' },
+                                '&:hover': { backgroundColor: '#2d4ac7' },
                                 '&.Mui-disabled': { backgroundColor: '#C5D0F5', color: 'white' },
                             }}
                         >
@@ -453,7 +459,7 @@ export default function ProjectBuilder() {
                     boxShadow: '0px 4px 20px rgba(0,0,0,0.08)',
                     maxWidth: 560, mx: 'auto',
                 }}>
-                    <TaskAltIcon sx={{ fontSize: 64, color: '#1e41da', mb: 2 }} />
+                    <TaskAltIcon sx={{ fontSize: 64, color: '#3B5BDB', mb: 2 }} />
                     <Typography variant="h5" fontWeight={800} sx={{ color: '#0f1724', mb: 1.5 }}>
                         Got it, {form.name.split(' ')[0]}!
                     </Typography>
@@ -465,10 +471,10 @@ export default function ProjectBuilder() {
                         variant="contained" href="#cases" component="a"
                         endIcon={<ArrowForwardIcon />}
                         sx={{
-                            backgroundColor: '#1e41da', color: 'white',
+                            backgroundColor: '#3B5BDB', color: 'white',
                             textTransform: 'none', fontWeight: 600,
                             borderRadius: '8px', px: 3, py: 1.25,
-                            '&:hover': { backgroundColor: '#1633b8' },
+                            '&:hover': { backgroundColor: '#2d4ac7' },
                         }}
                     >
                         See recent work
@@ -560,14 +566,14 @@ export default function ProjectBuilder() {
                                                     key={opt.id} label={opt.label}
                                                     onClick={() => handleGroupSelect(groupId, opt.id)}
                                                     sx={{
-                                                        borderColor: sel ? '#1e41da' : '#D0D5E8',
+                                                        borderColor: sel ? '#3B5BDB' : '#D0D5E8',
                                                         border: '1.5px solid',
-                                                        backgroundColor: sel ? '#1e41da' : 'white',
+                                                        backgroundColor: sel ? '#3B5BDB' : 'white',
                                                         color: sel ? 'white' : '#333',
                                                         fontWeight: sel ? 600 : 400,
                                                         fontSize: '0.85rem',
                                                         height: 38,
-                                                        '&:hover': { borderColor: '#1e41da', backgroundColor: sel ? '#1633b8' : '#EEF2FF' },
+                                                        '&:hover': { borderColor: '#3B5BDB', backgroundColor: sel ? '#2d4ac7' : '#EEF2FF' },
                                                         transition: 'all 0.2s',
                                                     }}
                                                 />
@@ -642,7 +648,7 @@ export default function ProjectBuilder() {
                     onClick={() => setActiveStep(s => s - 1)}
                     disabled={activeStep === 0}
                     startIcon={<ArrowBackIcon />}
-                    sx={{ textTransform: 'none', color: '#555', '&:hover': { color: '#1e41da' } }}
+                    sx={{ textTransform: 'none', color: '#555', '&:hover': { color: '#3B5BDB' } }}
                 >
                     Back
                 </Button>
@@ -654,10 +660,10 @@ export default function ProjectBuilder() {
                         disabled={!canProceed()}
                         endIcon={<ArrowForwardIcon />}
                         sx={{
-                            backgroundColor: '#1e41da', color: 'white',
+                            backgroundColor: '#3B5BDB', color: 'white',
                             textTransform: 'none', fontWeight: 600,
                             borderRadius: '8px', px: 3, py: 1.25,
-                            '&:hover': { backgroundColor: '#1633b8' },
+                            '&:hover': { backgroundColor: '#2d4ac7' },
                             '&.Mui-disabled': { backgroundColor: '#C5D0F5', color: 'white' },
                         }}
                     >
@@ -673,8 +679,8 @@ export default function ProjectBuilder() {
                             backgroundColor: '#F97316', color: 'white',
                             textTransform: 'none', fontWeight: 700,
                             borderRadius: '8px', px: 3, py: 1.25,
-                            '&:hover': { backgroundColor: '#e86206' },
-                            '&.Mui-disabled': { backgroundColor: '#FFCCBC', color: 'white' },
+                            '&:hover': { backgroundColor: '#e0620a' },
+                            '&.Mui-disabled': { backgroundColor: '#f5c6a0', color: 'white' },
                         }}
                     >
                         {submitting ? 'Sending…' : 'Submit My Project'}

@@ -130,7 +130,7 @@ export default function AboutPage() {
                 itemScope
                 itemType="https://schema.org/OrganizationRole"
                 sx={{
-                  borderLeft: '3px solid #1e41da',
+                  borderLeft: '3px solid #3B5BDB',
                   pl: 3,
                 }}
               >
@@ -150,7 +150,7 @@ export default function AboutPage() {
                 </Typography>
                 <Typography
                   variant="body2"
-                  sx={{ color: '#1e41da', fontWeight: 600, mb: 1 }}
+                  sx={{ color: '#3B5BDB', fontWeight: 600, mb: 1 }}
                 >
                   {item.company}
                 </Typography>
@@ -189,7 +189,7 @@ export default function AboutPage() {
                 >
                   <Typography
                     variant="subtitle2"
-                    sx={{ color: '#1e41da', fontWeight: 700, mb: 1.5, letterSpacing: 1, textTransform: 'uppercase' }}
+                    sx={{ color: '#3B5BDB', fontWeight: 700, mb: 1.5, letterSpacing: 1, textTransform: 'uppercase' }}
                   >
                     {group.category}
                   </Typography>
@@ -235,7 +235,7 @@ export default function AboutPage() {
           </Typography>
           <Typography variant="body1" sx={{ color: '#444', lineHeight: 1.8 }}>
             Available for project-based engagements, ongoing contracts, and technical consulting.{' '}
-            <Link href="/#contact" style={{ color: '#1e41da', fontWeight: 600 }}>
+            <Link href="/#contact" style={{ color: '#3B5BDB', fontWeight: 600 }}>
               Get in touch
             </Link>{' '}
             to discuss your project.

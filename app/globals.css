@@ -26,48 +26,45 @@ main {
   justify-content: center;
   align-items: center;
   height: 6rem;
-  background-color: #1e41da;
-  color: #fff;
+  background-color: #0d1526;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.65);
 }
 
 .footer-link {
-  color: inherit; /* Inherit color from footer */
-  transition: text-decoration 0.3s ease;
+  color: inherit;
+  transition: color 0.2s;
   text-decoration: none;
 }
 
 .footer-link:hover {
-  color: inherit;
-  text-decoration: underline;
+  color: #fff;
+  text-decoration: none;
 }
 
 /* Ensure main content has padding to prevent it from being hidden behind the fixed footer */
 .containerPage {
-  padding-bottom: 70px !important; /* Slightly more than the footer height to ensure content is visible */
+  padding-bottom: 70px !important;
 }
 
 .titlePage {
   margin-top: 0;
   margin-bottom: 1.4rem;
-  font-weight: bold;
+  font-weight: 800;
   text-align: center;
   font-size: 28px;
-    color: #1e41da;
+  color: #1e293b;
+  letter-spacing: -0.02em;
 }
 
-
 .mainFuturePostContent {
-  /*color: #504f4f;*/
-  /*display: flex;*/
   color: #F97316;
   position: relative;
   padding: 2rem;
   font-weight: 800;
-  /*text-shadow: 1px 1px 1px black, 0 0 1em #101010;*/
   margin-top: 5rem;
   text-align: right;
-  /*justify-content: flex-end;*/
-  z-index: 2; /* Ensure content is above the overlay */
+  z-index: 2;
 }
 
 .overlay {
@@ -76,7 +73,6 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-/*  background-color: rgba(0, 0, 0, 0.15); !* Semi-transparent black - lightened further *!*/
   z-index: 1;
 }
 
@@ -92,22 +88,22 @@ main {
   object-fit: cover;
 }
 
-/* ── Services FAQ: native <details>/<summary> with no JS ─────────────────── */
+/* ── Services FAQ ─────────────────────────────────────────────────────────── */
 .services-faq-item {
-  background-color: #f7f9ff;
+  background-color: #f8fafc;
   border-radius: 10px;
-  border: 1px solid #e0e4ef;
+  border: 1px solid #e2e8f0;
   overflow: hidden;
   transition: border-color 0.2s;
 }
 .services-faq-item[open] {
-  border-color: #1e41da;
+  border-color: #3B5BDB;
 }
 .services-faq-summary {
   cursor: pointer;
   font-weight: 700;
   font-size: 1rem;
-  color: #0f1724;
+  color: #1e293b;
   padding: 1rem 1.25rem;
   list-style: none;
   display: flex;
@@ -121,7 +117,7 @@ main {
 .services-faq-summary::marker              { display: none; }
 .services-faq-summary::after {
   content: '+';
-  color: #1e41da;
+  color: #3B5BDB;
   font-weight: 800;
   font-size: 1.4rem;
   flex-shrink: 0;
@@ -131,9 +127,9 @@ details[open] > .services-faq-summary::after { content: '−'; }
 .services-faq-answer {
   padding: 0 1.25rem 1rem;
   font-size: 0.95rem;
-  color: #444;
+  color: #475569;
   line-height: 1.7;
-  border-top: 1px solid #e0e4ef;
+  border-top: 1px solid #e2e8f0;
   margin-top: 0;
 }
 
