@@ -7,7 +7,7 @@ const organizationSchema = {
   "name": "IT CODER",
   "url": BASE,
   "description":
-    "Custom web apps, REST APIs, mobile apps, and automation — designed and built for your business. Based in Calgary, AB.",
+    "Custom web apps, REST APIs, mobile apps, IoT devices, and embedded firmware — designed and built for your business. Based in Calgary, AB.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Calgary",
@@ -21,7 +21,7 @@ const organizationSchema = {
     "email": "support@itcoder.ca",
     "availableLanguage": ["English"],
   },
-  "sameAs": ["https://www.facebook.com/61575213251739"],
+  "sameAs": ["https://www.facebook.com/profile.php?id=61575213251739"],
   "priceRange": "$$",
   "areaServed": {
     "@type": "Country",
@@ -35,7 +35,7 @@ const websiteSchema = {
   "@id": `${BASE}/#website`,
   "url": BASE,
   "name": "IT CODER",
-  "description": "Custom Web & Software Development in Calgary, Canada",
+  "description": "Custom Web, IoT & Software Development in Calgary, Canada",
   "publisher": {
     "@id": `${BASE}/#organization`,
   },
@@ -93,6 +93,20 @@ const servicesSchema = {
       "position": 4,
       "item": {
         "@type": "Service",
+        "name": "IoT Device & Embedded Firmware Development",
+        "description":
+          "End-to-end IoT development: custom PCB design, embedded firmware (C/C++), LoRa/RF protocols, and cloud integration.",
+        "provider": { "@id": `${BASE}/#organization` },
+        "areaServed": { "@type": "Country", "name": "Canada" },
+        "serviceType": "IoT Development",
+        "url": `${BASE}/#services`,
+      },
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Service",
         "name": "Database Development",
         "description":
           "Stable and secure databases for quick search, accurate accounting, and automation.",
@@ -104,7 +118,7 @@ const servicesSchema = {
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 6,
       "item": {
         "@type": "Service",
         "name": "Project Builder — Online Project Configurator",
@@ -114,6 +128,43 @@ const servicesSchema = {
         "areaServed": { "@type": "Country", "name": "Canada" },
         "serviceType": "IT Consulting",
         "url": `${BASE}/#project-builder`,
+      },
+    },
+  ],
+};
+
+const portfolioSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "IT CODER — Products Portfolio",
+  "description": "Real products designed and built by IT CODER from concept to production",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "WildLink",
+        "description": "LoRa-based mesh tracking device and platform for hikers and families in the Canadian Rockies. Works without cell coverage — real-time group location sharing over a proprietary radio mesh network. Includes custom PCB design, embedded firmware, consumer landing page, and Angular CRM dashboard.",
+        "url": "https://www.wildlink.ca/",
+        "applicationCategory": "NavigationApplication",
+        "operatingSystem": "Web, Embedded",
+        "author": { "@id": `${BASE}/#organization` },
+        "offers": { "@type": "Offer", "availability": "https://schema.org/InStock" },
+      },
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "SoloBook",
+        "description": "T2125 bookkeeping and invoicing SaaS for Canadian self-employed contractors. Automatically categorizes expenses by CRA T2125 fields, generates professional invoices, and produces tax-ready annual reports. Multilingual: EN, FR, UK, RU.",
+        "url": "https://www.solobook.ca/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "author": { "@id": `${BASE}/#organization` },
+        "offers": { "@type": "Offer", "availability": "https://schema.org/InStock" },
       },
     },
   ],
@@ -134,6 +185,10 @@ export default function SchemaOrg() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioSchema) }}
       />
     </>
   );

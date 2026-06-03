@@ -6,7 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: 'https://www.itcoder.ca',
-      lastModified: new Date('2025-05-01'),
+      lastModified: new Date('2026-06-03'),
       changeFrequency: 'monthly',
       priority: 1,
     },
@@ -20,6 +20,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: 'https://www.itcoder.ca/services',
       lastModified: new Date('2025-05-01'),
       changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://www.itcoder.ca/projects',
+      lastModified: new Date('2026-06-03'),
+      changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
