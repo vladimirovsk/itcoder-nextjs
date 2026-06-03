@@ -1,16 +1,48 @@
 import { Box, Grid, Typography } from '@mui/material';
 import testimonials from './testimonials.json';
 
+const reviewsSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Client Reviews — IT CODER",
+  "itemListElement": testimonials.map((t, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "Review",
+      "reviewBody": t.text,
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": t.rating,
+        "bestRating": 5,
+        "worstRating": 1,
+      },
+      "author": {
+        "@type": "Person",
+        "name": t.name,
+      },
+      "itemReviewed": {
+        "@type": "ProfessionalService",
+        "@id": "https://www.itcoder.ca/#organization",
+        "name": "IT CODER",
+        "url": "https://www.itcoder.ca",
+      },
+    },
+  })),
+};
+
 export default function Testimonials() {
     return (
         <section id="testimonials" className="containerPage">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsSchema) }}
+            />
             <h2 className="titlePage">What Clients Say</h2>
             <Grid container spacing={3}>
                 {testimonials.map((t, i) => (
                     <Grid key={i} size={{ xs: 12, md: 4 }}>
                         <Box
-                            itemScope
-                            itemType="https://schema.org/Review"
                             sx={{
                                 backgroundColor: 'white',
                                 borderRadius: '14px',
@@ -30,14 +62,13 @@ export default function Testimonials() {
                                 ))}
                             </Box>
                             <Typography
-                                itemProp="reviewBody"
                                 variant="body1"
                                 sx={{ color: '#444', lineHeight: 1.75, flexGrow: 1, mb: 2.5 }}
                             >
                                 &ldquo;{t.text}&rdquo;
                             </Typography>
                             <Box>
-                                <Typography itemProp="author" variant="subtitle2" sx={{ fontWeight: 700, color: '#0f1724' }}>
+                                <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#0f1724' }}>
                                     {t.name}
                                 </Typography>
                                 <Typography variant="caption" sx={{ color: '#64748b' }}>
