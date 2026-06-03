@@ -8,9 +8,11 @@ import { Container } from '@mui/material';
 import Services from '@/app/(site)/services/page';
 import Advantages from '@/app/(site)/advantages/page';
 import Skills from '@/app/(site)/skills/page';
+import Projects from '@/app/(site)/projects/page';
 import Cases from '@/app/(site)/cases/page';
 import Contact from '@/app/(site)/contact/page';
 import ProjectBuilder from '@/app/(site)/project-builder/page';
+import Testimonials from '@/app/components/Testimonials';
 import SectionSkeleton from '@/app/components/SectionSkeleton';
 
 export default function Home() {
@@ -30,6 +32,8 @@ export default function Home() {
                 <Skills />
             </Suspense>
 
+            <Projects />
+
             <Suspense fallback={<SectionSkeleton cols={3} cardHeight={320} />}>
                 <ProjectBuilder />
             </Suspense>
@@ -37,6 +41,8 @@ export default function Home() {
             <Suspense fallback={<SectionSkeleton cols={3} cardHeight={240} />}>
                 <Cases />
             </Suspense>
+
+            <Testimonials />
 
             <Suspense fallback={<SectionSkeleton cols={2} cardHeight={300} withTitle={false} />}>
                 <Contact />

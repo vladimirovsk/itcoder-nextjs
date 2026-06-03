@@ -173,7 +173,7 @@ export default function Contact() {
 					</div>
 					<div style={{fontSize: '1rem', marginTop: '2rem', alignSelf: 'flex-start', width: '100%'}}>
 						<Link
-							href="https://www.facebook.com/61575213251739"
+							href="https://www.facebook.com/profile.php?id=61575213251739"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="footer-link"

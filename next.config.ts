@@ -8,13 +8,31 @@ const nextConfig: NextConfig = {
 	},
 	images: {
 		unoptimized: true,
-		domains: [], // Add domains for external images if needed
+		domains: [],
 		remotePatterns: [
 			{
 				protocol: 'https',
 				hostname: '**',
 			},
 		],
+	},
+	async redirects() {
+		return [
+			// Redirect all it-coder.com traffic to the canonical www.itcoder.ca domain.
+			// This prevents duplicate content penalties and consolidates SEO value.
+			{
+				source: '/:path*',
+				has: [{ type: 'host', value: 'it-coder.com' }],
+				destination: 'https://www.itcoder.ca/:path*',
+				permanent: true, // 301
+			},
+			{
+				source: '/:path*',
+				has: [{ type: 'host', value: 'www.it-coder.com' }],
+				destination: 'https://www.itcoder.ca/:path*',
+				permanent: true, // 301
+			},
+		];
 	},
 };
 

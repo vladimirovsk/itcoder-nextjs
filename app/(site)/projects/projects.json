@@ -1,0 +1,45 @@
+[
+  {
+    "name": "WildLink",
+    "tagline": "Offline mesh tracking for the Canadian Rockies",
+    "description": "LoRa-based mesh tracking device and platform for hikers and families in the Canadian Rockies. Works without cell coverage or monthly fees — real-time group location sharing over a proprietary radio mesh network. The project spans hardware (custom PCB, embedded firmware) and software (consumer landing page + admin CRM dashboard).",
+    "categories": ["IoT", "Hardware", "Web App", "CRM"],
+    "accentColor": "#FF5C00",
+    "brandBg": "#0F1F16",
+    "status": "Live",
+    "statusLive": true,
+    "features": [
+      "Custom PCB design & embedded LoRa firmware",
+      "Mesh network — no cell service or internet required",
+      "Real-time map tracking with Angular CRM dashboard",
+      "Consumer landing page with waitlist (Next.js)"
+    ],
+    "tech": ["Next.js", "Angular", "TypeScript", "LoRa Protocol", "PCB Design", "Socket.io", "Leaflet"],
+    "links": [
+      { "label": "Visit Website", "url": "https://www.wildlink.ca/", "primary": true },
+      { "label": "Open CRM", "url": "https://app.wildlink.ca/auth/login", "primary": false }
+    ],
+    "currentWork": "Optimizing LoRa packet routing and expanding mesh range for multi-device groups"
+  },
+  {
+    "name": "SoloBook",
+    "tagline": "T2125 bookkeeping SaaS for Canadian freelancers",
+    "description": "Expense tracking and invoicing platform built specifically for Canadian self-employed contractors. Automatically categorizes expenses by CRA T2125 fields, generates professional invoices, and produces tax-ready annual reports — removing the guesswork from sole-proprietor tax filing.",
+    "categories": ["SaaS", "FinTech", "Web App"],
+    "accentColor": "#008080",
+    "brandBg": "#004d4d",
+    "status": "Live",
+    "statusLive": true,
+    "features": [
+      "CRA T2125 expense categories built-in",
+      "Invoice generation & payment tracking",
+      "Tax-ready annual reports for self-employed",
+      "Multilingual interface: EN · FR · UK · RU"
+    ],
+    "tech": ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "i18n"],
+    "links": [
+      { "label": "Visit Website", "url": "https://www.solobook.ca/", "primary": true }
+    ],
+    "currentWork": "Building the invoice module with PDF export and automated payment reminders"
+  }
+]

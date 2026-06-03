@@ -1,3 +1,4 @@
+export { metadata } from './metadata';
 import advantages from './advantages.json';
 import {IAdvantages} from '@/app/(site)/advantages/interfaces';
 import {Box, Card, CardContent, CardHeader} from '@mui/material';

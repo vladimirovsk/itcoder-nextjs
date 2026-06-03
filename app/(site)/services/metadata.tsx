@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "IT CODER Services - Professional Web Development & IT Solutions",
-  description: "Explore IT CODER's comprehensive web development services including API development, database management, server administration, and custom web applications for businesses of all sizes.",
-  keywords: "IT CODER services, web development services, API development, database management, server administration, custom web applications, IT solutions",
+  title: "Web Development Services in Calgary — IT CODER",
+  description: "Hire a freelance web developer in Calgary for REST API development, custom web apps, mobile applications, and server setup. Transparent pricing starting at $500. Serving businesses across Alberta and Canada.",
+  keywords: "hire web developer Calgary, web development services Alberta, REST API development Canada, custom web app Calgary, server setup Canada, mobile app developer Alberta, freelance IT developer Calgary, database development, NestJS developer for hire, Next.js developer Calgary",
   openGraph: {
-    title: "IT CODER Services - Professional Web Development & IT Solutions",
-    description: "Explore IT CODER's comprehensive web development services including API development, database management, server administration, and custom web applications for businesses of all sizes.",
-    url: "https://itcoder.ca/services",
+    title: "Web Development Services in Calgary — IT CODER",
+    description: "Hire a freelance web developer in Calgary for REST APIs, custom web apps, and mobile applications. Starting at $500. Serving Alberta and Canada.",
+    url: "https://www.itcoder.ca/services",
     siteName: "IT CODER",
-    locale: "en_US",
+    locale: "en_CA",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "IT CODER Services - Professional Web Development & IT Solutions",
-    description: "Explore IT CODER's comprehensive web development services including API development, database management, and custom web applications.",
+    title: "Web Development Services in Calgary — IT CODER",
+    description: "Hire a freelance web developer in Calgary for REST APIs, custom web apps, and mobile applications. Starting at $500.",
   },
   robots: {
     index: true,
@@ -26,6 +26,6 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://itcoder.ca/services",
+    canonical: "https://www.itcoder.ca/services",
   },
 };

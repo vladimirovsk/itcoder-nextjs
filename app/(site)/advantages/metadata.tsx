@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "IT CODER Advantages - Why Choose Our Web Development Services",
-  description: "Discover the advantages of working with IT CODER for your web development needs. Our expertise, efficiency, and client-focused approach ensure successful project delivery and exceptional results.",
-  keywords: "IT CODER advantages, web development benefits, custom software advantages, IT consulting benefits, professional web services",
+  title: "Why Hire IT CODER — Freelance Web Developer Calgary",
+  description: "Why hire IT CODER? Transparent pricing, on-time delivery, and direct communication with the developer — no account managers, no middlemen. Based in Calgary, AB, serving all of Canada.",
+  keywords: "why hire IT CODER, freelance developer advantages Calgary, web development benefits Alberta, transparent pricing developer Canada, reliable web developer Calgary, direct developer communication",
   openGraph: {
-    title: "IT CODER Advantages - Why Choose Our Web Development Services",
-    description: "Discover the advantages of working with IT CODER for your web development needs. Our expertise, efficiency, and client-focused approach ensure successful project delivery and exceptional results.",
-    url: "https://itcoder.ca/advantages",
+    title: "Why Hire IT CODER — Freelance Web Developer Calgary",
+    description: "Transparent pricing, on-time delivery, and direct communication. No middlemen — you work directly with the developer. Based in Calgary, AB.",
+    url: "https://www.itcoder.ca/advantages",
     siteName: "IT CODER",
-    locale: "en_US",
+    locale: "en_CA",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "IT CODER Advantages - Why Choose Our Web Development Services",
-    description: "Discover the advantages of working with IT CODER for your web development needs. Our expertise ensures exceptional results.",
+    title: "Why Hire IT CODER — Freelance Web Developer Calgary",
+    description: "Transparent pricing, on-time delivery, direct communication. No middlemen. Based in Calgary, AB.",
   },
   robots: {
     index: true,
@@ -26,6 +26,6 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://itcoder.ca/advantages",
+    canonical: "https://www.itcoder.ca/advantages",
   },
 };

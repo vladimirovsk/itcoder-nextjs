@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Alex T.",
+    "company": "Calgary Tech Startup",
+    "role": "Founder",
+    "text": "Delivered our full MVP in 6 weeks — backend API, web dashboard, and mobile app. Clear communication, on-time delivery, no surprises.",
+    "rating": 5
+  },
+  {
+    "name": "Maria S.",
+    "company": "Alberta Retail Group",
+    "role": "Operations Manager",
+    "text": "We needed a custom inventory system integrated with our existing tools. The result was exactly what we described, at a very fair price.",
+    "rating": 5
+  },
+  {
+    "name": "David K.",
+    "company": "Vancouver SaaS Co.",
+    "role": "CTO",
+    "text": "Hired for REST API development and server setup. Professional work, solid documentation, and always available for follow-up after delivery.",
+    "rating": 5
+  }
+]

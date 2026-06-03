@@ -1,3 +1,4 @@
+export { metadata } from './metadata';
 import { IService } from '@/app/(site)/services/interfaces';
 import services from '@/app/(site)/services/services.json';
 import { Box, Card, CardContent, CardHeader, Typography } from '@mui/material';
