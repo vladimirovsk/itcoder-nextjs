@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact IT CODER - Get in Touch for Web Development Solutions in Calgary, Alberta",
-  description: "Contact IT CODER for professional web development services in Calgary, Alberta, Canada. Reach out via phone, email, or our contact form for inquiries about custom software solutions, web applications, and IT consulting.",
-  keywords: "contact IT CODER, web development Calgary, software development Alberta, IT consulting Canada, custom web solutions Calgary Alberta, web developer Calgary",
+  title: "Hire a Web Developer in Calgary — Contact IT CODER",
+  description: "Looking to hire a freelance web developer in Calgary, Alberta? Contact IT CODER via phone, email, or the project form. Custom web apps and REST APIs starting at $500. Response within 24 hours.",
+  keywords: "hire web developer Calgary, contact IT developer Alberta, freelance developer Canada, find a coder Calgary, web development inquiry Alberta, custom software developer Calgary, IT consultant contact Canada",
   openGraph: {
-    title: "Contact IT CODER - Get in Touch for Web Development Solutions in Calgary, Alberta",
-    description: "Contact IT CODER for professional web development services in Calgary, Alberta, Canada. Reach out via phone, email, or our contact form for inquiries about custom software solutions, web applications, and IT consulting.",
-    url: "https://itcoder.ca/contact",
+    title: "Hire a Web Developer in Calgary — Contact IT CODER",
+    description: "Looking to hire a freelance web developer in Calgary, Alberta? Contact IT CODER. Custom web apps starting at $500. Response within 24 hours.",
+    url: "https://www.itcoder.ca/contact",
     siteName: "IT CODER",
-    locale: "en_US",
+    locale: "en_CA",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact IT CODER - Get in Touch for Web Development Solutions in Calgary, Alberta",
-    description: "Contact IT CODER for professional web development services in Calgary, Alberta, Canada. Reach out via phone, email, or our contact form for inquiries.",
+    title: "Hire a Web Developer in Calgary — Contact IT CODER",
+    description: "Looking to hire a freelance web developer in Calgary, Alberta? Contact IT CODER. Starting at $500. Response within 24h.",
   },
   robots: {
     index: true,
@@ -26,6 +26,6 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://itcoder.ca/contact",
+    canonical: "https://www.itcoder.ca/contact",
   },
 };

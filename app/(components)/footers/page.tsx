@@ -54,7 +54,7 @@ export default function Footer() {
 					</Grid>
 					<Grid>
 						<Link 
-							href="https://www.facebook.com/61575213251739" 
+							href="https://www.facebook.com/profile.php?id=61575213251739" 
 							target="_blank" 
 							rel="noopener noreferrer"
 							className="footer-link"

@@ -19,7 +19,7 @@ export default function Headers() {
 	const scrollTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the scroll timer
 	const resetTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the reset timer
 	// const navItems = useMemo(() => ['Services', 'Advantages', 'Skills', 'Cases', 'Contact'], []);
-	const navItems = useMemo(() => ['Services', 'Advantages', 'Skills', 'Project Builder', 'Contact'], []);
+	const navItems = useMemo(() => ['Services', 'Advantages', 'Skills', 'Projects', 'Project Builder', 'Contact'], []);
 
 	const fromSectionId = useCallback((id: string) =>
 		navItems.find(i => toSectionId(i) === id) ?? (id.charAt(0).toUpperCase() + id.slice(1)),
@@ -328,6 +328,25 @@ export default function Headers() {
 							paddingY: { xs: '6rem', md: '2rem' },
 							maxWidth: '48rem',
 						}}>
+							{/* Availability badge */}
+							<Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2.5, flexWrap: 'wrap' }}>
+								<Box sx={{
+									display: 'inline-flex', alignItems: 'center', gap: 0.75,
+									backgroundColor: 'rgba(74,222,128,0.12)',
+									border: '1px solid rgba(74,222,128,0.3)',
+									borderRadius: '100px',
+									px: 1.5, py: 0.5,
+								}}>
+									<Box sx={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#4ade80', flexShrink: 0 }} />
+									<Typography sx={{ color: '#4ade80', fontSize: '0.8rem', fontWeight: 600, lineHeight: 1 }}>
+										Available for hire
+									</Typography>
+								</Box>
+								<Typography sx={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.8rem' }}>
+									Calgary, AB, Canada
+								</Typography>
+							</Box>
+
 							<Typography variant="h3" component="h1" sx={{
 								fontWeight: 800,
 								color: '#ffffff',
@@ -343,7 +362,7 @@ export default function Headers() {
 								mb: 4,
 								lineHeight: 1.6,
 							}}>
-								Describe what you need in a few clicks. I&apos;ll handle the architecture, development, and launch.
+								Hire a freelance full-stack developer in Calgary. I&apos;ll handle the architecture, development, and launch.
 							</Typography>
 							<Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
 								<Button
@@ -383,6 +402,24 @@ export default function Headers() {
 								>
 									or contact directly
 								</Button>
+							</Box>
+
+							{/* Trust row */}
+							<Box sx={{ display: 'flex', alignItems: 'center', gap: 0, flexWrap: 'wrap', mt: 3 }}>
+								{[
+									'Starting at $500',
+									'Response within 24h',
+									'10+ years experience',
+								].map((item, i) => (
+									<React.Fragment key={item}>
+										{i > 0 && (
+											<Box sx={{ width: 3, height: 3, borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.25)', mx: 1.5, flexShrink: 0 }} />
+										)}
+										<Typography sx={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.82rem' }}>
+											{item}
+										</Typography>
+									</React.Fragment>
+								))}
 							</Box>
 						</Box>
 					</Box>

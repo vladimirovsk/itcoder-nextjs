@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.itcoder.ca'),
   title: {
-    default: "IT CODER — Web & Software Development in Calgary",
+    default: "IT CODER — Hire a Freelance Web Developer in Calgary, AB",
     template: "%s | IT CODER",
   },
-  description: "Custom web apps, REST APIs, mobile apps, and automation — designed and built from scratch for your business. Based in Calgary, AB. Get a detailed project plan within 24 hours.",
-  keywords: "web development Calgary, custom software development, REST API development, mobile app development, NestJS developer, Next.js developer, full-stack developer Calgary, IT consulting Alberta, project builder, software solutions Canada",
+  description: "Hire a freelance full-stack developer in Calgary, Alberta. Custom web apps, REST APIs, and mobile apps — built from scratch for your business. Starting at $500. Response within 24 hours.",
+  keywords: "hire web developer Calgary, freelance developer Calgary, find a coder Canada, web development Calgary Alberta, custom software development, REST API developer, full-stack developer for hire, IT consultant Calgary, mobile app developer Canada, NestJS developer, Next.js developer, web developer Alberta",
   openGraph: {
-    title: "IT CODER — Web & Software Development in Calgary",
-    description: "Custom web apps, REST APIs, mobile apps and automation — from idea to launch. Based in Calgary, AB. Use the Project Builder to describe your idea in 3 steps.",
+    title: "IT CODER — Hire a Freelance Web Developer in Calgary, AB",
+    description: "Hire a freelance full-stack developer in Calgary, AB. Custom web apps, REST APIs, mobile apps — from idea to launch. Starting at $500. Use the Project Builder to describe your project in 3 steps.",
     url: "https://www.itcoder.ca",
     siteName: "IT CODER",
     locale: "en_CA",
@@ -17,8 +18,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "IT CODER — Web & Software Development in Calgary",
-    description: "Custom web apps, REST APIs, mobile apps and automation — from idea to launch. Based in Calgary, AB.",
+    title: "IT CODER — Hire a Freelance Web Developer in Calgary, AB",
+    description: "Hire a freelance full-stack developer in Calgary, AB. Custom web apps, REST APIs and mobile apps. Starting at $500.",
   },
   robots: {
     index: true,
@@ -34,6 +35,4 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.itcoder.ca",
   },
-  // Add Google Search Console verification when available:
-  // verification: { google: "YOUR_VERIFICATION_CODE" },
 };

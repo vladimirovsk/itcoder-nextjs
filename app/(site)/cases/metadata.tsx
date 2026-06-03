@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "IT CODER Case Studies - Successful Web Development Projects",
-  description: "Explore IT CODER's portfolio of successful web development and software projects. View our case studies showcasing custom solutions, technical implementations, and client success stories.",
-  keywords: "IT CODER case studies, web development portfolio, software project examples, client success stories, custom solution implementations",
+  title: "Portfolio & Case Studies — IT CODER Web Developer Calgary",
+  description: "See real projects delivered by IT CODER — a freelance web developer based in Calgary, AB. REST APIs, web apps, mobile applications, and backend systems built for Canadian businesses.",
+  keywords: "web developer portfolio Calgary, IT CODER case studies, web development projects Canada, REST API examples Alberta, custom software portfolio, freelance developer work Calgary, mobile app examples Canada",
   openGraph: {
-    title: "IT CODER Case Studies - Successful Web Development Projects",
-    description: "Explore IT CODER's portfolio of successful web development and software projects. View our case studies showcasing custom solutions, technical implementations, and client success stories.",
-    url: "https://itcoder.ca/cases",
+    title: "Portfolio & Case Studies — IT CODER Web Developer Calgary",
+    description: "See real projects delivered by IT CODER — a freelance web developer in Calgary, AB. REST APIs, web apps, and mobile apps built for Canadian businesses.",
+    url: "https://www.itcoder.ca/cases",
     siteName: "IT CODER",
-    locale: "en_US",
+    locale: "en_CA",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "IT CODER Case Studies - Successful Web Development Projects",
-    description: "Explore IT CODER's portfolio of successful web development projects and client success stories.",
+    title: "Portfolio & Case Studies — IT CODER Web Developer Calgary",
+    description: "Real projects by a Calgary freelance web developer — REST APIs, web apps, and mobile apps for Canadian businesses.",
   },
   robots: {
     index: true,
@@ -26,6 +26,6 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://itcoder.ca/cases",
+    canonical: "https://www.itcoder.ca/cases",
   },
 };
