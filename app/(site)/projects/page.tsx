@@ -1,3 +1,4 @@
+export { metadata } from './metadata';
 import { IProject, IProjectLink } from './interfaces';
 import projects from './projects.json';
 import { Box, Card, Chip, Typography } from '@mui/material';
