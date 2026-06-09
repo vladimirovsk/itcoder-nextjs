@@ -1,15 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import Mailgun from 'mailgun.js';
-import FormData from 'form-data';
-
-function escapeHtml(str: string): string {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#x27;');
-}
 
 export async function POST(request: NextRequest) {
   try {
@@ -23,38 +12,37 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.MAILGUN_API_KEY;
-    const domain = process.env.MAILGUN_DOMAIN ?? 'itcoder.ca';
-    const sender = process.env.MAILGUN_SENDER ?? 'support@itcoder.ca';
+    const apiKey = process.env.BACKEND_LEADS_API_KEY;
+    const apiUrl = process.env.NEXT_PUBLIC_API ?? 'https://api-rest.it-coder.com/api/v1';
 
-    if (!apiKey) {
-      console.error('MAILGUN_API_KEY is not set');
-      return NextResponse.json({ error: 'Mail service not configured' }, { status: 500 });
-    }
-
-    const mailgun = new Mailgun(FormData);
-    const mailgunUrl = process.env.MAILGUN_URL;
-    const mg = mailgun.client({ username: 'api', key: apiKey, ...(mailgunUrl ? { url: mailgunUrl } : {}) });
-
-    await mg.messages.create(domain, {
-      from: `ITCoder Contact Form <${sender}>`,
-      to: ['admin@itcoder.ca'],
-      subject: `New Contact Form Submission from ${firstName} ${lastName}`,
-      text: `Name: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${escapeHtml(firstName)} ${escapeHtml(lastName)}</p>
-        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
-        <h3>Message:</h3>
-        <p>${escapeHtml(message)}</p>
-      `,
+    const response = await fetch(`${apiUrl}/leads`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey ?? '',
+      },
+      body: JSON.stringify({
+        name: `${firstName} ${lastName}`,
+        email,
+        phone: phone || undefined,
+        note: message,
+        source: 'itcoder-contact',
+      }),
     });
+
+    if (!response.ok) {
+      const detail = await response.text();
+      console.error('Backend lead error:', response.status, detail);
+      return NextResponse.json(
+        { error: 'Failed to send email', detail },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-    console.error('Error sending email:', error);
+    console.error('Error submitting lead:', error);
     return NextResponse.json(
       { error: 'Failed to send email', detail: message },
       { status: 500 }
