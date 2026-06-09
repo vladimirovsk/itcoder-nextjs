@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import Mailgun from 'mailgun.js';
+import FormData from 'form-data';
 
 function escapeHtml(str: string): string {
   return str
@@ -12,10 +13,9 @@ function escapeHtml(str: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    // Parse the request body
     const body = await request.json();
     const { firstName, lastName, email, phone, message } = body;
-    // Validate required fields
+
     if (!firstName || !lastName || !email || !message) {
       return NextResponse.json(
         { error: 'Missing required fields' },
@@ -23,31 +23,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create a transporter with smtp2go SMTP settings
-    const port = parseInt(process.env.EMAIL_PORT || '465');
-    const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST || 'mail.smtp2go.com',
-      port,
-      secure: port === 465, // SSL for 465, STARTTLS for 587
-      auth: {
-        user: process.env.EMAIL_USER || 'admin@itcoder.ca',
-        pass: process.env.EMAIL_PASSWORD || '',
-      },
-    });
+    const apiKey = process.env.MAILGUN_API_KEY;
+    const domain = process.env.MAILGUN_DOMAIN ?? 'itcoder.ca';
+    const sender = process.env.MAILGUN_SENDER ?? 'support@itcoder.ca';
 
-    // Email content
-    const mailOptions = {
-      from: `"ITCoder Contact Form" <${process.env.EMAIL_USER || 'admin@itcoder.ca'}>`,
-      to: 'admin@itcoder.ca',
+    if (!apiKey) {
+      console.error('MAILGUN_API_KEY is not set');
+      return NextResponse.json({ error: 'Mail service not configured' }, { status: 500 });
+    }
+
+    const mailgun = new Mailgun(FormData);
+    const mg = mailgun.client({ username: 'api', key: apiKey });
+
+    await mg.messages.create(domain, {
+      from: `ITCoder Contact Form <${sender}>`,
+      to: ['admin@itcoder.ca'],
       subject: `New Contact Form Submission from ${firstName} ${lastName}`,
-      text: `
-        Name: ${firstName} ${lastName}
-        Email: ${email}
-        Phone: ${phone}
-
-        Message:
-        ${message}
-      `,
+      text: `Name: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${escapeHtml(firstName)} ${escapeHtml(lastName)}</p>
@@ -56,12 +48,8 @@ export async function POST(request: NextRequest) {
         <h3>Message:</h3>
         <p>${escapeHtml(message)}</p>
       `,
-    };
+    });
 
-    // Send the email
-    await transporter.sendMail(mailOptions);
-
-    // Return success response
     return NextResponse.json({ success: true });
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
