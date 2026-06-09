@@ -33,7 +33,8 @@ export async function POST(request: NextRequest) {
     }
 
     const mailgun = new Mailgun(FormData);
-    const mg = mailgun.client({ username: 'api', key: apiKey });
+    const mailgunUrl = process.env.MAILGUN_URL;
+    const mg = mailgun.client({ username: 'api', key: apiKey, ...(mailgunUrl ? { url: mailgunUrl } : {}) });
 
     await mg.messages.create(domain, {
       from: `ITCoder Contact Form <${sender}>`,
