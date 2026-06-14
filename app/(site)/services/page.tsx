@@ -88,7 +88,48 @@ export default function Services() {
 				})}
 			</Box>
 
-			<ServicesFAQ />
+			{/* Portal CTA */}
+		<Box component="a" href="https://portal.it-coder.com" target="_blank" rel="noopener noreferrer" sx={{
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'space-between',
+			mt: 4,
+			px: { xs: 2.5, sm: 4 },
+			py: 2.5,
+			borderRadius: '14px',
+			background: 'linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%)',
+			textDecoration: 'none',
+			cursor: 'pointer',
+			transition: 'transform 0.2s, box-shadow 0.2s',
+			boxShadow: '0 4px 20px rgba(2,132,199,0.25)',
+			'&:hover': {
+				transform: 'translateY(-2px)',
+				boxShadow: '0 8px 28px rgba(2,132,199,0.35)',
+			},
+		}}>
+			<Box>
+				<Box component="p" sx={{ m: 0, color: 'rgba(255,255,255,0.7)', fontSize: '0.8rem', mb: 0.25 }}>
+					Need a dedicated Windows server?
+				</Box>
+				<Box component="p" sx={{ m: 0, color: '#fff', fontWeight: 700, fontSize: { xs: '0.95rem', sm: '1.05rem' } }}>
+					Rent a ready-to-use RDP server — manage it from your personal portal
+				</Box>
+			</Box>
+			<Box sx={{
+				flexShrink: 0, ml: 2,
+				backgroundColor: '#fff',
+				color: '#0284c7',
+				fontWeight: 700,
+				fontSize: '0.85rem',
+				px: 2.5, py: 1,
+				borderRadius: '8px',
+				whiteSpace: 'nowrap',
+			}}>
+				Open Portal →
+			</Box>
+		</Box>
+
+		<ServicesFAQ />
 
 			<Box component="a" href="#project-builder" sx={{
 				display: 'flex',
