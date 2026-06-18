@@ -1,44 +1,44 @@
 [
   {
-    "title": "Websites from scratch",
-    "subheader": "Website development from scratch using new technologies and JavaScript and TypeScript frameworks, which allow us to create vibrant and unique websites.",
-    "hidden": false,
-    "image": "webPages"
-  },
-  {
-    "title": "Development of a cryptocurrency exchange",
-    "subheader": "Exchange development, migration to a new accounting system. Implementation of CI/CD for automatic code updates and production release. Execution of high-load algorithms.",
+    "title": "Crypto Exchange Backend",
+    "subheader": "NestJS microservices architecture for a cryptocurrency exchange. Real-time order matching, CI/CD pipeline, WebSocket price feeds and migration from monolith to microservices — zero downtime during production cutover.",
     "hidden": false,
     "image": "cryptoData"
   },
   {
-    "title": "Accepting payments for utility services",
-    "subheader": "The payment service is designed to accept payments from the public on behalf of utility companies and operates on the basis of a proprietary data exchange protocol. It allows for real-time synchronization of payments and recalculation of charges.",
+    "title": "AI-Powered Shift Matching",
+    "subheader": "Smart matching engine for a healthcare staffing platform with 150,000+ nurses. GCP Pub/Sub event pipeline, habit-tracking algorithm (EMA scoring), MongoDB geospatial queries — reduces manual scheduling from hours to seconds.",
+    "hidden": false,
+    "image": "blockchainBackend"
+  },
+  {
+    "title": "Blockchain & Web3 API",
+    "subheader": "Backend service for interacting with Ethereum and BSC nodes. Smart contract deployment, wallet management, transaction signing and real-time event listeners — integrated with existing NestJS infrastructure via REST and WebSocket.",
     "hidden": false,
     "image": "restApi"
   },
   {
-    "title": "Improving customer service quality",
-    "subheader": "Software for implementing prepaid payment functionality in bank branches and payment terminals. Allows operation on very weak communication channels. Transmits data in encrypted form upon receipt of payment.",
+    "title": "Utility Payment Processing",
+    "subheader": "Real-time payment processing system for utility companies. Proprietary data exchange protocol, instant charge recalculation, multi-tenant architecture serving multiple municipalities — handles peak load of thousands of transactions per hour.",
     "hidden": false,
     "image": "payTerminal"
   },
   {
-    "title": "Mobile application development",
-    "subheader": "Development of a mobile application in Flutter, which allows you to develop applications for multiple platforms simultaneously on a single code base.",
+    "title": "SaaS Bookkeeping Backend",
+    "subheader": "T2125 form automation for Canadian freelancers (SoloBook). NestJS REST API, CRA-compliant tax calculation engine, PDF report generation and Stripe subscription billing — built from zero to production in 6 weeks.",
+    "hidden": false,
+    "image": "webPages"
+  },
+  {
+    "title": "Bank Terminal Software",
+    "subheader": "Payment acceptance system deployed across bank branches and self-service terminals. Works on low-bandwidth connections, AES-encrypted data transmission and real-time sync with core banking — processing prepaid payments with sub-second confirmation.",
     "hidden": false,
     "image": "mobileApp"
   },
   {
     "title": "Data collection from meters",
     "subheader": "Development of an electronic device for collecting information from electronic meters. Design of printed circuit boards. Setting up large-scale production.",
-    "hidden": false,
+    "hidden": true,
     "image": "counterData"
-  },
-  {
-    "title": "Backend for working with Blockchain",
-    "subheader": "Development of a modern Backend application for working with popular Blockchain Nodes. Or configuration for working with local Nodes.",
-    "hidden": false,
-    "image": "blockchainBackend"
   }
 ]
