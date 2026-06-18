@@ -7,7 +7,7 @@ const organizationSchema = {
   "name": "IT CODER",
   "url": BASE,
   "description":
-    "Custom web apps, REST APIs, mobile apps, IoT devices, and embedded firmware — designed and built for your business. Based in Calgary, AB.",
+    "NestJS microservices, REST APIs, AI/LLM integrations, payment systems, and fintech backends — designed and built for SaaS, fintech and crypto products. Based in Calgary, AB.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Calgary",
@@ -35,7 +35,7 @@ const websiteSchema = {
   "@id": `${BASE}/#website`,
   "url": BASE,
   "name": "IT CODER",
-  "description": "Custom Web, IoT & Software Development in Calgary, Canada",
+  "description": "Backend & AI Development — NestJS Microservices, APIs, Fintech & LLM Integrations in Calgary, Canada",
   "publisher": {
     "@id": `${BASE}/#organization`,
   },
@@ -51,9 +51,9 @@ const servicesSchema = {
       "position": 1,
       "item": {
         "@type": "Service",
-        "name": "Custom Web Application Development",
+        "name": "Backend & API Development",
         "description":
-          "Full-stack web application development from idea to launch — Next.js, REST API, database, deployment.",
+          "NestJS microservices, REST and GraphQL APIs, event-driven architecture — built for scale from day one.",
         "provider": { "@id": `${BASE}/#organization` },
         "areaServed": { "@type": "Country", "name": "Canada" },
         "serviceType": "Web Development",
@@ -79,12 +79,12 @@ const servicesSchema = {
       "position": 3,
       "item": {
         "@type": "Service",
-        "name": "Mobile App Development",
+        "name": "AI / LLM Integration",
         "description":
-          "Cross-platform mobile applications built with Flutter for iOS and Android.",
+          "Connect your product to Claude, GPT-4, or local LLMs (Ollama). Prompt engineering, RAG pipelines, structured output, and production-ready deployment.",
         "provider": { "@id": `${BASE}/#organization` },
         "areaServed": { "@type": "Country", "name": "Canada" },
-        "serviceType": "Mobile Development",
+        "serviceType": "AI Development",
         "url": `${BASE}/#services`,
       },
     },
@@ -93,12 +93,12 @@ const servicesSchema = {
       "position": 4,
       "item": {
         "@type": "Service",
-        "name": "IoT Device & Embedded Firmware Development",
+        "name": "Payment & Fintech Systems",
         "description":
-          "End-to-end IoT development: custom PCB design, embedded firmware (C/C++), LoRa/RF protocols, and cloud integration.",
+          "Stripe, PayPal, crypto payments, and proprietary payment protocols. Billing engines, subscription management, and PCI-compliant API integrations.",
         "provider": { "@id": `${BASE}/#organization` },
         "areaServed": { "@type": "Country", "name": "Canada" },
-        "serviceType": "IoT Development",
+        "serviceType": "Fintech Development",
         "url": `${BASE}/#services`,
       },
     },

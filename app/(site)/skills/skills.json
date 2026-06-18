@@ -2,7 +2,7 @@
   {
     "title": "Mobile Development",
     "subheader": "Development of software for mobile platforms iOS and Android",
-    "hidden": false,
+    "hidden": true,
     "disabled": false,
     "icon": "Flutter",
     "frameworks":[
@@ -12,19 +12,21 @@
   },
   {
     "title": "Backend Development",
-    "subheader": "Development of high-load REST API systems, integration of third-party services",
+    "subheader": "NestJS microservices, REST & GraphQL APIs, AI/LLM integrations, event-driven architecture",
     "hidden": false,
     "icon": "NestJS",
     "disabled": false,
     "frameworks":[
-        "ExpressJS",
-        "NodeJS",
         "NestJS",
+        "NodeJS",
+        "TypeScript",
         "Google Cloud",
-        "AWS",
-        "ORM Databases",
-        "JavaScript",
-        "TypeScript"
+        "GCP Pub/Sub",
+        "Claude API",
+        "OpenAI",
+        "Stripe",
+        "Redis",
+        "Docker"
       ]
   },
   {
@@ -60,7 +62,7 @@
   {
     "title": "Delphi",
     "subheader": "Development of software for Windows systems",
-    "hidden": false,
+    "hidden": true,
     "icon": "Delphi",
     "disabled": false,
     "frameworks": [
@@ -88,7 +90,7 @@
   {
     "title": "Microcontrollers",
     "subheader": "Development of automated systems based on microcontrollers",
-    "hidden": false,
+    "hidden": true,
     "icon": "Microcontroller",
     "disabled": false,
     "frameworks": [
@@ -102,7 +104,7 @@
   {
     "title": "Electronic boards",
     "subheader": "Design, layout, fabrication. Development of turnkey devices according to specifications",
-    "hidden": false,
+    "hidden": true,
     "icon": "Board",
     "disabled": false,
     "frameworks":[

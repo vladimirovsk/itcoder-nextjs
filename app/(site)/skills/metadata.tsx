@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Technical Skills — Full-Stack Developer in Calgary | IT CODER",
-  description: "Hire a full-stack developer in Calgary with expertise in Next.js, NestJS, Flutter, PostgreSQL, REST APIs, Docker, and Linux. 10+ years of experience building web and mobile apps for Canadian businesses.",
-  keywords: "full-stack developer Calgary skills, Next.js developer Canada, NestJS developer Calgary, Flutter mobile developer, PostgreSQL developer Alberta, Docker server setup, Linux administration Calgary, hire experienced developer Canada",
+  title: "Technical Skills — Senior Backend & AI Engineer in Calgary | IT CODER",
+  description: "Backend engineer in Calgary with expertise in NestJS, Node.js, TypeScript, PostgreSQL, MongoDB, GCP Pub/Sub, AI/LLM integrations, Stripe, Docker and Redis. 10+ years building production-grade APIs and microservices.",
+  keywords: "backend developer Calgary skills, NestJS developer Canada, Node.js developer Calgary, TypeScript engineer Alberta, AI integration developer, LLM integration Calgary, PostgreSQL developer Canada, MongoDB developer Calgary, Docker microservices, GCP developer Calgary, Stripe payment developer, hire backend developer Canada",
   openGraph: {
-    title: "Technical Skills — Full-Stack Developer in Calgary | IT CODER",
-    description: "Hire a Calgary full-stack developer with 10+ years in Next.js, NestJS, Flutter, PostgreSQL, and Linux. Building reliable web and mobile apps for Canadian businesses.",
+    title: "Technical Skills — Senior Backend & AI Engineer in Calgary | IT CODER",
+    description: "NestJS, Node.js, TypeScript, PostgreSQL, MongoDB, GCP, AI/LLM integrations, Stripe — 10+ years building production-grade backend systems in Calgary.",
     url: "https://www.itcoder.ca/skills",
     siteName: "IT CODER",
     locale: "en_CA",
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Technical Skills — Full-Stack Developer in Calgary | IT CODER",
-    description: "Next.js, NestJS, Flutter, PostgreSQL, Docker — hire a 10+ year full-stack developer in Calgary for your project.",
+    title: "Technical Skills — Senior Backend & AI Engineer in Calgary | IT CODER",
+    description: "NestJS, Node.js, TypeScript, PostgreSQL, AI/LLM, Stripe — hire a 10+ year backend engineer in Calgary.",
   },
   robots: {
     index: true,

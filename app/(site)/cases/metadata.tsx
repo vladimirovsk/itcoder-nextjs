@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Portfolio & Case Studies — IT CODER Web Developer Calgary",
-  description: "See real projects delivered by IT CODER — a freelance web developer based in Calgary, AB. REST APIs, web apps, mobile applications, and backend systems built for Canadian businesses.",
-  keywords: "web developer portfolio Calgary, IT CODER case studies, web development projects Canada, REST API examples Alberta, custom software portfolio, freelance developer work Calgary, mobile app examples Canada",
+  title: "Portfolio & Case Studies — IT CODER | Backend & AI Engineer Calgary",
+  description: "Real backend projects delivered by IT CODER — NestJS microservices, AI/LLM integrations, crypto exchange backends, payment APIs, and fintech systems built for SaaS products.",
+  keywords: "backend developer portfolio Calgary, NestJS microservices examples, AI integration projects Canada, crypto exchange backend, fintech API Calgary, payment system developer, SaaS backend engineer Calgary, microservices portfolio Alberta",
   openGraph: {
-    title: "Portfolio & Case Studies — IT CODER Web Developer Calgary",
-    description: "See real projects delivered by IT CODER — a freelance web developer in Calgary, AB. REST APIs, web apps, and mobile apps built for Canadian businesses.",
+    title: "Portfolio & Case Studies — IT CODER | Backend & AI Engineer Calgary",
+    description: "Real backend projects by IT CODER — NestJS microservices, AI/LLM integrations, crypto exchange backends, and fintech APIs for SaaS and crypto products.",
     url: "https://www.itcoder.ca/cases",
     siteName: "IT CODER",
     locale: "en_CA",
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfolio & Case Studies — IT CODER Web Developer Calgary",
-    description: "Real projects by a Calgary freelance web developer — REST APIs, web apps, and mobile apps for Canadian businesses.",
+    title: "Portfolio & Case Studies — IT CODER | Backend & AI Engineer Calgary",
+    description: "NestJS microservices, AI integrations, crypto backends and fintech APIs — real backend projects by a Calgary engineer.",
   },
   robots: {
     index: true,
