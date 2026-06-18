@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.itcoder.ca'),
   title: {
-    default: "IT CODER — Hire a Freelance Web & IoT Developer in Calgary, AB",
+    default: "IT CODER — Backend & AI Engineer for Hire in Calgary, AB",
     template: "%s | IT CODER",
   },
-  description: "Hire a freelance full-stack developer in Calgary, Alberta. Custom web apps, REST APIs, mobile apps, IoT devices, and embedded firmware — built from scratch for your business. Starting at $500. Response within 24 hours.",
-  keywords: "hire web developer Calgary, freelance developer Calgary, IoT developer Calgary, hardware developer Canada, embedded systems developer Calgary, PCB design Canada, LoRa development, find a coder Canada, web development Calgary Alberta, custom software development, REST API developer, full-stack developer for hire, IT consultant Calgary, mobile app developer Canada, NestJS developer, Next.js developer, web developer Alberta, SaaS development Canada",
+  description: "Senior backend engineer in Calgary. I build NestJS microservices, REST APIs, payment systems, and AI/LLM integrations for SaaS, fintech and crypto products — from architecture to production.",
+  keywords: "backend developer Calgary, NestJS developer Calgary, microservices developer Canada, AI integration developer, LLM integration Calgary, fintech developer Calgary, crypto backend developer, payment systems developer, SaaS backend developer, backend engineer Calgary Alberta, REST API developer, hire backend developer Canada, Node.js developer Calgary, TypeScript developer Alberta, web3 backend developer",
   openGraph: {
-    title: "IT CODER — Hire a Freelance Web & IoT Developer in Calgary, AB",
-    description: "Hire a freelance full-stack developer in Calgary, AB. Custom web apps, REST APIs, mobile apps, IoT devices and embedded firmware — from idea to launch. Starting at $500. Use the Project Builder to describe your project in 3 steps.",
+    title: "IT CODER — Backend & AI Engineer for Hire in Calgary, AB",
+    description: "Senior backend engineer in Calgary. NestJS microservices, REST APIs, payment systems, and AI/LLM integrations — built for SaaS, fintech and crypto. From architecture to production.",
     url: "https://www.itcoder.ca",
     siteName: "IT CODER",
     locale: "en_CA",
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "IT CODER — Hire a Freelance Web & IoT Developer in Calgary, AB",
-    description: "Hire a freelance full-stack developer in Calgary, AB. Custom web apps, REST APIs, mobile apps and IoT devices. Starting at $500.",
+    title: "IT CODER — Backend & AI Engineer for Hire in Calgary, AB",
+    description: "Senior backend engineer in Calgary. NestJS microservices, REST APIs, payment systems and AI integrations for SaaS, fintech and crypto products.",
   },
   robots: {
     index: true,
@@ -36,3 +36,6 @@ export const metadata: Metadata = {
     canonical: "https://www.itcoder.ca",
   },
 };
+
+// NOTE: each section page must define its own alternates.canonical
+// to override this root value, otherwise Google sees them as duplicates.

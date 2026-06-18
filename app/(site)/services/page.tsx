@@ -3,24 +3,27 @@ import { IService } from '@/app/(site)/services/interfaces';
 import services from '@/app/(site)/services/services.json';
 import { Box, Card, CardContent, CardHeader, Typography } from '@mui/material';
 import StorageIcon from '@mui/icons-material/Storage';
-import DnsIcon from '@mui/icons-material/Dns';
 import ApiIcon from '@mui/icons-material/Api';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import PaymentsIcon from '@mui/icons-material/Payments';
 import WebIcon from '@mui/icons-material/Web';
 import { SvgIconComponent } from '@mui/icons-material';
 import ServicesFAQ from './ServicesFAQ';
 
 const ICON_MAP: Record<string, SvgIconComponent> = {
-	Storage: StorageIcon,
-	Dns: DnsIcon,
-	Api: ApiIcon,
-	Web: WebIcon,
+	Api:        ApiIcon,
+	Psychology: PsychologyIcon,
+	Payments:   PaymentsIcon,
+	Storage:    StorageIcon,
+	Web:        WebIcon,
 };
 
 const ICON_COLORS: Record<string, { bg: string; color: string }> = {
-	Storage: { bg: '#EEF2FF', color: '#3B5BDB' },
-	Dns:     { bg: '#F0FDF4', color: '#16A34A' },
-	Api:     { bg: '#FFF7ED', color: '#EA580C' },
-	Web:     { bg: '#F0F9FF', color: '#0284C7' },
+	Api:        { bg: '#FFF7ED', color: '#EA580C' },
+	Psychology: { bg: '#F5F3FF', color: '#7C3AED' },
+	Payments:   { bg: '#F0FDF4', color: '#16A34A' },
+	Storage:    { bg: '#EEF2FF', color: '#3B5BDB' },
+	Web:        { bg: '#F0F9FF', color: '#0284C7' },
 };
 
 export default function Services() {
