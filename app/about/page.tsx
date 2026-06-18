@@ -5,14 +5,14 @@ import AuthorCard from '@/app/components/AuthorCard';
 import SchemaOrgAbout from '@/app/components/SchemaOrgAbout';
 
 export const metadata: Metadata = {
-  title: 'About — IT CODER | Full-Stack Developer in Calgary, Canada',
+  title: 'About — IT CODER | Senior Backend & AI Engineer in Calgary',
   description:
-    'Learn about Serhii Vladimirov, a Full-Stack Developer and IT Consultant based in Calgary, AB. Specializing in Next.js, NestJS, REST APIs, and AI-driven backend solutions for Canadian businesses.',
+    'Serhii Vladimirov — Senior Backend & AI Engineer based in Calgary, AB. Building NestJS microservices, AI/LLM integrations, payment systems and fintech APIs for SaaS and crypto products.',
   alternates: { canonical: 'https://www.itcoder.ca/about' },
   openGraph: {
-    title: 'About — IT CODER | Full-Stack Developer in Calgary, Canada',
+    title: 'About — IT CODER | Senior Backend & AI Engineer in Calgary',
     description:
-      'Full-Stack Developer based in Calgary, AB — building scalable web applications, REST APIs, and AI-driven solutions for businesses across Canada.',
+      'Senior Backend & AI Engineer based in Calgary, AB — NestJS microservices, AI/LLM integrations, payment systems and fintech APIs for SaaS, fintech and crypto products.',
     url: 'https://www.itcoder.ca/about',
     siteName: 'IT CODER',
     locale: 'en_CA',
@@ -23,17 +23,17 @@ export const metadata: Metadata = {
 const EXPERIENCE_ITEMS = [
   {
     period: '2022 — Present',
-    role: 'Full-Stack Developer & IT Consultant',
+    role: 'Senior Backend & AI Engineer',
     company: 'IT CODER · Calgary, AB, Canada',
     description:
-      'Building scalable web applications, REST APIs, and backend systems for Canadian SMBs. Delivering end-to-end solutions with Next.js, NestJS, PostgreSQL, and Linux server infrastructure.',
+      'Building NestJS microservices, REST APIs, and AI/LLM integrations for SaaS, fintech and crypto products. Projects span healthcare staffing platforms (150k+ users), crypto exchange backends, payment processing systems, and Stripe-based SaaS billing.',
   },
   {
     period: '2015 — 2022',
     role: 'Software Engineer',
     company: 'Various IT Companies · Ukraine & Remote',
     description:
-      'Developed enterprise software, database-driven systems, and embedded solutions across industries including finance, logistics, and manufacturing.',
+      'Developed enterprise backend systems, database-driven APIs, and payment processing solutions across industries including fintech, logistics, and banking.',
   },
 ];
 
@@ -51,8 +51,8 @@ const SKILLS_GROUPS = [
     items: ['Linux', 'Proxmox', 'VMware', 'Docker', 'Nginx'],
   },
   {
-    category: 'Mobile & Other',
-    items: ['Flutter', 'Dart', 'Delphi', 'C/C++ (Embedded)'],
+    category: 'AI & Integrations',
+    items: ['Claude API', 'OpenAI / GPT-4', 'Ollama (local LLMs)', 'GCP Pub/Sub', 'Stripe / PayPal'],
   },
 ];
 
@@ -88,8 +88,8 @@ export default function AboutPage() {
             variant="h6"
             sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 400, lineHeight: 1.7 }}
           >
-            Full-Stack Developer & IT Consultant based in Calgary, AB — helping businesses across
-            Canada build reliable, scalable software.
+            Senior Backend & AI Engineer based in Calgary, AB — building NestJS microservices,
+            AI/LLM integrations, and fintech APIs for product teams across Canada.
           </Typography>
         </Container>
       </Box>
@@ -100,10 +100,10 @@ export default function AboutPage() {
         <Box sx={{ mb: 8 }}>
           <AuthorCard
             name="Serhii Vladimirov"
-            role="Full-Stack Developer & IT Consultant"
+            role="Senior Backend & AI Engineer"
             location="Calgary, AB, Canada"
-            bio="I build web applications, REST APIs, and database-driven systems for businesses across Canada. With 10+ years of experience spanning enterprise software, embedded systems, and modern cloud-native architectures, I bring both depth and pragmatism to every project — from a startup MVP to a production-grade backend serving thousands of users."
-            skills={['Next.js', 'NestJS', 'Node.js', 'React', 'Flutter', 'PostgreSQL', 'Linux', 'Docker']}
+            bio="I design and build backend systems that scale — NestJS microservices, AI/LLM integrations, payment APIs, and event-driven architectures on GCP. With 10+ years across fintech, healthcare and crypto, I focus on clean architecture and production-grade reliability, from MVP to 150k+ user platforms."
+            skills={['NestJS', 'Node.js', 'TypeScript', 'PostgreSQL', 'MongoDB', 'GCP', 'Docker', 'AI/LLM']}
             linkedIn="https://www.linkedin.com/in/serhii-vladimirov" // TODO: update
             github="https://github.com/svladimirov" // TODO: update
           />
@@ -228,9 +228,9 @@ export default function AboutPage() {
             local tech ecosystem.
           </Typography>
           <Typography variant="body1" sx={{ color: '#444', lineHeight: 1.8, mb: 2 }}>
-            Whether you need a production-ready web application, a custom REST API, or a reliable
-            server setup, I deliver clean, maintainable solutions with clear communication and
-            predictable timelines.
+            Whether you need a production-ready microservice backend, an AI/LLM integration, a
+            payment processing API, or a crypto/Web3 backend, I deliver clean, maintainable
+            solutions with clear communication and predictable timelines.
           </Typography>
           <Typography variant="body1" sx={{ color: '#444', lineHeight: 1.8 }}>
             Available for project-based engagements, ongoing contracts, and technical consulting.{' '}
