@@ -1,22 +1,22 @@
 [
   {
-    "name": "Database Development",
-    "description": "Stable and secure databases for quick search, accurate accounting, and automation. Your system runs smoothly, your data stays under control.",
-    "icon": "Storage"
-  },
-  {
-    "name": "Server Configuration",
-    "description": "Turnkey servers on Linux and Windows, including virtualization via Proxmox or VMWare. Everything works stably, securely, and ready for heavy loads.",
-    "icon": "Dns"
-  },
-  {
-    "name": "API Development",
-    "description": "Flexible and powerful REST APIs — microservices or monolithic. Your services are easy to integrate, scale, and work reliably.",
+    "name": "Backend & API Development",
+    "description": "NestJS microservices, REST and GraphQL APIs built for scale. Clean architecture, TypeScript, proper auth — ready to integrate with any frontend or third-party service.",
     "icon": "Api"
   },
   {
-    "name": "Web Development",
-    "description": "Full-stack web applications that promote your product, attract customers, and work without glitches. From idea to full launch.",
-    "icon": "Web"
+    "name": "AI / LLM Integration",
+    "description": "Connect your product to Claude, GPT-4, or local LLMs. Prompt engineering, RAG pipelines, structured output, streaming — production-grade AI features, not just demos.",
+    "icon": "Psychology"
+  },
+  {
+    "name": "Payment & Fintech Systems",
+    "description": "Stripe, PayPal, crypto payments, and custom billing logic. Subscription management, invoicing, webhook handling — built secure and compliant from day one.",
+    "icon": "Payments"
+  },
+  {
+    "name": "Database & Infrastructure",
+    "description": "MongoDB, PostgreSQL, Redis — designed for your access patterns. Indexes, migrations, caching, and cloud deployment on GCP, AWS or your own Linux server.",
+    "icon": "Storage"
   }
 ]
