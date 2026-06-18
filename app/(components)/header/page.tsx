@@ -354,7 +354,7 @@ export default function Headers() {
 								mb: 2,
 								textShadow: '0 2px 20px rgba(0,0,0,0.5)',
 							}}>
-								Your business idea — turned into a working digital product
+								Backend &amp; AI integrations, built to ship
 							</Typography>
 							<Typography variant="h6" component="p" sx={{
 								fontWeight: 400,
@@ -362,7 +362,7 @@ export default function Headers() {
 								mb: 4,
 								lineHeight: 1.6,
 							}}>
-								Hire a freelance full-stack developer in Calgary. I&apos;ll handle the architecture, development, and launch.
+								Senior backend engineer in Calgary. I build the APIs, payment systems and AI features behind SaaS, fintech and crypto products — from architecture to production.
 							</Typography>
 							<Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
 								<Button
@@ -407,8 +407,8 @@ export default function Headers() {
 							{/* Trust row */}
 							<Box sx={{ display: 'flex', alignItems: 'center', gap: 0, flexWrap: 'wrap', mt: 3 }}>
 								{[
-									'Starting at $500',
-									'Response within 24h',
+									'NestJS & microservices',
+									'AI / LLM integration',
 									'10+ years experience',
 								].map((item, i) => (
 									<React.Fragment key={item}>
