@@ -3,4 +3,5 @@ export interface ICases {
 	subheader: string,
 	hidden: boolean,
 	image: string,
+	slug?: string,
 }

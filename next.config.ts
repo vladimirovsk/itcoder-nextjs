@@ -1,6 +1,13 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
+	// Pin the workspace root to this project. The parent ITCoder/ folder holds a
+	// stray package-lock.json, so Next would otherwise infer the wrong root and warn.
+	outputFileTracingRoot: path.join(__dirname),
+	turbopack: {
+		root: path.join(__dirname),
+	},
 	output: process.env.NEXT_OUTPUT === "export" ? "export" : undefined,
 	env: {
 		NEXT_TITLE: 'ITCODER',

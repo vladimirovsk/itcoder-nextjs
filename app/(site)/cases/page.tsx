@@ -5,6 +5,7 @@ import {ICases} from './interfaces';
 import {Card, CardContent, CardHeader, Container, Grid, Pagination, Stack} from '@mui/material';
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 
 import webPages from './images/webPages.png';
@@ -88,6 +89,24 @@ export default function Cases() {
 									}}>
 										{caseItem.subheader}
 									</CardContent>
+									{caseItem.slug && (
+										<Link
+											href={`/cases/${caseItem.slug}`}
+											style={{
+												display: 'block',
+												backgroundColor: '#FAFBFF',
+												borderTop: '1px solid #eef2ff',
+												color: '#3B5BDB',
+												fontWeight: 700,
+												fontSize: '0.9rem',
+												textAlign: 'center',
+												padding: '14px',
+												textDecoration: 'none',
+											}}
+										>
+											Read case study →
+										</Link>
+									)}
 								</Card>
 							</Grid>
 						))}
