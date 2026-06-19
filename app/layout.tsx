@@ -15,6 +15,7 @@ import FloatingProjectCTA from '@/app/components/FloatingProjectCTA';
 // These are CSS backgrounds in the header, so the browser can't discover them early on its own.
 import titleImage from '@/public/it-coder-title.png';
 import titleImageSmall from '@/app/(components)/header/images/titleImageSmall.png';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // Initialize the Inter font
 const inter = Inter({
@@ -92,6 +93,7 @@ export default function RootLayout({
               <FloatingProjectCTA />
         </ThemeProviderWrapper>
       </EmotionCacheProvider>
+      <SpeedInsights />
       </body>
     </html>
   );
