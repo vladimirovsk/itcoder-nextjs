@@ -2,6 +2,8 @@
 import {AppBar, Box, Button, Container, IconButton, Menu, MenuItem, Paper, Toolbar, Tooltip, Typography} from '@mui/material';
 import React, { useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import titleImage from '../../../public/it-coder-title.png';
 import titleImageSmall from './images/titleImageSmall.png';
 import imageLogo from '../../../public/imageLogo.png';
@@ -18,6 +20,10 @@ export default function Headers() {
 	const [scrolled, setScrolled] = React.useState(false); // Track if activeItem was manually set by clicking
 	const scrollTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the scroll timer
 	const resetTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the reset timer
+	const pathname = usePathname(); // Current route — used to highlight the Blog link (a real route, not a section)
+	const isBlog = pathname?.startsWith('/blog') ?? false;
+	const onHome = pathname === '/'; // Section nav items only highlight on the home page;
+	// off-home the scroll-spy never runs, so a stale activeItem must not stay underlined.
 	// const navItems = useMemo(() => ['Services', 'Advantages', 'Skills', 'Cases', 'Contact'], []);
 	const navItems = useMemo(() => ['Services', 'Advantages', 'Skills', 'Projects', 'Project Builder', 'Contact'], []);
 
@@ -80,37 +86,67 @@ export default function Headers() {
 		}
 	}, [checkActiveSection, isManuallySet]);
 
-	// Handle direct URL navigation with hash fragments
+	// Handle direct URL navigation with hash fragments (e.g. arriving at /#contact
+	// after clicking a section link from /blog or another sub-page).
+	// Re-runs on pathname change so it also fires when soft-navigating back to home,
+	// and on `hashchange` for hash-only changes.
 	useEffect(() => {
-		// Check if there's a hash fragment in the URL
-		if (typeof window !== 'undefined' && window.location.hash) {
-			// Get the section ID from the hash fragment
-			const sectionId = window.location.hash.substring(1); // Remove the # character
-			const section = document.getElementById(sectionId);
+		if (typeof window === 'undefined') return;
 
-			if (section) {
-				// Set the active item
+		let cancelled = false;
+
+		const activateFromHash = () => {
+			if (!window.location.hash) return;
+			const sectionId = window.location.hash.substring(1);
+
+			let attempts = 0;
+			let alignedTicks = 0;
+
+			// Below-the-fold sections live in <Suspense> and lazy-load images, so the
+			// page keeps growing for a while after mount. A single computed scroll target
+			// goes stale (content above grows during the animation), landing on the section
+			// *above* the target. So instead of one scroll, we re-align with an INSTANT
+			// scroll every 100ms until the section actually sits just under the header for
+			// a few consecutive ticks (layout settled).
+			const tick = () => {
+				if (cancelled) return;
+				const section = document.getElementById(sectionId);
+				if (!section) {
+					if (attempts++ < 50) setTimeout(tick, 100);
+					return;
+				}
+
+				// Highlight as soon as the section exists.
 				setActiveItem(fromSectionId(sectionId));
 				setIsManuallySet(true);
 
-				// Get the toolbar height to offset the scroll position
 				const toolbar = document.querySelector('nav');
 				const toolbarHeight = toolbar ? toolbar.offsetHeight : 0;
+				const current = window.pageYOffset;
+				const target = section.getBoundingClientRect().top + current - toolbarHeight;
 
-				// Wait a bit for the page to fully load
-				setTimeout(() => {
-					// Calculate the position to scroll to (section's top position minus toolbar height)
-					const offsetPosition = section.getBoundingClientRect().top + window.pageYOffset - toolbarHeight;
+				if (Math.abs(target - current) <= 2) {
+					alignedTicks++; // already in place this tick
+				} else {
+					window.scrollTo({ top: target }); // instant, self-correcting
+					alignedTicks = 0;
+				}
 
-					// Scroll to the calculated position
-					window.scrollTo({
-						top: offsetPosition,
-						behavior: 'smooth'
-					});
-				}, 100);
-			}
-		}
-	}, [fromSectionId]); // fromSectionId is stable (navItems has no deps)
+				// Stop once aligned for ~300ms straight, or after a safety cap (~5s).
+				if (alignedTicks >= 3 || attempts++ >= 50) return;
+				setTimeout(tick, 100);
+			};
+
+			tick();
+		};
+
+		activateFromHash();
+		window.addEventListener('hashchange', activateFromHash);
+		return () => {
+			cancelled = true;
+			window.removeEventListener('hashchange', activateFromHash);
+		};
+	}, [fromSectionId, pathname]);
 
 	// Add scroll event listener
 	useEffect(() => {
@@ -167,7 +203,17 @@ export default function Headers() {
 	};
 
 	const handleNavItemClick = (item: string, event?: React.MouseEvent) => {
-		// Prevent default anchor link behavior if event is provided
+		// Scroll to the section with the corresponding ID
+		const sectionId = toSectionId(item);
+		const section = document.getElementById(sectionId);
+
+		// If the section isn't on the current page (e.g. we're on /blog), let the
+		// browser follow the `/#section` href to the home page instead of trapping the click.
+		if (!section) {
+			return;
+		}
+
+		// Section is present — handle the scroll ourselves.
 		if (event) {
 			event.preventDefault();
 		}
@@ -177,10 +223,7 @@ export default function Headers() {
 		setMobileMenuOpen(false);
 		setAnchorEl(null); // Close the mobile menu
 
-		// Scroll to the section with the corresponding ID
-		const sectionId = toSectionId(item);
-		const section = document.getElementById(sectionId);
-		if (section) {
+		{
 			// Get the toolbar height to offset the scroll position
 			const toolbar = document.querySelector('nav');
 			const toolbarHeight = toolbar ? toolbar.offsetHeight : 0;
@@ -231,14 +274,16 @@ export default function Headers() {
 				</Box>
 
 				<Box sx={{ marginLeft: '1rem', display: 'flex', alignItems: 'center', backgroundColor: 'transparent' }}>
-						<Image
-							src={imageLogo}
-							alt={'IT Coder'}
-							className="header-logo"
-							width={120}
-							height={35}
-							priority
-						/>
+						<Link href="/" aria-label="IT CODER — home" style={{ display: 'flex' }}>
+							<Image
+								src={imageLogo}
+								alt={'IT Coder'}
+								className="header-logo"
+								width={120}
+								height={35}
+								priority
+							/>
+						</Link>
 				</Box>
 
 				{/* Desktop Navigation */}
@@ -246,14 +291,14 @@ export default function Headers() {
 					{navItems.map((item) => (
 						<Button
 							key={item}
-							className={`header-nav-button ${activeItem === item ? 'active' : ''}`}
+							className={`header-nav-button ${onHome && activeItem === item ? 'active' : ''}`}
 							onClick={(e) => handleNavItemClick(item, e)}
-							href={`#${toSectionId(item)}`}
+							href={`/#${toSectionId(item)}`}
 							sx={{
 								marginLeft: '1rem',
-								color: activeItem === item ? '#3B5BDB' : '#475569',
-								fontWeight: activeItem === item ? 600 : 400,
-								borderBottom: activeItem === item ? '2px solid #3B5BDB' : '2px solid transparent',
+								color: onHome && activeItem === item ? '#3B5BDB' : '#475569',
+								fontWeight: onHome && activeItem === item ? 600 : 400,
+								borderBottom: onHome && activeItem === item ? '2px solid #3B5BDB' : '2px solid transparent',
 								borderRadius: 0,
 								fontSize: '0.9rem',
 								letterSpacing: '0.01em',
@@ -264,6 +309,24 @@ export default function Headers() {
 							{item}
 						</Button>
 					))}
+					{/* Blog — a real route, not an in-page section */}
+					<Button
+						className={`header-nav-button ${isBlog ? 'active' : ''}`}
+						component={Link}
+						href="/blog"
+						sx={{
+							marginLeft: '1rem',
+							color: isBlog ? '#3B5BDB' : '#475569',
+							fontWeight: isBlog ? 600 : 400,
+							borderBottom: isBlog ? '2px solid #3B5BDB' : '2px solid transparent',
+							borderRadius: 0,
+							fontSize: '0.9rem',
+							letterSpacing: '0.01em',
+							'&:hover': { color: '#1e293b', backgroundColor: 'transparent' },
+						}}
+					>
+						Blog
+					</Button>
 				</Box>
 
 				{/* Mobile Menu */}
@@ -285,13 +348,25 @@ export default function Headers() {
 					{navItems.map((item) => (
 						<MenuItem
 							key={item}
+							component="a"
+							href={`/#${toSectionId(item)}`}
 							onClick={(e) => handleNavItemClick(item, e)}
-							selected={activeItem === item}
-							sx={{ color: activeItem === item ? '#3B5BDB' : '#475569' }}
+							selected={onHome && activeItem === item}
+							sx={{ color: onHome && activeItem === item ? '#3B5BDB' : '#475569' }}
 						>
 							{item}
 						</MenuItem>
 					))}
+					{/* Blog — a real route, not an in-page section */}
+					<MenuItem
+						component={Link}
+						href="/blog"
+						onClick={handleMenuClose}
+						selected={isBlog}
+						sx={{ color: isBlog ? '#3B5BDB' : '#475569' }}
+					>
+						Blog
+					</MenuItem>
 				</Menu>
 				<Box>
 				</Box>

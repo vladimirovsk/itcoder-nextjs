@@ -1,21 +1,24 @@
 [
   {
     "title": "Crypto Exchange Backend",
-    "subheader": "NestJS microservices architecture for a cryptocurrency exchange. Real-time order matching, CI/CD pipeline, WebSocket price feeds and migration from monolith to microservices — zero downtime during production cutover.",
+    "subheader": "NestJS services and dedicated matching cores for a cryptocurrency exchange. In-memory order books, RabbitMQ settlement, real-time Socket.IO feeds, on-chain deposits and withdrawals — migrated from a monolith with zero downtime.",
     "hidden": false,
-    "image": "cryptoData"
+    "image": "cryptoData",
+    "slug": "crypto-exchange-backend"
   },
   {
-    "title": "AI-Powered Shift Matching",
-    "subheader": "Smart matching engine for a healthcare staffing platform with 150,000+ nurses. GCP Pub/Sub event pipeline, habit-tracking algorithm (EMA scoring), MongoDB geospatial queries — reduces manual scheduling from hours to seconds.",
+    "title": "AI-Powered Matching Engine",
+    "subheader": "Smart matching microservice for a large-scale marketplace platform. Event-driven pipeline, behavioral scoring algorithm (EMA-based), geospatial database queries and LLM integration — turns slow manual workflows into instant automated recommendations.",
     "hidden": false,
-    "image": "blockchainBackend"
+    "image": "blockchainBackend",
+    "slug": "ai-matching-engine"
   },
   {
     "title": "Blockchain & Web3 API",
-    "subheader": "Backend service for interacting with Ethereum and BSC nodes. Smart contract deployment, wallet management, transaction signing and real-time event listeners — integrated with existing NestJS infrastructure via REST and WebSocket.",
+    "subheader": "Backend that turns Ethereum and BSC into a clean API. Reorg-safe contract-event indexing over WebSocket node feeds, secure transaction signing, wallet-based auth and DeFi price data — exposed via REST (Swagger) and WebSocket.",
     "hidden": false,
-    "image": "restApi"
+    "image": "restApi",
+    "slug": "blockchain-web3-api"
   },
   {
     "title": "Utility Payment Processing",
