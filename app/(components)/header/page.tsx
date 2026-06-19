@@ -87,65 +87,26 @@ export default function Headers() {
 	}, [checkActiveSection, isManuallySet]);
 
 	// Handle direct URL navigation with hash fragments (e.g. arriving at /#contact
-	// after clicking a section link from /blog or another sub-page).
-	// Re-runs on pathname change so it also fires when soft-navigating back to home,
-	// and on `hashchange` for hash-only changes.
+	// after clicking a section link from /blog). One simple smooth scroll — same
+	// behaviour as the in-page nav items, no extra positioning logic.
 	useEffect(() => {
-		if (typeof window === 'undefined') return;
+		if (typeof window === 'undefined' || !window.location.hash) return;
 
-		let cancelled = false;
+		const sectionId = window.location.hash.substring(1);
+		const timer = setTimeout(() => {
+			const section = document.getElementById(sectionId);
+			if (!section) return;
 
-		const activateFromHash = () => {
-			if (!window.location.hash) return;
-			const sectionId = window.location.hash.substring(1);
+			setActiveItem(fromSectionId(sectionId));
+			setIsManuallySet(true);
 
-			let attempts = 0;
-			let alignedTicks = 0;
+			const toolbar = document.querySelector('nav');
+			const toolbarHeight = toolbar ? toolbar.offsetHeight : 0;
+			const offsetPosition = section.getBoundingClientRect().top + window.pageYOffset - toolbarHeight;
+			window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+		}, 100);
 
-			// Below-the-fold sections live in <Suspense> and lazy-load images, so the
-			// page keeps growing for a while after mount. A single computed scroll target
-			// goes stale (content above grows during the animation), landing on the section
-			// *above* the target. So instead of one scroll, we re-align with an INSTANT
-			// scroll every 100ms until the section actually sits just under the header for
-			// a few consecutive ticks (layout settled).
-			const tick = () => {
-				if (cancelled) return;
-				const section = document.getElementById(sectionId);
-				if (!section) {
-					if (attempts++ < 50) setTimeout(tick, 100);
-					return;
-				}
-
-				// Highlight as soon as the section exists.
-				setActiveItem(fromSectionId(sectionId));
-				setIsManuallySet(true);
-
-				const toolbar = document.querySelector('nav');
-				const toolbarHeight = toolbar ? toolbar.offsetHeight : 0;
-				const current = window.pageYOffset;
-				const target = section.getBoundingClientRect().top + current - toolbarHeight;
-
-				if (Math.abs(target - current) <= 2) {
-					alignedTicks++; // already in place this tick
-				} else {
-					window.scrollTo({ top: target }); // instant, self-correcting
-					alignedTicks = 0;
-				}
-
-				// Stop once aligned for ~300ms straight, or after a safety cap (~5s).
-				if (alignedTicks >= 3 || attempts++ >= 50) return;
-				setTimeout(tick, 100);
-			};
-
-			tick();
-		};
-
-		activateFromHash();
-		window.addEventListener('hashchange', activateFromHash);
-		return () => {
-			cancelled = true;
-			window.removeEventListener('hashchange', activateFromHash);
-		};
+		return () => clearTimeout(timer);
 	}, [fromSectionId, pathname]);
 
 	// Add scroll event listener
