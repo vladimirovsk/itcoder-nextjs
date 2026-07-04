@@ -28,6 +28,7 @@ import SensorsIcon from '@mui/icons-material/Sensors';
 import WifiOffIcon from '@mui/icons-material/WifiOff';
 import LanguageIcon from '@mui/icons-material/Language';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import { palette } from '@/app/theme/tokens';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -102,7 +103,7 @@ function StepIndicator({ active }: { active: number }) {
                         <Box sx={{
                             width: 36, height: 36, borderRadius: '50%',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            backgroundColor: idx < active ? '#3B5BDB' : idx === active ? '#3B5BDB' : '#E0E4EF',
+                            backgroundColor: idx < active ? palette.brand[500] : idx === active ? palette.brand[500] : '#E0E4EF',
                             color: idx <= active ? 'white' : '#999',
                             fontWeight: 700, fontSize: 14, transition: 'all 0.25s',
                         }}>
@@ -110,7 +111,7 @@ function StepIndicator({ active }: { active: number }) {
                         </Box>
                         <Typography variant="caption" sx={{
                             display: { xs: 'none', sm: 'block' },
-                            color: idx === active ? '#3B5BDB' : idx < active ? '#555' : '#aaa',
+                            color: idx === active ? palette.brand[500] : idx < active ? '#555' : '#aaa',
                             fontWeight: idx === active ? 700 : 400,
                             whiteSpace: 'nowrap',
                         }}>
@@ -123,7 +124,7 @@ function StepIndicator({ active }: { active: number }) {
                             width: { xs: 24, sm: 48, md: 72 },
                             mx: { xs: 0.5, sm: 1 },
                             mb: { xs: 0, sm: 2.5 },
-                            backgroundColor: idx < active ? '#3B5BDB' : '#E0E4EF',
+                            backgroundColor: idx < active ? palette.brand[500] : '#E0E4EF',
                             transition: 'background-color 0.25s',
                         }} />
                     )}
@@ -140,25 +141,25 @@ function TypeCard({ option, selected, onSelect }: {
     return (
         <Box onClick={() => onSelect(option.id)} sx={{
             cursor: 'pointer',
-            border: selected ? '2px solid #3B5BDB' : '2px solid transparent',
-            outline: selected ? '1px solid #3B5BDB' : '1px solid #E0E4EF',
-            backgroundColor: selected ? '#EEF2FF' : 'white',
+            border: selected ? `2px solid ${palette.brand[500]}` : '2px solid transparent',
+            outline: selected ? `1px solid ${palette.brand[500]}` : '1px solid #E0E4EF',
+            backgroundColor: selected ? palette.brand[50] : 'white',
             borderRadius: '14px', p: 2.5,
             display: 'flex', flexDirection: 'column', alignItems: 'center',
             textAlign: 'center', gap: 1,
             transition: 'all 0.2s',
             boxShadow: selected ? '0 0 0 3px rgba(59,91,219,0.12)' : '0px 2px 8px rgba(0,0,0,0.06)',
-            '&:hover': { borderColor: '#3B5BDB', boxShadow: '0px 4px 16px rgba(59,91,219,0.15)' },
+            '&:hover': { borderColor: palette.brand[500], boxShadow: '0px 4px 16px rgba(59,91,219,0.15)' },
         }}>
             <Box sx={{
                 width: 52, height: 52, borderRadius: '50%',
-                backgroundColor: selected ? '#3B5BDB' : '#F0F2FF',
+                backgroundColor: selected ? palette.brand[500] : palette.brand[100],
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 transition: 'background-color 0.2s',
             }}>
-                <Icon sx={{ color: selected ? 'white' : '#3B5BDB', fontSize: 26 }} />
+                <Icon sx={{ color: selected ? 'white' : palette.brand[500], fontSize: 26 }} />
             </Box>
-            <Typography variant="subtitle2" fontWeight={700} sx={{ color: selected ? '#3B5BDB' : '#0f1724', lineHeight: 1.3 }}>
+            <Typography variant="subtitle2" fontWeight={700} sx={{ color: selected ? palette.brand[500] : palette.slate[900], lineHeight: 1.3 }}>
                 {option.label}
             </Typography>
             {option.description && (
@@ -177,24 +178,24 @@ function FeatureCard({ option, selected, onToggle }: {
     return (
         <Box onClick={() => onToggle(option.id)} sx={{
             cursor: 'pointer',
-            border: selected ? '2px solid #3B5BDB' : '1px solid #E0E4EF',
-            backgroundColor: selected ? '#EEF2FF' : 'white',
+            border: selected ? `2px solid ${palette.brand[500]}` : '1px solid #E0E4EF',
+            backgroundColor: selected ? palette.brand[50] : 'white',
             borderRadius: '10px', p: 2,
             display: 'flex', alignItems: 'flex-start', gap: 1.5,
             transition: 'all 0.2s',
-            '&:hover': { borderColor: '#3B5BDB' },
+            '&:hover': { borderColor: palette.brand[500] },
         }}>
             <Box sx={{
                 width: 38, height: 38, flexShrink: 0,
                 borderRadius: '8px',
-                backgroundColor: selected ? '#3B5BDB' : '#F0F2FF',
+                backgroundColor: selected ? palette.brand[500] : palette.brand[100],
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 transition: 'background-color 0.2s',
             }}>
-                <Icon sx={{ color: selected ? 'white' : '#3B5BDB', fontSize: 20 }} />
+                <Icon sx={{ color: selected ? 'white' : palette.brand[500], fontSize: 20 }} />
             </Box>
             <Box sx={{ flex: 1 }}>
-                <Typography variant="body2" fontWeight={600} sx={{ color: selected ? '#3B5BDB' : '#0f1724', lineHeight: 1.3 }}>
+                <Typography variant="body2" fontWeight={600} sx={{ color: selected ? palette.brand[500] : palette.slate[900], lineHeight: 1.3 }}>
                     {option.label}
                 </Typography>
                 {option.description && (
@@ -203,7 +204,7 @@ function FeatureCard({ option, selected, onToggle }: {
                     </Typography>
                 )}
             </Box>
-            {selected && <CheckCircleIcon sx={{ color: '#3B5BDB', fontSize: 20, flexShrink: 0, mt: 0.25 }} />}
+            {selected && <CheckCircleIcon sx={{ color: palette.brand[500], fontSize: 20, flexShrink: 0, mt: 0.25 }} />}
         </Box>
     );
 }
@@ -372,7 +373,7 @@ export default function ProjectBuilder() {
         return (
             <section id="project-builder">
                 <Box sx={{ display: 'flex', justifyContent: 'center', py: 8 }}>
-                    <CircularProgress sx={{ color: '#3B5BDB' }} />
+                    <CircularProgress sx={{ color: palette.brand[500] }} />
                 </Box>
             </section>
         );
@@ -399,12 +400,12 @@ export default function ProjectBuilder() {
                 }}>
                     <Box sx={{
                         width: 64, height: 64, borderRadius: '50%',
-                        backgroundColor: '#FFF7ED', mx: 'auto', mb: 2,
+                        backgroundColor: palette.accent.tint, mx: 'auto', mb: 2,
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}>
                         <Typography sx={{ fontSize: 32 }}>📋</Typography>
                     </Box>
-                    <Typography variant="h6" fontWeight={800} sx={{ color: '#0f1724', mb: 1.5 }}>
+                    <Typography variant="h6" fontWeight={800} sx={{ color: palette.slate[900], mb: 1.5 }}>
                         We already have your inquiry
                     </Typography>
                     <Typography variant="body2" sx={{ color: '#666', lineHeight: 1.7, mb: 3 }}>
@@ -421,7 +422,7 @@ export default function ProjectBuilder() {
                             sx={{
                                 textTransform: 'none', borderColor: '#D0D5E8', color: '#555',
                                 borderRadius: '8px', px: 3,
-                                '&:hover': { borderColor: '#3B5BDB', color: '#3B5BDB' },
+                                '&:hover': { borderColor: palette.brand[500], color: palette.brand[500] },
                             }}
                         >
                             Go back
@@ -434,10 +435,10 @@ export default function ProjectBuilder() {
                                 ? <CircularProgress size={16} sx={{ color: 'white' }} />
                                 : <ArrowForwardIcon />}
                             sx={{
-                                backgroundColor: '#3B5BDB', color: 'white',
+                                backgroundColor: palette.brand[500], color: 'white',
                                 textTransform: 'none', fontWeight: 700,
                                 borderRadius: '8px', px: 3,
-                                '&:hover': { backgroundColor: '#2d4ac7' },
+                                '&:hover': { backgroundColor: palette.brand[600] },
                                 '&.Mui-disabled': { backgroundColor: '#C5D0F5', color: 'white' },
                             }}
                         >
@@ -459,8 +460,8 @@ export default function ProjectBuilder() {
                     boxShadow: '0px 4px 20px rgba(0,0,0,0.08)',
                     maxWidth: 560, mx: 'auto',
                 }}>
-                    <TaskAltIcon sx={{ fontSize: 64, color: '#3B5BDB', mb: 2 }} />
-                    <Typography variant="h5" fontWeight={800} sx={{ color: '#0f1724', mb: 1.5 }}>
+                    <TaskAltIcon sx={{ fontSize: 64, color: palette.brand[500], mb: 2 }} />
+                    <Typography variant="h5" fontWeight={800} sx={{ color: palette.slate[900], mb: 1.5 }}>
                         Got it, {form.name.split(' ')[0]}!
                     </Typography>
                     <Typography variant="body1" sx={{ color: '#555', lineHeight: 1.7, mb: 3 }}>
@@ -471,10 +472,10 @@ export default function ProjectBuilder() {
                         variant="contained" href="#cases" component="a"
                         endIcon={<ArrowForwardIcon />}
                         sx={{
-                            backgroundColor: '#3B5BDB', color: 'white',
+                            backgroundColor: palette.brand[500], color: 'white',
                             textTransform: 'none', fontWeight: 600,
                             borderRadius: '8px', px: 3, py: 1.25,
-                            '&:hover': { backgroundColor: '#2d4ac7' },
+                            '&:hover': { backgroundColor: palette.brand[600] },
                         }}
                     >
                         See recent work
@@ -507,7 +508,7 @@ export default function ProjectBuilder() {
                 {/* Step title */}
                 {[step1, step2, step3].filter(Boolean)[activeStep] && (
                     <Box sx={{ mb: 3 }}>
-                        <Typography variant="h6" fontWeight={700} sx={{ color: '#0f1724' }}>
+                        <Typography variant="h6" fontWeight={700} sx={{ color: palette.slate[900] }}>
                             {[step1, step2, step3][activeStep]?.title}
                         </Typography>
                         {[step1, step2, step3][activeStep]?.subtitle && (
@@ -555,7 +556,7 @@ export default function ProjectBuilder() {
                             const groupOptions = step3Options.filter(o => o.group === groupId && o.active);
                             return (
                                 <Box key={groupId}>
-                                    <Typography variant="subtitle1" fontWeight={700} sx={{ color: '#0f1724', mb: 1.5 }}>
+                                    <Typography variant="subtitle1" fontWeight={700} sx={{ color: palette.slate[900], mb: 1.5 }}>
                                         {GROUP_LABELS[groupId] ?? groupId}
                                     </Typography>
                                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
@@ -566,14 +567,14 @@ export default function ProjectBuilder() {
                                                     key={opt.id} label={opt.label}
                                                     onClick={() => handleGroupSelect(groupId, opt.id)}
                                                     sx={{
-                                                        borderColor: sel ? '#3B5BDB' : '#D0D5E8',
+                                                        borderColor: sel ? palette.brand[500] : '#D0D5E8',
                                                         border: '1.5px solid',
-                                                        backgroundColor: sel ? '#3B5BDB' : 'white',
+                                                        backgroundColor: sel ? palette.brand[500] : 'white',
                                                         color: sel ? 'white' : '#333',
                                                         fontWeight: sel ? 600 : 400,
                                                         fontSize: '0.85rem',
                                                         height: 38,
-                                                        '&:hover': { borderColor: '#3B5BDB', backgroundColor: sel ? '#2d4ac7' : '#EEF2FF' },
+                                                        '&:hover': { borderColor: palette.brand[500], backgroundColor: sel ? palette.brand[600] : palette.brand[50] },
                                                         transition: 'all 0.2s',
                                                     }}
                                                 />
@@ -589,7 +590,7 @@ export default function ProjectBuilder() {
                 {/* ── Step 3: Contact form ── */}
                 {activeStep === 3 && (
                     <Box>
-                        <Typography variant="h6" fontWeight={700} sx={{ color: '#0f1724', mb: 0.5 }}>
+                        <Typography variant="h6" fontWeight={700} sx={{ color: palette.slate[900], mb: 0.5 }}>
                             How can I reach you?
                         </Typography>
                         <Typography variant="body2" sx={{ color: '#777', mb: 3 }}>
@@ -648,7 +649,7 @@ export default function ProjectBuilder() {
                     onClick={() => setActiveStep(s => s - 1)}
                     disabled={activeStep === 0}
                     startIcon={<ArrowBackIcon />}
-                    sx={{ textTransform: 'none', color: '#555', '&:hover': { color: '#3B5BDB' } }}
+                    sx={{ textTransform: 'none', color: '#555', '&:hover': { color: palette.brand[500] } }}
                 >
                     Back
                 </Button>
@@ -660,10 +661,10 @@ export default function ProjectBuilder() {
                         disabled={!canProceed()}
                         endIcon={<ArrowForwardIcon />}
                         sx={{
-                            backgroundColor: '#3B5BDB', color: 'white',
+                            backgroundColor: palette.brand[500], color: 'white',
                             textTransform: 'none', fontWeight: 600,
                             borderRadius: '8px', px: 3, py: 1.25,
-                            '&:hover': { backgroundColor: '#2d4ac7' },
+                            '&:hover': { backgroundColor: palette.brand[600] },
                             '&.Mui-disabled': { backgroundColor: '#C5D0F5', color: 'white' },
                         }}
                     >
@@ -676,10 +677,10 @@ export default function ProjectBuilder() {
                         disabled={submitting}
                         endIcon={submitting ? <CircularProgress size={16} sx={{ color: 'white' }} /> : <ArrowForwardIcon />}
                         sx={{
-                            backgroundColor: '#F97316', color: 'white',
+                            backgroundColor: palette.accent[500], color: 'white',
                             textTransform: 'none', fontWeight: 700,
                             borderRadius: '8px', px: 3, py: 1.25,
-                            '&:hover': { backgroundColor: '#e0620a' },
+                            '&:hover': { backgroundColor: palette.accent[600] },
                             '&.Mui-disabled': { backgroundColor: '#f5c6a0', color: 'white' },
                         }}
                     >
