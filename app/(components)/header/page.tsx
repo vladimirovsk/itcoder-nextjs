@@ -378,7 +378,7 @@ export default function Headers() {
 										Available for hire
 									</Typography>
 								</Box>
-								<Typography sx={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.8rem' }}>
+								<Typography sx={{ color: 'rgba(255,255,255,0.72)', fontSize: '0.8rem' }}>
 									Calgary, AB, Canada
 								</Typography>
 							</Box>
@@ -451,7 +451,7 @@ export default function Headers() {
 										{i > 0 && (
 											<Box sx={{ width: 3, height: 3, borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.25)', mx: 1.5, flexShrink: 0 }} />
 										)}
-										<Typography sx={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.82rem' }}>
+										<Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.82rem' }}>
 											{item}
 										</Typography>
 									</React.Fragment>
