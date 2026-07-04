@@ -349,9 +349,9 @@ export default function Headers() {
 					}}
 				   sx={{
 					   backgroundImage: {
-						   xs: `linear-gradient(to bottom, rgba(15,23,36,0.55) 0%, rgba(15,23,36,0.75) 100%), url(${titleImageSmall.src})`,
-						   sm: `linear-gradient(to bottom, rgba(15,23,36,0.55) 0%, rgba(15,23,36,0.75) 100%), url(${titleImageSmall.src})`,
-						   md: `linear-gradient(to bottom, rgba(15,23,36,0.45) 0%, rgba(15,23,36,0.8) 100%), url(${titleImage.src})`
+						   xs: `linear-gradient(to bottom, rgba(15,23,36,0.68) 0%, rgba(15,23,36,0.85) 100%), url(${titleImageSmall.src})`,
+						   sm: `linear-gradient(to bottom, rgba(15,23,36,0.68) 0%, rgba(15,23,36,0.85) 100%), url(${titleImageSmall.src})`,
+						   md: `linear-gradient(to bottom, rgba(15,23,36,0.68) 0%, rgba(15,23,36,0.85) 100%), url(${titleImage.src})`
 					   },
 					   backgroundSize: 'cover',
 					   backgroundRepeat: 'no-repeat',
@@ -379,7 +379,7 @@ export default function Headers() {
 										Available for hire
 									</Typography>
 								</Box>
-								<Typography sx={{ color: 'rgba(255,255,255,0.72)', fontSize: '0.8rem' }}>
+								<Typography sx={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.8rem' }}>
 									Calgary, AB, Canada
 								</Typography>
 							</Box>
@@ -395,7 +395,7 @@ export default function Headers() {
 							</Typography>
 							<Typography variant="h6" component="p" sx={{
 								fontWeight: 400,
-								color: 'rgba(255,255,255,0.75)',
+								color: 'rgba(255,255,255,0.85)',
 								mb: 4,
 								lineHeight: 1.6,
 							}}>
@@ -430,7 +430,7 @@ export default function Headers() {
 									href="#contact"
 									component="a"
 									sx={{
-										color: 'rgba(255,255,255,0.7)',
+										color: 'rgba(255,255,255,0.85)',
 										fontWeight: 400,
 										textTransform: 'none',
 										fontSize: '0.95rem',
@@ -452,7 +452,7 @@ export default function Headers() {
 										{i > 0 && (
 											<Box sx={{ width: 3, height: 3, borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.25)', mx: 1.5, flexShrink: 0 }} />
 										)}
-										<Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.82rem' }}>
+										<Typography sx={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.82rem' }}>
 											{item}
 										</Typography>
 									</React.Fragment>
