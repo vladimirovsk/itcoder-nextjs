@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Box, Container, Divider, Typography, Grid } from '@mui/material';
 import AuthorCard from '@/app/components/AuthorCard';
 import SchemaOrgAbout from '@/app/components/SchemaOrgAbout';
+import { palette } from '@/app/theme/tokens';
 
 export const metadata: Metadata = {
   title: 'About — IT CODER | Senior Backend & AI Engineer in Calgary',
@@ -64,7 +65,7 @@ export default function AboutPage() {
       {/* Hero */}
       <Box
         sx={{
-          backgroundColor: '#0f1724',
+          backgroundColor: palette.slate[900],
           py: { xs: 8, md: 10 },
           px: 2,
           textAlign: 'center',
@@ -129,7 +130,7 @@ export default function AboutPage() {
                 itemScope
                 itemType="https://schema.org/OrganizationRole"
                 sx={{
-                  borderLeft: '3px solid #3B5BDB',
+                  borderLeft: `3px solid ${palette.brand[500]}`,
                   pl: 3,
                 }}
               >
@@ -143,13 +144,13 @@ export default function AboutPage() {
                   variant="h6"
                   component="h3"
                   itemProp="roleName"
-                  sx={{ fontWeight: 700, color: '#0f1724', mt: 0.5, mb: 0.5 }}
+                  sx={{ fontWeight: 700, color: palette.slate[900], mt: 0.5, mb: 0.5 }}
                 >
                   {item.role}
                 </Typography>
                 <Typography
                   variant="body2"
-                  sx={{ color: '#3B5BDB', fontWeight: 600, mb: 1 }}
+                  sx={{ color: palette.brand[500], fontWeight: 600, mb: 1 }}
                 >
                   {item.company}
                 </Typography>
@@ -188,7 +189,7 @@ export default function AboutPage() {
                 >
                   <Typography
                     variant="subtitle2"
-                    sx={{ color: '#3B5BDB', fontWeight: 700, mb: 1.5, letterSpacing: 1, textTransform: 'uppercase' }}
+                    sx={{ color: palette.brand[500], fontWeight: 700, mb: 1.5, letterSpacing: 1, textTransform: 'uppercase' }}
                   >
                     {group.category}
                   </Typography>
@@ -234,7 +235,7 @@ export default function AboutPage() {
           </Typography>
           <Typography variant="body1" sx={{ color: '#444', lineHeight: 1.8 }}>
             Available for project-based engagements, ongoing contracts, and technical consulting.{' '}
-            <Link href="/#contact" style={{ color: '#3B5BDB', fontWeight: 600 }}>
+            <Link href="/#contact" style={{ color: palette.brand[500], fontWeight: 600 }}>
               Get in touch
             </Link>{' '}
             to discuss your project.

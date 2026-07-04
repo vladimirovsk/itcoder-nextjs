@@ -6,6 +6,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { CASE_STUDIES, getCaseStudy } from '../content';
 import ArticleRenderer from '@/app/components/article/ArticleRenderer';
 import { DIAGRAMS } from '@/app/components/article/diagrams';
+import { palette } from '@/app/theme/tokens';
 
 const BASE = 'https://www.itcoder.ca';
 
@@ -66,7 +67,7 @@ export default async function CaseStudyPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* Hero */}
-      <Box sx={{ backgroundColor: '#0f1724', py: { xs: 6, md: 8 }, px: 2 }}>
+      <Box sx={{ backgroundColor: palette.slate[900], py: { xs: 6, md: 8 }, px: 2 }}>
         <Container maxWidth="md">
           <Link href="/cases" style={{ color: '#9fb4f5', textDecoration: 'none', fontSize: '0.85rem', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
             <ArrowBackIcon sx={{ fontSize: 16 }} /> Back to cases
@@ -90,24 +91,24 @@ export default async function CaseStudyPage({
             <Typography sx={{ color: '#94a3b8', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: 1.5, fontWeight: 700, mb: 0.5 }}>
               Client
             </Typography>
-            <Typography sx={{ color: '#1e293b', fontWeight: 600 }}>{c.client}</Typography>
+            <Typography sx={{ color: palette.slate[800], fontWeight: 600 }}>{c.client}</Typography>
           </Box>
           <Box>
             <Typography sx={{ color: '#94a3b8', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: 1.5, fontWeight: 700, mb: 0.5 }}>
               My role
             </Typography>
-            <Typography sx={{ color: '#1e293b', fontWeight: 600 }}>{c.role}</Typography>
+            <Typography sx={{ color: palette.slate[800], fontWeight: 600 }}>{c.role}</Typography>
           </Box>
         </Box>
 
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 4 }}>
           {c.stack.map((s) => (
-            <Chip key={s} label={s} size="small" sx={{ backgroundColor: '#eef2ff', color: '#3730a3', fontWeight: 600 }} />
+            <Chip key={s} label={s} size="small" sx={{ backgroundColor: palette.brand[50], color: '#3730a3', fontWeight: 600 }} />
           ))}
         </Box>
 
         {HeroDiagram && (
-          <Box sx={{ backgroundColor: '#fff', border: '1px solid #e2e8f0', borderRadius: '14px', p: { xs: 2, sm: 3 }, mb: 5 }}>
+          <Box sx={{ backgroundColor: '#fff', border: `1px solid ${palette.slate[200]}`, borderRadius: '14px', p: { xs: 2, sm: 3 }, mb: 5 }}>
             <HeroDiagram />
           </Box>
         )}

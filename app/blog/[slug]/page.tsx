@@ -5,6 +5,7 @@ import { Box, Chip, Container, Divider, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { BLOG_POSTS, getBlogPost } from '../content';
 import ArticleRenderer from '@/app/components/article/ArticleRenderer';
+import { palette } from '@/app/theme/tokens';
 
 const BASE = 'https://www.itcoder.ca';
 
@@ -67,12 +68,12 @@ export default async function BlogPostPage({
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <Box sx={{ backgroundColor: '#0f1724', py: { xs: 6, md: 8 }, px: 2 }}>
+      <Box sx={{ backgroundColor: palette.slate[900], py: { xs: 6, md: 8 }, px: 2 }}>
         <Container maxWidth="md">
           <Link href="/blog" style={{ color: '#9fb4f5', textDecoration: 'none', fontSize: '0.85rem', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
             <ArrowBackIcon sx={{ fontSize: 16 }} /> Back to blog
           </Link>
-          <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center', mt: 2, mb: 1.5, color: '#64748b', fontSize: '0.85rem' }}>
+          <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center', mt: 2, mb: 1.5, color: palette.slate[500], fontSize: '0.85rem' }}>
             <span>{formatDate(p.date)}</span>
             <span>·</span>
             <span>{p.readingMinutes} min read</span>
@@ -94,13 +95,13 @@ export default async function BlogPostPage({
         <Divider sx={{ my: 5 }} />
 
         <Box sx={{ p: { xs: 3, sm: 4 }, borderRadius: '14px', backgroundColor: '#f7f9ff', border: '1px solid #e3eafc' }}>
-          <Typography sx={{ color: '#0f1724', fontWeight: 800, fontSize: '1.15rem', mb: 1 }}>
+          <Typography sx={{ color: palette.slate[900], fontWeight: 800, fontSize: '1.15rem', mb: 1 }}>
             Working on something like this?
           </Typography>
-          <Typography sx={{ color: '#475569', mb: 2.5, lineHeight: 1.7 }}>
+          <Typography sx={{ color: palette.slate[600], mb: 2.5, lineHeight: 1.7 }}>
             I build NestJS backends and AI integrations for SaaS, fintech and crypto products. Happy to talk through your architecture.
           </Typography>
-          <Link href="/#contact" style={{ display: 'inline-block', backgroundColor: '#3B5BDB', color: '#fff', fontWeight: 700, padding: '10px 22px', borderRadius: '8px', textDecoration: 'none' }}>
+          <Link href="/#contact" style={{ display: 'inline-block', backgroundColor: palette.brand[500], color: '#fff', fontWeight: 700, padding: '10px 22px', borderRadius: '8px', textDecoration: 'none' }}>
             Get in touch →
           </Link>
         </Box>
