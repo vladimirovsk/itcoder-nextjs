@@ -2,6 +2,7 @@ export { metadata } from './metadata';
 import { IProject, IProjectLink } from './interfaces';
 import projects from './projects.json';
 import { Box, Card, Chip, Typography } from '@mui/material';
+import { palette, shadow, radius, cardHoverSx } from '@/app/theme/tokens';
 import FacebookIcon from '@mui/icons-material/Facebook';
 
 function StatusBadge({ live, label }: { live: boolean; label: string }) {
@@ -20,14 +21,14 @@ function StatusBadge({ live, label }: { live: boolean; label: string }) {
 				width: 7,
 				height: 7,
 				borderRadius: '50%',
-				backgroundColor: live ? '#4ade80' : '#fbbf24',
+				backgroundColor: live ? palette.status.successBright : '#fbbf24',
 				flexShrink: 0,
 				animation: live ? 'none' : undefined,
 			}} />
 			<Typography sx={{
 				fontSize: '0.72rem',
 				fontWeight: 600,
-				color: live ? '#4ade80' : '#fbbf24',
+				color: live ? palette.status.successBright : '#fbbf24',
 				lineHeight: 1,
 				letterSpacing: '0.03em',
 			}}>
@@ -42,15 +43,11 @@ function ProjectCard({ project }: { project: IProject }) {
 		<Card sx={{
 			display: 'flex',
 			flexDirection: { xs: 'column', md: 'row' },
-			borderRadius: '16px',
-			border: '1px solid #F1F5F9',
-			boxShadow: '0px 2px 8px rgba(0,0,0,0.06)',
+			borderRadius: `${radius.lg}px`,
+			border: `1px solid ${palette.slate[100]}`,
+			boxShadow: shadow.card,
 			overflow: 'hidden',
-			transition: 'box-shadow 0.25s, transform 0.25s',
-			'&:hover': {
-				boxShadow: '0px 10px 32px rgba(0,0,0,0.12)',
-				transform: 'translateY(-2px)',
-			},
+			...cardHoverSx,
 		}}>
 			{/* Brand panel */}
 			<Box sx={{
@@ -149,7 +146,7 @@ function ProjectCard({ project }: { project: IProject }) {
 			}}>
 				<Typography sx={{
 					fontSize: '0.95rem',
-					color: '#475569',
+					color: palette.slate[600],
 					lineHeight: 1.75,
 				}}>
 					{project.description}
@@ -219,7 +216,7 @@ function ProjectCard({ project }: { project: IProject }) {
 					gap: 2,
 					mt: 'auto',
 					pt: 1.5,
-					borderTop: '1px solid #E2E8F0',
+					borderTop: `1px solid ${palette.slate[200]}`,
 				}}>
 					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75 }}>
 						{project.tech.map((t) => (
@@ -230,8 +227,8 @@ function ProjectCard({ project }: { project: IProject }) {
 								sx={{
 									fontSize: '0.75rem',
 									fontWeight: 500,
-									backgroundColor: '#EEF2FF',
-									color: '#3B5BDB',
+									backgroundColor: palette.brand[50],
+									color: palette.brand[500],
 									border: '1px solid #C7D2FE',
 									height: '24px',
 									'& .MuiChip-label': { px: 1.25 },
@@ -305,10 +302,10 @@ export default function Projects() {
 				gap: 1.5,
 				py: 2.5,
 				pb: 5,
-				borderTop: '1px solid #E2E8F0',
+				borderTop: `1px solid ${palette.slate[200]}`,
 			}}>
 				<FacebookIcon sx={{ color: '#1877F2', fontSize: '1.3rem' }} />
-				<Typography sx={{ fontSize: '0.875rem', color: '#64748b' }}>
+				<Typography sx={{ fontSize: '0.875rem', color: palette.slate[500] }}>
 					Follow development updates on{' '}
 					<Box
 						component="a"
