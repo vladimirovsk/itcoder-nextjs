@@ -2,6 +2,7 @@ export { metadata } from './metadata';
 import advantages from './advantages.json';
 import {IAdvantages} from '@/app/(site)/advantages/interfaces';
 import {Box, Card, CardContent, CardHeader} from '@mui/material';
+import { palette, shadow, radius, cardHoverSx } from '@/app/theme/tokens';
 import Image from 'next/image';
 import imageBrand from './images/Brand.png';
 import imageCommand from './images/Command.png';
@@ -89,14 +90,10 @@ export default function Advantages () {
 							position: 'relative',
 							mt: 6,
 							overflow: 'visible',
-							borderRadius: '16px',
-							border: '1px solid #F1F5F9',
-							boxShadow: '0px 1px 4px rgba(0,0,0,0.07)',
-							transition: 'box-shadow 0.25s, transform 0.25s',
-							'&:hover': {
-								boxShadow: '0px 8px 24px rgba(59,91,219,0.12)',
-								transform: 'translateY(-3px)',
-							},
+							borderRadius: `${radius.lg}px`,
+							border: `1px solid ${palette.slate[100]}`,
+							boxShadow: shadow.card,
+							...cardHoverSx,
 						 }}>
 							<IconImage key={`Image=${advantage.name}`} icon={iconMap[advantage.icon].src} alt={advantage.name} />
 							<CardHeader title={advantage.name}
