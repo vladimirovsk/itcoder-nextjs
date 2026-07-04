@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import { palette } from '@/app/theme/tokens';
 
 export const dynamic = 'force-static';
 export const alt = 'IT CODER — Web & Software Development in Calgary';
@@ -26,7 +27,7 @@ export default function OGImage() {
                     position: 'absolute',
                     top: 0, left: 0, right: 0,
                     height: '6px',
-                    background: 'linear-gradient(90deg, #F97316 0%, #3B5BDB 100%)',
+                    background: `linear-gradient(90deg, ${palette.accent[500]} 0%, ${palette.brand[500]} 100%)`,
                     display: 'flex',
                 }} />
 
@@ -39,7 +40,7 @@ export default function OGImage() {
                         letterSpacing: '-0.02em',
                         display: 'flex',
                     }}>
-                        <span style={{ color: '#F97316' }}>IT</span>
+                        <span style={{ color: palette.accent[500] }}>IT</span>
                         <span style={{ color: '#ffffff', marginLeft: 6 }}>CODER</span>
                     </div>
                     <div style={{
@@ -48,7 +49,7 @@ export default function OGImage() {
                         background: 'rgba(249,115,22,0.15)',
                         borderRadius: 6,
                         fontSize: 14,
-                        color: '#F97316',
+                        color: palette.accent[500],
                         fontWeight: 600,
                         display: 'flex',
                     }}>
@@ -90,7 +91,7 @@ export default function OGImage() {
                     gap: 24,
                 }}>
                     <div style={{
-                        background: '#F97316',
+                        background: palette.accent[500],
                         color: '#fff',
                         fontWeight: 700,
                         fontSize: 18,
