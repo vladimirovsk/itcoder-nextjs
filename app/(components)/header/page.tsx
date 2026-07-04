@@ -8,6 +8,7 @@ import titleImage from '../../../public/it-coder-title.png';
 import titleImageSmall from './images/titleImageSmall.png';
 import imageLogo from '../../../public/imageLogo.png';
 import MenuIcon from '@mui/icons-material/Menu';
+import { palette, shadow, radius } from '../../theme/tokens';
 
 
 const toSectionId = (item: string) => item.toLowerCase().replace(/\s+/g, '-');
@@ -257,13 +258,13 @@ export default function Headers() {
 							href={`/#${toSectionId(item)}`}
 							sx={{
 								marginLeft: '1rem',
-								color: onHome && activeItem === item ? '#3B5BDB' : '#475569',
+								color: onHome && activeItem === item ? palette.brand[500] : palette.slate[600],
 								fontWeight: onHome && activeItem === item ? 600 : 400,
-								borderBottom: onHome && activeItem === item ? '2px solid #3B5BDB' : '2px solid transparent',
+								borderBottom: onHome && activeItem === item ? `2px solid ${palette.brand[500]}` : '2px solid transparent',
 								borderRadius: 0,
 								fontSize: '0.9rem',
 								letterSpacing: '0.01em',
-								'&:hover': { color: '#1e293b', backgroundColor: 'transparent' },
+								'&:hover': { color: palette.slate[800], backgroundColor: 'transparent' },
 							}}
 							component="a"
 						>
@@ -277,13 +278,13 @@ export default function Headers() {
 						href="/blog"
 						sx={{
 							marginLeft: '1rem',
-							color: isBlog ? '#3B5BDB' : '#475569',
+							color: isBlog ? palette.brand[500] : palette.slate[600],
 							fontWeight: isBlog ? 600 : 400,
-							borderBottom: isBlog ? '2px solid #3B5BDB' : '2px solid transparent',
+							borderBottom: isBlog ? `2px solid ${palette.brand[500]}` : '2px solid transparent',
 							borderRadius: 0,
 							fontSize: '0.9rem',
 							letterSpacing: '0.01em',
-							'&:hover': { color: '#1e293b', backgroundColor: 'transparent' },
+							'&:hover': { color: palette.slate[800], backgroundColor: 'transparent' },
 						}}
 					>
 						Blog
@@ -408,16 +409,16 @@ export default function Headers() {
 									href="#project-builder"
 									component="a"
 									sx={{
-										backgroundColor: '#F97316',
+										backgroundColor: palette.accent[500],
 										color: '#fff',
 										fontWeight: 700,
 										px: 4,
 										py: 1.5,
-										borderRadius: '8px',
+										borderRadius: `${radius.sm}px`,
 										textTransform: 'none',
 										fontSize: '1rem',
-										boxShadow: '0 4px 14px rgba(249,115,22,0.32)',
-										'&:hover': { backgroundColor: '#e0620a', boxShadow: '0 6px 18px rgba(249,115,22,0.42)' },
+										boxShadow: shadow.cta,
+										'&:hover': { backgroundColor: palette.accent[600], boxShadow: shadow.ctaHover },
 									}}
 								>
 									Build Your Project →
