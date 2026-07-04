@@ -1,9 +1,10 @@
 'use client';
-import {Grid, Link, TextField, Button, Checkbox, FormControlLabel, Box, Typography, Alert} from "@mui/material";
+import {Grid, Link, TextField, Button, Checkbox, FormControlLabel, Box, Typography, Alert, CircularProgress} from "@mui/material";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import EmailIcon from '@mui/icons-material/Email';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import { useState, FormEvent, ChangeEvent } from 'react';
+import { useState, useRef, FormEvent, ChangeEvent } from 'react';
+import { palette, gradients, radius } from '@/app/theme/tokens';
 
 interface FormData {
   firstName: string;
@@ -23,6 +24,9 @@ interface FormErrors {
   agreeToPrivacy?: string;
 }
 
+/** Focus order for jump-to-first-error on submit. */
+const FIELD_ORDER: (keyof FormErrors)[] = ['firstName', 'lastName', 'email', 'message', 'agreeToPrivacy'];
+
 export default function Contact() {
 	const [formData, setFormData] = useState<FormData>({
 		firstName: '',
@@ -34,18 +38,8 @@ export default function Contact() {
 	});
 	const [formErrors, setFormErrors] = useState<FormErrors>({});
 	const [submitStatus, setSubmitStatus] = useState({ success: false, error: false });
-
-	// Check if form is valid (all fields filled and checkbox checked)
-	const isFormValid = (): boolean => {
-		return (
-			formData.firstName.trim() !== '' &&
-			formData.lastName.trim() !== '' &&
-			formData.email.trim() !== '' &&
-			/\S+@\S+\.\S+/.test(formData.email) &&
-			formData.message.trim() !== '' &&
-			formData.agreeToPrivacy
-		);
-	};
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const fieldRefs = useRef<Record<string, HTMLInputElement | null>>({});
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement >) => {
 		const { name, value, type } = e.target;
@@ -56,7 +50,7 @@ export default function Contact() {
 		});
 	};
 
-	const validateForm = (): boolean => {
+	const validateForm = (): FormErrors => {
 		const errors: FormErrors = {};
 		if (!formData.firstName.trim()) errors.firstName = 'First name is required';
 		if (!formData.lastName.trim()) errors.lastName = 'Last name is required';
@@ -65,16 +59,25 @@ export default function Contact() {
 		// Phone is optional, no validation required
 		if (!formData.message.trim()) errors.message = 'Message is required';
 		if (!formData.agreeToPrivacy) errors.agreeToPrivacy = 'You must agree to the privacy policy';
-
-		setFormErrors(errors);
-		return Object.keys(errors).length === 0;
+		return errors;
 	};
 
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		if (!validateForm()) return;
+		// Validate-on-submit (accessible pattern): the button stays enabled so
+		// keyboard/SR users get told *why* it failed. On failure, move focus to
+		// the first invalid field instead of silently doing nothing.
+		const errors = validateForm();
+		setFormErrors(errors);
+		if (Object.keys(errors).length > 0) {
+			const firstInvalid = FIELD_ORDER.find((key) => errors[key]);
+			if (firstInvalid) fieldRefs.current[firstInvalid]?.focus();
+			return;
+		}
 
+		setIsSubmitting(true);
+		setSubmitStatus({ success: false, error: false });
 		try {
 			// Send the form data to our API endpoint
 			const response = await fetch('/api/send-email', {
@@ -102,29 +105,33 @@ export default function Contact() {
 		} catch (error) {
 			console.error('Error submitting form:', error);
 			setSubmitStatus({ success: false, error: true });
+		} finally {
+			setIsSubmitting(false);
 		}
 	};
 
 	return (
 		<section id="contact">
 			<h2 className={'titlePage'}>Contact</h2>
-			<Grid container spacing={0} columns={12} style={{
-				margin: '0',
-				padding: '0',
-				borderRadius: '20px',
+			<Grid container spacing={0} columns={12} sx={{
+				m: 0,
+				p: 0,
+				borderRadius: `${radius.lg}px`,
 				display: 'flex',
 				flexDirection: 'row',
+				flexWrap: 'wrap',
 				fontSize: '1rem',
 				boxShadow: '0px 4px 24px rgba(0, 0, 0, 0.10)',
 				backgroundColor: 'white',
 				overflow: 'hidden',
 			}}>
-				<Grid  id='column1' size={{xs:12, md:4}} style={{
-					padding: '2.5rem',
+				<Grid id='column1' size={{xs:12, md:4}} sx={{
+					order: { xs: 2, md: 1 },
+					p: '2.5rem',
 					display: 'flex',
 					flexDirection: 'column',
 					alignItems: 'flex-start',
-					background: 'linear-gradient(160deg, #0f1724 0%, #1a2d5a 100%)',
+					background: gradients.contactSidebar,
 					fontSize: '1rem',
 					fontWeight: 400,
 					color: 'rgba(255,255,255,0.85)',
@@ -188,20 +195,21 @@ export default function Contact() {
 						</Link>
 					</div>
 				</Grid>
-				<Grid id='column2' size={{xs:12, md:8}} style={{
-					padding: '2rem',
+				<Grid id='column2' size={{xs:12, md:8}} sx={{
+					order: { xs: 1, md: 2 },
+					p: '2rem',
 					display: 'flex',
 					flexDirection: 'column',
 					backgroundColor: 'white',
 				}}>
-					<Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
+					<Box component="form" onSubmit={handleSubmit} noValidate sx={{ width: '100%' }}>
 						{submitStatus.success && (
-							<Alert severity="success" sx={{ mb: 2 }}>
+							<Alert severity="success" role="status" sx={{ mb: 2 }}>
 								Your message has been sent successfully!
 							</Alert>
 						)}
 						{submitStatus.error && (
-							<Alert severity="error" sx={{ mb: 2 }}>
+							<Alert severity="error" role="alert" sx={{ mb: 2 }}>
 								There was an error sending your message. Please try again.
 							</Alert>
 						)}
@@ -211,27 +219,31 @@ export default function Contact() {
 							<Grid size={{xs:12, sm:6}}>
 								<TextField
 									fullWidth
+									required
 									margin="normal"
-									label="First Name *"
+									label="First Name"
 									name="firstName"
 									value={formData.firstName}
 									onChange={handleChange}
 									error={!!formErrors.firstName}
 									helperText={formErrors.firstName}
 									size="small"
+									inputRef={(el) => { fieldRefs.current.firstName = el; }}
 								/>
 							</Grid>
 							<Grid size={{xs:12, sm:6}}>
 								<TextField
 									fullWidth
+									required
 									margin="normal"
-									label="Last Name *"
+									label="Last Name"
 									name="lastName"
 									value={formData.lastName}
 									onChange={handleChange}
 									error={!!formErrors.lastName}
 									helperText={formErrors.lastName}
 									size="small"
+									inputRef={(el) => { fieldRefs.current.lastName = el; }}
 								/>
 							</Grid>
 
@@ -239,8 +251,9 @@ export default function Contact() {
 							<Grid size={{xs:12, sm:6}}>
 								<TextField
 									fullWidth
+									required
 									margin="normal"
-									label="Email *"
+									label="Email"
 									name="email"
 									type="email"
 									value={formData.email}
@@ -248,6 +261,7 @@ export default function Contact() {
 									error={!!formErrors.email}
 									helperText={formErrors.email}
 									size="small"
+									inputRef={(el) => { fieldRefs.current.email = el; }}
 								/>
 							</Grid>
 							<Grid size={{xs:12, sm:6}}>
@@ -268,8 +282,9 @@ export default function Contact() {
 							<Grid size={12}>
 								<TextField
 									fullWidth
+									required
 									margin="normal"
-									label="Message *"
+									label="Message"
 									name="message"
 									multiline
 									rows={4}
@@ -278,6 +293,7 @@ export default function Contact() {
 									error={!!formErrors.message}
 									helperText={formErrors.message ? formErrors.message : `${formData.message.length}/500 characters`}
 									inputProps={{ maxLength: 500 }}
+									inputRef={(el) => { fieldRefs.current.message = el; }}
 								/>
 							</Grid>
 
@@ -291,6 +307,11 @@ export default function Contact() {
 												checked={formData.agreeToPrivacy}
 												onChange={handleChange}
 												color="primary"
+												inputRef={(el: HTMLInputElement | null) => { fieldRefs.current.agreeToPrivacy = el; }}
+												inputProps={{
+													'aria-required': true,
+													'aria-describedby': formErrors.agreeToPrivacy ? 'privacy-error' : undefined,
+												}}
 											/>
 										}
 										label={
@@ -300,7 +321,7 @@ export default function Contact() {
 										}
 									/>
 									{formErrors.agreeToPrivacy && (
-										<Typography variant="caption" color="error" display="block">
+										<Typography id="privacy-error" variant="caption" color="error" display="block">
 											{formErrors.agreeToPrivacy}
 										</Typography>
 									)}
@@ -310,19 +331,25 @@ export default function Contact() {
 										type="submit"
 										variant="contained"
 										fullWidth
-										disabled={!isFormValid()}
+										disabled={isSubmitting}
 										sx={{
-											backgroundColor: '#3B5BDB',
+											backgroundColor: palette.brand[500],
+											borderRadius: `${radius.sm}px`,
 											'&:hover': {
-												backgroundColor: '#2d4ac7',
+												backgroundColor: palette.brand[600],
 											},
 											'&.Mui-disabled': {
-												backgroundColor: '#c7d0f5',
-												color: '#7c8db8'
+												backgroundColor: palette.brand[300],
+												color: '#fff',
 											}
 										}}
 									>
-										Send message
+										{isSubmitting ? (
+											<>
+												<CircularProgress size={18} sx={{ color: '#fff', mr: 1 }} />
+												Sending…
+											</>
+										) : 'Send message'}
 									</Button>
 								</Grid>
 							</Grid>
