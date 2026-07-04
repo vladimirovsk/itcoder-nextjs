@@ -2,27 +2,25 @@
 
 import { createTheme } from '@mui/material/styles';
 import { PaletteMode } from '@mui/material';
+import { palette as tokens, font, focusRing } from './theme/tokens';
 
 // Common design tokens and responsive breakpoints
 const getDesignTokens = (mode: PaletteMode) => ({
   typography: {
-    fontFamily: 'Inter, Geist, Roboto, sans-serif',
-    // Responsive font sizes
+    fontFamily: font.family,
+    // NOTE: the global h1–h6/body type scale (tokens.ts `type`) is intentionally
+    // NOT applied here yet. Several components use MUI variants as size hacks
+    // (e.g. hero H1 = variant="h3", relying on MUI's default ~48px). Overriding
+    // the variants globally would shrink those titles. The scale is applied
+    // per-section during the ITC-15 sweep via explicit `fontSize: type.*`.
   },
   components: {
-    // CardContent styling
-    MuiCardContent: {
+    // Site-wide keyboard focus ring (a11y) — previously missing everywhere.
+    MuiCssBaseline: {
       styleOverrides: {
-        root: {
-          backgroundColor: '#F2F4FF',
-        },
-      },
-    },
-    // CardActions styling
-    MuiCardActions: {
-      styleOverrides: {
-        root: {
-          backgroundColor: '#F2F4FF',
+        '*:focus-visible': {
+          outline: focusRing.outline,
+          outlineOffset: focusRing.outlineOffset,
         },
       },
     },
@@ -440,13 +438,18 @@ export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     background: {
-      default: '#F3F4F6',
+      default: tokens.bg.default,
     },
     primary: {
-      main: '#1E3A8A',
+      main: tokens.brand[500], // #3B5BDB — was #1E3A8A (unused legacy value)
+      dark: tokens.brand[600], // #2D4AC7 — hover / pressed
+      light: tokens.brand[300], // #7B9EF9
+      contrastText: '#FFFFFF',
     },
     secondary: {
-      main: '#F97316',
+      main: tokens.accent[500], // #F97316
+      dark: tokens.accent[600], // #E0620A — hover
+      contrastText: '#FFFFFF',
     },
   },
   ...getDesignTokens('light'),
@@ -457,13 +460,15 @@ export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     background: {
-      default: '#121212',
+      default: tokens.bg.darkDefault,
     },
     primary: {
-      main: '#90CAF9',
+      main: '#90CAF9', // dark-mode primary unchanged — dark mode deferred (design-system.md §B)
     },
     secondary: {
-      main: '#F97316',
+      main: tokens.accent[500], // #F97316
+      dark: tokens.accent[600], // #E0620A — hover
+      contrastText: '#FFFFFF',
     },
   },
   ...getDesignTokens('dark'),

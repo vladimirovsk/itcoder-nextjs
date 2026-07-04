@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button as MuiButton, ButtonProps } from '@mui/material';
+import { palette } from '../../theme/tokens';
 
 export const OrangeButton: React.FC<ButtonProps> = ({ 
   children, 
@@ -14,10 +15,10 @@ export const OrangeButton: React.FC<ButtonProps> = ({
       {...props}
 
         sx={{
-            backgroundColor: '#F58D1E',
+            backgroundColor: palette.accent[500],
             color: '#FFFFFF',
             '&:hover': {
-            backgroundColor: '#e17a0e',
+            backgroundColor: palette.accent[600],
             },
             '&.Mui-disabled': {
             backgroundColor: '#FFCCBC',
