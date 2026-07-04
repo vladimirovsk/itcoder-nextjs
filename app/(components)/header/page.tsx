@@ -213,7 +213,7 @@ export default function Headers() {
 			<AppBar component='nav' position="fixed" sx={{
 				top: 'auto',
 				border: 'none',
-				backgroundColor: scrolled ? 'rgba(243,244,246,0.82)' : '#F3F4F6',
+				backgroundColor: scrolled ? 'rgba(243,244,246,0.82)' : palette.bg.default,
 				backdropFilter: scrolled ? 'blur(14px)' : 'none',
 				WebkitBackdropFilter: scrolled ? 'blur(14px)' : 'none',
 				boxShadow: scrolled ? '0 1px 12px rgba(0,0,0,0.10)' : '0 1px 0 rgba(0,0,0,0.06)',
@@ -228,7 +228,7 @@ export default function Headers() {
 							color="inherit"
 							aria-label="menu"
 							onClick={handleMenuOpen}
-							sx={{ color: '#1e293b' }}
+							sx={{ color: palette.slate[800] }}
 						>
 							<MenuIcon />
 						</IconButton>
@@ -302,8 +302,8 @@ export default function Headers() {
 						style: {
 							width: '100%',
 							maxWidth: '300px',
-							backgroundColor: '#F3F4F6',
-							color: '#1e293b',
+							backgroundColor: palette.bg.default,
+							color: palette.slate[800],
 						},
 					}}
 				>
@@ -314,7 +314,7 @@ export default function Headers() {
 							href={`/#${toSectionId(item)}`}
 							onClick={(e) => handleNavItemClick(item, e)}
 							selected={onHome && activeItem === item}
-							sx={{ color: onHome && activeItem === item ? '#3B5BDB' : '#475569' }}
+							sx={{ color: onHome && activeItem === item ? palette.brand[500] : palette.slate[600] }}
 						>
 							{item}
 						</MenuItem>
@@ -325,7 +325,7 @@ export default function Headers() {
 						href="/blog"
 						onClick={handleMenuClose}
 						selected={isBlog}
-						sx={{ color: isBlog ? '#3B5BDB' : '#475569' }}
+						sx={{ color: isBlog ? palette.brand[500] : palette.slate[600] }}
 					>
 						Blog
 					</MenuItem>
@@ -339,7 +339,7 @@ export default function Headers() {
 			       elevation={0}
 			       style={{
 					   border: 'none',
-			       	   backgroundColor: '#0f1724',
+			       	   backgroundColor: palette.slate[900],
 			       	   position: 'relative',
 			       	   boxShadow: 'none',
 					   minHeight: '30vh',
@@ -374,8 +374,8 @@ export default function Headers() {
 									borderRadius: '100px',
 									px: 1.5, py: 0.5,
 								}}>
-									<Box sx={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#4ade80', flexShrink: 0 }} />
-									<Typography sx={{ color: '#4ade80', fontSize: '0.8rem', fontWeight: 600, lineHeight: 1 }}>
+									<Box sx={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: palette.status.successBright, flexShrink: 0 }} />
+									<Typography sx={{ color: palette.status.successBright, fontSize: '0.8rem', fontWeight: 600, lineHeight: 1 }}>
 										Available for hire
 									</Typography>
 								</Box>
