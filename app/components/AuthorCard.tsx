@@ -1,4 +1,5 @@
 import { Box, Avatar, Typography, Chip, Divider, Link } from '@mui/material';
+import { palette } from '@/app/theme/tokens';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -57,7 +58,7 @@ export default function AuthorCard({
           height: { xs: 100, md: 120 },
           fontSize: '2.5rem',
           fontWeight: 700,
-          backgroundColor: '#3B5BDB',
+          backgroundColor: palette.brand[500],
           color: '#fff',
           flexShrink: 0,
         }}
@@ -71,7 +72,7 @@ export default function AuthorCard({
           variant="h5"
           component="h2"
           itemProp="name"
-          sx={{ fontWeight: 700, color: '#0f1724', mb: 0.5 }}
+          sx={{ fontWeight: 700, color: palette.slate[900], mb: 0.5 }}
         >
           {name}
         </Typography>
@@ -79,7 +80,7 @@ export default function AuthorCard({
         <Typography
           variant="subtitle1"
           itemProp="jobTitle"
-          sx={{ color: '#3B5BDB', fontWeight: 600, mb: 1 }}
+          sx={{ color: palette.brand[500], fontWeight: 600, mb: 1 }}
         >
           {role}
         </Typography>
@@ -127,8 +128,8 @@ export default function AuthorCard({
               label={skill}
               size="small"
               sx={{
-                backgroundColor: '#eef2ff',
-                color: '#3B5BDB',
+                backgroundColor: palette.brand[50],
+                color: palette.brand[500],
                 fontWeight: 600,
                 fontSize: '0.75rem',
               }}

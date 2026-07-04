@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { palette } from '@/app/theme/tokens';
 
 export default function FloatingProjectCTA() {
     const [visible, setVisible] = useState(false);
@@ -45,7 +46,7 @@ export default function FloatingProjectCTA() {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
-                backgroundColor: '#F97316',
+                backgroundColor: palette.accent[500],
                 color: '#fff',
                 border: 'none',
                 borderRadius: '999px',
