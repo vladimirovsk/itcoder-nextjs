@@ -2,6 +2,13 @@
 
 html {
   scroll-behavior: smooth;
+  /* Full-bleed sections (e.g. Skills) use `width: 100vw`, which includes the
+     vertical scrollbar's width and so overflows the viewport by ~16px on any
+     classic-scrollbar browser (ITC-38). Clip the x-axis at the viewport-width
+     root: full-bleed still reaches the real viewport edges, but the scrollbar-
+     induced excess can't produce a horizontal scrollbar. `clip` (not `hidden`)
+     avoids creating a scroll container, so it never breaks sticky/anchored UI. */
+  overflow-x: clip;
 }
 
 body {
