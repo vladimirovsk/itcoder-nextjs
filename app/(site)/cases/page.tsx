@@ -6,7 +6,7 @@ import {Box, Card, CardContent, CardHeader, Container, Grid, Pagination, Stack, 
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { palette, shadow, radius, cardHoverSx } from '@/app/theme/tokens';
+import { palette, shadow, radius, cardHoverSx, type } from '@/app/theme/tokens';
 
 
 import webPages from './images/webPages.png';
@@ -54,6 +54,11 @@ function CaseCard({ caseItem }: { caseItem: ICases }) {
 			</div>
 			<CardHeader
 				title={caseItem.title}
+				slotProps={{ title: { sx: {
+					fontSize: { xs: `${type.h3.size[1]}px`, md: `${type.h3.size[0]}px` },
+					fontWeight: type.h3.weight,
+					lineHeight: type.h3.lh,
+				} } }}
 				sx={{
 					mt: '1.5rem',
 					minHeight: '3.5rem',
@@ -66,6 +71,8 @@ function CaseCard({ caseItem }: { caseItem: ICases }) {
 				backgroundColor: palette.slate[50],
 				textAlign: 'left',
 				color: palette.slate[600],
+				fontSize: { xs: `${type.body.size[1]}px`, md: `${type.body.size[0]}px` },
+				lineHeight: type.body.lh,
 			}}>
 				{caseItem.subheader}
 			</CardContent>
