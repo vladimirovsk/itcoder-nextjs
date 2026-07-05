@@ -98,10 +98,21 @@ export default function BlogIndex() {
                       <span>·</span>
                       <span>{p.readingMinutes} min read</span>
                     </Box>
-                    <Typography variant="h6" component="h2" sx={{ fontWeight: 800, color: palette.slate[900], mb: 1, lineHeight: 1.3 }}>
+                    <Typography component="h2" sx={{
+                      fontSize: { xs: `${type.h3.size[1]}px`, md: `${type.h3.size[0]}px` },
+                      fontWeight: type.h3.weight,
+                      lineHeight: type.h3.lh,
+                      color: palette.slate[900],
+                      mb: 1,
+                    }}>
                       {p.title}
                     </Typography>
-                    <Typography sx={{ color: palette.slate[600], lineHeight: 1.7, mb: 1.5 }}>{p.excerpt}</Typography>
+                    <Typography sx={{
+                      fontSize: { xs: `${type.body.size[1]}px`, md: `${type.body.size[0]}px` },
+                      lineHeight: type.body.lh,
+                      color: palette.slate[600],
+                      mb: 1.5,
+                    }}>{p.excerpt}</Typography>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75 }}>
                       {p.tags.map((t) => (
                         <Chip key={t} label={t} size="small" sx={{ backgroundColor: palette.brand[50], color: palette.brand[600], fontWeight: 600, fontSize: '0.72rem' }} />
