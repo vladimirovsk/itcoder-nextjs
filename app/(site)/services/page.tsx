@@ -9,7 +9,7 @@ import PaymentsIcon from '@mui/icons-material/Payments';
 import WebIcon from '@mui/icons-material/Web';
 import { SvgIconComponent } from '@mui/icons-material';
 import ServicesFAQ from './ServicesFAQ';
-import { palette, gradients, shadow, radius, cardHoverSx, motion } from '@/app/theme/tokens';
+import { palette, gradients, shadow, radius, cardHoverSx, motion, type } from '@/app/theme/tokens';
 
 const ICON_MAP: Record<string, SvgIconComponent> = {
 	Api:        ApiIcon,
@@ -143,14 +143,25 @@ export default function Services() {
 
 							<CardHeader
 								title={service.name}
-								slotProps={{ title: { sx: { fontSize: '1rem', fontWeight: 700, textAlign: 'center', color: palette.slate[800] } } }}
+								slotProps={{ title: { sx: {
+									fontSize: { xs: `${type.h3.size[1]}px`, md: `${type.h3.size[0]}px` },
+									fontWeight: type.h3.weight,
+									lineHeight: type.h3.lh,
+									textAlign: 'center',
+									color: palette.slate[800],
+								} } }}
 								sx={{ pb: 0.5, pt: 1 }}
 							/>
 							<CardContent sx={{
 								flexGrow: 1,
 								pt: 0.5,
 							}}>
-								<Typography variant="body2" sx={{ color: palette.slate[500], lineHeight: 1.6, textAlign: 'center' }}>
+								<Typography sx={{
+									fontSize: { xs: `${type.body.size[1]}px`, md: `${type.body.size[0]}px` },
+									lineHeight: type.body.lh,
+									color: palette.slate[500],
+									textAlign: 'center',
+								}}>
 									{service.description}
 								</Typography>
 							</CardContent>
