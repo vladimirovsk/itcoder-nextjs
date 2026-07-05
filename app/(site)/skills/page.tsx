@@ -142,7 +142,7 @@ export default function Skills() {
 					gap: 4,
 					rowGap: 6, // Increased row spacing
 					columnGap: 8, // Increased column spacing
-					alignItems: 'start', // Prevent cards from stretching to match the tallest card
+					alignItems: 'stretch', // Equal-height cards across the row
 				}}
 			>
 			{
@@ -152,7 +152,10 @@ export default function Skills() {
 						position: 'relative',
 						overflow: 'visible',
 						width: '100%',
+						height: '100%',
 						mt: 6,
+						display: 'flex',
+						flexDirection: 'column',
 						borderRadius: '16px',
 						boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
 					}}>
@@ -176,7 +179,8 @@ export default function Skills() {
 						<Divider key={`${skill.title}-divider-${index}`} />
 						<CardContent key={`${skill.title}-content-${index}`}
 						             sx={{
-							             height: '8rem',
+							             minHeight: '8rem',
+							             flexGrow: 1,
 							             backgroundColor: 'white',
 							             fontSize: '1rem',
 							             textAlign: 'justify',
@@ -198,7 +202,6 @@ export default function Skills() {
 							<IconButton
 								id={`Button-${index}`}
 								aria-label="show more"
-								hidden = {skill.hidden}
 								disabled={skill.disabled}
 								onClick={() => handleExpandClick(index)}
 								style={{ 
