@@ -5,6 +5,7 @@ import {
     Alert, Box, Button, Checkbox, Chip, CircularProgress,
     FormControlLabel, Grid, TextField, Typography,
 } from '@mui/material';
+import { useTheme as useMuiTheme } from '@mui/material/styles';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -103,15 +104,15 @@ function StepIndicator({ active }: { active: number }) {
                         <Box sx={{
                             width: 36, height: 36, borderRadius: '50%',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            backgroundColor: idx < active ? palette.brand[500] : idx === active ? palette.brand[500] : '#E0E4EF',
-                            color: idx <= active ? 'white' : '#999',
+                            backgroundColor: idx <= active ? palette.brand[500] : 'surfaceAlt',
+                            color: idx <= active ? 'white' : 'muted',
                             fontWeight: 700, fontSize: 14, transition: 'all 0.25s',
                         }}>
                             {idx < active ? '✓' : idx + 1}
                         </Box>
                         <Typography variant="caption" sx={{
                             display: { xs: 'none', sm: 'block' },
-                            color: idx === active ? palette.brand[500] : idx < active ? '#555' : '#aaa',
+                            color: idx === active ? palette.brand[500] : idx < active ? 'bodyText' : 'muted',
                             fontWeight: idx === active ? 700 : 400,
                             whiteSpace: 'nowrap',
                         }}>
@@ -124,7 +125,7 @@ function StepIndicator({ active }: { active: number }) {
                             width: { xs: 24, sm: 48, md: 72 },
                             mx: { xs: 0.5, sm: 1 },
                             mb: { xs: 0, sm: 2.5 },
-                            backgroundColor: idx < active ? palette.brand[500] : '#E0E4EF',
+                            backgroundColor: idx < active ? palette.brand[500] : 'hairline',
                             transition: 'background-color 0.25s',
                         }} />
                     )}
@@ -138,11 +139,12 @@ function TypeCard({ option, selected, onSelect }: {
     option: BuilderOption; selected: boolean; onSelect: (id: string) => void;
 }) {
     const Icon = ICON_MAP[option.icon ?? ''] ?? HelpOutlineIcon;
+    const muiTheme = useMuiTheme();
     return (
         <Box onClick={() => onSelect(option.id)} sx={{
             cursor: 'pointer',
             border: selected ? `2px solid ${palette.brand[500]}` : '2px solid transparent',
-            outline: selected ? `1px solid ${palette.brand[500]}` : '1px solid #E0E4EF',
+            outline: `1px solid ${selected ? palette.brand[500] : muiTheme.palette.hairline}`,
             backgroundColor: selected ? palette.brand[50] : 'background.paper',
             borderRadius: '14px', p: 2.5,
             display: 'flex', flexDirection: 'column', alignItems: 'center',
@@ -175,10 +177,11 @@ function FeatureCard({ option, selected, onToggle }: {
     option: BuilderOption; selected: boolean; onToggle: (id: string) => void;
 }) {
     const Icon = ICON_MAP[option.icon ?? ''] ?? HelpOutlineIcon;
+    const muiTheme = useMuiTheme();
     return (
         <Box onClick={() => onToggle(option.id)} sx={{
             cursor: 'pointer',
-            border: selected ? `2px solid ${palette.brand[500]}` : '1px solid #E0E4EF',
+            border: selected ? `2px solid ${palette.brand[500]}` : `1px solid ${muiTheme.palette.hairline}`,
             backgroundColor: selected ? palette.brand[50] : 'background.paper',
             borderRadius: '10px', p: 2,
             display: 'flex', alignItems: 'flex-start', gap: 1.5,
@@ -488,13 +491,12 @@ export default function ProjectBuilder() {
     return (
         <section id="project-builder">
             <h2 className="titlePage">Build Your Project</h2>
-            <p style={{
-                textAlign: 'center', color: '#555', fontSize: '1.1rem',
-                marginTop: '0.5rem', marginBottom: '2rem',
-                maxWidth: 600, marginLeft: 'auto', marginRight: 'auto',
+            <Box component="p" sx={{
+                textAlign: 'center', color: 'bodyText', fontSize: '1.1rem',
+                mt: 0.5, mb: 2, maxWidth: 600, mx: 'auto',
             }}>
                 Tell me what you need — I&apos;ll handle the rest.
-            </p>
+            </Box>
 
             {/* Step indicator */}
             <StepIndicator active={activeStep} />

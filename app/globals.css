@@ -192,3 +192,9 @@ html[data-theme="dark"] .services-faq-answer {
 }
 
 html[data-theme="dark"] .skeleton-pulse { background-color: #242832; } /* surfaceAlt */
+
+/* ArticleRenderer callout boxes — server component, CSS override required */
+html[data-theme="dark"] .callout { color: #E6E9EF; }                 /* heading */
+html[data-theme="dark"] .callout-challenge { background-color: rgba(249,115,22,0.08) !important; }
+html[data-theme="dark"] .callout-result    { background-color: rgba(22,163,74,0.08) !important; }
+html[data-theme="dark"] .callout-note      { background-color: rgba(2,132,199,0.08) !important; }

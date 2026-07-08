@@ -8,7 +8,10 @@ import titleImage from '../../../public/it-coder-title.png';
 import titleImageSmall from './images/titleImageSmall.png';
 import imageLogo from '../../../public/imageLogo.png';
 import MenuIcon from '@mui/icons-material/Menu';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { palette, shadow, radius } from '../../theme/tokens';
+import { useTheme } from '../../ThemeContext';
 
 
 const toSectionId = (item: string) => item.toLowerCase().replace(/\s+/g, '-');
@@ -21,6 +24,7 @@ export default function Headers() {
 	const [scrolled, setScrolled] = React.useState(false); // Track if activeItem was manually set by clicking
 	const scrollTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the scroll timer
 	const resetTimerRef = React.useRef<NodeJS.Timeout | null>(null); // Ref to store the reset timer
+	const { mode, isHydrated, toggleTheme } = useTheme();
 	const pathname = usePathname(); // Current route — used to highlight the Blog link (a real route, not a section)
 	const isBlog = pathname?.startsWith('/blog') ?? false;
 	const onHome = pathname === '/'; // Section nav items only highlight on the home page;
@@ -202,10 +206,8 @@ export default function Headers() {
 		}
 	};
 
-	// Use a consistent icon for server rendering and initial client render
-	// Only switch based on theme after client-side hydration is complete and safe
-	// const themeIcon = !isHydrated || mode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />;
-	// const tooltipTitle = !isHydrated || mode === 'light' ? 'Switch to dark mode': 'Switch to light mode';
+	const themeIcon = !isHydrated || mode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />;
+	const tooltipTitle = !isHydrated || mode === 'light' ? 'Switch to dark mode' : 'Switch to light mode';
 
 	return (
 		<React.Fragment>
@@ -213,7 +215,9 @@ export default function Headers() {
 			<AppBar component='nav' position="fixed" sx={{
 				top: 'auto',
 				border: 'none',
-				backgroundColor: scrolled ? 'rgba(243,244,246,0.82)' : palette.bg.default,
+				backgroundColor: scrolled
+					? (mode === 'light' ? 'rgba(243,244,246,0.82)' : 'rgba(26,29,36,0.92)')
+					: (mode === 'light' ? palette.bg.default : palette.dark.surface),
 				backdropFilter: scrolled ? 'blur(14px)' : 'none',
 				WebkitBackdropFilter: scrolled ? 'blur(14px)' : 'none',
 				boxShadow: scrolled ? '0 1px 12px rgba(0,0,0,0.10)' : '0 1px 0 rgba(0,0,0,0.06)',
@@ -302,8 +306,8 @@ export default function Headers() {
 						style: {
 							width: '100%',
 							maxWidth: '300px',
-							backgroundColor: palette.bg.default,
-							color: palette.slate[800],
+							backgroundColor: mode === 'light' ? palette.bg.default : palette.dark.surface,
+							color: mode === 'light' ? palette.slate[800] : palette.dark.text,
 						},
 					}}
 				>
@@ -330,7 +334,16 @@ export default function Headers() {
 						Blog
 					</MenuItem>
 				</Menu>
-				<Box>
+				<Box sx={{ flexShrink: 0, ml: 1 }}>
+					<Tooltip title={tooltipTitle}>
+						<IconButton
+							onClick={toggleTheme}
+							aria-label={tooltipTitle}
+							sx={{ color: mode === 'light' ? palette.slate[800] : palette.dark.textMuted }}
+						>
+							{themeIcon}
+						</IconButton>
+					</Tooltip>
 				</Box>
 			</Toolbar>
 			</AppBar>

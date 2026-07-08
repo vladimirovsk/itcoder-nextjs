@@ -49,8 +49,8 @@ export default function Skills() {
 	// Custom image component with fallback
 	const IconImage = ({ icon, alt }: { icon: string, alt: string }) => {
 		return (
-			<div style={{
-				backgroundColor: 'white',
+			<Box sx={{
+				bgcolor: 'background.paper',
 				position: 'absolute',
 				width: '62px',
 				height: '62px',
@@ -76,7 +76,7 @@ export default function Skills() {
 						borderRadius: '50%'
 					}}
 				/>
-			</div>
+			</Box>
 		);
 	};
 

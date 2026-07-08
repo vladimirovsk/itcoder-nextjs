@@ -83,12 +83,12 @@ function Block({ block }: { block: ArticleBlock }) {
     case 'callout': {
       const s = CALLOUT_STYLES[block.variant];
       return (
-        <Box sx={{ backgroundColor: s.bg, borderLeft: `4px solid ${s.border}`, borderRadius: '0 10px 10px 0', p: 2.5, my: 3 }}>
+        <Box className={`callout callout-${block.variant}`} sx={{ backgroundColor: s.bg, borderLeft: `4px solid ${s.border}`, borderRadius: '0 10px 10px 0', p: 2.5, my: 3 }}>
           <Typography sx={{ color: s.labelColor, fontWeight: 700, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: 1.5, mb: 0.5 }}>
             {s.label}
           </Typography>
-          <Typography sx={{ color: palette.slate[800], fontWeight: 700, mb: 0.5 }}>{block.title}</Typography>
-          <Typography sx={{ color: palette.slate[600], lineHeight: 1.75 }}>{block.text}</Typography>
+          <Typography sx={{ color: 'heading', fontWeight: 700, mb: 0.5 }}>{block.title}</Typography>
+          <Typography sx={{ color: 'bodyText', lineHeight: 1.75 }}>{block.text}</Typography>
         </Box>
       );
     }
