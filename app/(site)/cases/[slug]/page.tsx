@@ -88,16 +88,16 @@ export default async function CaseStudyPage({
         {/* Meta bar */}
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 3, mb: 4 }}>
           <Box>
-            <Typography sx={{ color: '#94a3b8', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: 1.5, fontWeight: 700, mb: 0.5 }}>
+            <Typography sx={{ color: 'muted', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: 1.5, fontWeight: 700, mb: 0.5 }}>
               Client
             </Typography>
-            <Typography sx={{ color: palette.slate[800], fontWeight: 600 }}>{c.client}</Typography>
+            <Typography sx={{ color: 'heading', fontWeight: 600 }}>{c.client}</Typography>
           </Box>
           <Box>
-            <Typography sx={{ color: '#94a3b8', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: 1.5, fontWeight: 700, mb: 0.5 }}>
+            <Typography sx={{ color: 'muted', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: 1.5, fontWeight: 700, mb: 0.5 }}>
               My role
             </Typography>
-            <Typography sx={{ color: palette.slate[800], fontWeight: 600 }}>{c.role}</Typography>
+            <Typography sx={{ color: 'heading', fontWeight: 600 }}>{c.role}</Typography>
           </Box>
         </Box>
 
@@ -108,7 +108,7 @@ export default async function CaseStudyPage({
         </Box>
 
         {HeroDiagram && (
-          <Box sx={{ backgroundColor: '#fff', border: `1px solid ${palette.slate[200]}`, borderRadius: '14px', p: { xs: 2, sm: 3 }, mb: 5 }}>
+          <Box sx={{ backgroundColor: 'background.paper', border: '1px solid', borderColor: 'hairline', borderRadius: '14px', p: { xs: 2, sm: 3 }, mb: 5 }}>
             <HeroDiagram />
           </Box>
         )}

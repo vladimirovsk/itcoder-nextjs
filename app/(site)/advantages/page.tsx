@@ -2,7 +2,7 @@ export { metadata } from './metadata';
 import advantages from './advantages.json';
 import {IAdvantages} from '@/app/(site)/advantages/interfaces';
 import {Box, Card, CardContent, CardHeader} from '@mui/material';
-import { palette, shadow, radius, cardHoverSx } from '@/app/theme/tokens';
+import { shadow, radius, cardHoverSx } from '@/app/theme/tokens';
 import Image from 'next/image';
 import imageBrand from './images/Brand.png';
 import imageCommand from './images/Command.png';
@@ -91,7 +91,8 @@ export default function Advantages () {
 							mt: 6,
 							overflow: 'visible',
 							borderRadius: `${radius.lg}px`,
-							border: `1px solid ${palette.slate[100]}`,
+							border: '1px solid',
+							borderColor: 'cardBorder',
 							boxShadow: shadow.card,
 							...cardHoverSx,
 						 }}>
@@ -115,7 +116,7 @@ export default function Advantages () {
 							<CardContent
 								key={`${advantage.name}-content-${index}`}
 								sx={{
-									backgroundColor: 'white',
+									backgroundColor: 'background.paper',
 									fontSize: '1rem',
 									textAlign: 'justify',
 									borderBottomLeftRadius: '16px',

@@ -107,7 +107,7 @@ export default function Skills() {
 		<Container id="skills" style={{
 				maxWidth: '1200px',
 				margin: '0 auto',
-				padding: '0 1rem',
+				padding: '0 1rem 4rem',
 			}}>
 			<h2 className={'titlePage titlePage--light'} style={{
 				marginTop: '4rem',
@@ -153,7 +153,7 @@ export default function Skills() {
 						overflow: 'visible',
 						width: '100%',
 						height: '100%',
-						mt: 6,
+						mt: 4,
 						display: 'flex',
 						flexDirection: 'column',
 						borderRadius: '16px',
@@ -169,7 +169,7 @@ export default function Skills() {
 									}}
 							}}
 							sx={{
-								height: '4rem',
+								height: '3rem',
 								textAlign: 'center',
 								marginTop: '1rem',
 							}}
@@ -179,9 +179,9 @@ export default function Skills() {
 						<Divider key={`${skill.title}-divider-${index}`} />
 						<CardContent key={`${skill.title}-content-${index}`}
 						             sx={{
-							             minHeight: '8rem',
+							             minHeight: '5.5rem',
 							             flexGrow: 1,
-							             backgroundColor: 'white',
+							             backgroundColor: 'background.paper',
 							             fontSize: '1rem',
 							             textAlign: 'justify',
 							             borderBottomLeftRadius: '16px',
@@ -214,7 +214,7 @@ export default function Skills() {
 						</CardActions>
 						<Collapse in={expanded === index} timeout="auto" unmountOnExit>
 							<CardContent sx={{
-								backgroundColor: 'white',
+								backgroundColor: 'background.paper',
 								fontSize: '1rem',
 								textAlign: 'justify',
 								borderBottomLeftRadius: '16px',

@@ -40,7 +40,7 @@ export default function AuthorCard({
         flexDirection: { xs: 'column', md: 'row' },
         gap: 4,
         alignItems: { xs: 'center', md: 'flex-start' },
-        backgroundColor: '#fff',
+        backgroundColor: 'background.paper',
         borderRadius: '12px',
         boxShadow: '0px 4px 20px rgba(34, 35, 58, 0.12)',
         p: { xs: 3, md: 4 },
@@ -72,7 +72,7 @@ export default function AuthorCard({
           variant="h5"
           component="h2"
           itemProp="name"
-          sx={{ fontWeight: 700, color: palette.slate[900], mb: 0.5 }}
+          sx={{ fontWeight: 700, color: 'heading', mb: 0.5 }}
         >
           {name}
         </Typography>
@@ -80,19 +80,19 @@ export default function AuthorCard({
         <Typography
           variant="subtitle1"
           itemProp="jobTitle"
-          sx={{ color: palette.brand[500], fontWeight: 600, mb: 1 }}
+          sx={{ color: 'primary.main', fontWeight: 600, mb: 1 }}
         >
           {role}
         </Typography>
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 2 }}>
-          <LocationOnIcon sx={{ fontSize: '1rem', color: '#888' }} />
+          <LocationOnIcon sx={{ fontSize: '1rem', color: 'muted' }} />
           <Typography
             variant="body2"
             itemProp="address"
             itemScope
             itemType="https://schema.org/PostalAddress"
-            sx={{ color: '#666' }}
+            sx={{ color: 'muted' }}
           >
             <span itemProp="addressLocality">{location.split(',')[0]?.trim()}</span>
             {location.includes(',') && (
@@ -113,7 +113,7 @@ export default function AuthorCard({
         <Typography
           variant="body1"
           itemProp="description"
-          sx={{ color: '#444', mb: 2, lineHeight: 1.7 }}
+          sx={{ color: 'bodyText', mb: 2, lineHeight: 1.7 }}
         >
           {bio}
         </Typography>
@@ -169,7 +169,7 @@ export default function AuthorCard({
               display: 'flex',
               alignItems: 'center',
               gap: 0.5,
-              color: '#24292f',
+              color: 'heading',
               textDecoration: 'none',
               fontWeight: 600,
               fontSize: '0.875rem',

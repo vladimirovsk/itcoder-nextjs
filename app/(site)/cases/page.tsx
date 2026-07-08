@@ -37,7 +37,8 @@ function CaseCard({ caseItem }: { caseItem: ICases }) {
 			flexDirection: 'column',
 			height: '100%',
 			borderRadius: `${radius.lg}px`,
-			border: `1px solid ${palette.slate[100]}`,
+			border: '1px solid',
+			borderColor: 'cardBorder',
 			boxShadow: shadow.card,
 			overflow: 'hidden',
 			...cardHoverSx,
@@ -62,28 +63,30 @@ function CaseCard({ caseItem }: { caseItem: ICases }) {
 				sx={{
 					mt: '1.5rem',
 					minHeight: '3.5rem',
-					backgroundColor: palette.slate[50],
+					backgroundColor: 'surfaceAlt',
 					textAlign: 'center',
 				}}
 			/>
 			<CardContent sx={{
 				flexGrow: 1,
-				backgroundColor: palette.slate[50],
+				backgroundColor: 'surfaceAlt',
 				textAlign: 'left',
-				color: palette.slate[600],
+				color: 'bodyText',
 				fontSize: { xs: `${type.body.size[1]}px`, md: `${type.body.size[0]}px` },
 				lineHeight: type.body.lh,
 			}}>
 				{caseItem.subheader}
 			</CardContent>
 			{caseItem.slug && (
-				<Link
+				<Box
+					component={Link}
 					href={`/cases/${caseItem.slug}`}
-					style={{
+					sx={{
 						display: 'block',
-						backgroundColor: palette.slate[50],
-						borderTop: `1px solid ${palette.brand[50]}`,
-						color: palette.brand[500],
+						backgroundColor: 'surfaceAlt',
+						borderTop: '1px solid',
+						borderTopColor: 'cardBorder',
+						color: 'primary.main',
 						fontWeight: 700,
 						fontSize: '0.9rem',
 						textAlign: 'center',
@@ -92,7 +95,7 @@ function CaseCard({ caseItem }: { caseItem: ICases }) {
 					}}
 				>
 					Read case study →
-				</Link>
+				</Box>
 			)}
 		</Card>
 	);
@@ -148,7 +151,7 @@ export default function Cases() {
 								},
 							}}
 						/>
-						<Typography variant="caption" sx={{ color: palette.slate[500] }}>
+						<Typography variant="caption" sx={{ color: 'muted' }}>
 							Showing {rangeStart}–{rangeEnd} of {casesList.length}
 						</Typography>
 					</Box>

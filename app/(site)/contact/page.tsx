@@ -122,7 +122,7 @@ export default function Contact() {
 				flexWrap: 'wrap',
 				fontSize: '1rem',
 				boxShadow: '0px 4px 24px rgba(0, 0, 0, 0.10)',
-				backgroundColor: 'white',
+				backgroundColor: 'background.paper',
 				overflow: 'hidden',
 			}}>
 				<Grid id='column1' size={{xs:12, md:4}} sx={{
@@ -200,7 +200,7 @@ export default function Contact() {
 					p: '2rem',
 					display: 'flex',
 					flexDirection: 'column',
-					backgroundColor: 'white',
+					backgroundColor: 'background.paper',
 				}}>
 					<Box component="form" onSubmit={handleSubmit} noValidate sx={{ width: '100%' }}>
 						{submitStatus.success && (

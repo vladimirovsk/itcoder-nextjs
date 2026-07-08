@@ -81,19 +81,21 @@ export default function BlogIndex() {
                     gridTemplateColumns: { xs: '1fr', sm: '240px 1fr' },
                     gap: 3,
                     p: { xs: 2, sm: 3 },
-                    border: `1px solid ${palette.slate[100]}`,
+                    backgroundColor: 'background.paper',
+                    border: '1px solid',
+                    borderColor: 'cardBorder',
                     borderRadius: `${radius.lg}px`,
                     boxShadow: shadow.card,
                     ...cardHoverSx,
                   }}
                 >
                   {Diagram && (
-                    <Box aria-hidden sx={{ backgroundColor: palette.slate[50], borderRadius: `${radius.md}px`, p: 1.5, display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}>
+                    <Box aria-hidden sx={{ backgroundColor: 'surfaceAlt', borderRadius: `${radius.md}px`, p: 1.5, display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}>
                       <Diagram />
                     </Box>
                   )}
                   <Box>
-                    <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center', mb: 1, color: palette.slate[500], fontSize: '0.8rem' }}>
+                    <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center', mb: 1, color: 'muted', fontSize: '0.8rem' }}>
                       <span>{formatDate(p.date)}</span>
                       <span>·</span>
                       <span>{p.readingMinutes} min read</span>
@@ -102,7 +104,7 @@ export default function BlogIndex() {
                       fontSize: { xs: `${type.h3.size[1]}px`, md: `${type.h3.size[0]}px` },
                       fontWeight: type.h3.weight,
                       lineHeight: type.h3.lh,
-                      color: palette.slate[900],
+                      color: 'heading',
                       mb: 1,
                     }}>
                       {p.title}
@@ -110,7 +112,7 @@ export default function BlogIndex() {
                     <Typography sx={{
                       fontSize: { xs: `${type.body.size[1]}px`, md: `${type.body.size[0]}px` },
                       lineHeight: type.body.lh,
-                      color: palette.slate[600],
+                      color: 'bodyText',
                       mb: 1.5,
                     }}>{p.excerpt}</Typography>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75 }}>

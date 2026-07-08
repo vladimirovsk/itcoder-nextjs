@@ -20,7 +20,7 @@ function Block({ block }: { block: ArticleBlock }) {
           variant="h5"
           component="h2"
           id={block.id}
-          sx={{ fontWeight: 800, color: palette.slate[900], mt: 5, mb: 2, letterSpacing: '-0.01em', scrollMarginTop: '90px' }}
+          sx={{ fontWeight: 800, color: 'heading', mt: 5, mb: 2, letterSpacing: '-0.01em', scrollMarginTop: '90px' }}
         >
           {block.text}
         </Typography>
@@ -28,7 +28,7 @@ function Block({ block }: { block: ArticleBlock }) {
 
     case 'paragraph':
       return (
-        <Typography variant="body1" sx={{ color: '#334155', lineHeight: 1.85, mb: 2.5, fontSize: '1.05rem' }}>
+        <Typography variant="body1" sx={{ color: 'bodyText', lineHeight: 1.85, mb: 2.5, fontSize: '1.05rem' }}>
           {block.text}
         </Typography>
       );
@@ -37,7 +37,7 @@ function Block({ block }: { block: ArticleBlock }) {
       return (
         <Box
           component={block.ordered ? 'ol' : 'ul'}
-          sx={{ pl: 3, mb: 3, '& li': { color: '#334155', lineHeight: 1.8, mb: 1, fontSize: '1.02rem' } }}
+          sx={{ pl: 3, mb: 3, '& li': { color: 'bodyText', lineHeight: 1.8, mb: 1, fontSize: '1.02rem' } }}
         >
           {block.items.map((item, i) => (
             <li key={i}>{item}</li>
@@ -74,7 +74,7 @@ function Block({ block }: { block: ArticleBlock }) {
     case 'quote':
       return (
         <Box sx={{ borderLeft: '4px solid #3B5BDB', pl: 3, py: 0.5, my: 3 }}>
-          <Typography sx={{ color: palette.slate[600], fontStyle: 'italic', fontSize: '1.15rem', lineHeight: 1.7 }}>
+          <Typography sx={{ color: 'bodyText', fontStyle: 'italic', fontSize: '1.15rem', lineHeight: 1.7 }}>
             {block.text}
           </Typography>
         </Box>
@@ -104,9 +104,9 @@ function Block({ block }: { block: ArticleBlock }) {
           }}
         >
           {block.items.map((m) => (
-            <Box key={m.label} sx={{ backgroundColor: '#f7f9ff', border: '1px solid #e3eafc', borderRadius: '12px', p: 2.5, textAlign: 'center' }}>
-              <Typography sx={{ color: palette.brand[500], fontWeight: 800, fontSize: '1.6rem', lineHeight: 1.1 }}>{m.value}</Typography>
-              <Typography sx={{ color: palette.slate[500], fontSize: '0.8rem', mt: 0.5 }}>{m.label}</Typography>
+            <Box key={m.label} sx={{ backgroundColor: 'surfaceAlt', border: '1px solid', borderColor: 'hairline', borderRadius: '12px', p: 2.5, textAlign: 'center' }}>
+              <Typography sx={{ color: 'primary.main', fontWeight: 800, fontSize: '1.6rem', lineHeight: 1.1 }}>{m.value}</Typography>
+              <Typography sx={{ color: 'muted', fontSize: '0.8rem', mt: 0.5 }}>{m.label}</Typography>
             </Box>
           ))}
         </Box>
@@ -117,11 +117,11 @@ function Block({ block }: { block: ArticleBlock }) {
       if (!Diagram) return null;
       return (
         <Box sx={{ my: 4 }}>
-          <Box sx={{ backgroundColor: '#fff', border: '1px solid #e2e8f0', borderRadius: '14px', p: { xs: 2, sm: 3 } }}>
+          <Box sx={{ backgroundColor: 'background.paper', border: '1px solid', borderColor: 'hairline', borderRadius: '14px', p: { xs: 2, sm: 3 } }}>
             <Diagram />
           </Box>
           {block.caption && (
-            <Typography sx={{ color: '#94a3b8', fontSize: '0.82rem', textAlign: 'center', mt: 1.5, fontStyle: 'italic' }}>
+            <Typography sx={{ color: 'muted', fontSize: '0.82rem', textAlign: 'center', mt: 1.5, fontStyle: 'italic' }}>
               {block.caption}
             </Typography>
           )}

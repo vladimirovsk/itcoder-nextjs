@@ -31,6 +31,14 @@ export const ThemeContextProvider = ({ children }: { children: React.ReactNode }
     setIsClient(true);
   }, []);
 
+  // Reflect the active mode onto <html data-theme> so pure-CSS classes
+  // (.titlePage, .subTitlePage, .services-faq-*) can adapt in dark mode —
+  // MUI's JS theme swap alone can't reach global CSS. Light is the default
+  // (no/`light` attribute), so this stays non-breaking. (ITC-40)
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', mode);
+  }, [mode]);
+
   // Second useEffect: Handle theme loading from localStorage
   // This runs after hydration is complete
   useEffect(() => {

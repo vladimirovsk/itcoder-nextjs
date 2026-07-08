@@ -42,7 +42,22 @@ export const palette = {
   bg: {
     default: '#F3F4F6', // app background (light)
     paper: '#FFFFFF',
-    darkDefault: '#121212', // app background (dark)
+    darkDefault: '#121212', // app background (dark) — alias of dark.bg
+  },
+  /** Dark-mode ramp (ITC-33 / Phase 6). Slate-tinted, not pure gray, to
+   *  stay on-brand. Surfaces step lighter with elevation; text ramps down
+   *  in emphasis. All text pairs verified ≥ WCAG AA — see docs/dark-mode.md.
+   *  Map light → dark by ROLE, never by hex (e.g. white card → dark.surface,
+   *  slate.800 heading → dark.text, slate.200 hairline → dark.border). */
+  dark: {
+    bg: '#121212', // base app background (elevation 0)
+    surface: '#1A1D24', // cards / paper / nav (elevation +1)
+    surfaceAlt: '#242832', // inputs / hover / chips (elevation +2)
+    border: '#2E3440', // hairline dividers
+    borderStrong: '#363C4A', // input borders, control outlines
+    text: '#E6E9EF', // high-emphasis: headings + body (15.4:1 on bg)
+    textMuted: '#A7B0C0', // medium-emphasis: captions, secondary (8.6:1)
+    textFaint: '#808A99', // low-emphasis: disabled, placeholder (5.4:1)
   },
   /** Status. Green is used for the "Available for hire" badge. */
   status: {

@@ -4,6 +4,52 @@ import { createTheme } from '@mui/material/styles';
 import { PaletteMode } from '@mui/material';
 import { palette as tokens, font, focusRing } from './theme/tokens';
 
+// ── Dark-mode role tokens (ITC-40 / docs/dark-mode.md §3) ────────────────────
+// Additive, mode-aware semantic palette keys for the content sweep. They let
+// server AND client components stay theme-reactive via serializable sx string
+// tokens (e.g. sx={{ color: 'heading', bgcolor: 'surfaceAlt' }}) — no function
+// props across the RSC boundary. Light values are the EXACT hexes the sections
+// hardcode today, so light mode is pixel-identical; only dark swaps. Surfaces
+// (white → dark.surface, page bg) already map cleanly onto MUI's built-in
+// background.paper / background.default, so no custom key is needed for those.
+declare module '@mui/material/styles' {
+  interface Palette {
+    surfaceAlt: string;
+    heading: string;
+    bodyText: string;
+    muted: string;
+    hairline: string;
+    cardBorder: string;
+  }
+  interface PaletteOptions {
+    surfaceAlt?: string;
+    heading?: string;
+    bodyText?: string;
+    muted?: string;
+    hairline?: string;
+    cardBorder?: string;
+  }
+}
+
+const roleColors = (mode: PaletteMode) =>
+  mode === 'light'
+    ? {
+        surfaceAlt: tokens.slate[50], // #F8FAFC — subtle fill, FAQ, input
+        heading: tokens.slate[800], // #1E293B
+        bodyText: tokens.slate[600], // #475569
+        muted: tokens.slate[500], // #64748B — caption / meta
+        hairline: tokens.slate[200], // #E2E8F0
+        cardBorder: tokens.slate[100], // #F1F5F9
+      }
+    : {
+        surfaceAlt: tokens.dark.surfaceAlt,
+        heading: tokens.dark.text, // heading + body collapse to high-emphasis
+        bodyText: tokens.dark.text,
+        muted: tokens.dark.textMuted,
+        hairline: tokens.dark.border,
+        cardBorder: tokens.dark.border,
+      };
+
 // Common design tokens and responsive breakpoints
 const getDesignTokens = (mode: PaletteMode) => ({
   typography: {
@@ -269,7 +315,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
             backgroundRepeat: 'no-repeat',
             backgroundOrigin: 'initial',
             backgroundClip: 'initial',
-            backgroundColor: mode === 'light' ? 'white' : '#121212',
+            backgroundColor: mode === 'light' ? 'white' : tokens.dark.bg,
             height: '546px',
             width: '100vw',
             padding: 0,
@@ -361,8 +407,9 @@ const getDesignTokens = (mode: PaletteMode) => ({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: mode === 'light' ? '#F3F4F6' : '#121212',
-          color: mode === 'light' ? '#000000' : '#FFFFFF',
+          // Nav bar sits one step above the base surface in dark mode.
+          backgroundColor: mode === 'light' ? tokens.bg.default : tokens.dark.surface,
+          color: mode === 'light' ? '#000000' : tokens.dark.text,
         },
       },
     },
@@ -371,7 +418,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
         root: {
           // Common icon button styles can go here
           '&.header-menu-button': {
-            color: mode === 'light' ? '#000000' : '#FFFFFF',
+            color: mode === 'light' ? '#000000' : tokens.dark.text,
             marginRight: 2,
           },
         },
@@ -382,7 +429,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
         root: {
           // Common typography styles can go here
           '&.header-title': {
-            color: mode === 'light' ? '#000000' : '#FFFFFF',
+            color: mode === 'light' ? '#000000' : tokens.dark.text,
             marginLeft: '1rem'
           },
           '&.titlePage': {
@@ -397,11 +444,11 @@ const getDesignTokens = (mode: PaletteMode) => ({
           // Common button styles can go here
           '&.header-nav-button': {
             alignItems: 'center',
-            color: mode === 'light' ? '#000000' : '#FFFFFF',
+            color: mode === 'light' ? '#000000' : tokens.dark.text,
           },
           '&.header-nav-button.active': {
             alignItems: 'center',
-            color: mode === 'light' ? '#000000' : '#FFFFFF',
+            color: mode === 'light' ? '#000000' : tokens.dark.text,
             borderBottom: '2px solid #F97316',
             borderLeft: 'none',
             borderRight: 'none',
@@ -437,6 +484,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
 export const lightTheme = createTheme({
   palette: {
     mode: 'light',
+    ...roleColors('light'),
     background: {
       default: tokens.bg.default,
     },
@@ -455,18 +503,30 @@ export const lightTheme = createTheme({
   ...getDesignTokens('light'),
 });
 
-// Dark theme
+// Dark theme — ITC-33 / Phase 6. Palette routed through the dark ramp in
+// tokens.ts (slate-tinted surfaces + emphasis-based text), all pairs ≥ WCAG AA.
 export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
+    ...roleColors('dark'),
     background: {
-      default: tokens.bg.darkDefault,
+      default: tokens.dark.bg, // = bg.darkDefault
+      paper: tokens.dark.surface,
     },
+    text: {
+      primary: tokens.dark.text,
+      secondary: tokens.dark.textMuted,
+      disabled: tokens.dark.textFaint,
+    },
+    divider: tokens.dark.border,
     primary: {
-      main: '#90CAF9', // dark-mode primary unchanged — dark mode deferred (design-system.md §B)
+      main: tokens.brand[300], // #7B9EF9 — soft sky reads on dark (7.2:1 on bg)
+      dark: tokens.brand[500], // #3B5BDB
+      light: tokens.brand[300],
+      contrastText: tokens.dark.bg,
     },
     secondary: {
-      main: tokens.accent[500], // #F97316
+      main: tokens.accent[500], // #F97316 — 6.7:1 on bg, stays as CTA
       dark: tokens.accent[600], // #E0620A — hover
       contrastText: '#FFFFFF',
     },

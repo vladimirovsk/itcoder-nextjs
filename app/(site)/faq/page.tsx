@@ -60,16 +60,16 @@ export default function FAQ() {
 					           defaultExpanded={expandedAccordion === 'panel1'}
 					           expanded={expandedAccordion === item.id}
 					           onChange={handleAccordionChange(item.id)}
-					           style={{
-						           backgroundColor: 'white' , color: 'black',
+					           sx={{
+						           backgroundColor: 'background.paper', color: 'heading',
 						           borderBottomWidth: '2px',
 						           borderBottomStyle: 'solid',
-						           borderBottomColor: '#dad9d9',
+						           borderBottomColor: 'hairline',
 					           }}
 					>
 
 						<AccordionSummary key={`Summary-${item.id}`} className={'accordionSummary'}
-						                  expandIcon={<ExpandMoreIcon style={{color: 'black'}}/>}
+						                  expandIcon={<ExpandMoreIcon sx={{color: 'heading'}}/>}
 						>
 							<Typography key={`Typography-${item.id}`} component="span" className={'title-accordion'} style={{fontSize: '1.2rem'}}>
 								{item.title}

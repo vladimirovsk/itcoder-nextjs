@@ -94,11 +94,11 @@ export default async function BlogPostPage({
 
         <Divider sx={{ my: 5 }} />
 
-        <Box sx={{ p: { xs: 3, sm: 4 }, borderRadius: '14px', backgroundColor: '#f7f9ff', border: '1px solid #e3eafc' }}>
-          <Typography sx={{ color: palette.slate[900], fontWeight: 800, fontSize: '1.15rem', mb: 1 }}>
+        <Box sx={{ p: { xs: 3, sm: 4 }, borderRadius: '14px', backgroundColor: 'surfaceAlt', border: '1px solid', borderColor: 'hairline' }}>
+          <Typography sx={{ color: 'heading', fontWeight: 800, fontSize: '1.15rem', mb: 1 }}>
             Working on something like this?
           </Typography>
-          <Typography sx={{ color: palette.slate[600], mb: 2.5, lineHeight: 1.7 }}>
+          <Typography sx={{ color: 'bodyText', mb: 2.5, lineHeight: 1.7 }}>
             I build NestJS backends and AI integrations for SaaS, fintech and crypto products. Happy to talk through your architecture.
           </Typography>
           <Link href="/#contact" style={{ display: 'inline-block', backgroundColor: palette.brand[500], color: '#fff', fontWeight: 700, padding: '10px 22px', borderRadius: '8px', textDecoration: 'none' }}>

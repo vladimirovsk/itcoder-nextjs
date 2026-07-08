@@ -169,3 +169,26 @@ details[open] > .services-faq-summary::after { content: '−'; }
   0%, 100% { opacity: 1; }
   50% { opacity: 0.45; }
 }
+
+/* ── Dark mode (ITC-40 / docs/dark-mode.md §3) ────────────────────────────────
+   Pure-CSS classes can't consume the MUI JS theme swap, so they adapt off the
+   <html data-theme="dark"> attribute set by ThemeContext. Mapping is by ROLE,
+   never by matching hex. Light (default / data-theme="light") is untouched.
+   The .footer is already dark on both modes — intentionally not re-themed. */
+html[data-theme="dark"] .titlePage { color: #E6E9EF; }            /* heading */
+html[data-theme="dark"] .subTitlePage { color: #A7B0C0; }         /* muted */
+
+html[data-theme="dark"] .services-faq-item {
+  background-color: #242832;                                       /* surfaceAlt */
+  border-color: #2E3440;                                           /* hairline */
+}
+html[data-theme="dark"] .services-faq-item[open] { border-color: #7B9EF9; } /* brand.300 */
+html[data-theme="dark"] .services-faq-summary { color: #E6E9EF; } /* heading */
+html[data-theme="dark"] .services-faq-summary::after,
+html[data-theme="dark"] details[open] > .services-faq-summary::after { color: #7B9EF9; }
+html[data-theme="dark"] .services-faq-answer {
+  color: #E6E9EF;                                                  /* body → high-emphasis */
+  border-top-color: #2E3440;                                       /* hairline */
+}
+
+html[data-theme="dark"] .skeleton-pulse { background-color: #242832; } /* surfaceAlt */

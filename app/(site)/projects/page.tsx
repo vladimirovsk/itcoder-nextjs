@@ -44,7 +44,8 @@ function ProjectCard({ project }: { project: IProject }) {
 			display: 'flex',
 			flexDirection: { xs: 'column', md: 'row' },
 			borderRadius: `${radius.lg}px`,
-			border: `1px solid ${palette.slate[100]}`,
+			border: '1px solid',
+			borderColor: 'cardBorder',
 			boxShadow: shadow.card,
 			overflow: 'hidden',
 			...cardHoverSx,
@@ -138,7 +139,7 @@ function ProjectCard({ project }: { project: IProject }) {
 			{/* Content panel */}
 			<Box sx={{
 				flex: 1,
-				backgroundColor: '#FAFBFF',
+				backgroundColor: 'background.paper',
 				p: { xs: 3, md: 4 },
 				display: 'flex',
 				flexDirection: 'column',
@@ -146,7 +147,7 @@ function ProjectCard({ project }: { project: IProject }) {
 			}}>
 				<Typography sx={{
 					fontSize: '0.95rem',
-					color: palette.slate[600],
+					color: 'bodyText',
 					lineHeight: 1.75,
 				}}>
 					{project.description}
@@ -181,7 +182,7 @@ function ProjectCard({ project }: { project: IProject }) {
 							<Typography sx={{ fontSize: '0.72rem', fontWeight: 700, color: project.accentColor, letterSpacing: '0.06em', textTransform: 'uppercase', lineHeight: 1, mb: 0.5 }}>
 								Currently working on
 							</Typography>
-							<Typography sx={{ fontSize: '0.85rem', color: '#334155', lineHeight: 1.5 }}>
+							<Typography sx={{ fontSize: '0.85rem', color: 'bodyText', lineHeight: 1.5 }}>
 								{project.currentWork}
 							</Typography>
 						</Box>
@@ -200,7 +201,7 @@ function ProjectCard({ project }: { project: IProject }) {
 								flexShrink: 0,
 								mt: '7px',
 							}} />
-							<Typography sx={{ fontSize: '0.875rem', color: '#334155', lineHeight: 1.6 }}>
+							<Typography sx={{ fontSize: '0.875rem', color: 'bodyText', lineHeight: 1.6 }}>
 								{feature}
 							</Typography>
 						</Box>
@@ -216,7 +217,8 @@ function ProjectCard({ project }: { project: IProject }) {
 					gap: 2,
 					mt: 'auto',
 					pt: 1.5,
-					borderTop: `1px solid ${palette.slate[200]}`,
+					borderTop: '1px solid',
+					borderTopColor: 'hairline',
 				}}>
 					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75 }}>
 						{project.tech.map((t) => (
@@ -302,10 +304,11 @@ export default function Projects() {
 				gap: 1.5,
 				py: 2.5,
 				pb: 5,
-				borderTop: `1px solid ${palette.slate[200]}`,
+				borderTop: '1px solid',
+				borderTopColor: 'hairline',
 			}}>
 				<FacebookIcon sx={{ color: '#1877F2', fontSize: '1.3rem' }} />
-				<Typography sx={{ fontSize: '0.875rem', color: palette.slate[500] }}>
+				<Typography sx={{ fontSize: '0.875rem', color: 'muted' }}>
 					Follow development updates on{' '}
 					<Box
 						component="a"

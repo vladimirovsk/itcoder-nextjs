@@ -143,7 +143,7 @@ function TypeCard({ option, selected, onSelect }: {
             cursor: 'pointer',
             border: selected ? `2px solid ${palette.brand[500]}` : '2px solid transparent',
             outline: selected ? `1px solid ${palette.brand[500]}` : '1px solid #E0E4EF',
-            backgroundColor: selected ? palette.brand[50] : 'white',
+            backgroundColor: selected ? palette.brand[50] : 'background.paper',
             borderRadius: '14px', p: 2.5,
             display: 'flex', flexDirection: 'column', alignItems: 'center',
             textAlign: 'center', gap: 1,
@@ -159,11 +159,11 @@ function TypeCard({ option, selected, onSelect }: {
             }}>
                 <Icon sx={{ color: selected ? 'white' : palette.brand[500], fontSize: 26 }} />
             </Box>
-            <Typography variant="subtitle2" fontWeight={700} sx={{ color: selected ? palette.brand[500] : palette.slate[900], lineHeight: 1.3 }}>
+            <Typography variant="subtitle2" fontWeight={700} sx={{ color: selected ? palette.brand[500] : 'heading', lineHeight: 1.3 }}>
                 {option.label}
             </Typography>
             {option.description && (
-                <Typography variant="caption" sx={{ color: '#777', lineHeight: 1.4 }}>
+                <Typography variant="caption" sx={{ color: 'muted', lineHeight: 1.4 }}>
                     {option.description}
                 </Typography>
             )}
@@ -179,7 +179,7 @@ function FeatureCard({ option, selected, onToggle }: {
         <Box onClick={() => onToggle(option.id)} sx={{
             cursor: 'pointer',
             border: selected ? `2px solid ${palette.brand[500]}` : '1px solid #E0E4EF',
-            backgroundColor: selected ? palette.brand[50] : 'white',
+            backgroundColor: selected ? palette.brand[50] : 'background.paper',
             borderRadius: '10px', p: 2,
             display: 'flex', alignItems: 'flex-start', gap: 1.5,
             transition: 'all 0.2s',
@@ -195,11 +195,11 @@ function FeatureCard({ option, selected, onToggle }: {
                 <Icon sx={{ color: selected ? 'white' : palette.brand[500], fontSize: 20 }} />
             </Box>
             <Box sx={{ flex: 1 }}>
-                <Typography variant="body2" fontWeight={600} sx={{ color: selected ? palette.brand[500] : palette.slate[900], lineHeight: 1.3 }}>
+                <Typography variant="body2" fontWeight={600} sx={{ color: selected ? palette.brand[500] : 'heading', lineHeight: 1.3 }}>
                     {option.label}
                 </Typography>
                 {option.description && (
-                    <Typography variant="caption" sx={{ color: '#888', lineHeight: 1.4 }}>
+                    <Typography variant="caption" sx={{ color: 'muted', lineHeight: 1.4 }}>
                         {option.description}
                     </Typography>
                 )}
@@ -394,7 +394,7 @@ export default function ProjectBuilder() {
             <section id="project-builder">
                 <h2 className="titlePage">Build Your Project</h2>
                 <Box sx={{
-                    backgroundColor: 'white', borderRadius: '16px',
+                    backgroundColor: 'background.paper', borderRadius: '16px',
                     boxShadow: '0px 4px 20px rgba(0,0,0,0.08)',
                     p: { xs: 3, sm: 5 }, maxWidth: 560, mx: 'auto', textAlign: 'center',
                 }}>
@@ -405,10 +405,10 @@ export default function ProjectBuilder() {
                     }}>
                         <Typography sx={{ fontSize: 32 }}>📋</Typography>
                     </Box>
-                    <Typography variant="h6" fontWeight={800} sx={{ color: palette.slate[900], mb: 1.5 }}>
+                    <Typography variant="h6" fontWeight={800} sx={{ color: 'heading', mb: 1.5 }}>
                         We already have your inquiry
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#666', lineHeight: 1.7, mb: 3 }}>
+                    <Typography variant="body2" sx={{ color: 'muted', lineHeight: 1.7, mb: 3 }}>
                         An inquiry from <strong>{form.email}</strong> is already on file.
                         Would you like to update it with the project description you just configured?
                     </Typography>
@@ -420,7 +420,7 @@ export default function ProjectBuilder() {
                             onClick={() => setExistingLead(false)}
                             variant="outlined"
                             sx={{
-                                textTransform: 'none', borderColor: '#D0D5E8', color: '#555',
+                                textTransform: 'none', borderColor: 'hairline', color: 'muted',
                                 borderRadius: '8px', px: 3,
                                 '&:hover': { borderColor: palette.brand[500], color: palette.brand[500] },
                             }}
@@ -456,15 +456,15 @@ export default function ProjectBuilder() {
                 <h2 className="titlePage">Build Your Project</h2>
                 <Box sx={{
                     textAlign: 'center', py: 6, px: 2,
-                    backgroundColor: 'white', borderRadius: '16px',
+                    backgroundColor: 'background.paper', borderRadius: '16px',
                     boxShadow: '0px 4px 20px rgba(0,0,0,0.08)',
                     maxWidth: 560, mx: 'auto',
                 }}>
                     <TaskAltIcon sx={{ fontSize: 64, color: palette.brand[500], mb: 2 }} />
-                    <Typography variant="h5" fontWeight={800} sx={{ color: palette.slate[900], mb: 1.5 }}>
+                    <Typography variant="h5" fontWeight={800} sx={{ color: 'heading', mb: 1.5 }}>
                         Got it, {form.name.split(' ')[0]}!
                     </Typography>
-                    <Typography variant="body1" sx={{ color: '#555', lineHeight: 1.7, mb: 3 }}>
+                    <Typography variant="body1" sx={{ color: 'bodyText', lineHeight: 1.7, mb: 3 }}>
                         I&apos;ve received your project description and will get back to you
                         within 24 hours with a preliminary plan.
                     </Typography>
@@ -501,18 +501,18 @@ export default function ProjectBuilder() {
 
             {/* Step content card */}
             <Box sx={{
-                backgroundColor: 'white', borderRadius: '16px',
+                backgroundColor: 'background.paper', borderRadius: '16px',
                 boxShadow: '0px 4px 20px rgba(0,0,0,0.08)',
                 p: { xs: 2.5, sm: 4 }, mb: 2,
             }}>
                 {/* Step title */}
                 {[step1, step2, step3].filter(Boolean)[activeStep] && (
                     <Box sx={{ mb: 3 }}>
-                        <Typography variant="h6" fontWeight={700} sx={{ color: palette.slate[900] }}>
+                        <Typography variant="h6" fontWeight={700} sx={{ color: 'heading' }}>
                             {[step1, step2, step3][activeStep]?.title}
                         </Typography>
                         {[step1, step2, step3][activeStep]?.subtitle && (
-                            <Typography variant="body2" sx={{ color: '#777', mt: 0.5 }}>
+                            <Typography variant="body2" sx={{ color: 'muted', mt: 0.5 }}>
                                 {[step1, step2, step3][activeStep]?.subtitle}
                             </Typography>
                         )}
@@ -556,7 +556,7 @@ export default function ProjectBuilder() {
                             const groupOptions = step3Options.filter(o => o.group === groupId && o.active);
                             return (
                                 <Box key={groupId}>
-                                    <Typography variant="subtitle1" fontWeight={700} sx={{ color: palette.slate[900], mb: 1.5 }}>
+                                    <Typography variant="subtitle1" fontWeight={700} sx={{ color: 'heading', mb: 1.5 }}>
                                         {GROUP_LABELS[groupId] ?? groupId}
                                     </Typography>
                                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
@@ -567,10 +567,10 @@ export default function ProjectBuilder() {
                                                     key={opt.id} label={opt.label}
                                                     onClick={() => handleGroupSelect(groupId, opt.id)}
                                                     sx={{
-                                                        borderColor: sel ? palette.brand[500] : '#D0D5E8',
+                                                        borderColor: sel ? palette.brand[500] : 'hairline',
                                                         border: '1.5px solid',
-                                                        backgroundColor: sel ? palette.brand[500] : 'white',
-                                                        color: sel ? 'white' : '#333',
+                                                        backgroundColor: sel ? palette.brand[500] : 'background.paper',
+                                                        color: sel ? 'white' : 'bodyText',
                                                         fontWeight: sel ? 600 : 400,
                                                         fontSize: '0.85rem',
                                                         height: 38,
@@ -590,10 +590,10 @@ export default function ProjectBuilder() {
                 {/* ── Step 3: Contact form ── */}
                 {activeStep === 3 && (
                     <Box>
-                        <Typography variant="h6" fontWeight={700} sx={{ color: palette.slate[900], mb: 0.5 }}>
+                        <Typography variant="h6" fontWeight={700} sx={{ color: 'heading', mb: 0.5 }}>
                             How can I reach you?
                         </Typography>
-                        <Typography variant="body2" sx={{ color: '#777', mb: 3 }}>
+                        <Typography variant="body2" sx={{ color: 'muted', mb: 3 }}>
                             I&apos;ll get back to you within 24 hours.
                         </Typography>
 
@@ -649,7 +649,7 @@ export default function ProjectBuilder() {
                     onClick={() => setActiveStep(s => s - 1)}
                     disabled={activeStep === 0}
                     startIcon={<ArrowBackIcon />}
-                    sx={{ textTransform: 'none', color: '#555', '&:hover': { color: palette.brand[500] } }}
+                    sx={{ textTransform: 'none', color: 'muted', '&:hover': { color: palette.brand[500] } }}
                 >
                     Back
                 </Button>

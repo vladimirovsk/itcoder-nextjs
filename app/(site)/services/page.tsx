@@ -126,7 +126,8 @@ export default function Services() {
 							height: '100%',
 							boxShadow: shadow.card,
 							borderRadius: `${radius.lg}px`,
-							border: `1px solid ${palette.slate[100]}`,
+							border: '1px solid',
+							borderColor: 'cardBorder',
 							...cardHoverSx,
 						}}>
 							{/* Icon block */}
@@ -148,7 +149,7 @@ export default function Services() {
 									fontWeight: type.h3.weight,
 									lineHeight: type.h3.lh,
 									textAlign: 'center',
-									color: palette.slate[800],
+									color: 'heading',
 								} } }}
 								sx={{ pb: 0.5, pt: 1 }}
 							/>
@@ -159,7 +160,7 @@ export default function Services() {
 								<Typography sx={{
 									fontSize: { xs: `${type.body.size[1]}px`, md: `${type.body.size[0]}px` },
 									lineHeight: type.body.lh,
-									color: palette.slate[500],
+									color: 'muted',
 									textAlign: 'center',
 								}}>
 									{service.description}
