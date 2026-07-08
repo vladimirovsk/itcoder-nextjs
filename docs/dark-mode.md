@@ -1,6 +1,6 @@
 # Dark mode — design spec (ITC-33 / Phase 6)
 
-Owner: Web Designer · Status: palette shipped in tokens, content sweep pending
+Owner: Web Designer · Status: **palette + content sweep shipped; brand sign-off received 2026-07-08; toggle pending (ITC-40)**
 Depends on: ITC-15 (Phase 3 tokenization) — done.
 
 This resolves **decision B** from the Phase 1 audit (`design-system.md` §B) and
@@ -75,21 +75,46 @@ correctly on both modes. Do not lighten them to `dark.surface`.
 
 ## 4. What has shipped vs. what remains
 
-**Shipped (this issue, non-breaking):**
-- `palette.dark` ramp in `tokens.ts`.
-- `darkTheme` in `theme.tsx` now routes `background.default/paper`, `text.*`,
-  `divider`, `primary`, `secondary` through the tokens (was a stub `#90CAF9`).
-- Nav/header chrome (AppBar, header title/nav buttons, menu icon, HomeHeader base)
-  aligned to `dark.*` — these already branched on `mode`.
+**Shipped (ITC-33 + ITC-40 sweep, committed 2026-07-08):**
+- `palette.dark` ramp in `tokens.ts` (ITC-33).
+- `darkTheme` in `theme.tsx` routes `background.default/paper`, `text.*`,
+  `divider`, `primary`, `secondary` through tokens; nav chrome aligned to `dark.*` (ITC-33).
+- Additive semantic palette keys (`heading`, `bodyText`, `muted`, `surfaceAlt`, `hairline`,
+  `cardBorder`) in `theme.tsx` via `roleColors(mode)` + MUI module augmentation (ITC-40).
+- `ThemeContext.tsx` now sets `<html data-theme={mode}>` for CSS-class fallback (ITC-40).
+- All ~14 content components tokenised: `advantages`, `services`, `skills`, `cases` (+`[slug]`),
+  `contact`, `faq`, `projects`, `project-builder`, `blog` (+`[slug]`), `ArticleRenderer`,
+  `AuthorCard` (ITC-40).
+- `globals.css` dark rules for pure-CSS classes `.titlePage / .subTitlePage / .services-faq-*`
+  scoped under `html[data-theme="dark"]` (ITC-40).
+- Brand sign-off (Chief of staff) received 2026-07-08.
 
-**Remaining — content sweep (engineering, delegated to Web Support Engineer):**
-The ~14 content components still hardcode light surfaces (`white`/`#fff` card
-backgrounds, `#f8fafc`, `slate.*` text) and **do not branch on `mode`**, so they
-won't adapt. Rewire them to read from `theme.palette` (surface/text/divider) or
-`useTheme().mode`, using the table in §3. Files:
-`advantages`, `services`, `skills`, `cases` (+ `[slug]`), `contact`, `faq`,
-`projects`, `project-builder`, `blog` (+ `[slug]`), `ArticleRenderer`,
-`AuthorCard`, plus dark rules in `globals.css:45–153`.
+**Remaining — toggle activation + QA + deploy (ITC-40, Web Support Engineer):**
 
-Only after the sweep verifies clean: **un-comment the theme toggle button**
-(`header/page.tsx`) and QA all sections in both modes at xs/md/lg.
+1. **Add the theme toggle button** to `app/(components)/header/page.tsx`:
+
+   ```tsx
+   // Additional imports at top of file:
+   import Brightness4Icon from '@mui/icons-material/Brightness4';
+   import Brightness7Icon from '@mui/icons-material/Brightness7';
+   import { useTheme } from '../../ThemeContext';
+
+   // Inside the Headers() component, add the hook:
+   const { mode, toggleTheme, isHydrated } = useTheme();
+
+   // Uncomment lines 207-208 (the themeIcon / tooltipTitle variables),
+   // then add this button inside the <Toolbar> before the closing </Toolbar>:
+   <Tooltip title={tooltipTitle}>
+     <IconButton
+       onClick={toggleTheme}
+       aria-label={tooltipTitle}
+       sx={{ color: palette.slate[600], ml: 1 }}
+     >
+       {themeIcon}
+     </IconButton>
+   </Tooltip>
+   ```
+
+2. **Visual QA** — test all sections in both modes at xs / md / lg breakpoints.
+   Check: text contrast, card backgrounds, borders, footer, hero (already dark — leave).
+3. **Deploy** — on separate approval from Chief of staff / Web Support Engineer.
