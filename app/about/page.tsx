@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Box, Container, Divider, Typography, Grid } from '@mui/material';
 import AuthorCard from '@/app/components/AuthorCard';
 import SchemaOrgAbout from '@/app/components/SchemaOrgAbout';
-import { palette } from '@/app/theme/tokens';
+import { palette, type, radius } from '@/app/theme/tokens';
 
 export const metadata: Metadata = {
   title: 'About — IT CODER | Senior Backend & AI Engineer in Calgary',
@@ -74,14 +74,20 @@ export default function AboutPage() {
         <Container maxWidth="md">
           <Typography
             variant="overline"
-            sx={{ color: '#4f8ef7', letterSpacing: 4, fontWeight: 700 }}
+            sx={{ color: palette.brand[300], letterSpacing: 4, fontWeight: 700 }}
           >
             About
           </Typography>
           <Typography
-            variant="h3"
             component="h1"
-            sx={{ color: '#fff', fontWeight: 800, mt: 1, mb: 2, lineHeight: 1.2 }}
+            sx={{
+              color: '#fff',
+              fontSize: { xs: `${type.h1.size[1]}px`, md: `${type.h1.size[0]}px` },
+              fontWeight: type.h1.weight,
+              letterSpacing: type.h1.tracking,
+              lineHeight: type.h1.lh,
+              mt: 1, mb: 2,
+            }}
           >
             Canadian IT Professional<br />Building What Works
           </Typography>
@@ -136,7 +142,7 @@ export default function AboutPage() {
               >
                 <Typography
                   variant="overline"
-                  sx={{ color: '#4f8ef7', fontWeight: 700, letterSpacing: 2 }}
+                  sx={{ color: palette.brand[300], fontWeight: 700, letterSpacing: 2 }}
                 >
                   {item.period}
                 </Typography>
@@ -144,6 +150,7 @@ export default function AboutPage() {
                   variant="h6"
                   component="h3"
                   itemProp="roleName"
+                  className="experience-role"
                   sx={{ fontWeight: 700, color: palette.slate[900], mt: 0.5, mb: 0.5 }}
                 >
                   {item.role}
@@ -154,7 +161,7 @@ export default function AboutPage() {
                 >
                   {item.company}
                 </Typography>
-                <Typography variant="body1" sx={{ color: '#555', lineHeight: 1.7 }}>
+                <Typography variant="body1" sx={{ color: 'bodyText', lineHeight: 1.7 }}>
                   {item.description}
                 </Typography>
               </Box>
@@ -178,17 +185,19 @@ export default function AboutPage() {
           <Grid container spacing={3} justifyContent="center">
             {SKILLS_GROUPS.map((group) => (
               <Grid key={group.category} size={{ xs: 12, sm: 6, md: 3 }}>
-                <Box
-                  sx={{
-                    backgroundColor: '#f7f9ff',
-                    borderRadius: '10px',
-                    p: 3,
-                    height: '100%',
-                    border: '1px solid #e3eafc',
-                  }}
-                >
+                  <Box
+                    className="skills-group-card"
+                    sx={{
+                      backgroundColor: palette.brand[50],
+                      borderRadius: `${radius.lg}px`,
+                      p: 3,
+                      height: '100%',
+                      border: `1px solid ${palette.brand[100]}`,
+                    }}
+                  >
                   <Typography
                     variant="subtitle2"
+                    className="skills-group-label"
                     sx={{ color: palette.brand[500], fontWeight: 700, mb: 1.5, letterSpacing: 1, textTransform: 'uppercase' }}
                   >
                     {group.category}
@@ -198,7 +207,7 @@ export default function AboutPage() {
                       <Box
                         component="li"
                         key={item}
-                        sx={{ color: '#333', fontSize: '0.9rem', mb: 0.5, lineHeight: 1.6 }}
+                        sx={{ color: 'heading', fontSize: '0.9rem', mb: 0.5, lineHeight: 1.6 }}
                       >
                         {item}
                       </Box>
@@ -222,18 +231,18 @@ export default function AboutPage() {
           >
             Working with Canadian Businesses
           </Typography>
-          <Typography variant="body1" sx={{ color: '#444', lineHeight: 1.8, mb: 2 }}>
+          <Typography variant="body1" sx={{ color: 'bodyText', lineHeight: 1.8, mb: 2 }}>
             Based in Calgary, AB, I work with startups, small businesses, and established companies
             across Canada — from British Columbia to Ontario. I understand the Canadian market:
             bilingual requirements, provincial data residency considerations, and the pace of the
             local tech ecosystem.
           </Typography>
-          <Typography variant="body1" sx={{ color: '#444', lineHeight: 1.8, mb: 2 }}>
+          <Typography variant="body1" sx={{ color: 'bodyText', lineHeight: 1.8, mb: 2 }}>
             Whether you need a production-ready microservice backend, an AI/LLM integration, a
             payment processing API, or a crypto/Web3 backend, I deliver clean, maintainable
             solutions with clear communication and predictable timelines.
           </Typography>
-          <Typography variant="body1" sx={{ color: '#444', lineHeight: 1.8 }}>
+          <Typography variant="body1" sx={{ color: 'bodyText', lineHeight: 1.8 }}>
             Available for project-based engagements, ongoing contracts, and technical consulting.{' '}
             <Link href="/#contact" style={{ color: palette.brand[500], fontWeight: 600 }}>
               Get in touch

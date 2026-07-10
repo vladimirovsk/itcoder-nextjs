@@ -1,6 +1,6 @@
 # Dark mode — design spec (ITC-33 / Phase 6)
 
-Owner: Web Designer · Status: **palette + content sweep shipped; brand sign-off received 2026-07-08; toggle pending (ITC-40)**
+Owner: Web Designer · Status: **palette + content sweep + toggle shipped; brand sign-off received 2026-07-08; toggle live**
 Depends on: ITC-15 (Phase 3 tokenization) — done.
 
 This resolves **decision B** from the Phase 1 audit (`design-system.md` §B) and
@@ -89,32 +89,10 @@ correctly on both modes. Do not lighten them to `dark.surface`.
   scoped under `html[data-theme="dark"]` (ITC-40).
 - Brand sign-off (Chief of staff) received 2026-07-08.
 
-**Remaining — toggle activation + QA + deploy (ITC-40, Web Support Engineer):**
+**Remaining — Visual QA + deploy (ITC-40, Web Support Engineer):**
 
-1. **Add the theme toggle button** to `app/(components)/header/page.tsx`:
-
-   ```tsx
-   // Additional imports at top of file:
-   import Brightness4Icon from '@mui/icons-material/Brightness4';
-   import Brightness7Icon from '@mui/icons-material/Brightness7';
-   import { useTheme } from '../../ThemeContext';
-
-   // Inside the Headers() component, add the hook:
-   const { mode, toggleTheme, isHydrated } = useTheme();
-
-   // Uncomment lines 207-208 (the themeIcon / tooltipTitle variables),
-   // then add this button inside the <Toolbar> before the closing </Toolbar>:
-   <Tooltip title={tooltipTitle}>
-     <IconButton
-       onClick={toggleTheme}
-       aria-label={tooltipTitle}
-       sx={{ color: palette.slate[600], ml: 1 }}
-     >
-       {themeIcon}
-     </IconButton>
-   </Tooltip>
-   ```
-
+1. **The toggle is live** in `app/(components)/header/page.tsx` (lines 209–210, 337–347).
+    Imports, `useTheme` hook, icon logic, and `<Tooltip>/<IconButton>` are all in place.
 2. **Visual QA** — test all sections in both modes at xs / md / lg breakpoints.
-   Check: text contrast, card backgrounds, borders, footer, hero (already dark — leave).
+    Check: text contrast, card backgrounds, borders, footer, hero (already dark — leave).
 3. **Deploy** — on separate approval from Chief of staff / Web Support Engineer.

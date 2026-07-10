@@ -26,6 +26,7 @@ import imageBoard from './images/Board.png';
 import backgroundImage from './images/bakgroundImage.png';
 import Image from 'next/image';
 import {useState} from 'react';
+import {shadow, radius, cardHoverSx, type} from '@/app/theme/tokens';
 
 export default function Skills() {
 	const skillsList: ISkills[] = skills;
@@ -62,7 +63,7 @@ export default function Skills() {
 				left: '4rem',
 				top: '-41px',
 				transform: 'translateX(-50%)',
-				boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.4)',
+				boxShadow: '0px 4px 12px rgba(0,0,0,0.12)',
 			}}>
 
 				<Image
@@ -156,16 +157,21 @@ export default function Skills() {
 						mt: 4,
 						display: 'flex',
 						flexDirection: 'column',
-						borderRadius: '16px',
-						boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
+						borderRadius: `${radius.lg}px`,
+						boxShadow: shadow.card,
+						border: '1px solid',
+						borderColor: 'cardBorder',
+						...cardHoverSx,
 					}}>
 						<IconImage key={`Image=${skill.title}`} icon={iconMap[skill.icon].src} alt={skill.title} />
 						<CardHeader
 							key={`${skill.title}-header-${index}`}
 							slotProps={{
 								title: { sx: {
-										fontSize: '1rem',
-										fontWeight:  800,
+										fontSize: { xs: `${type.h3.size[1]}px`, md: `${type.h3.size[0]}px` },
+										fontWeight: type.h3.weight,
+										lineHeight: type.h3.lh,
+										color: 'heading',
 									}}
 							}}
 							sx={{

@@ -82,10 +82,16 @@ export default function RootLayout({
         `}
       </Script>
       <SchemaOrg />
+      <a
+        href="#main-content"
+        className="skip-link"
+      >
+        Skip to main content
+      </a>
       <EmotionCacheProvider>
         <ThemeProviderWrapper>
               <Headers/>
-              <Container component="main" disableGutters className="containerPage">
+              <Container component="main" id="main-content" disableGutters className="containerPage">
                   {children}
                   <Analytics/>
               </Container>

@@ -21,8 +21,8 @@ export const OrangeButton: React.FC<ButtonProps> = ({
             backgroundColor: palette.accent[600],
             },
             '&.Mui-disabled': {
-            backgroundColor: '#FFCCBC',
-            color: '#BDBDBD',
+            backgroundColor: palette.accent.disabledBg,
+            color: palette.accent.disabledText,
             },
         }}
 

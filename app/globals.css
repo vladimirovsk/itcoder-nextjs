@@ -1,5 +1,32 @@
 @import "tailwindcss";
 
+/* ── Skip to content link (a11y) ───────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 10000;
+  padding: 12px 24px;
+  background-color: #3B5BDB;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0 0 8px 8px;
+  transition: left 0.15s, top 0.15s;
+}
+.skip-link:focus {
+  left: 0;
+  top: 0;
+  width: auto;
+  height: auto;
+  overflow: auto;
+  outline: none;
+}
+
 html {
   scroll-behavior: smooth;
   /* Full-bleed sections (e.g. Skills) use `width: 100vw`, which includes the
@@ -73,33 +100,26 @@ main {
   border-radius: 2px;
 }
 
+@media (max-width: 600px) {
+  .titlePage {
+    font-size: 24px;
+  }
+}
+
 .titlePage--light::after {
   background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 100%);
 }
+
+/* titlePage--light is used on dark-background sections (Skills).
+   The text color is set inline as 'white' in the component — this is correct
+   for the dark scrim. If this class is ever used on a light background,
+   override the text color separately; the ::after underline is the only
+   dark-mode-specific rule in this class. */
 
 .subTitlePage {
   color: #64748b;
   letter-spacing: 0.01em;
   line-height: 1.65;
-}
-
-.mainFuturePostContent {
-  color: #F97316;
-  position: relative;
-  padding: 2rem;
-  font-weight: 800;
-  margin-top: 5rem;
-  text-align: right;
-  z-index: 2;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
 }
 
 .cardImageContainer {
@@ -117,7 +137,7 @@ main {
 /* ── Services FAQ ─────────────────────────────────────────────────────────── */
 .services-faq-item {
   background-color: #f8fafc;
-  border-radius: 10px;
+  border-radius: 12px;
   border: 1px solid #e2e8f0;
   overflow: hidden;
   transition: border-color 0.2s;
@@ -161,7 +181,7 @@ details[open] > .services-faq-summary::after { content: '−'; }
 
 /* Skeleton loading animation for Suspense fallbacks */
 .skeleton-pulse {
-  background-color: #e8ecf0;
+  background-color: #E2E8F0;
   animation: skeleton-pulse 1.6s ease-in-out infinite;
 }
 
@@ -175,6 +195,11 @@ details[open] > .services-faq-summary::after { content: '−'; }
    <html data-theme="dark"> attribute set by ThemeContext. Mapping is by ROLE,
    never by matching hex. Light (default / data-theme="light") is untouched.
    The .footer is already dark on both modes — intentionally not re-themed. */
+html[data-theme="dark"] body { background-color: #121212; }       /* dark.bg — MUI CssBaseline's
+   own body rule loses this cascade: the emotion SSR flush (EmotionCacheProvider) bundles the
+   initial light-mode CssBaseline output into a <style> tag that outlives hydration and sits later
+   in the DOM than the client-toggled dark rule, so the stale light `body{}` wins the tie. A plain
+   attribute-selector rule here has higher specificity and always wins regardless of tag order. */
 html[data-theme="dark"] .titlePage { color: #E6E9EF; }            /* heading */
 html[data-theme="dark"] .subTitlePage { color: #A7B0C0; }         /* muted */
 
@@ -193,8 +218,62 @@ html[data-theme="dark"] .services-faq-answer {
 
 html[data-theme="dark"] .skeleton-pulse { background-color: #242832; } /* surfaceAlt */
 
+/* About — Technical Skills cards: server component, brand-tinted (not neutral
+   surfaceAlt) background baked in as a raw hex, so it needs the same CSS
+   override fallback as the other server-component cases above. */
+html[data-theme="dark"] .skills-group-card {
+  background-color: #242832;                                       /* surfaceAlt */
+  border-color: #2E3440;                                           /* hairline */
+}
+html[data-theme="dark"] .skills-group-label { color: #7B9EF9; }    /* brand.300 — reads on dark surface */
+
+/* About — Experience timeline role heading: server component, raw slate.900
+   (light-mode near-black) baked into sx, needs the same fallback. */
+html[data-theme="dark"] .experience-role { color: #E6E9EF; }       /* heading */
+
+/* Projects — tech-stack chips: server component, brand-tinted background
+   baked into sx as a raw hex, needs the same fallback as the cases above. */
+html[data-theme="dark"] .tech-chip {
+  background-color: #242832;                                        /* surfaceAlt */
+  color: #7B9EF9;                                                    /* brand.300 — reads on dark surface */
+  border-color: #2E3440;                                             /* hairline */
+}
+
 /* ArticleRenderer callout boxes — server component, CSS override required */
 html[data-theme="dark"] .callout { color: #E6E9EF; }                 /* heading */
 html[data-theme="dark"] .callout-challenge { background-color: rgba(249,115,22,0.08) !important; }
 html[data-theme="dark"] .callout-result    { background-color: rgba(22,163,74,0.08) !important; }
 html[data-theme="dark"] .callout-note      { background-color: rgba(2,132,199,0.08) !important; }
+
+/* ── Accessibility: keyboard focus-visible ring ──────────────────────────────
+   The MUI CssBaseline :focus-visible on '*' (theme.tsx) handles MUI components.
+   These rules cover non-MUI interactive elements: <a>, <button>, <details>,
+   and elements with tabindex. */
+a:focus-visible,
+button:focus-visible,
+details:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #3B5BDB;
+  outline-offset: 2px;
+}
+
+.footer-link:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ── Accessibility: prefers-reduced-motion ────────────────────────────────────
+   Disables non-essential motion for users who prefer it. Skeleton pulse and
+   smooth-scroll are the main targets; hover-lifts are controlled via MUI
+   transition props (already wrapped in motion.fast/base/slow). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

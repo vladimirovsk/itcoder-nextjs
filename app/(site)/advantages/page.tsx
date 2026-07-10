@@ -2,7 +2,7 @@ export { metadata } from './metadata';
 import advantages from './advantages.json';
 import {IAdvantages} from '@/app/(site)/advantages/interfaces';
 import {Box, Card, CardContent, CardHeader} from '@mui/material';
-import { shadow, radius, cardHoverSx } from '@/app/theme/tokens';
+import { shadow, radius, cardHoverSx, type } from '@/app/theme/tokens';
 import Image from 'next/image';
 import imageBrand from './images/Brand.png';
 import imageCommand from './images/Command.png';
@@ -71,9 +71,8 @@ export default function Advantages () {
 				sx={{
 					width: '100%',
 					display: 'grid',
-					marginTop: '2rem',
-					spacing: 20,
-					gridTemplateColumns: {
+				marginTop: '2rem',
+				gridTemplateColumns: {
 						xs: 'repeat(1, 1fr)', // 1 column on mobile
 						sm: 'repeat(2, 1fr)', // 2 columns on tablets
 						md: 'repeat(3, 1fr)', // 3 columns on desktop
@@ -101,13 +100,14 @@ export default function Advantages () {
 							            key={`${advantage.name}-header-${index}`}
 							            slotProps={{
 							                title: { sx: {
-												fontSize: '1rem',
-									            fontWeight:  800,
+												fontSize: { xs: `${type.h3.size[1]}px`, md: `${type.h3.size[0]}px` },
+									            fontWeight: type.h3.weight,
+												lineHeight: type.h3.lh,
+												color: 'heading',
 											}}
 							            }}
 							            sx={{
-											height: '4rem',
-								            textAlign: 'center',
+											textAlign: 'center',
 								            marginTop: '50px',
 							            }}
 							>
@@ -117,10 +117,10 @@ export default function Advantages () {
 								key={`${advantage.name}-content-${index}`}
 								sx={{
 									backgroundColor: 'background.paper',
-									fontSize: '1rem',
-									textAlign: 'justify',
-									borderBottomLeftRadius: '16px',
-									borderBottomRightRadius: '16px',
+									fontSize: { xs: `${type.body.size[1]}px`, md: `${type.body.size[0]}px` },
+									lineHeight: type.body.lh,
+									color: 'bodyText',
+									textAlign: 'left',
 								}}
 								>
 								<p>{advantage.description}</p>

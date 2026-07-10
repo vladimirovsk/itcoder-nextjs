@@ -14,19 +14,22 @@
 /* ── Brand & neutral palette ─────────────────────────────────────── */
 export const palette = {
   /** Primary — calm indigo. Replaces the legacy electric #1e41da and the
-   *  stale MUI palette value #1E3A8A which no components actually use. */
+    *  stale MUI palette value #1E3A8A which no components actually use. */
   brand: {
     50: '#EEF2FF',
     100: '#F0F2FF',
     500: '#3B5BDB', // primary
     600: '#2D4AC7', // primary hover / pressed
     300: '#7B9EF9', // soft sky — active nav on dark, gradient tail
+    facebook: '#1877F2', // Facebook brand blue (external)
   },
   /** Accent — CTA orange. One canonical pair; retires #F58D1E/#e17a0e. */
   accent: {
     500: '#F97316', // CTA
     600: '#E0620A', // CTA hover
     tint: '#FFF7ED',
+    disabledBg: '#FFCCBC', // disabled CTA background
+    disabledText: '#BDBDBD', // disabled CTA text
   },
   /** Neutral slate ramp — text, borders, surfaces (light mode). */
   slate: {
@@ -59,10 +62,11 @@ export const palette = {
     textMuted: '#A7B0C0', // medium-emphasis: captions, secondary (8.6:1)
     textFaint: '#808A99', // low-emphasis: disabled, placeholder (5.4:1)
   },
-  /** Status. Green is used for the "Available for hire" badge. */
+  /** Status. Green is used for the "Available for hire" badge. Amber for pending/warning. */
   status: {
     success: '#16A34A',
     successBright: '#4ADE80',
+    warning: '#fbbf24', // amber-400 — pending status badges
   },
   /** Per-service icon accents (services section). */
   serviceIcons: {

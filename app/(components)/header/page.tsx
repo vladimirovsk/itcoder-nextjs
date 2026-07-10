@@ -10,7 +10,7 @@ import imageLogo from '../../../public/imageLogo.png';
 import MenuIcon from '@mui/icons-material/Menu';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { palette, shadow, radius } from '../../theme/tokens';
+import { palette, shadow, radius, type } from '../../theme/tokens';
 import { useTheme } from '../../ThemeContext';
 
 
@@ -231,8 +231,10 @@ export default function Headers() {
 						<IconButton
 							color="inherit"
 							aria-label="menu"
+							aria-expanded={Boolean(anchorEl)}
+							aria-controls="mobile-menu"
 							onClick={handleMenuOpen}
-							sx={{ color: palette.slate[800] }}
+							sx={{ color: mode === 'light' ? palette.slate[800] : palette.dark.text }}
 						>
 							<MenuIcon />
 						</IconButton>
@@ -297,6 +299,7 @@ export default function Headers() {
 
 				{/* Mobile Menu */}
 				<Menu
+					id="mobile-menu"
 					anchorEl={anchorEl}
 					open={Boolean(anchorEl)}
 					onClose={handleMenuClose}
@@ -375,7 +378,7 @@ export default function Headers() {
 					<Box display='flex' flexDirection='column' sx={{
 						position: 'relative', zIndex: 2, border: 'none', boxShadow: 'none'}}>
 						<Box sx={{
-							paddingY: { xs: '6rem', md: '2rem' },
+							paddingY: { xs: '4rem', md: '2rem' },
 							maxWidth: '48rem',
 						}}>
 							{/* Availability badge */}
@@ -397,13 +400,15 @@ export default function Headers() {
 								</Typography>
 							</Box>
 
-							<Typography variant="h3" component="h1" sx={{
-								fontWeight: 800,
-								color: '#ffffff',
-								lineHeight: 1.2,
-								mb: 2,
-								textShadow: '0 2px 20px rgba(0,0,0,0.5)',
-							}}>
+						<Typography component="h1" sx={{
+							fontSize: { xs: `${type.hero.size[1]}px`, md: `${type.hero.size[0]}px` },
+							lineHeight: type.hero.lh,
+							fontWeight: type.hero.weight,
+							letterSpacing: type.hero.tracking,
+							color: '#ffffff',
+							mb: 2,
+							textShadow: '0 2px 20px rgba(0,0,0,0.5)',
+						}}>
 								Backend &amp; AI integrations, built to ship
 							</Typography>
 							<Typography variant="h6" component="p" sx={{

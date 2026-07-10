@@ -449,7 +449,6 @@ const getDesignTokens = (mode: PaletteMode) => ({
           '&.header-nav-button.active': {
             alignItems: 'center',
             color: mode === 'light' ? '#000000' : tokens.dark.text,
-            borderBottom: '2px solid #F97316',
             borderLeft: 'none',
             borderRight: 'none',
             borderTop: 'none',

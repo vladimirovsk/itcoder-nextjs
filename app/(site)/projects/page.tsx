@@ -21,14 +21,14 @@ function StatusBadge({ live, label }: { live: boolean; label: string }) {
 				width: 7,
 				height: 7,
 				borderRadius: '50%',
-				backgroundColor: live ? palette.status.successBright : '#fbbf24',
+				backgroundColor: live ? palette.status.successBright : palette.status.warning,
 				flexShrink: 0,
 				animation: live ? 'none' : undefined,
 			}} />
 			<Typography sx={{
 				fontSize: '0.72rem',
 				fontWeight: 600,
-				color: live ? palette.status.successBright : '#fbbf24',
+				color: live ? palette.status.successBright : palette.status.warning,
 				lineHeight: 1,
 				letterSpacing: '0.03em',
 			}}>
@@ -226,12 +226,13 @@ function ProjectCard({ project }: { project: IProject }) {
 								key={t}
 								label={t}
 								size="small"
+								className="tech-chip"
 								sx={{
 									fontSize: '0.75rem',
 									fontWeight: 500,
 									backgroundColor: palette.brand[50],
 									color: palette.brand[500],
-									border: '1px solid #C7D2FE',
+									border: `1px solid ${palette.brand[100]}`,
 									height: '24px',
 									'& .MuiChip-label': { px: 1.25 },
 								}}
@@ -307,7 +308,7 @@ export default function Projects() {
 				borderTop: '1px solid',
 				borderTopColor: 'hairline',
 			}}>
-				<FacebookIcon sx={{ color: '#1877F2', fontSize: '1.3rem' }} />
+				<FacebookIcon sx={{ color: palette.brand.facebook, fontSize: '1.3rem' }} />
 				<Typography sx={{ fontSize: '0.875rem', color: 'muted' }}>
 					Follow development updates on{' '}
 					<Box
@@ -316,7 +317,7 @@ export default function Projects() {
 						target="_blank"
 						rel="noopener noreferrer"
 						sx={{
-							color: '#1877F2',
+							color: palette.brand.facebook,
 							fontWeight: 600,
 							textDecoration: 'none',
 							'&:hover': { textDecoration: 'underline' },

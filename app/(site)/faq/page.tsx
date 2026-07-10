@@ -3,6 +3,7 @@
 import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
+import { type, radius } from '@/app/theme/tokens';
 
 export default function FAQ() {
 
@@ -65,13 +66,20 @@ export default function FAQ() {
 						           borderBottomWidth: '2px',
 						           borderBottomStyle: 'solid',
 						           borderBottomColor: 'hairline',
+						           borderRadius: `${radius.md}px`,
+						           overflow: 'hidden',
 					           }}
 					>
 
 						<AccordionSummary key={`Summary-${item.id}`} className={'accordionSummary'}
 						                  expandIcon={<ExpandMoreIcon sx={{color: 'heading'}}/>}
 						>
-							<Typography key={`Typography-${item.id}`} component="span" className={'title-accordion'} style={{fontSize: '1.2rem'}}>
+							<Typography key={`Typography-${item.id}`} component="span" className={'title-accordion'} sx={{
+							fontSize: { xs: `${type.h3.size[1]}px`, md: `${type.h3.size[0]}px` },
+							fontWeight: type.h3.weight,
+							lineHeight: type.h3.lh,
+							color: 'heading',
+						}}>
 								{item.title}
 							</Typography>
 						</AccordionSummary>
