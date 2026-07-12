@@ -1,11 +1,16 @@
 const BASE = 'https://www.itcoder.ca';
 
+// ProfessionalService is a subtype of LocalBusiness; the extra "LocalBusiness"
+// type makes the local-SEO intent explicit for crawlers. Enriched with geo,
+// service area and opening hours so Google treats this as a full local entity.
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": ["ProfessionalService", "LocalBusiness"],
   "@id": `${BASE}/#organization`,
   "name": "IT CODER",
   "url": BASE,
+  "image": `${BASE}/imageLogo.png`,
+  "logo": `${BASE}/imageLogo.png`,
   "description":
     "NestJS microservices, REST APIs, AI/LLM integrations, payment systems, and fintech backends — designed and built for SaaS, fintech and crypto products. Based in Calgary, AB.",
   "address": {
@@ -14,6 +19,13 @@ const organizationSchema = {
     "addressRegion": "AB",
     "addressCountry": "CA",
   },
+  // City-level coordinates (downtown Calgary) — a local signal without
+  // exposing a private home address.
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 51.0447,
+    "longitude": -114.0719,
+  },
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+1-587-968-9089",
@@ -21,12 +33,19 @@ const organizationSchema = {
     "email": "support@itcoder.ca",
     "availableLanguage": ["English"],
   },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00",
+    "closes": "18:00",
+  },
   "sameAs": ["https://www.facebook.com/profile.php?id=61575213251739"],
   "priceRange": "$$",
-  "areaServed": {
-    "@type": "Country",
-    "name": "Canada",
-  },
+  "areaServed": [
+    { "@type": "City", "name": "Calgary" },
+    { "@type": "AdministrativeArea", "name": "Alberta" },
+    { "@type": "Country", "name": "Canada" },
+  ],
 };
 
 const websiteSchema = {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Portfolio & Case Studies — IT CODER | Backend & AI Engineer Calgary",
+  title: "Portfolio & Case Studies — Backend & AI Engineer Calgary",
   description: "Real backend projects delivered by IT CODER — NestJS microservices, AI/LLM integrations, crypto exchange backends, payment APIs, and fintech systems built for SaaS products.",
   keywords: "backend developer portfolio Calgary, NestJS microservices examples, AI integration projects Canada, crypto exchange backend, fintech API Calgary, payment system developer, SaaS backend engineer Calgary, microservices portfolio Alberta",
   openGraph: {

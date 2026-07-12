@@ -8,7 +8,7 @@ import { palette, shadow, radius, cardHoverSx, type } from '@/app/theme/tokens';
 const BASE = 'https://www.itcoder.ca';
 
 export const metadata: Metadata = {
-  title: 'Blog — Backend & AI Engineering Notes | IT CODER',
+  title: 'Blog — Backend & AI Engineering Notes',
   description:
     'Practical articles on NestJS microservices, AI/LLM integration, event-driven architecture, and production backend engineering — written by a senior backend engineer in Calgary.',
   keywords:

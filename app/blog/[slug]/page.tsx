@@ -23,7 +23,7 @@ export async function generateMetadata({
   if (!p) return {};
   const url = `${BASE}/blog/${p.slug}`;
   return {
-    title: `${p.title} | IT CODER`,
+    title: p.title,
     description: p.excerpt,
     keywords: p.tags.join(', '),
     alternates: { canonical: url },

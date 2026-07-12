@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Why Hire IT CODER — Freelance Web Developer Calgary",
+  title: "Why Hire a Freelance Web Developer in Calgary",
   description: "Why hire IT CODER? Transparent pricing, on-time delivery, and direct communication with the developer — no account managers, no middlemen. Based in Calgary, AB, serving all of Canada.",
   keywords: "why hire IT CODER, freelance developer advantages Calgary, web development benefits Alberta, transparent pricing developer Canada, reliable web developer Calgary, direct developer communication",
   openGraph: {

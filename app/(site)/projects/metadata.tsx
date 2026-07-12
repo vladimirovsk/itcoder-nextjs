@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-	title: 'Our Products — WildLink & SoloBook | IT CODER',
+	title: 'Our Products — WildLink & SoloBook',
 	description: 'Real products built by IT CODER: WildLink — LoRa mesh tracking device for the Canadian Rockies (IoT, PCB design, embedded firmware), and SoloBook — T2125 bookkeeping SaaS for Canadian freelancers.',
 	keywords: 'WildLink LoRa tracking, IoT device development Calgary, SoloBook T2125 bookkeeping, SaaS development Canada, embedded systems developer, PCB design Calgary, hardware developer Canada',
 	alternates: {

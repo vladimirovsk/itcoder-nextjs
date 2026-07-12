@@ -24,6 +24,8 @@ export async function generateMetadata({
   if (!c) return {};
   const url = `${BASE}/cases/${c.slug}`;
   return {
+    // The cases/ layout exports a static string title, which resets the root
+    // title.template for this nested segment — so the brand must be explicit here.
     title: `${c.title} — Case Study | IT CODER`,
     description: c.excerpt,
     keywords: c.tags.join(', '),

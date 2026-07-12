@@ -6,7 +6,7 @@ import SchemaOrgAbout from '@/app/components/SchemaOrgAbout';
 import { palette, type, radius } from '@/app/theme/tokens';
 
 export const metadata: Metadata = {
-  title: 'About — IT CODER | Senior Backend & AI Engineer in Calgary',
+  title: 'About — Senior Backend & AI Engineer in Calgary',
   description:
     'Serhii Vladimirov — Senior Backend & AI Engineer based in Calgary, AB. Building NestJS microservices, AI/LLM integrations, payment systems and fintech APIs for SaaS and crypto products.',
   alternates: { canonical: 'https://www.itcoder.ca/about' },

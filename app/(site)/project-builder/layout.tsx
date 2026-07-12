@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Project Builder — Describe Your Project & Get a Quote | IT CODER",
+  title: "Project Builder — Describe Your Project & Get a Quote",
   description: "Tell IT CODER what you need in 3 steps — project type, features, and timeline. A freelance web developer in Calgary will respond with a plan within 24 hours.",
   keywords: "web project quote Calgary, hire developer estimate Canada, project builder web app, get development quote Alberta, freelance developer project request Calgary, custom software estimate Canada",
   openGraph: {
