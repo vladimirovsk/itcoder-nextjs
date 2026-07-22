@@ -10,12 +10,6 @@ import Script from 'next/script';
 import SchemaOrg from '@/app/components/SchemaOrg';
 import EmotionCacheProvider from '@/app/EmotionCacheProvider';
 import FloatingProjectCTA from '@/app/components/FloatingProjectCTA';
-
-// Hero background images — imported here to get their final hashed paths for preloading.
-// We will handle these via next/image with priority in the component for better LCP.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-import titleImage from '@/public/it-coder-title.png';
-import titleImageSmall from '@/app/(components)/header/images/titleImageSmall.png';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // Initialize the Inter font
