@@ -1,0 +1,100 @@
+import { NextRequest, NextResponse } from 'next/server';
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { firstName, lastName, email, note } = body;
+        
+    if (!firstName || !lastName || !email) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
+
+    const apiKey = process.env.PROJECT_BUILDER_API_KEY;
+    const apiUrl =
+      process.env.NEXT_PUBLIC_API ??
+      'https://api-rest.it-coder.com/api/v1';
+
+    const response = await fetch(
+      `${apiUrl}/project-builder/steps`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': apiKey ?? '',
+        },
+        body: JSON.stringify({
+          name: `${firstName} ${lastName}`,
+          email,
+          phone: body.phone || undefined,
+          note: note || undefined,
+          company: body.company || undefined,
+          source: 'itcoder-project-builder',
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      const detail = await response.text();
+      console.error('Backend error (project-builder submission):', response.status, detail);
+      return NextResponse.json(
+        { error: 'Failed to submit project builder data', detail },
+        { status: response.status }
+      );
+    }
+
+    return NextResponse.json(response.status === 201 ? {} : await response.json());
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Error in POST /api/project-builder/action:', error);
+    return NextResponse.json(
+      { error: message },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PATCH(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { email, projectBrief, note } = body;
+
+    const apiKey = process.env.PROJECT_BUILDER_API_KEY;
+    const apiUrl =
+      process.env.NEXT_PUBLIC_API ??
+      'https://api-rest.it-coder.com/api/v1';
+
+    const response = await fetch(`${apiUrl}/leads/project-brief`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey ?? '',
+      },
+      body: JSON.stringify({
+        email,
+        projectBrief,
+        note,
+      }),
+    });
+
+    if (!response.ok) {
+      const detail = await response.text();
+      console.error('Backend error (project-brief update):', response.status, detail);
+      return NextResponse.json(
+        { error: 'Failed to update project brief', detail },
+        { status: response.status }
+      );
+    }
+
+    return NextResponse.json(response.status === 200 ? { success: true } : await response.json());
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Error in PATCH /api/project-builder/action:', error);
+    return NextResponse.json(
+      { error: message },
+      { status: 500 }
+    );
+  }
+}

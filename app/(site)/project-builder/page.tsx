@@ -231,7 +231,7 @@ export default function ProjectBuilder() {
     const [existingLead, setExistingLead] = useState(false);
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_API}/project-builder/steps`)
+        fetch(`${process.env.NEXT_PUBLIC_API}/api/project-builder/steps`)
             .then(r => r.json())
             .then((data: unknown) => {
                 if (Array.isArray(data)) {

@@ -42,7 +42,7 @@ interface BannerCTAProps {
 	ariaLabel: string;
 }
 
-/** Single gradient banner-CTA, used twice (portal + project builder). */
+/** Single gradient banner-CTA, used for the project-builder prompt. */
 function BannerCTA({ href, external, gradient, shadow, shadowHover, kicker, headline, cta, pillBg, pillColor, ariaLabel }: BannerCTAProps) {
 	return (
 		<Box
@@ -170,21 +170,6 @@ export default function Services() {
 					);
 				})}
 			</Box>
-
-			{/* Portal CTA */}
-			<BannerCTA
-				href="https://portal.it-coder.com"
-				external
-				gradient={gradients.portal}
-				shadow="0 4px 20px rgba(2,132,199,0.25)"
-				shadowHover="0 8px 28px rgba(2,132,199,0.35)"
-				kicker="Need a dedicated Windows server?"
-				headline="Rent a ready-to-use RDP server — manage it from your personal portal"
-				cta="Open Portal →"
-				pillBg="#fff"
-				pillColor="#0284c7"
-				ariaLabel="Open the ITCODER portal to rent a ready-to-use Windows RDP server"
-			/>
 
 			<ServicesFAQ />
 
