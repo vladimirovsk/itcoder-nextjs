@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Menu, MenuItem, Box } from '@mui/material';
+import { Menu, MenuItem } from '@mui/material';
 import { palette } from '../../theme/tokens';
 
 interface MobileMenuProps {
@@ -9,19 +9,21 @@ interface MobileMenuProps {
     open: boolean;
     onClose: () => void;
     navItems: string[];
+    activeItem: string;
     isHome: boolean;
     isBlog: boolean;
     handleNavItemClick: (item: string, event?: React.MouseEvent) => void;
     themeMode: 'light' | 'dark';
 }
 
-export default function MobileMenu({ 
-    anchorEl, 
-    open, 
-    onClose, 
-    navItems, 
-    isHome, 
-    isBlog, 
+export default function MobileMenu({
+    anchorEl,
+    open,
+    onClose,
+    navItems,
+    activeItem,
+    isHome,
+    isBlog,
     handleNavItemClick,
     themeMode
 }: MobileMenuProps) {
@@ -42,22 +44,18 @@ export default function MobileMenu({
                 },
             }}
         >
-            {navItems.map((item) => {
-                // We need to check if it's the active item. 
-                // However, since we don't have activeItem in props, 
-                // we'll assume the parent handles selection logic or we pass it.
-                // For now, let's just render the items.
-                return (
-                    <MenuItem
-                        key={item}
-                        component="a"
-                        href={`/#${item.toLowerCase().replace(/\s+/g, '-')}`}
-                        onClick={(e) => handleNavItemClick(item, e)}
-                    >
-                        {item}
-                    </MenuItem>
-                );
-            })}
+            {navItems.map((item) => (
+                <MenuItem
+                    key={item}
+                    component="a"
+                    href={`/#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                    onClick={(e) => handleNavItemClick(item, e)}
+                    selected={isHome && activeItem === item}
+                    sx={{ color: isHome && activeItem === item ? palette.brand[500] : palette.slate[600] }}
+                >
+                    {item}
+                </MenuItem>
+            ))}
             <MenuItem
                 component="a"
                 href="/blog"

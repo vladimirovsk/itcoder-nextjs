@@ -1,7 +1,6 @@
-import { useCallback, useMemo, useRef, useState, useEffect } from 'react';
+import { useCallback, useRef, useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { useTheme } from '../../ThemeContext';
-import { palette } from '../../theme/tokens';
 
 const toSectionId = (item: string) => item.toLowerCase().replace(/\s+/g, '-');
 
@@ -106,6 +105,7 @@ export function useHeader() {
         isManuallySet,
         setIsManuallySet,
         scrolled,
+        mode,
         toggleTheme,
         isHydrated,
         isBlog,
